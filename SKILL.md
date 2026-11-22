@@ -1,5 +1,5 @@
 ---
-name: anything-frontend
+name: anything-frontend-art-direction
 license: MIT
 description: 題材と利用目的から画面の配色・書体・余白・構図を選ぶ。既存画面の実装やレビューでは、症状に対応する仕様、製品ドキュメント、HCI研究を探す。
 ---

@@ -1,6 +1,6 @@
-# Anything Frontend
+# Anything Frontend Art Direction
 
-Anything Frontend は、題材に合う配色・書体・余白・構図を選ぶための日本語のフロントエンドデザインスキルです。作品と制作者の解説を見比べながら、自分の画面に取り入れたい工夫を探せます。実装やレビューで迷ったときは、12分野・1,464項目の索引から仕様や研究の原文をたどれます。
+Anything Frontend Art Direction は、題材に合う配色・書体・余白・構図を選ぶための日本語のフロントエンドデザインスキルです。作品と制作者の解説を見比べながら、自分の画面に取り入れたい工夫を探せます。実装やレビューで迷ったときは、12分野・1,464項目の索引から仕様や研究の原文をたどれます。
 
 ## 作例「潮待ち映画祭」
 
@@ -8,13 +8,13 @@ Anything Frontend は、題材に合う配色・書体・余白・構図を選�
 
 「潮待ち映画祭」は港で開く架空の野外映画祭です。映画祭名には太い「しっぽり明朝B1」を、欧文の副題には Cormorant Garamond のイタリックを使いました。上映表で日付を選ぶと、その日の2作品を確認できます。開始時刻は Noto Sans JP、隣に並ぶ作品名は明朝体です。
 
-[作例のHTMLをダウンロード](https://github.com/RNA4219/anything-frontend/raw/refs/heads/main/examples/shiomachi-film/index.html)して、ブラウザーで開いてください。PC用とスマホ用の画像、書体、CSS、JavaScriptをすべて1枚のHTMLに収めました。オフラインでも上映日を切り替えたり、各作品のあらすじを開いたり閉じたりできます。[HTMLのソース](examples/shiomachi-film/index.html)
+[作例のHTMLをダウンロード](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/shiomachi-film/index.html)して、ブラウザーで開いてください。PC用とスマホ用の画像、書体、CSS、JavaScriptをすべて1枚のHTMLに収めました。オフラインでも上映日を切り替えたり、各作品のあらすじを開いたり閉じたりできます。[HTMLのソース](examples/shiomachi-film/index.html)
 
 ## スキルを使う
 
-1. [ZIPをダウンロード](https://github.com/RNA4219/anything-frontend/archive/refs/heads/main.zip)して展開するか、`git clone https://github.com/RNA4219/anything-frontend.git` を実行します。
-2. ZIPを展開したら、フォルダの名前を `anything-frontend` にします。どちらの方法でも、このフォルダをお使いのツールのスキルディレクトリに置きます。スキルの使い方は [SKILL.md](SKILL.md) にあります。
-3. たとえば「anything-frontend を使って港の野外映画祭のページを作って。映画祭名の書体を2案、実際の題名で比べて。スマホでも上映時刻を探せるようにして」と依頼します。
+1. [ZIPをダウンロード](https://github.com/RNA4219/anything-frontend-art-direction/archive/refs/heads/main.zip)して展開するか、`git clone https://github.com/RNA4219/anything-frontend-art-direction.git` を実行します。
+2. ZIPを展開したら、フォルダの名前を `anything-frontend-art-direction` にします。どちらの方法でも、このフォルダをお使いのツールのスキルディレクトリに置きます。スキルの使い方は [SKILL.md](SKILL.md) にあります。
+3. たとえば「anything-frontend-art-direction を使って港の野外映画祭のページを作って。映画祭名の書体を2案、実際の題名で比べて。スマホでも上映時刻を探せるようにして」と依頼します。
 
 資料はMarkdownとして直接読めます。各項目のリンクを開くと、作品の画像や資料の原文を公開元で確認できます。
 
