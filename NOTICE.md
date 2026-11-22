@@ -1,6 +1,6 @@
 # ライセンスと出典
 
-このパッケージの日本語の解説・確認表・索引、HTML に含まれる JavaScript と CSS、サンプル画像はこの公開版のために作成しました。[MIT License](LICENSE) に従って利用、変更、再配布できます。複製や実質的な部分の再配布には著作権表示と許諾文を含めてください。
+本プロジェクトで作成した日本語の解説・確認表・索引、コード、サンプル画像・音源は、[MIT License](LICENSE) に従って利用、変更、再配布できます。複製や実質的な部分の再配布には著作権表示と許諾文を含めてください。各作例に取り入れた外部コードと書体の出典も以下に記載しています。
 
 ## テンプレートの来歴
 
@@ -31,6 +31,18 @@ HTMLには次の書体を、作例に使う文字に絞ったWOFF2として埋�
 | Shippori Mincho B1 | 映画祭名と和文の見出し | [Google Fonts · Shippori Mincho B1](https://github.com/google/fonts/blob/main/ofl/shipporiminchob1/OFL.txt) |
 | Cormorant Garamond | 欧文の副題 | [Google Fonts · Cormorant Garamond](https://github.com/google/fonts/blob/main/ofl/cormorantgaramond/OFL.txt) |
 | Noto Sans JP | 上映時刻、作品情報、本文 | [Google Fonts · Noto Sans JP](https://github.com/google/fonts/blob/main/ofl/notosansjp/OFL.txt) |
+
+## 作例「DEAD AIR FM」
+
+[単体HTML](examples/dead-air-fm/index.html) には、HTML・CSS・JavaScript、MOSS-Imageで生成したイラスト、各局のためにYuE2（YuE2-3B・YuE2-VAE）で生成した3曲を収めています。曲名は「Midnight Circuit」「Ghost Relay」「Chrome Rush」です。このプロジェクトのコード、画像、音源は [MIT License](LICENSE) で配布します。[MOSS-Imageの配布元](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT)・[YuE2の配布元と生成物に関する条件](https://huggingface.co/m-a-p/YuE2-3B/blob/main/LICENSE)
+
+選局時の数字の切り替えや波形の描画には [Motion Atlas](https://github.com/RNA4219/motion-atlas) のコードを使用しています。HTMLの `project-license` には本プロジェクトのMITライセンス、`third-party-notices` にはMotion AtlasのMITライセンスと各書体の著作権表示・ライセンス全文を収録しています。
+
+| 埋め込んだ書体 | 使用箇所 | 配布元のライセンス |
+| --- | --- | --- |
+| Archivo Black | 局名・番組名 | [SIL OFL 1.1](https://github.com/google/fonts/blob/main/ofl/archivoblack/OFL.txt) |
+| Space Mono | 周波数・時刻 | [SIL OFL 1.1](https://github.com/google/fonts/blob/main/ofl/spacemono/OFL.txt) |
+| Noto Sans JP | 日本語の案内・ボタン | [SIL OFL 1.1](https://github.com/google/fonts/blob/main/ofl/notosansjp/OFL.txt) |
 
 ## リンク先の資料
 

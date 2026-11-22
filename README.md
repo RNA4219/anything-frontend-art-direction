@@ -2,7 +2,19 @@
 
 Anything Frontend Art Direction は、題材に合う配色・書体・余白・構図を選ぶための日本語のフロントエンドデザインスキルです。作品と制作者の解説を見比べながら、自分の画面に取り入れたい工夫を探せます。実装やレビューで迷ったときは、12分野・1,464項目の索引から仕様や研究の原文をたどれます。
 
+## Motion Atlas との併用作例「DEAD AIR FM」
+
+[**DEAD AIR FM をブラウザーで開く**](https://rna4219.github.io/anything-frontend-art-direction/examples/dead-air-fm/)
+
+[![DEAD AIR FMの画面。右にヘッドホンのDJ、左にピンクの局名とシアンの再生ボタン。](docs/dead-air-fm.webp)](https://rna4219.github.io/anything-frontend-art-direction/examples/dead-air-fm/)
+
+DEAD AIR FM は、東京の深夜を舞台にした架空の海賊ラジオ局です。Anything Frontend Art Direction でイラストから画面の色を選び、コードのピンクを局名に、ジャケットのシアンを再生ボタンに使いました。[Motion Atlas](https://github.com/RNA4219/motion-atlas) を使った選局演出では、周波数の数字が一瞬乱れてから、新しい局の番号にそろいます。
+
+「周波数を選ぶ」で局を押すと、その場で曲が流れます。**3局の曲はすべて YuE2 で生成しました。** 87.9 MHz はダークエレクトロ、92.4 MHz はアンビエントダブ、98.6 MHz はブレイクビーツです。イラスト、音源、フォントを1枚のHTMLに収めているので、保存してオフラインでも聴けます。[単体HTMLをダウンロード](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/dead-air-fm/index.html)・[HTMLのソース](examples/dead-air-fm/index.html)
+
 ## 作例「潮待ち映画祭」
+
+[**潮待ち映画祭をブラウザーで開く**](https://rna4219.github.io/anything-frontend-art-direction/examples/shiomachi-film/)
 
 ![潮待ち映画祭のPC画面。夕暮れの港を背景に、白い明朝体で映画祭名を大きく表示。下部に会期と会場、上映日程へのリンクが並ぶ。](docs/shiomachi-film.png)
 
@@ -30,6 +42,6 @@ Anything Frontend Art Direction は、題材に合う配色・書体・余白・
 
 ## ライセンス
 
-このリポジトリで作成した解説、調査データの記述と編集内容、テンプレート、作例のコードと画像は [MIT License](LICENSE) で配布します。
+このリポジトリで作成した解説、調査データの記述と編集内容、テンプレート、作例のコード、画像、音源は [MIT License](LICENSE) で配布します。
 
-作例に埋め込んだ3書体には、それぞれ **SIL Open Font License 1.1** が適用されます。作例のHTMLにはMITの著作権表示と許諾文のほか、各書体の著作権表示とライセンス全文も収めています。リンクで紹介している第三者の作品や資料を使うときは、各公開元の利用条件を確認してください。[同梱物とライセンスの内訳](NOTICE.md)
+各作例に埋め込んだ書体には **SIL Open Font License 1.1** が適用されます。作例のHTMLにはMITの著作権表示と許諾文のほか、各書体の著作権表示とライセンス全文も収めています。リンクで紹介している第三者の作品や資料を使うときは、各公開元の利用条件を確認してください。[同梱物とライセンスの内訳](NOTICE.md)
