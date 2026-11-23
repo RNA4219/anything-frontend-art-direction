@@ -1,0 +1,154 @@
+{
+  "schema": "design-qa-report/v1",
+  "report_id": "candidate-requests-desktop",
+  "reviewed_artifacts": [
+    {
+      "path": "evaluation/common/subject/requests.html",
+      "sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7"
+    }
+  ],
+  "context": {
+    "task_id": "requests-desktop",
+    "requirements_sha256": "41eb48894d02684dc049bf7ec61ad3f9849c4548998979f6b97dc1c9f42a2db4",
+    "content_sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+    "evaluation_mode": "source inspection + minimal DOM logic harness; browser acceptance blocked",
+    "environment": {
+      "browser": "not executed: local launch prohibited and cloud file URL policy denied as supplied task constraint",
+      "version": "unknown: not run",
+      "os": "Linux 6.18.57 x86_64 (logic probe host only)",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "dpr": 1,
+      "locale": "ja-JP (target only; browser unobserved)",
+      "timezone": "Etc/UTC (workspace; browser unobserved)",
+      "fonts": [
+        "CSS declared Arial / Noto Sans CJK JP / sans-serif; rendered font unknown",
+        "CSS declared Georgia / serif on h1; rendered font unknown"
+      ],
+      "animation": "browser unobserved; logic timer callbacks manually drained",
+      "data_seed": "fixture bytes SHA-256 d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+      "input_modes": [
+        "source inspection",
+        "direct handler invocation in minimal DOM; no actual pointer/keyboard"
+      ]
+    },
+    "model": {
+      "id": "GPT-6 Astra Pro (session-provided label; internal snapshot unknown)",
+      "sampling": {
+        "observed": false,
+        "reason": "not exposed"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "source",
+      "path": "evaluation/common/subject/requests.html",
+      "sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+      "kind": "source",
+      "description": "Unmodified HTML source; line references in candidate-review.md. Not a rendered screen."
+    },
+    {
+      "id": "logic",
+      "path": "anything-frontend-D/evidence/D/evaluation/candidate-logic-log.json",
+      "sha256": "8c406fb92ce1460411b840dee7558347fad50f034cf3ef1d451077b73b2db7fe",
+      "kind": "test_log",
+      "description": "Node v24.22.3 minimal DOM logic harness, nine diagnostic records. No native validation, layout, focus, real clicks, screenshots or AT. Viewport-independent logic only."
+    }
+  ],
+  "findings": [
+    {
+      "id": "D-LIST-01",
+      "category": "implementation",
+      "owner": "C",
+      "status": "confirmed",
+      "severity": "major",
+      "symptom": "絞り込み後も古いpageIndexを使い、存在する依頼が0行になる。",
+      "expected": "処理待ち2件を見つけられ、件数・表示行・ページ範囲が矛盾しない。真の該当なしと範囲外を区別できる。",
+      "observed": "L12のfilter/changeとquery/inputはrenderだけを呼びpageIndexを補正しない。LIST-FILTER-AFTER-PAGEで3ページ目から待ちにすると2件、0行、3 / 1。前へ1回でも2 / 1で0行、2回でR-101/R-104が現れた。検索でも2ページ目から湯のみで1件、0行、2 / 1。",
+      "impact": "処理待ちを探す主要経路で対象があるのに空に見える。前へを2回、または条件をクリアで回復するが、不整合の理解と余分な操作が必要。真の0件は別途確認し混同していない。",
+      "repair_direction": "条件変更時に有効なページ位置へ戻すか現在位置を範囲内へ補正し、補正後の同一結果集合から行とページ表示を作る。0件時は0件として扱う。",
+      "reproduction": [
+        "リロードし次へを2回操作して3 / 3へ進む。",
+        "状態を処理待ちに変更し、件数、行、ページ表示を確認する。",
+        "前へ1回と2回の両方を確認する。",
+        "別の初期化後、次へ1回、検索欄に湯のみを入力する。",
+        "本実行は最小DOMで該当ハンドラを直接呼んだ。実クリックと描画はblocked。"
+      ],
+      "basis": {
+        "kind": "requirement",
+        "reference": "task-brief.md 一覧画面",
+        "clause": "同じデータについて絞り込み件数と表示行が一致し、該当なしとページ範囲外を混同しない。"
+      },
+      "confidence": "high",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "location": {
+        "artifact": "evaluation/common/subject/requests.html",
+        "selector": "#filter; #query; #rows; #page; render()",
+        "state": "2または3ページ目から結果数の少ない条件へ絞り込んだ状態",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        }
+      }
+    }
+  ],
+  "task_runs": [
+    {
+      "task_id": "requests-desktop",
+      "scenario": "normal",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in candidate-review.md."
+    },
+    {
+      "task_id": "requests-desktop",
+      "scenario": "error",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in candidate-review.md."
+    },
+    {
+      "task_id": "requests-desktop",
+      "scenario": "boundary",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in candidate-review.md."
+    }
+  ],
+  "open_questions": [
+    "Actual browser input, native validation, focus, rendered fonts and CSS have not been observed.",
+    "Run the described normal/error/boundary browser cases after an authorized browser environment is available.",
+    "No independently authenticated protected-blind evaluation or receipt is available."
+  ],
+  "independence": {
+    "author_id": "review_candidate",
+    "evaluator_id": "review_candidate",
+    "blind": false,
+    "protected_holdout": false,
+    "evidence_ref": null
+  }
+}

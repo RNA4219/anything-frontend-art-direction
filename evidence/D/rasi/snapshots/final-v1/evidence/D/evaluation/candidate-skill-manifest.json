@@ -1,0 +1,46 @@
+{
+  "schema": "design-qa-skill-condition/v1",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sha256": "3aee849271e5f41114b7e248144c48f5a6273889ce8ff37c3c8440cdeb35d8b2"
+    },
+    {
+      "path": "checks/qa_gate.py",
+      "sha256": "cee33e3e9ba772d4c9915744059a9e86576c4592e0434b426f62c04ecf369a2a"
+    },
+    {
+      "path": "examples/finding-examples.md",
+      "sha256": "a709ecf7c8a8a7f06cbc35c2c41cb57f297a3aeaac23af30e42f4e763d6ec2e1"
+    },
+    {
+      "path": "examples/report-example.json",
+      "sha256": "ecfdb569f0406320bb12f618eb45aa51d21a5afb6a1f962cb3e3e6cfb0842a60"
+    },
+    {
+      "path": "examples/review-request.md",
+      "sha256": "87d18a16dc425ede15d06cfceb1a7d80ece88be7a663f24fba349a77836fdeec"
+    },
+    {
+      "path": "references/evaluation-protocol.md",
+      "sha256": "f5fa4fd1dae38084b737c3be1529863a9bab069728264ee3cb0cdf40e28b440e"
+    },
+    {
+      "path": "references/principles.md",
+      "sha256": "d3919e312ada17b3ccabeca4e9b21480030df32fa9784dac5c31575b3f06d365"
+    },
+    {
+      "path": "references/report-contract.md",
+      "sha256": "1c75594c75b6a6c29f01a268073cb5fdf09c35a943f70a537ce6c5d6523cc41e"
+    }
+  ],
+  "excluded_from_candidate_context": [
+    "tests/",
+    "checks/exercise_fixture_logic.mjs",
+    "checks/run_browser_checks.py",
+    "evaluation/predeclared-rubric.json",
+    "other evaluator outputs"
+  ],
+  "source_index_sha256": "2e5659b61fb754dce615be56b19962346545d852dbb2676e1742635e775798db",
+  "isolation": "prompt allowlist; no operating-system boundary"
+}

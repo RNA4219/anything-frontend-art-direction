@@ -1,0 +1,9 @@
+{
+  "schema": "design-qa-skill-structure/v1",
+  "local_links_checked": 108,
+  "issues": [],
+  "scope": "File existence only; anchor semantics reviewed separately.",
+  "initializer": "skill-creator init_skill.py; repo-owned target explicitly specified by user",
+  "quick_validate": "Skill is valid!",
+  "skill_entry_lines": 84
+}

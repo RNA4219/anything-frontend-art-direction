@@ -1,0 +1,91 @@
+{
+  "schema": "external-cli-observation/v1",
+  "label": "experience-help",
+  "started_at": "2026-11-23T06:08:47.317394+00:00",
+  "finished_at": "2026-11-23T06:08:47.392700+00:00",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-m",
+    "rasi",
+    "--root",
+    "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi",
+    "experience-add",
+    "--help"
+  ],
+  "cwd": "/workspace/scratch/1acf7c2e1e4d/tooling/R-ASI",
+  "rasi_root": "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi",
+  "tool_identity": {
+    "path": "/workspace/scratch/1acf7c2e1e4d/tooling/R-ASI",
+    "files": [
+      {
+        "path": "rasi/__init__.py",
+        "sha256": "4a71b19f23c8162c76496b044f832dee38c8e17ab01caef6b33598aaec5d9b11"
+      },
+      {
+        "path": "rasi/__main__.py",
+        "sha256": "426bd8bc4126ff947c8ace833e2deaf32533d8eecd18538311d35747e39fcde1"
+      },
+      {
+        "path": "rasi/campaign.py",
+        "sha256": "bea30407af4ccea63ea0828ea86c5c3f932f02a332b24f7491fdee876c77a4a5"
+      },
+      {
+        "path": "rasi/candidate.py",
+        "sha256": "1f93a48e68bd4ad13c62ad174a5ede568d6bb510c1312b9cb8b6ae8ff3e7a04b"
+      },
+      {
+        "path": "rasi/cas.py",
+        "sha256": "e9291e20d89ac5729e99904b29e138cdfa99d201d06393fdea6b771857cf037f"
+      },
+      {
+        "path": "rasi/cli.py",
+        "sha256": "6bbc1e2fc704e8c342630bdc391d1d22af7d06037f332dbd7ed8863b112d4465"
+      },
+      {
+        "path": "rasi/cost.py",
+        "sha256": "08bde30d8a415acffae56e4c8c2ae605b68010014706ce8e0abf15c322a72cd1"
+      },
+      {
+        "path": "rasi/experience.py",
+        "sha256": "94de369e0e0b7551564265fc63e2ee581c602c7459dab1c58193947af89a4eda"
+      },
+      {
+        "path": "rasi/gates.py",
+        "sha256": "275371a163b89ee47013682c19eebf2996697e66ee78e3c2db33975a29cd299d"
+      },
+      {
+        "path": "rasi/lock.py",
+        "sha256": "3174a2e4210cd55afe9befc345bbcd2f419e5e1f7a707fe7957b9d5b9de29a0f"
+      },
+      {
+        "path": "rasi/paths.py",
+        "sha256": "c741ab2eb2519d72e17f7dd93e0569b880b29db8fc4d6174d126cda64a182920"
+      },
+      {
+        "path": "rasi/policy.py",
+        "sha256": "7e298b8815c3acedfd2299a2532072b0aec23ee09513a99d72189f352172c014"
+      },
+      {
+        "path": "rasi/query.py",
+        "sha256": "074e55f2b2690f37308bebded92f20ceb092fc3e79a1456de913757cee8d6e00"
+      },
+      {
+        "path": "rasi/sankai.py",
+        "sha256": "31e9b16146c6d79c91fb0862611442329f0ce8acf46f446d37f18f14df4361ba"
+      },
+      {
+        "path": "rasi/stage.py",
+        "sha256": "2c529b957ee20f668db1ae85e28f64420cf09e8986bee274079474084e2a464a"
+      }
+    ],
+    "manifest_sha256": "9b1327386fdd3220dbc891a55ab9d88dc9f32e317e5555ea4a8001077173b2e6"
+  },
+  "exit_code": 0,
+  "expected_exit_code": 0,
+  "expectation_met": true,
+  "stdout": "usage: rasi experience-add [-h] --experience EXPERIENCE\n\noptions:\n  -h, --help            show this help message and exit\n  --experience EXPERIENCE\n",
+  "stderr": "",
+  "wall_seconds_measured": 0.07529211600001418,
+  "llm_cost": null,
+  "evaluation_result": "not_an_evaluation"
+}

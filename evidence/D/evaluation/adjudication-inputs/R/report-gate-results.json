@@ -1,0 +1,132 @@
+[
+  {
+    "report": "report-registration-desktop.json",
+    "command": [
+      "python3",
+      "/workspace/scratch/1acf7c2e1e4d/evaluation/common/art-direction/extensions/D/checks/qa_gate.py",
+      "report",
+      "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/evaluation/report-registration-desktop.json",
+      "--root",
+      "/workspace/scratch/1acf7c2e1e4d"
+    ],
+    "exit_code": 2,
+    "stdout": {
+      "schema": "design-qa-gate-result/v1",
+      "report_id": "assigned condition-registration-desktop",
+      "contract_valid": true,
+      "target_decision": "REJECT",
+      "promotion_decision": "HOLD",
+      "errors": [],
+      "target_reasons": [
+        "unresolved major finding D-REG-01",
+        "unresolved major finding D-REG-02",
+        "normal task status is blocked",
+        "normal recovery is not_run",
+        "error task status is blocked",
+        "error recovery is not_run",
+        "boundary task status is blocked",
+        "boundary recovery is not_run",
+        "open questions remain"
+      ],
+      "promotion_reasons": [
+        "independent evaluator, blind setup, and protected holdout are not all established",
+        "independent evaluation receipt is missing"
+      ],
+      "receipt_decision": null,
+      "counts": {
+        "confirmed": 2,
+        "hypotheses": 0,
+        "passed_task_runs": 0,
+        "task_runs": 3
+      },
+      "limitations": "Record structure and file integrity are checked. Evaluator identity, receipt authenticity, protected holdout isolation, and the truth of observations require external audit. A valid report is not an independently established product-quality PASS."
+    },
+    "stderr": ""
+  },
+  {
+    "report": "report-requests-desktop.json",
+    "command": [
+      "python3",
+      "/workspace/scratch/1acf7c2e1e4d/evaluation/common/art-direction/extensions/D/checks/qa_gate.py",
+      "report",
+      "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/evaluation/report-requests-desktop.json",
+      "--root",
+      "/workspace/scratch/1acf7c2e1e4d"
+    ],
+    "exit_code": 2,
+    "stdout": {
+      "schema": "design-qa-gate-result/v1",
+      "report_id": "assigned condition-requests-desktop",
+      "contract_valid": true,
+      "target_decision": "REJECT",
+      "promotion_decision": "HOLD",
+      "errors": [],
+      "target_reasons": [
+        "unresolved major finding D-LIST-01",
+        "normal task status is blocked",
+        "normal recovery is not_run",
+        "error task status is blocked",
+        "error recovery is not_run",
+        "boundary task status is blocked",
+        "boundary recovery is not_run",
+        "open questions remain"
+      ],
+      "promotion_reasons": [
+        "independent evaluator, blind setup, and protected holdout are not all established",
+        "independent evaluation receipt is missing"
+      ],
+      "receipt_decision": null,
+      "counts": {
+        "confirmed": 1,
+        "hypotheses": 0,
+        "passed_task_runs": 0,
+        "task_runs": 3
+      },
+      "limitations": "Record structure and file integrity are checked. Evaluator identity, receipt authenticity, protected holdout isolation, and the truth of observations require external audit. A valid report is not an independently established product-quality PASS."
+    },
+    "stderr": ""
+  },
+  {
+    "report": "report-requests-narrow.json",
+    "command": [
+      "python3",
+      "/workspace/scratch/1acf7c2e1e4d/evaluation/common/art-direction/extensions/D/checks/qa_gate.py",
+      "report",
+      "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/evaluation/report-requests-narrow.json",
+      "--root",
+      "/workspace/scratch/1acf7c2e1e4d"
+    ],
+    "exit_code": 2,
+    "stdout": {
+      "schema": "design-qa-gate-result/v1",
+      "report_id": "assigned condition-requests-narrow",
+      "contract_valid": true,
+      "target_decision": "HOLD",
+      "promotion_decision": "HOLD",
+      "errors": [],
+      "target_reasons": [
+        "unverified hypothesis D-LIST-02",
+        "normal task status is blocked",
+        "normal recovery is not_run",
+        "error task status is blocked",
+        "error recovery is not_run",
+        "boundary task status is blocked",
+        "boundary recovery is not_run",
+        "open questions remain"
+      ],
+      "promotion_reasons": [
+        "independent evaluator, blind setup, and protected holdout are not all established",
+        "independent evaluation receipt is missing"
+      ],
+      "receipt_decision": null,
+      "counts": {
+        "confirmed": 0,
+        "hypotheses": 1,
+        "passed_task_runs": 0,
+        "task_runs": 3
+      },
+      "limitations": "Record structure and file integrity are checked. Evaluator identity, receipt authenticity, protected holdout isolation, and the truth of observations require external audit. A valid report is not an independently established product-quality PASS."
+    },
+    "stderr": ""
+  }
+]

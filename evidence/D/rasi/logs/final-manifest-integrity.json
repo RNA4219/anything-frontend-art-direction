@@ -1,0 +1,16 @@
+{
+  "schema": "external-verification-observation/v1",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/extensions/D/checks/qa_gate.py",
+    "verify-manifest",
+    "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi/external-evidence-final-v1.json",
+    "--root",
+    "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"schema\": \"design-qa-manifest-result/v1\",\n  \"contract_valid\": true,\n  \"artifact_count\": 31,\n  \"integrity_verified\": true,\n  \"errors\": [],\n  \"quality_evaluated\": false\n}\n",
+  "stderr": "",
+  "wall_seconds_measured": 0.0651316189996578,
+  "scope": "Final external evidence packaging/integrity only; no independent promotion."
+}

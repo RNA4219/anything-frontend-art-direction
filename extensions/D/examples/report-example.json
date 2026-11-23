@@ -1,0 +1,129 @@
+{
+  "schema": "design-qa-report/v1",
+  "report_id": "illustrative-hold-only",
+  "reviewed_artifacts": [
+    {
+      "path": "SKILL.md",
+      "sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5"
+    }
+  ],
+  "context": {
+    "task_id": "illustrative-review",
+    "requirements_sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5",
+    "content_sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5",
+    "environment": {
+      "browser": "unobserved-example",
+      "version": "unobserved-example",
+      "os": "unobserved-example",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "dpr": 1,
+      "locale": "ja-JP",
+      "timezone": "Asia/Tokyo",
+      "fonts": [
+        "unobserved-example"
+      ],
+      "animation": "unobserved-example",
+      "data_seed": "example-only",
+      "input_modes": [
+        "unobserved-example"
+      ]
+    },
+    "model": {
+      "id": "illustrative-not-an-execution",
+      "sampling": {
+        "observed": false
+      }
+    },
+    "evaluation_mode": "illustrative-contract-example"
+  },
+  "evidence": [
+    {
+      "id": "source-example",
+      "path": "SKILL.md",
+      "sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5",
+      "kind": "source",
+      "description": "Existing Art Direction input serves only to demonstrate a real, hash-checked source reference. No UI has been observed."
+    }
+  ],
+  "findings": [
+    {
+      "id": "example-hypothesis",
+      "category": "visual",
+      "owner": "art-direction",
+      "status": "hypothesis",
+      "severity": "note",
+      "location": {
+        "artifact": "SKILL.md",
+        "selector": "example-only:no-live-selector",
+        "state": "not_observed",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        }
+      },
+      "symptom": "Illustrative hypothesis: primary-action visibility has not been observed.",
+      "expected": "Observe the intended primary action in its actual screen state.",
+      "observed": "No UI observation; only the existing source file is available.",
+      "impact": "Task impact remains unknown until the actual interface is checked.",
+      "repair_direction": "Capture the screen and verify the task state before proposing any visual change.",
+      "reproduction": [
+        "Obtain the actual interface artifact and the target task.",
+        "Inspect the corresponding state at the recorded viewport."
+      ],
+      "basis": {
+        "kind": "intent",
+        "reference": "SKILL.md",
+        "clause": "Illustrative reference only; this record does not assert an existing defect."
+      },
+      "confidence": "low",
+      "evidence_ids": [
+        "source-example"
+      ]
+    }
+  ],
+  "task_runs": [
+    {
+      "task_id": "illustrative-review",
+      "scenario": "normal",
+      "status": "not_run",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [],
+      "observed": "Illustrative example only. No browser or user task was executed."
+    },
+    {
+      "task_id": "illustrative-review",
+      "scenario": "error",
+      "status": "not_run",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [],
+      "observed": "Illustrative example only. No browser or user task was executed."
+    },
+    {
+      "task_id": "illustrative-review",
+      "scenario": "boundary",
+      "status": "not_run",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [],
+      "observed": "Illustrative example only. No browser or user task was executed."
+    }
+  ],
+  "open_questions": [
+    "Actual task, interface, browser execution, and independent evaluation remain unavailable in this example."
+  ],
+  "independence": {
+    "author_id": "illustrative-author",
+    "evaluator_id": "illustrative-author",
+    "blind": false,
+    "protected_holdout": false,
+    "evidence_ref": null
+  }
+}

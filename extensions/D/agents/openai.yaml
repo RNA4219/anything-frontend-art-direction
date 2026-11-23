@@ -1,0 +1,3 @@
+interface:
+  display_name: "Design QA and Evaluation"
+  short_description: "Evidence-based design QA, task checks, and regression gates"

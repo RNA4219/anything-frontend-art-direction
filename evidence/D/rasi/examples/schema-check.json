@@ -1,0 +1,15 @@
+{
+  "example_only": true,
+  "not_a_design_evaluation": true,
+  "validation": "R-ASI source hash, line count, quote ranges, and input structure checked through verify_sankai; no native candidate, CAS object, or gate success created.",
+  "summary": {
+    "schema": "rasi-sankai/v1",
+    "source_sha256": "7bdda2bab0a223a0133a72783989147a5945cb818f008e321b7373cddd143e45",
+    "line_count": 4,
+    "common_conditions": 0,
+    "units": 1,
+    "unresolved": 0,
+    "quotes": 1,
+    "sankai_output_hash": "3e9f9904c6bb1d3209b7480fea309bd0e698d0ec80a3429587f82e3444dad780"
+  }
+}

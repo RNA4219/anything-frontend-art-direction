@@ -1,0 +1,58 @@
+{
+  "assignment": {
+    "Q": "baseline",
+    "R": "candidate"
+  },
+  "randomization": "secrets.SystemRandom shuffle, single presentation order Q then R",
+  "raw_outputs": [
+    {
+      "path": "baseline-review.md",
+      "sha256": "fd7170e0268643b9c56a0410848c79d138d9a08cb3f65e3c34624a1feed08c7c"
+    },
+    {
+      "path": "baseline-source-checks.json",
+      "sha256": "379337aa8d0f5668ba3ebb05a25e764f1dfda29fd945b62f57b79f38ad6fd4c2"
+    },
+    {
+      "path": "candidate-gate-results.json",
+      "sha256": "dac406e819fecc165629696f5c97d1e03cc72f87f2b479c431011d9d5a12fab9"
+    },
+    {
+      "path": "candidate-logic-log.json",
+      "sha256": "8c406fb92ce1460411b840dee7558347fad50f034cf3ef1d451077b73b2db7fe"
+    },
+    {
+      "path": "candidate-logic-probe.cjs",
+      "sha256": "5ae5900a77d32c250988d52413337e351f6f585f4aa197e2ccad8ac0e3bffa72"
+    },
+    {
+      "path": "candidate-manifest-gate.json",
+      "sha256": "4b46d8980df0a79cc1d275b7f1faafedfe8c0fea4c6f9080853b7f82be54ff20"
+    },
+    {
+      "path": "candidate-manifest.json",
+      "sha256": "56b92f641c850858e617a9af56d4949215f85aec4b9853bc3b2ab37cebff6fa6"
+    },
+    {
+      "path": "candidate-registration-desktop.json",
+      "sha256": "35a0b6bb9304268e0e484a34d6e8adc780706da403545b1ae16e18b5ae0c111d"
+    },
+    {
+      "path": "candidate-requests-desktop.json",
+      "sha256": "fe86af9062197b7d3f5a36692a4f9afa564b87fe18b0c66ad0229d893aae7561"
+    },
+    {
+      "path": "candidate-requests-narrow.json",
+      "sha256": "508b85c77151c93c96ada0d4082867bb99195a8519bee50310bfa4656ea576c4"
+    },
+    {
+      "path": "candidate-review.md",
+      "sha256": "a2b400d23efe63668b24e8820d8e71a4f54301dc2e428465cb4246e2d49406ea"
+    },
+    {
+      "path": "candidate-skill-manifest.json",
+      "sha256": "f5a5970374eb8bb213e781d62490f03d1bb1d4e7826ac9afcbba1951cce34472"
+    }
+  ],
+  "not_provided_to_adjudicator": true
+}

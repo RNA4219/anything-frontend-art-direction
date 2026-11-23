@@ -1,0 +1,14 @@
+started_at: 2026-11-23T06:08:46.848318+00:00
+finished_at: 2026-11-23T06:08:46.938602+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "verify", "--help"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.090270
+--- stdout ---
+usage: rasi verify [-h] --sankai SANKAI
+
+options:
+  -h, --help       show this help message and exit
+  --sankai SANKAI
+--- stderr ---

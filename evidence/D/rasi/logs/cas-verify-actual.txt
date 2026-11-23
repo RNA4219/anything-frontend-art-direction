@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:21:49.639985+00:00
+finished_at: 2026-11-23T06:21:49.722772+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "cas-verify", "--sha256", "37b43571a69d9a6eccb2f6a17e011baafa425738d014fc7649a201412c387358", "--store", "cas"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.082773
+--- stdout ---
+CAS再検証成功: /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi/.ga/receipts/cas-verify-d3d8eea2e661bd726b973a38b779f55baf131535dea1cc686d86bb3fac16924c.json
+--- stderr ---

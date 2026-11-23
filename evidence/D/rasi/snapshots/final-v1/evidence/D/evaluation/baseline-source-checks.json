@@ -1,0 +1,450 @@
+{
+  "method": "No browser launched. Exact inline scripts executed in Node vm using minimal custom DOM, FormData and timer stubs. Synthetic event callbacks do not exercise browser click/keyboard events, native constraint validation, real DOM, rendering or accessibility. Timers are resolved deterministically, not measured wall-clock time.",
+  "runtime": "v24.22.3",
+  "inputs": [
+    {
+      "file": "/workspace/scratch/1acf7c2e1e4d/evaluation/common/subject/registration.html",
+      "sha256": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd"
+    },
+    {
+      "file": "/workspace/scratch/1acf7c2e1e4d/evaluation/common/subject/requests.html",
+      "sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7"
+    }
+  ],
+  "tests": [
+    {
+      "id": "registration-valid-1",
+      "evidence": "Actual inline JavaScript with DOM/FormData/timer stubs; no native validation or real input events",
+      "pending": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "1"
+        },
+        "count": "0",
+        "status": "登録しています…",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": [
+          350
+        ]
+      },
+      "result": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "1"
+        },
+        "count": "1",
+        "status": "確認 太郎様、1名の参加を受け付けました。受付番号：C-001",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": []
+      }
+    },
+    {
+      "id": "registration-valid-2",
+      "evidence": "Actual inline JavaScript with DOM/FormData/timer stubs; no native validation or real input events",
+      "pending": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "2"
+        },
+        "count": "0",
+        "status": "登録しています…",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": [
+          350
+        ]
+      },
+      "result": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "2"
+        },
+        "count": "1",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-001",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": []
+      }
+    },
+    {
+      "id": "registration-valid-8",
+      "evidence": "Actual inline JavaScript with DOM/FormData/timer stubs; no native validation or real input events",
+      "pending": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "8"
+        },
+        "count": "0",
+        "status": "登録しています…",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": [
+          350
+        ]
+      },
+      "result": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "8"
+        },
+        "count": "1",
+        "status": "確認 太郎様、8名の参加を受け付けました。受付番号：C-001",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": []
+      }
+    },
+    {
+      "id": "registration-failure",
+      "before": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "2"
+        },
+        "count": "0",
+        "status": "必要事項を入力してください。",
+        "submitDisabled": false,
+        "fail": true,
+        "pendingTimerDelays": []
+      },
+      "result": {
+        "fields": {
+          "name": "",
+          "email": "",
+          "seats": "1"
+        },
+        "count": "0",
+        "status": "送信に失敗しました。",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": []
+      }
+    },
+    {
+      "id": "registration-retry-after-reentering",
+      "result": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "2"
+        },
+        "count": "1",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-001",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": []
+      }
+    },
+    {
+      "id": "registration-two-handlers-before-resolution",
+      "pending": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "2"
+        },
+        "count": "0",
+        "status": "登録しています…",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": [
+          350,
+          350
+        ]
+      },
+      "result": {
+        "fields": {
+          "name": "確認 太郎",
+          "email": "qa@example.test",
+          "seats": "2"
+        },
+        "count": "2",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-002",
+        "submitDisabled": false,
+        "fail": false,
+        "pendingTimerDelays": []
+      }
+    },
+    {
+      "id": "requests-paging-normal",
+      "states": [
+        {
+          "query": "",
+          "filter": "all",
+          "summary": "8件の依頼",
+          "page": "1 / 3",
+          "rows": [
+            [
+              "R-101",
+              "湯のみ制作",
+              "処理待ち"
+            ],
+            [
+              "R-102",
+              "大皿の修理",
+              "完了"
+            ],
+            [
+              "R-103",
+              "花器の制作",
+              "完了"
+            ]
+          ],
+          "previousDisabled": true,
+          "nextDisabled": false,
+          "notice": ""
+        },
+        {
+          "query": "",
+          "filter": "all",
+          "summary": "8件の依頼",
+          "page": "2 / 3",
+          "rows": [
+            [
+              "R-104",
+              "夫婦茶碗",
+              "処理待ち"
+            ],
+            [
+              "R-105",
+              "急須の釉薬確認",
+              "完了"
+            ],
+            [
+              "R-106",
+              "小皿セット",
+              "完了"
+            ]
+          ],
+          "previousDisabled": false,
+          "nextDisabled": false,
+          "notice": ""
+        },
+        {
+          "query": "",
+          "filter": "all",
+          "summary": "8件の依頼",
+          "page": "3 / 3",
+          "rows": [
+            [
+              "R-107",
+              "茶器の試作品",
+              "完了"
+            ],
+            [
+              "R-108",
+              "展示用の器",
+              "完了"
+            ]
+          ],
+          "previousDisabled": false,
+          "nextDisabled": true,
+          "notice": ""
+        },
+        {
+          "query": "",
+          "filter": "all",
+          "summary": "8件の依頼",
+          "page": "2 / 3",
+          "rows": [
+            [
+              "R-104",
+              "夫婦茶碗",
+              "処理待ち"
+            ],
+            [
+              "R-105",
+              "急須の釉薬確認",
+              "完了"
+            ],
+            [
+              "R-106",
+              "小皿セット",
+              "完了"
+            ]
+          ],
+          "previousDisabled": false,
+          "nextDisabled": false,
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "requests-filter-first-page",
+      "result": {
+        "query": "",
+        "filter": "待ち",
+        "summary": "2件の依頼",
+        "page": "1 / 1",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-104",
+            "夫婦茶碗",
+            "処理待ち"
+          ]
+        ],
+        "previousDisabled": true,
+        "nextDisabled": true,
+        "notice": ""
+      }
+    },
+    {
+      "id": "requests-filter-second-page",
+      "result": {
+        "query": "",
+        "filter": "待ち",
+        "summary": "2件の依頼",
+        "page": "2 / 1",
+        "rows": [],
+        "previousDisabled": false,
+        "nextDisabled": true,
+        "notice": "2件を確認しました。"
+      }
+    },
+    {
+      "id": "requests-filter-manual-recovery",
+      "result": {
+        "query": "",
+        "filter": "待ち",
+        "summary": "2件の依頼",
+        "page": "1 / 1",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-104",
+            "夫婦茶碗",
+            "処理待ち"
+          ]
+        ],
+        "previousDisabled": true,
+        "nextDisabled": true,
+        "notice": "2件を確認しました。"
+      }
+    },
+    {
+      "id": "requests-query-third-page",
+      "result": {
+        "query": "湯のみ",
+        "filter": "all",
+        "summary": "1件の依頼",
+        "page": "3 / 1",
+        "rows": [],
+        "previousDisabled": false,
+        "nextDisabled": true,
+        "notice": ""
+      }
+    },
+    {
+      "id": "requests-clear-recovery",
+      "result": {
+        "query": "",
+        "filter": "all",
+        "summary": "8件の依頼",
+        "page": "1 / 3",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-102",
+            "大皿の修理",
+            "完了"
+          ],
+          [
+            "R-103",
+            "花器の制作",
+            "完了"
+          ]
+        ],
+        "previousDisabled": true,
+        "nextDisabled": false,
+        "notice": ""
+      }
+    },
+    {
+      "id": "requests-no-match-first-page",
+      "result": {
+        "query": "該当なしQA",
+        "filter": "all",
+        "summary": "0件の依頼",
+        "page": "1 / 1",
+        "rows": [],
+        "previousDisabled": true,
+        "nextDisabled": true,
+        "notice": ""
+      }
+    },
+    {
+      "id": "requests-no-match-clear",
+      "result": {
+        "query": "",
+        "filter": "all",
+        "summary": "8件の依頼",
+        "page": "1 / 3",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-102",
+            "大皿の修理",
+            "完了"
+          ],
+          [
+            "R-103",
+            "花器の制作",
+            "完了"
+          ]
+        ],
+        "previousDisabled": true,
+        "nextDisabled": false,
+        "notice": ""
+      }
+    },
+    {
+      "id": "requests-no-match-third-page",
+      "result": {
+        "query": "該当なしQA",
+        "filter": "all",
+        "summary": "0件の依頼",
+        "page": "3 / 1",
+        "rows": [],
+        "previousDisabled": false,
+        "nextDisabled": true,
+        "notice": ""
+      }
+    }
+  ],
+  "sourceIntegrityAfterReview": [
+    {
+      "file": "/workspace/scratch/1acf7c2e1e4d/evaluation/common/subject/registration.html",
+      "unchanged": true
+    },
+    {
+      "file": "/workspace/scratch/1acf7c2e1e4d/evaluation/common/subject/requests.html",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "schema": "D-artifact-hash-manifest/v1",
+  "phase": "tooling-preparation",
+  "artifact_count": 30,
+  "artifacts": [
+    {
+      "path": "evidence/D/tooling/inventory.json",
+      "sha256": "3a3626b7520f9013a5a6e2dcfc45726cc9c63fc4226cf2524e2cdc9fae6e5163",
+      "bytes": 17156
+    },
+    {
+      "path": "evidence/D/tooling/inventory.md",
+      "sha256": "dbf4b2e18b21ee2d4f3db90af9a77cb6c536b34ecbe9a7361415dd18c1a336cb",
+      "bytes": 5255
+    },
+    {
+      "path": "evidence/D/rasi/README.md",
+      "sha256": "bc5a5ec99d079e33490b86d1f1f16672928b4dc8cff89f8db688425597c68b84",
+      "bytes": 3797
+    },
+    {
+      "path": "evidence/D/rasi/examples/decomposition.json",
+      "sha256": "3e9f9904c6bb1d3209b7480fea309bd0e698d0ec80a3429587f82e3444dad780",
+      "bytes": 1794
+    },
+    {
+      "path": "evidence/D/rasi/examples/schema-check.json",
+      "sha256": "e8227a3fadfaedb3de9a024c83655e540082b526d7166131272b9a3923693037",
+      "bytes": 572
+    },
+    {
+      "path": "evidence/D/rasi/examples/source.txt",
+      "sha256": "7bdda2bab0a223a0133a72783989147a5945cb818f008e321b7373cddd143e45",
+      "bytes": 214
+    },
+    {
+      "path": "evidence/D/rasi/external-campaign.json",
+      "sha256": "8e5a4295475c028e46688be541663c1d6eb5284453016dba996ecb116e32eb17",
+      "bytes": 1378
+    },
+    {
+      "path": "evidence/D/rasi/logs/campaign-check-help.json",
+      "sha256": "c786be3e3a627f34eefc3dff22ecd1383e49fb1f5f537f3028cb28fa508ed924",
+      "bytes": 3171
+    },
+    {
+      "path": "evidence/D/rasi/logs/campaign-check-help.txt",
+      "sha256": "c08b9c2068a9f691029b6a6e849f8722c9258da1324fdc38c30edc049647bf4d",
+      "bytes": 587
+    },
+    {
+      "path": "evidence/D/rasi/logs/cas-verify-help.json",
+      "sha256": "2dd93735d7b817cdebf85630497616c1e4f73a27ea2aa2c36382366f5f1cd2bb",
+      "bytes": 3179
+    },
+    {
+      "path": "evidence/D/rasi/logs/cas-verify-help.txt",
+      "sha256": "0e6311d31894f801fd6453ac7e53ee96fc7c914dec0f3fd03f859fd008f63a9c",
+      "bytes": 597
+    },
+    {
+      "path": "evidence/D/rasi/logs/cost-add-help.json",
+      "sha256": "4ddec4246bb7c028005f29137f8e10e901c2b2db9c2ca60ef1c14403bb2af6a9",
+      "bytes": 3185
+    },
+    {
+      "path": "evidence/D/rasi/logs/cost-add-help.txt",
+      "sha256": "19553a06478e9566a7a274d68298aea7b188399241521a929d76ab0dad6ab794",
+      "bytes": 605
+    },
+    {
+      "path": "evidence/D/rasi/logs/evaluate-unconnected.json",
+      "sha256": "a0318ebd29600bb0905f1a3325cb6cec51238ccbfa530e780bfb9553967580a2",
+      "bytes": 3048
+    },
+    {
+      "path": "evidence/D/rasi/logs/evaluate-unconnected.txt",
+      "sha256": "4e747f8125b92f5e7c2a4d0d3f20104f6b87b073e8044a14e3dea52eec9d412d",
+      "bytes": 470
+    },
+    {
+      "path": "evidence/D/rasi/logs/execute-unconnected.json",
+      "sha256": "21866ff653018f8df6b534505843e3fb7858c595b77e672cf4eb71a4f27cd594",
+      "bytes": 3045
+    },
+    {
+      "path": "evidence/D/rasi/logs/execute-unconnected.txt",
+      "sha256": "3332147d9e4668bafa12e83a40293921f7fb486b3d9cdcf151d3f47c0582a340",
+      "bytes": 468
+    },
+    {
+      "path": "evidence/D/rasi/logs/experience-help.json",
+      "sha256": "23b294bc91b1bda19881e60ddcaa328885d3ad9879210ce208044184aaf6ba45",
+      "bytes": 3177
+    },
+    {
+      "path": "evidence/D/rasi/logs/experience-help.txt",
+      "sha256": "72b680758c664420e36e8a49862c59cad44826c0e6a2c585ced26a2e44b50215",
+      "bytes": 596
+    },
+    {
+      "path": "evidence/D/rasi/logs/help.json",
+      "sha256": "d3f9235f131152062461c5cb77fc92f1784d8f8aca0fea99739fc490b683b40d",
+      "bytes": 3734
+    },
+    {
+      "path": "evidence/D/rasi/logs/help.txt",
+      "sha256": "a5e7271b969c3fdd60f70c8d31c7b5f765ef822d55155d8a63e98fb6bd99826d",
+      "bytes": 1160
+    },
+    {
+      "path": "evidence/D/rasi/logs/pipeline-help.json",
+      "sha256": "b9a0adbefd569a02afb8e1af3579d9c1c1fdcdf2e9b02d1e1826798d85b60343",
+      "bytes": 3222
+    },
+    {
+      "path": "evidence/D/rasi/logs/pipeline-help.txt",
+      "sha256": "e8c665ebda56c1c1e0ea20254486a878bbb5867b6939205a0d86ab5898f42632",
+      "bytes": 641
+    },
+    {
+      "path": "evidence/D/rasi/logs/promote-unconnected.json",
+      "sha256": "0e7233268b6b1702c97422e44e0a0c346a2d1c426fe13b486ffd79525e0b3dc0",
+      "bytes": 3045
+    },
+    {
+      "path": "evidence/D/rasi/logs/promote-unconnected.txt",
+      "sha256": "f2ee00afd060708b694e2360a62051bf602f2ebcba552cdf45a90bc00ee3c5b3",
+      "bytes": 468
+    },
+    {
+      "path": "evidence/D/rasi/logs/verify-help.json",
+      "sha256": "e0f5365f61090f815704284b625f3340ee28ecfb467f2828da1f3f409fcddd8a",
+      "bytes": 3136
+    },
+    {
+      "path": "evidence/D/rasi/logs/verify-help.txt",
+      "sha256": "d80e8c7b362e865dd992d4e48f859b36118010be7afe8b333c26ac8287c0bbf2",
+      "bytes": 559
+    },
+    {
+      "path": "evidence/D/rasi/logs/version.json",
+      "sha256": "b014ae04625d8cce64bd550722db59e21a5f0ba28f5cb86c31a287cef813bb8c",
+      "bytes": 3004
+    },
+    {
+      "path": "evidence/D/rasi/logs/version.txt",
+      "sha256": "4c603ecba6575764fa79da9f693b7bb743ac5a799447f6af6d942cf83bcc6d5c",
+      "bytes": 439
+    },
+    {
+      "path": "evidence/D/rasi/record_cli.py",
+      "sha256": "9278a6b635e60deb13e35761f7b0d589f3cb63f3b80f6f8e70a97f181f3641ad",
+      "bytes": 4541
+    }
+  ],
+  "scope": "Tool inventory, illustrative contract example, external campaign HOLD, and actual CLI probes. No design effectiveness result."
+}

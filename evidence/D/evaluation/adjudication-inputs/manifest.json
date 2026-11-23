@@ -1,0 +1,89 @@
+{
+  "schema": "design-qa-masked-inputs/v1",
+  "artifacts": [
+    {
+      "label": "Q",
+      "derivative_path": "adjudication-inputs/Q/report-review.md",
+      "source_sha256": "fd7170e0268643b9c56a0410848c79d138d9a08cb3f65e3c34624a1feed08c7c",
+      "derivative_sha256": "040db3255221ba8655b7d7c315ca4dbdeebda71ccc6c1da0cb1be8033995e869",
+      "derivative_not_original": true
+    },
+    {
+      "label": "Q",
+      "derivative_path": "adjudication-inputs/Q/report-source-checks.json",
+      "source_sha256": "379337aa8d0f5668ba3ebb05a25e764f1dfda29fd945b62f57b79f38ad6fd4c2",
+      "derivative_sha256": "379337aa8d0f5668ba3ebb05a25e764f1dfda29fd945b62f57b79f38ad6fd4c2",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-gate-results.json",
+      "source_sha256": "dac406e819fecc165629696f5c97d1e03cc72f87f2b479c431011d9d5a12fab9",
+      "derivative_sha256": "57d39707c7ea15cf034b3daf87b71e572139fdba55a5533436918c73fa74230c",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-logic-log.json",
+      "source_sha256": "8c406fb92ce1460411b840dee7558347fad50f034cf3ef1d451077b73b2db7fe",
+      "derivative_sha256": "a61b27c73a4cd0d32b898cb258a14ebad0742bafc8a1b18b42580e265d4cddf1",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-logic-probe.cjs",
+      "source_sha256": "5ae5900a77d32c250988d52413337e351f6f585f4aa197e2ccad8ac0e3bffa72",
+      "derivative_sha256": "67e6e2d88a392895864c5e6838a7d47140a3c8a62bd139223bf27cf68969e225",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-manifest-gate.json",
+      "source_sha256": "4b46d8980df0a79cc1d275b7f1faafedfe8c0fea4c6f9080853b7f82be54ff20",
+      "derivative_sha256": "4b46d8980df0a79cc1d275b7f1faafedfe8c0fea4c6f9080853b7f82be54ff20",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-manifest.json",
+      "source_sha256": "56b92f641c850858e617a9af56d4949215f85aec4b9853bc3b2ab37cebff6fa6",
+      "derivative_sha256": "80c4bea46f95e659895c13a079d6cc06309badfadf3973155e74c28ecb89e855",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-registration-desktop.json",
+      "source_sha256": "35a0b6bb9304268e0e484a34d6e8adc780706da403545b1ae16e18b5ae0c111d",
+      "derivative_sha256": "515a8647914b8f1650f5e2aefefc0d144f57594eb2d0f1a7310d6bc729fd0a57",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-requests-desktop.json",
+      "source_sha256": "fe86af9062197b7d3f5a36692a4f9afa564b87fe18b0c66ad0229d893aae7561",
+      "derivative_sha256": "da447bb6caf06fb1f186edea3ec1181a43e6a6b554193d47bcd0d2ba656331b9",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-requests-narrow.json",
+      "source_sha256": "508b85c77151c93c96ada0d4082867bb99195a8519bee50310bfa4656ea576c4",
+      "derivative_sha256": "3963a81393127b33bc9b87eac022f278b95df2f9e81881a5c5803095e208dc2d",
+      "derivative_not_original": true
+    },
+    {
+      "label": "R",
+      "derivative_path": "adjudication-inputs/R/report-review.md",
+      "source_sha256": "a2b400d23efe63668b24e8820d8e71a4f54301dc2e428465cb4246e2d49406ea",
+      "derivative_sha256": "ec6d2bb378773078f3b97fef3ef4c67383ee0264ade58751306da5b723f12319",
+      "derivative_not_original": true
+    }
+  ],
+  "limits": [
+    "Only explicit condition names and artifact prefixes were masked.",
+    "Report structure and cited methods may reveal the method; full blinding is not established.",
+    "Derived text paths/hashes inside records may refer to original artifacts; do not claim integrity of masked bytes from original hashes.",
+    "Shared filesystem with prompt-scoped access, no protected oracle or OS isolation.",
+    "Rubric was frozen after the first review; this is exploratory adjudication."
+  ]
+}

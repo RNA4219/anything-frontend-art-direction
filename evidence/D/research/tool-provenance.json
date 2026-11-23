@@ -1,0 +1,11 @@
+{
+  "tool": "imozuru",
+  "git_sha": "30c3b59a076ce228f05aa3036809297422f23dee",
+  "fetch_py_sha256": "143df6eb0b40b688b0d60df4015c6fb1dd3236a29b903aa4ec2e4afd21224a9d",
+  "commands_executed": [
+    "fetch.py (20 attempted URLs; all DNS failure)",
+    "digest.py add (search evidence recording)"
+  ],
+  "adaptation": "User-specified evidence/D/research directory; public Web open/find fallback; no HTML report deliverable requested",
+  "cost": "UNKNOWN"
+}

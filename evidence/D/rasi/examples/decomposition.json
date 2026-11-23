@@ -1,0 +1,50 @@
+{
+  "schema": "rasi-sankai/v1",
+  "source": {
+    "path": "examples/source.txt",
+    "sha256": "7bdda2bab0a223a0133a72783989147a5945cb818f008e321b7373cddd143e45",
+    "line_count": 4
+  },
+  "skill_revision": "0e2521453ad758cfb680110da0fdddc994d000be",
+  "title": "ILLUSTRATIVE EXAMPLE ONLY — not a D experiment",
+  "scope": "Demonstrate the actual R-ASI import contract using synthetic source text.",
+  "common_conditions": [],
+  "units": [
+    {
+      "id": "example-only",
+      "title": "Record a state observation",
+      "instructions": "Record initial state, target state, and observed result. Do not infer successful interaction from a screenshot alone.",
+      "when": "Illustrative interface observation.",
+      "inputs": [
+        "Interface initial state",
+        "Task target state"
+      ],
+      "outputs": [
+        "Observed state record"
+      ],
+      "conditions": [
+        "This is an illustrative input, not the D skill evaluation."
+      ],
+      "exceptions": [],
+      "dependencies": [],
+      "common_refs": [],
+      "reason": "Keep task objective and observation distinct.",
+      "changeable": "The output file format may vary; the observed state must remain explicit.",
+      "unknowns": [
+        "No actual interface or execution was supplied."
+      ],
+      "sources": [
+        {
+          "start": 2,
+          "end": 4,
+          "quote": "Record the initial state before inspecting an interface.\nRecord the target state and observed result separately.\nDo not infer successful interaction from a screenshot alone."
+        }
+      ]
+    }
+  ],
+  "unresolved": [],
+  "excluded": "No actual source extraction or evaluation claim.",
+  "verification_notes": [
+    "Illustrative example has not been used as evidence of design-skill effectiveness."
+  ]
+}

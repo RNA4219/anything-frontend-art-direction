@@ -1,0 +1,100 @@
+- link "本文へ移動":
+  - /url: "#films"
+- banner:
+  - link "潮待ち映画祭 トップへ":
+    - /url: "#top"
+    - text: 潮待ち映画祭
+    - generic: SHIOMACHI FILM FESTIVAL
+  - navigation "メインナビゲーション":
+    - link "上映作品":
+      - /url: "#films"
+    - link "日程":
+      - /url: "#schedule"
+    - link "会場":
+      - /url: "#venue"
+- main:
+  - region "潮待ち 映画祭":
+    - paragraph: 海辺の夜に、映画をひらく。
+    - heading "潮待ち 映画祭" [level=1]:
+      - generic: 潮待ち
+      - generic: 映画祭
+    - paragraph: Shiomachi Film Festival
+    - paragraph:
+      - text: "2027."
+      - strong: "9.18"
+      - text: 土 —
+      - strong: "20"
+      - text: 月・祝
+    - paragraph: 汐入港・旧製氷倉庫前広場
+    - link "上映日程を見る":
+      - /url: "#schedule"
+      - text: 上映日程を見る
+      - generic: ↓
+  - region "上映作品":
+    - paragraph: PROGRAM
+    - heading "上映作品" [level=2]
+    - paragraph: 各作品、会期中に2回上映。
+    - article:
+      - img "黄色いレインコートを着た人と港"
+      - heading "凪のあと" [level=3]
+      - generic: 70 min
+      - paragraph: 9.18（土）18:30 ／ 9.20（月・祝）20:05
+      - generic "あらすじを見る":
+        - text: あらすじを見る
+        - generic: ＋
+    - article:
+      - img "青い夜に浮かぶフェリーの窓"
+      - heading "群青航路" [level=3]
+      - generic: 75 min
+      - paragraph: 9.18（土）20:10 ／ 9.19（日）18:30
+      - generic "あらすじを見る" [active]:
+        - text: あらすじを見る
+        - generic: −
+      - paragraph: 最終便のフェリーに残された青い手袋。船員は持ち主を探しながら、夜の船内を巡ります。
+    - article:
+      - img "光を受けた赤い帆"
+      - heading "赤い帆の日" [level=3]
+      - generic: 65 min
+      - paragraph: 9.19（日）20:15 ／ 9.20（月・祝）18:30
+      - generic "あらすじを見る":
+        - text: あらすじを見る
+        - generic: ＋
+  - region "上映日程":
+    - paragraph: TIMETABLE
+    - heading "上映日程" [level=2]
+    - paragraph: 各日18:30上映開始。日付を選んでご覧ください。
+    - group "上映日を選ぶ":
+      - button "9.18 土":
+        - generic: "9.18"
+        - generic: 土
+      - button "9.19 日" [pressed]:
+        - generic: "9.19"
+        - generic: 日
+      - button "9.20 月・祝":
+        - generic: "9.20"
+        - generic: 月・祝
+    - paragraph: 9月19日（日）の上映
+    - time: 18:30
+    - link "群青航路":
+      - /url: "#film-2"
+      - text: 群青航路 ↑
+    - generic: 75 min
+    - time: 20:15
+    - link "赤い帆の日":
+      - /url: "#film-3"
+      - text: 赤い帆の日 ↑
+    - generic: 65 min
+    - paragraph: 会場：汐入港・旧製氷倉庫前広場
+  - region "会場のご案内":
+    - paragraph: INFORMATION
+    - heading "会場のご案内" [level=2]
+    - paragraph: 汐入港・旧製氷倉庫前広場
+    - paragraph: 各日17:30開場、18:30上映開始。会場には椅子をご用意しています。夜は冷えるため、上着をお持ちください。
+    - paragraph: 2027年9月18日（土）— 20日（月・祝）
+- contentinfo:
+  - paragraph:
+    - text: 潮待ち映画祭
+    - generic: Shiomachi Film Festival
+  - paragraph: この映画祭は架空の催しです。
+  - link "ページの先頭へ ↑":
+    - /url: "#top"

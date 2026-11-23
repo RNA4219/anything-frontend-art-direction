@@ -1,0 +1,56 @@
+{
+  "schema": "design-qa-review-rubric/v1",
+  "frozen_stage": "after baseline raw review; before candidate generation and blind adjudication",
+  "scope": "exploratory review comparison; not a preregistered independent efficacy experiment",
+  "cases": [
+    {
+      "id": "REG-DUP",
+      "task": "registration",
+      "known_evidence": "actual-script minimal-DOM execution",
+      "expected_observation": "multiple submit handlers accepted before resolution",
+      "weight": 1
+    },
+    {
+      "id": "REG-LOSS",
+      "task": "registration",
+      "known_evidence": "source plus actual-script minimal-DOM execution",
+      "expected_observation": "failure resets name/email/seats",
+      "weight": 1
+    },
+    {
+      "id": "LIST-PAGE",
+      "task": "requests",
+      "known_evidence": "actual-script minimal-DOM execution",
+      "expected_observation": "second page filter count positive but rows empty, page exceeds max",
+      "weight": 1
+    }
+  ],
+  "hypothesis_case": {
+    "id": "LIST-OVERLAP",
+    "expected_classification": "unconfirmed visual risk requiring screenshot and browser geometry",
+    "rendering_truth": "unknown"
+  },
+  "negative_controls": [
+    "approved art intent is not a defect",
+    "0 results with explicit count and clear is not automatically a dead end",
+    "native required/min/max/step are not assumed absent because handler does not validate"
+  ],
+  "dimensions": {
+    "case_detection": "distinct matched known behavior cases / 3",
+    "actionability": "for each matched case, presence of location,symptom,basis,impact,repair direction,reproduction (6 fields); report numerator and denominator",
+    "unsupported_confirmations": "count claims outside evidence surface asserted as observed",
+    "responsibility_assignment": "explicit primary category and owner mapping",
+    "artifact_binding": "actual input/evidence hashes and exact reproducible paths",
+    "uncertainty_control": "distinguishes actual script model from browser/native/layout/human study",
+    "gate_discipline": "separates artifact contract,target outcome,skill promotion; hold when evidence missing"
+  },
+  "avoid": [
+    "Do not treat more findings or longer output as better",
+    "Do not compute population success rates from these synthetic cases",
+    "Do not claim a protected oracle: shared OS and evaluator setup is not isolated",
+    "Do not infer condition from reporting format as proof of quality"
+  ],
+  "model_control": "fresh-context agents inherit parent model; sampling, provider version and token cost not observable",
+  "trial_count_per_condition": 1,
+  "candidate_access": "not provided; prompt-level allowlist only, not OS protection"
+}

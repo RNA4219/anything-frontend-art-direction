@@ -1,0 +1,259 @@
+{
+  "schema": "design-qa-exploratory-comparison/v1",
+  "decision": "HOLD",
+  "comparison_unit": "QA review output for identical UI before/after adding D Skill; no product UI edits",
+  "conditions": {
+    "baseline": "existing Art Direction only",
+    "candidate": "same Art Direction plus D Skill"
+  },
+  "tasks": [
+    "registration",
+    "requests"
+  ],
+  "trials_per_condition": 1,
+  "results": {
+    "baseline": {
+      "masked_label": "Q",
+      "case_detection": {
+        "numerator": 3,
+        "denominator": 3
+      },
+      "actionability": {
+        "numerator": 18,
+        "denominator": 18,
+        "fields": [
+          "location",
+          "symptom",
+          "basis",
+          "impact",
+          "repair_direction",
+          "reproduction"
+        ]
+      },
+      "unsupported_confirmations": {
+        "count": 0,
+        "unit": "distinct target finding or observation asserted as observed outside the declared evidence surface",
+        "scope": "supplied review and companion records; does not certify every statement or external-source retrieval",
+        "claims": []
+      },
+      "responsibility_assignment": {
+        "explicit_primary_category_owner_pairs": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "note": "機能問題という説明はあるが、所見ごとの一次責務とownerの対は明示しない。"
+      },
+      "artifact_binding": {
+        "html_path_hashes": 2,
+        "requirements_hash_present": false,
+        "evidence_log_available": true,
+        "harness_supplied": false,
+        "evidence_manifest_supplied_by_review": false,
+        "reproduction_rerun_by_adjudicator": false,
+        "evidence_refs": [
+          "Q/report-source-checks.json.inputs",
+          "Q/report-source-checks.json.method",
+          "Q/report-review.md L31-39"
+        ]
+      },
+      "gate_discipline": {
+        "formal_three_way_separation": false,
+        "target_quality_pass_claimed": false,
+        "skill_promotion_claimed": false,
+        "browser_acceptance": "unconfirmed",
+        "note": "優先度・修正後条件・未確認事項を明示。Skill昇格の状態は未定義であり、誤昇格の観測ではない。"
+      },
+      "uncertainty_control": {
+        "actual_script_model_distinguished_from_browser": true,
+        "native_validation_not_claimed_observed": true,
+        "visual_hypothesis_unconfirmed": true,
+        "human_completion_rate_not_claimed": true
+      }
+    },
+    "candidate": {
+      "masked_label": "R",
+      "case_detection": {
+        "numerator": 3,
+        "denominator": 3
+      },
+      "actionability": {
+        "numerator": 18,
+        "denominator": 18,
+        "fields": [
+          "location",
+          "symptom",
+          "basis",
+          "impact",
+          "repair_direction",
+          "reproduction"
+        ]
+      },
+      "unsupported_confirmations": {
+        "count": 0,
+        "unit": "distinct target finding or observation asserted as observed outside the declared evidence surface",
+        "scope": "supplied review and companion records; does not certify every statement or external-source retrieval",
+        "claims": []
+      },
+      "responsibility_assignment": {
+        "explicit_primary_category_owner_pairs": {
+          "numerator": 3,
+          "denominator": 3
+        },
+        "note": "既知3件すべてcategory=implementation, owner=C。視覚仮説はvisual/C。Cの実在担当者・受領は未確認。"
+      },
+      "artifact_binding": {
+        "html_path_hashes": 2,
+        "requirements_hash_present": true,
+        "evidence_log_available": true,
+        "harness_supplied": true,
+        "manifest_artifact_count": 11,
+        "manifest_gate_declared_integrity_verified": true,
+        "manifest_covers_review_prose_and_gate_results": false,
+        "original_external_artifact_integrity_independently_verified": false,
+        "reproduction_rerun_by_adjudicator": false,
+        "evidence_refs": [
+          "R/report-manifest.json",
+          "R/report-manifest-gate.json",
+          "R/report-logic-probe.cjs",
+          "R/report-gate-results.json",
+          "R/report-review.md L30-36,L159-166"
+        ]
+      },
+      "gate_discipline": {
+        "formal_three_way_separation": true,
+        "records": [
+          {
+            "scope": "registration-desktop",
+            "contract_valid": true,
+            "target_decision": "REJECT",
+            "promotion_decision": "HOLD",
+            "exit_code": 2
+          },
+          {
+            "scope": "requests-desktop",
+            "contract_valid": true,
+            "target_decision": "REJECT",
+            "promotion_decision": "HOLD",
+            "exit_code": 2
+          },
+          {
+            "scope": "requests-narrow",
+            "contract_valid": true,
+            "target_decision": "HOLD",
+            "promotion_decision": "HOLD",
+            "exit_code": 2
+          }
+        ],
+        "independent_receipt_available": false,
+        "independent_gate_audit_performed": false,
+        "browser_task_status": "blocked",
+        "browser_completion": null,
+        "browser_steps_count": null
+      },
+      "uncertainty_control": {
+        "actual_script_model_distinguished_from_browser": true,
+        "native_validation_not_claimed_observed": true,
+        "visual_hypothesis_unconfirmed": true,
+        "human_completion_rate_not_claimed": true
+      }
+    }
+  },
+  "known_case_count": 3,
+  "visual_hypothesis_truth": "unknown",
+  "detection_improvement_established": false,
+  "observed_difference": "explicit primary responsibility/owner, broader artifact binding, three-way gate records",
+  "human_task_completion_rate": null,
+  "real_interaction_steps": null,
+  "timing_comparison": null,
+  "cost_comparison": null,
+  "raw_output_integrity": [
+    {
+      "path": "baseline-review.md",
+      "matches_frozen_hash": true,
+      "sha256": "fd7170e0268643b9c56a0410848c79d138d9a08cb3f65e3c34624a1feed08c7c"
+    },
+    {
+      "path": "baseline-source-checks.json",
+      "matches_frozen_hash": true,
+      "sha256": "379337aa8d0f5668ba3ebb05a25e764f1dfda29fd945b62f57b79f38ad6fd4c2"
+    },
+    {
+      "path": "candidate-gate-results.json",
+      "matches_frozen_hash": true,
+      "sha256": "dac406e819fecc165629696f5c97d1e03cc72f87f2b479c431011d9d5a12fab9"
+    },
+    {
+      "path": "candidate-logic-log.json",
+      "matches_frozen_hash": true,
+      "sha256": "8c406fb92ce1460411b840dee7558347fad50f034cf3ef1d451077b73b2db7fe"
+    },
+    {
+      "path": "candidate-logic-probe.cjs",
+      "matches_frozen_hash": true,
+      "sha256": "5ae5900a77d32c250988d52413337e351f6f585f4aa197e2ccad8ac0e3bffa72"
+    },
+    {
+      "path": "candidate-manifest-gate.json",
+      "matches_frozen_hash": true,
+      "sha256": "4b46d8980df0a79cc1d275b7f1faafedfe8c0fea4c6f9080853b7f82be54ff20"
+    },
+    {
+      "path": "candidate-manifest.json",
+      "matches_frozen_hash": true,
+      "sha256": "56b92f641c850858e617a9af56d4949215f85aec4b9853bc3b2ab37cebff6fa6"
+    },
+    {
+      "path": "candidate-registration-desktop.json",
+      "matches_frozen_hash": true,
+      "sha256": "35a0b6bb9304268e0e484a34d6e8adc780706da403545b1ae16e18b5ae0c111d"
+    },
+    {
+      "path": "candidate-requests-desktop.json",
+      "matches_frozen_hash": true,
+      "sha256": "fe86af9062197b7d3f5a36692a4f9afa564b87fe18b0c66ad0229d893aae7561"
+    },
+    {
+      "path": "candidate-requests-narrow.json",
+      "matches_frozen_hash": true,
+      "sha256": "508b85c77151c93c96ada0d4082867bb99195a8519bee50310bfa4656ea576c4"
+    },
+    {
+      "path": "candidate-review.md",
+      "matches_frozen_hash": true,
+      "sha256": "a2b400d23efe63668b24e8820d8e71a4f54301dc2e428465cb4246e2d49406ea"
+    },
+    {
+      "path": "candidate-skill-manifest.json",
+      "matches_frozen_hash": true,
+      "sha256": "f5a5970374eb8bb213e781d62490f03d1bb1d4e7826ac9afcbba1951cce34472"
+    }
+  ],
+  "adjudication_sha256": "8a0edf7b80f77dfa30558250e4617d4135c6f696f6a8cf0ed38577eca3980216",
+  "adjudication_independence": {
+    "fresh_evaluation_context": true,
+    "condition_labels_withheld": true,
+    "full_blinding_established": false,
+    "protected_holdout_established": false,
+    "os_isolation_established": false,
+    "format_may_reveal_method": true,
+    "trial_count_per_condition": 1,
+    "rubric_frozen_after_first_review": true,
+    "sampling_provider_version_cost_observable": false,
+    "scope": "exploratory comparison; not independent efficacy experiment"
+  },
+  "interpretation_limits": [
+    "Actionability presence is not proof of fix success or measured usefulness.",
+    "R LIST-PAGE uses an equivalent behavior on a different trace; do not count extra cases.",
+    "15 Q scenarios and 9 R records have different aggregation granularity.",
+    "External-source retrieval and original execution history were not audited.",
+    "Record and derivative integrity do not establish product-quality PASS."
+  ],
+  "formal_independent_receipt": null,
+  "model_control": {
+    "selection": "Inherited parent model in both calls; no override",
+    "session_declared_name": "GPT-6 Astra Pro",
+    "provider_snapshot": "unknown",
+    "sampling": "unknown",
+    "seed": "unknown"
+  }
+}

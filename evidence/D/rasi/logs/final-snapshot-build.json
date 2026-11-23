@@ -1,0 +1,13 @@
+{
+  "schema": "external-verification-observation/v1",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi/prepare_final.py",
+    "--freeze"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"schema\": \"D-final-evidence-preparation/v1\",\n  \"version\": \"final-v1\",\n  \"required_input_count\": 31,\n  \"missing\": [],\n  \"mode\": \"freeze\",\n  \"experience_registered\": false\n}\n{\"frozen_manifest\": \"evidence/D/rasi/external-evidence-final-v1.json\", \"sha256\": \"e7947ae096731d01991121da2499cd5abb60fe7be46bc40caa777f7e4e954bcc\", \"artifact_count\": 31, \"next_step\": \"Verify this manifest, then prepare/register a new HOLD experience after parent authorization.\"}\n",
+  "stderr": "",
+  "wall_seconds_measured": 0.06233746199995949,
+  "scope": "Final external evidence packaging/integrity only; no independent promotion."
+}

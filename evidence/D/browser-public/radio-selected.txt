@@ -1,0 +1,86 @@
+- link "周波数の選択へ":
+  - /url: "#channels"
+- banner:
+  - link "Dead Air、放送画面へ":
+    - /url: "#broadcast"
+    - generic: DEAD AIRFM
+  - navigation "メイン":
+    - link "放送中":
+      - /url: "#broadcast"
+    - link "チャンネル":
+      - /url: "#channels"
+    - button "放送局について"
+  - button "映像の動き":
+    - generic: MOTION OFF
+- main:
+  - region "DEAD AIR FM 放送画面":
+    - generic: ON AIR
+    - generic: TOKYO, JP
+    - generic: / 15:15 JST
+    - heading "DEAD AIR FM" [level=1]:
+      - generic: DEAD DEAD
+      - generic: AIR
+      - generic: FM
+    - paragraph: 東京地下海賊放送局 / PIRATE RADIO
+    - button "受信を止める" [pressed]:
+      - generic: 受信を止める
+    - button "92.4 MHz。次の周波数に切り替える":
+      - generic: "92.4"
+      - generic: MHz
+    - text: KIRA
+    - text: TRANSMITTER OP.
+  - generic "現在の番組":
+    - generic: NOW ON AIR
+    - generic: ✦
+    - generic: 92.4 MHz
+    - generic: GHOST RELAY
+    - generic: AMBIENT DUB / 84 BPM
+    - generic: ✦
+    - generic: 92.4 MHz
+    - generic: GHOST RELAY
+    - generic: AMBIENT DUB / 84 BPM
+    - generic: ✦
+    - generic: 92.4 MHz
+    - generic: GHOST RELAY
+    - generic: AMBIENT DUB / 84 BPM
+    - generic: ✦
+    - generic: 92.4 MHz
+    - generic: GHOST RELAY
+    - generic: AMBIENT DUB / 84 BPM
+    - generic: ✦
+    - generic: 92.4 MHz
+    - generic: GHOST RELAY
+    - generic: AMBIENT DUB / 84 BPM
+    - generic: ✦
+    - generic: 92.4 MHz
+    - generic: GHOST RELAY
+    - generic: AMBIENT DUB / 84 BPM
+    - generic: 92.4 MHz、Ghost Relay
+  - region "周波数を選ぶ.":
+    - paragraph: CHANNEL SELECT
+    - heading "周波数を選ぶ." [level=2]
+    - generic: FM 01—03
+    - group "受信チャンネル":
+      - button "CH / 01 Midnight Circuit DARK ELECTRO ／ 128 BPM 87.9 MHz":
+        - generic: CH / 01
+        - generic: Midnight Circuit
+        - generic: DARK ELECTRO ／ 128 BPM
+        - generic: 87.9 MHz
+        - generic: ↗
+      - button "CH / 02 Ghost Relay AMBIENT DUB ／ 84 BPM 92.4 MHz" [active] [pressed]:
+        - generic: CH / 02
+        - generic: Ghost Relay
+        - generic: AMBIENT DUB ／ 84 BPM
+        - generic: 92.4 MHz
+      - button "CH / 03 Chrome Rush BREAKBEAT ／ 148 BPM 98.6 MHz":
+        - generic: CH / 03
+        - generic: Chrome Rush
+        - generic: BREAKBEAT ／ 148 BPM
+        - generic: 98.6 MHz
+        - generic: ↗
+    - status: 92.4 MHz、Ghost Relayを受信中。
+- contentinfo:
+  - link "DEAD AIR FM":
+    - /url: "#broadcast"
+  - generic: TOKYO UNDERGROUND RADIO
+  - button "局情報・クレジット ↗"

@@ -1,0 +1,8 @@
+{
+  "schema": "design-qa-manifest-result/v1",
+  "contract_valid": true,
+  "artifact_count": 246,
+  "integrity_verified": true,
+  "errors": [],
+  "quality_evaluated": false
+}

@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:21:42.326507+00:00
+finished_at: 2026-11-23T06:21:42.423656+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "verify", "--sankai", "inputs/decomposition.json"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.097133
+--- stdout ---
+検証成功: /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi/.ga/receipts/verify-b35fbd6779d74c801729a142c32409157abdc702d8bef2e49fef523814432973.json
+--- stderr ---

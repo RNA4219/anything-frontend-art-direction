@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:08:47.879490+00:00
+finished_at: 2026-11-23T06:08:47.965606+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "evaluate"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 3
+expected_exit_code: 3
+wall_seconds_measured: 0.086103
+--- stdout ---
+--- stderr ---
+エラー: evaluateは未接続です

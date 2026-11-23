@@ -1,0 +1,242 @@
+{
+  "schema": "design-qa-final-input-check/v1",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "common_inputs_checked": 39,
+  "common_inputs": [
+    {
+      "path": "art-direction/SKILL.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/checklists/accessibility.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/checklists/forms.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/checklists/motion.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/checklists/performance.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/a-rendering.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/b-visual.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/c-usability.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/d-interaction.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/design-works.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/e-accessibility.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/f-performance.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/g-state-forms.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/h-graphics.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/i-components.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/j-apps.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/k-studies.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/l-architecture.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/visual-composition.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/visual-craft.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/references/visual-direction.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/sources.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/README.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/assets/circulation-240.png",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/assets/circulation-480.png",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/carousel.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/dialog.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/form.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/mcp-summary.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/motion.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/optimistic.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/responsive-image.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/skip-link.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/theme.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/view-transition.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "art-direction/templates/virtual-list.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "subject/registration.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "subject/requests.html",
+      "snapshot_matches": true,
+      "repo_matches": true
+    },
+    {
+      "path": "subject/task-brief.md",
+      "snapshot_matches": true,
+      "repo_matches": true
+    }
+  ],
+  "candidate_skill_files_checked": 8,
+  "candidate_skill": [
+    {
+      "path": "SKILL.md",
+      "matches": true
+    },
+    {
+      "path": "checks/qa_gate.py",
+      "matches": true
+    },
+    {
+      "path": "examples/finding-examples.md",
+      "matches": true
+    },
+    {
+      "path": "examples/report-example.json",
+      "matches": true
+    },
+    {
+      "path": "examples/review-request.md",
+      "matches": true
+    },
+    {
+      "path": "references/evaluation-protocol.md",
+      "matches": true
+    },
+    {
+      "path": "references/principles.md",
+      "matches": true
+    },
+    {
+      "path": "references/report-contract.md",
+      "matches": true
+    }
+  ],
+  "source_index_unchanged": true,
+  "tracked_base_files_changed": [],
+  "files_outside_D": [],
+  "root_SKILL_and_README_unchanged": true,
+  "scope_note": "Executed before final R-ASI append; git staged scope is checked separately at commit."
+}

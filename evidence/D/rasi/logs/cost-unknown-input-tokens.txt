@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:23:03.621449+00:00
+finished_at: 2026-11-23T06:23:03.693666+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "cost-add", "--campaign", "inputs/campaign-recording-only.json", "--event", "inputs/cost-unknown-input-tokens.json"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.072203
+--- stdout ---
+cost event受理成功: /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi/.ga/receipts/cost-add-cbf570203967386f52f4442ef1d8f231811acbfed99bdc11e271f7688007cb0b.json
+--- stderr ---

@@ -1,0 +1,35 @@
+{
+  "schema": "external-design-evaluation-campaign/v1",
+  "campaign_id": "anything-frontend-D-20261123",
+  "session_id": "D",
+  "observed_at": "2026-11-23T06:09:22.118651+00:00",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "branch": "campaign/D-design-qa-20261123",
+  "status": "HOLD",
+  "rasi_native_campaign_contract": "not_created",
+  "reason": [
+    "R-ASI rsi-lock/v1 requires runtime image_digest; exact container image digest has not been observed.",
+    "Independent blind evaluation and private holdout are not established.",
+    "Candidate and actual baseline/candidate evaluation artifacts are still being produced."
+  ],
+  "identity": {
+    "rasi_revision": "f5b638085dece1f997210f9b653aceb8fe9b32d4",
+    "sankai_revision": "0e2521453ad758cfb680110da0fdddc994d000be",
+    "imozuru_revision": "30c3b59a076ce228f05aa3036809297422f23dee",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "measured": {
+    "cli_observations": 11
+  },
+  "unknown": {
+    "container_image_digest": null,
+    "llm_input_tokens": null,
+    "llm_output_tokens": null,
+    "billing_cost": null,
+    "independent_evaluation": null
+  },
+  "formal_pass": false,
+  "promoted": false,
+  "notes": "This manifest is external evidence identity, not campaign/v1 or a successful R-ASI gate receipt."
+}

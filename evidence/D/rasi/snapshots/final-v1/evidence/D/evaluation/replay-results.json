@@ -1,0 +1,133 @@
+{
+  "schema": "design-qa-portable-replay/v1",
+  "mapped_artifacts": 11,
+  "runner_sha256": "09aff860dc45353e1727558524c0fc8130844720c7999fbdb8019d8f36216b2e",
+  "raw_reports_modified": false,
+  "report_gates": [
+    {
+      "report": "candidate-registration-desktop.json",
+      "exit_code": 2,
+      "stdout": {
+        "schema": "design-qa-gate-result/v1",
+        "report_id": "candidate-registration-desktop",
+        "contract_valid": true,
+        "target_decision": "REJECT",
+        "promotion_decision": "HOLD",
+        "errors": [],
+        "target_reasons": [
+          "unresolved major finding D-REG-01",
+          "unresolved major finding D-REG-02",
+          "normal task status is blocked",
+          "normal recovery is not_run",
+          "error task status is blocked",
+          "error recovery is not_run",
+          "boundary task status is blocked",
+          "boundary recovery is not_run",
+          "open questions remain"
+        ],
+        "promotion_reasons": [
+          "independent evaluator, blind setup, and protected holdout are not all established",
+          "independent evaluation receipt is missing"
+        ],
+        "receipt_decision": null,
+        "counts": {
+          "confirmed": 2,
+          "hypotheses": 0,
+          "passed_task_runs": 0,
+          "task_runs": 3
+        },
+        "limitations": "Record structure and file integrity are checked. Evaluator identity, receipt authenticity, protected holdout isolation, and the truth of observations require external audit. A valid report is not an independently established product-quality PASS."
+      },
+      "stderr": "",
+      "report_sha256": "35a0b6bb9304268e0e484a34d6e8adc780706da403545b1ae16e18b5ae0c111d"
+    },
+    {
+      "report": "candidate-requests-desktop.json",
+      "exit_code": 2,
+      "stdout": {
+        "schema": "design-qa-gate-result/v1",
+        "report_id": "candidate-requests-desktop",
+        "contract_valid": true,
+        "target_decision": "REJECT",
+        "promotion_decision": "HOLD",
+        "errors": [],
+        "target_reasons": [
+          "unresolved major finding D-LIST-01",
+          "normal task status is blocked",
+          "normal recovery is not_run",
+          "error task status is blocked",
+          "error recovery is not_run",
+          "boundary task status is blocked",
+          "boundary recovery is not_run",
+          "open questions remain"
+        ],
+        "promotion_reasons": [
+          "independent evaluator, blind setup, and protected holdout are not all established",
+          "independent evaluation receipt is missing"
+        ],
+        "receipt_decision": null,
+        "counts": {
+          "confirmed": 1,
+          "hypotheses": 0,
+          "passed_task_runs": 0,
+          "task_runs": 3
+        },
+        "limitations": "Record structure and file integrity are checked. Evaluator identity, receipt authenticity, protected holdout isolation, and the truth of observations require external audit. A valid report is not an independently established product-quality PASS."
+      },
+      "stderr": "",
+      "report_sha256": "fe86af9062197b7d3f5a36692a4f9afa564b87fe18b0c66ad0229d893aae7561"
+    },
+    {
+      "report": "candidate-requests-narrow.json",
+      "exit_code": 2,
+      "stdout": {
+        "schema": "design-qa-gate-result/v1",
+        "report_id": "candidate-requests-narrow",
+        "contract_valid": true,
+        "target_decision": "HOLD",
+        "promotion_decision": "HOLD",
+        "errors": [],
+        "target_reasons": [
+          "unverified hypothesis D-LIST-02",
+          "normal task status is blocked",
+          "normal recovery is not_run",
+          "error task status is blocked",
+          "error recovery is not_run",
+          "boundary task status is blocked",
+          "boundary recovery is not_run",
+          "open questions remain"
+        ],
+        "promotion_reasons": [
+          "independent evaluator, blind setup, and protected holdout are not all established",
+          "independent evaluation receipt is missing"
+        ],
+        "receipt_decision": null,
+        "counts": {
+          "confirmed": 0,
+          "hypotheses": 1,
+          "passed_task_runs": 0,
+          "task_runs": 3
+        },
+        "limitations": "Record structure and file integrity are checked. Evaluator identity, receipt authenticity, protected holdout isolation, and the truth of observations require external audit. A valid report is not an independently established product-quality PASS."
+      },
+      "stderr": "",
+      "report_sha256": "508b85c77151c93c96ada0d4082867bb99195a8519bee50310bfa4656ea576c4"
+    }
+  ],
+  "manifest_gate": {
+    "exit_code": 0,
+    "stdout": {
+      "schema": "design-qa-manifest-result/v1",
+      "contract_valid": true,
+      "artifact_count": 11,
+      "integrity_verified": true,
+      "errors": [],
+      "quality_evaluated": false
+    },
+    "stderr": ""
+  },
+  "limitations": [
+    "Artifact and contract verification only; no browser or new model evaluation.",
+    "The original absolute execution paths remain in raw provenance records."
+  ]
+}

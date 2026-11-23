@@ -1,0 +1,45 @@
+{
+  "schema": "design-qa-review-execution/v1",
+  "baseline": {
+    "agent": "/root/review_baseline",
+    "prompt": "日本語で画面レビューを実行してください。 使用Skill: /workspace/scratch/1acf7c2e1e4d/evaluation/common/art-direction/SKILL.md とその参照資料。対象と要求: /workspace/scratch/1acf7c2e1e4d/evaluation/common/subject/task-brief.md を読み、同ディレクトリの registration.html と requests.html の2画面をレビュー。画面は変更しない。条件: この実行環境ではローカルブラウザ起動が禁止され、cloud browserのfileプロトコルもポリシーで拒否されている。迂回せず、ソースから確認できることをレビューし、実画面や操作結果を観察済みと主張しない。一般的なコード解析を実行してよい。対象HTML、brief、指定Skillとその参照以外の評価答案やoracle・他Skill・親セッション証跡は読まない。外部公開原典へのアクセスは必要なら可能。レビューは正常操作・失敗・境界を含む。検証した範囲、重要な問題、優先度、根拠、修正方向、再現手順、未確認事項を含める。構造と詳しさはSkillに従って選ぶ。出力は /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/evaluation/baseline-review.md。必要なら同階層のbaseline-で始まるログ/JSONを追加。探索とレビューは10分以内目安で収束。共有入力を編集しない。Git操作やUI修正は行わない。終了時に実行したこと、未確認範囲、出力パスを報告。"
+  },
+  "candidate": {
+    "agent": "/root/review_candidate",
+    "prompt": "日本語で画面レビューを実行してください。 使用Skill: /workspace/scratch/1acf7c2e1e4d/evaluation/common/art-direction/SKILL.md とその参照資料、および追加Skill /workspace/scratch/1acf7c2e1e4d/evaluation/common/art-direction/extensions/D/SKILL.md とそのreferences/examples/checks/qa_gate.py・原典index。対象と要求: /workspace/scratch/1acf7c2e1e4d/evaluation/common/subject/task-brief.md を読み、同ディレクトリの registration.html と requests.html の2画面をレビュー。画面は変更しない。条件: この実行環境ではローカルブラウザ起動が禁止され、cloud browserのfileプロトコルもポリシーで拒否されている。迂回せず、ソースから確認できることをレビューし、実画面や操作結果を観察済みと主張しない。一般的なコード解析を実行してよい。対象HTML、brief、指定Skillとその参照以外の評価答案やoracle・他Skill・親セッション証跡は読まない。外部公開原典へのアクセスは必要なら可能。レビューは正常操作・失敗・境界を含む。検証した範囲、重要な問題、優先度、根拠、修正方向、再現手順、未確認事項を含める。構造と詳しさはSkillに従って選ぶ。出力は /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/evaluation/candidate-review.md。必要なら同階層のcandidate-で始まるログ/JSONを追加。探索とレビューは10分以内目安で収束。共有入力を編集しない。Git操作やUI修正は行わない。終了時に実行したこと、未確認範囲、出力パスを報告。"
+  },
+  "prompt_provenance": "Transcribed from actual spawn calls; whitespace may differ. Subject, requirements, restrictions and time budget identical.",
+  "model": {
+    "selection": "Inherited parent model in both calls; no override",
+    "session_declared_name": "GPT-6 Astra Pro",
+    "provider_snapshot": "unknown",
+    "sampling": "unknown",
+    "seed": "unknown"
+  },
+  "fork_turns": "none",
+  "trial_count": 1,
+  "access_control": "Prompt-scoped allowlist on a shared filesystem, not a protected holdout",
+  "before_after_scope": "review output before/after adding D; subject UI unchanged",
+  "browser_policy": {
+    "local": "Chromium startup socket EPERM",
+    "cloud": "file protocol URL policy rejection; no workaround",
+    "applied_to_both": true
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "measured": false
+  },
+  "adjudication": {
+    "agent": "/root/adjudication",
+    "fork_turns": "none",
+    "model_override": false,
+    "inputs": "evidence/D/evaluation/adjudication-inputs/ only",
+    "instructions_summary": "Read both masked reports, fixed rubric, identical subjects and limited logic observations. Compare actionability, known cases, unsupported assertions, owner, evidence and gate separation. Do not read parent assignment or original reviews, Skills, other parent evidence. Do not use browser, external research or git. No total-score winner.",
+    "assignment_hidden_during_evaluation": true,
+    "format_may_reveal_method": true,
+    "os_access_boundary": false,
+    "actual_output": "adjudication.md and adjudication.json",
+    "actual_read_scope_declaration": "See adjudication.json input_scope; no OS audit is claimed."
+  }
+}

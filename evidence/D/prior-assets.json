@@ -1,0 +1,1651 @@
+{
+  "archive_filename": "anything-frontend-2026-11-21.zip",
+  "archive_sha256": "a72aed865f385941bef5ea67d68be7973308c34c1f7cf56d8efb59be26768657",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "cas_object_count": 205,
+  "receipt_count": 619,
+  "byte_hash_matches": 205,
+  "cas_objects": [
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/3b/3beb948f4705893a86378fee9d654174f1fe5f38541e47807290db7c88db70aa.json",
+      "sha256": "3beb948f4705893a86378fee9d654174f1fe5f38541e47807290db7c88db70aa",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/17/17c5963344065234199604c5058095c367443667526b1a00381085ea18358088.json",
+      "sha256": "17c5963344065234199604c5058095c367443667526b1a00381085ea18358088",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/76/760554c3867b16615200161fb2947b404d460c4f853ae42e92b7c6122c2f6169.json",
+      "sha256": "760554c3867b16615200161fb2947b404d460c4f853ae42e92b7c6122c2f6169",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/59/5969b6c6078f2b3a745bf3363701d91d1d0c0491a7a39e34d6786e461009ebd9.json",
+      "sha256": "5969b6c6078f2b3a745bf3363701d91d1d0c0491a7a39e34d6786e461009ebd9",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/53/5304e0db6b9f82370916f20ebaa41c8a7d1493078bc3c8e06139c35d2e636473.json",
+      "sha256": "5304e0db6b9f82370916f20ebaa41c8a7d1493078bc3c8e06139c35d2e636473",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/e8/e8d71d2c9a0afe66e6360e059aa9a8e0e74bccd69788eec6ec5bb5e257337fa7.json",
+      "sha256": "e8d71d2c9a0afe66e6360e059aa9a8e0e74bccd69788eec6ec5bb5e257337fa7",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/8d/8d8d4c8af27fbc6ca30d69bb888f7cad8d24e9a378938437a530ba2c69f5466c.json",
+      "sha256": "8d8d4c8af27fbc6ca30d69bb888f7cad8d24e9a378938437a530ba2c69f5466c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b6/b63afadc401e8e1f1304b7d3fcd62f2aee09a1644d5b9a4204ffa376171c29eb.json",
+      "sha256": "b63afadc401e8e1f1304b7d3fcd62f2aee09a1644d5b9a4204ffa376171c29eb",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b6/b68cf088ddad7ad4c5a2233b0d3303ceb287cfc5dd5e330b5d02878798feb39f.json",
+      "sha256": "b68cf088ddad7ad4c5a2233b0d3303ceb287cfc5dd5e330b5d02878798feb39f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/6a/6a500a305b3e6a60a31720a5476613868e953b6d4237587fc704d8d387638fce.json",
+      "sha256": "6a500a305b3e6a60a31720a5476613868e953b6d4237587fc704d8d387638fce",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/66/66738aebf3d3eede406de4cb9433dba55818835428f2cae1de50d9c031f5ed77.json",
+      "sha256": "66738aebf3d3eede406de4cb9433dba55818835428f2cae1de50d9c031f5ed77",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/66/66418dfdf126d28f740adc5bd7dfacf3476d892cb66c1df95d27570a36001026.json",
+      "sha256": "66418dfdf126d28f740adc5bd7dfacf3476d892cb66c1df95d27570a36001026",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/66/66721aaf9d1426abe35a24848b9d3e775f08e40c4443c65c35c7fe1fdd7e06f3.json",
+      "sha256": "66721aaf9d1426abe35a24848b9d3e775f08e40c4443c65c35c7fe1fdd7e06f3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/22/226c6b761390997f8e1985ac5bcca0aaac496a5a20ad8b605170f4506d25018d.json",
+      "sha256": "226c6b761390997f8e1985ac5bcca0aaac496a5a20ad8b605170f4506d25018d",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/4e/4e7f5d0850eef7b1f60885f0ff3eef8d85a5f900f5b054421def305a31831081.json",
+      "sha256": "4e7f5d0850eef7b1f60885f0ff3eef8d85a5f900f5b054421def305a31831081",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/4e/4eba74cc8d9e16298bf060298518f5167c473210e8fb6653f57d657f8f86853c.json",
+      "sha256": "4eba74cc8d9e16298bf060298518f5167c473210e8fb6653f57d657f8f86853c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/2c/2cd967b5709be10a8b4acb8c9c3192e7ee6c857bd19548d53551ed34daf236dc.json",
+      "sha256": "2cd967b5709be10a8b4acb8c9c3192e7ee6c857bd19548d53551ed34daf236dc",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c1/c19d8f67802a5a0d9b1ea5e5310a99434ccc8808e1db5356b51f859c9b85afb6.json",
+      "sha256": "c19d8f67802a5a0d9b1ea5e5310a99434ccc8808e1db5356b51f859c9b85afb6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c1/c1bd75b57d21f876a07a6c1f9aaf640a69dabadda32a58c472c1da5230fb6b80.json",
+      "sha256": "c1bd75b57d21f876a07a6c1f9aaf640a69dabadda32a58c472c1da5230fb6b80",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/1d/1da14d77afd2085a7e590923b1176620d5bab062f1401aa1d783e91392c29ec6.json",
+      "sha256": "1da14d77afd2085a7e590923b1176620d5bab062f1401aa1d783e91392c29ec6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/3c/3cd0a76795b0d731fac042df76d61878e8a0fc4cd4a3b8efe2be355621660c5f.json",
+      "sha256": "3cd0a76795b0d731fac042df76d61878e8a0fc4cd4a3b8efe2be355621660c5f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/3c/3c9ee554a91d0c8d0867bab6843aba5b76aae97a7ecd616997b2135d8ea8c974.json",
+      "sha256": "3c9ee554a91d0c8d0867bab6843aba5b76aae97a7ecd616997b2135d8ea8c974",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/3d/3d5cab5817538e38589827ceb9fd1014e87f8666d5458f37dfcbce8a6b13cbea.json",
+      "sha256": "3d5cab5817538e38589827ceb9fd1014e87f8666d5458f37dfcbce8a6b13cbea",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/3d/3d997ae846e8be5c02b48dd3279c127fed34c7062384e22382f51138a762ef8f.json",
+      "sha256": "3d997ae846e8be5c02b48dd3279c127fed34c7062384e22382f51138a762ef8f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/45/450dd25097611bc43b5f85055157ba661a46973b12df260f9b095e71fe7d4433.json",
+      "sha256": "450dd25097611bc43b5f85055157ba661a46973b12df260f9b095e71fe7d4433",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/45/45900bb414d788d377fa95dab9243c9ba70d12fe46d88027813858efce6a6a7d.json",
+      "sha256": "45900bb414d788d377fa95dab9243c9ba70d12fe46d88027813858efce6a6a7d",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/f5/f5ee18762c31ff6804d528c327063133a31195c9ee43f05cef0a6456a78a1558.json",
+      "sha256": "f5ee18762c31ff6804d528c327063133a31195c9ee43f05cef0a6456a78a1558",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/6d/6d43245dac578b5ac689963ed3c29de700cf8dc324dddc75e97ed440b37109e5.json",
+      "sha256": "6d43245dac578b5ac689963ed3c29de700cf8dc324dddc75e97ed440b37109e5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/6d/6d24c950dd817295f4761d83e626d6bbd1a8082ffb1ddfd983a5d4641e69e1c5.json",
+      "sha256": "6d24c950dd817295f4761d83e626d6bbd1a8082ffb1ddfd983a5d4641e69e1c5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/9e/9e8902eced8af6d9f6a268386ef27afb3a8e3433856c49e7c776af78f44e12f8.json",
+      "sha256": "9e8902eced8af6d9f6a268386ef27afb3a8e3433856c49e7c776af78f44e12f8",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a0/a0db5dc2ebd22227e83007ed7b76b02400034b89e9d2c9f807cec8e8edc2efe1.json",
+      "sha256": "a0db5dc2ebd22227e83007ed7b76b02400034b89e9d2c9f807cec8e8edc2efe1",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a0/a0f42fac9767aac5b7f2137f1a2af2664952b14a5af15157350b41de95dce57f.json",
+      "sha256": "a0f42fac9767aac5b7f2137f1a2af2664952b14a5af15157350b41de95dce57f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/70/70b0eee476d149bea528ce2e66efd040c7b1865c52907470464d0fff8dcff945.json",
+      "sha256": "70b0eee476d149bea528ce2e66efd040c7b1865c52907470464d0fff8dcff945",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a2/a2e2058a1b30e71938c316e84d0ee5bde2c3eca4cbbf5696e3108eecf3bb9ae9.json",
+      "sha256": "a2e2058a1b30e71938c316e84d0ee5bde2c3eca4cbbf5696e3108eecf3bb9ae9",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ef/eff2e0622e0a33dc200f1c0832b60b8d60a8d12a41039a8869acca943deec533.json",
+      "sha256": "eff2e0622e0a33dc200f1c0832b60b8d60a8d12a41039a8869acca943deec533",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/01/016a7fab59e4f13acf100303d6449cc1e29e02d58026aa15ae2b59da434482f9.json",
+      "sha256": "016a7fab59e4f13acf100303d6449cc1e29e02d58026aa15ae2b59da434482f9",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b2/b2adbd2ccbc0b2588681b461bdec90e72cff80ec2e285c06e774a35786c51a77.json",
+      "sha256": "b2adbd2ccbc0b2588681b461bdec90e72cff80ec2e285c06e774a35786c51a77",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b2/b2662ba3455cbd7e3f30527f3516ad1ba77a1aa8afe9be4a5cf6f737f2e9d387.json",
+      "sha256": "b2662ba3455cbd7e3f30527f3516ad1ba77a1aa8afe9be4a5cf6f737f2e9d387",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/62/62d0a5dde4a48f8902eb64c4b504e27e37e329145be6aab6561ba823a25a6a6e.json",
+      "sha256": "62d0a5dde4a48f8902eb64c4b504e27e37e329145be6aab6561ba823a25a6a6e",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ba/ba8fbce57d75f1b9dcb360d24d358f24cda2670986055c9c83cf2590923460c9.json",
+      "sha256": "ba8fbce57d75f1b9dcb360d24d358f24cda2670986055c9c83cf2590923460c9",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/4b/4b287d268ac9c28be77c312ca4540bd98d92f646f22611fcb57c4785fe9da1aa.json",
+      "sha256": "4b287d268ac9c28be77c312ca4540bd98d92f646f22611fcb57c4785fe9da1aa",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/58/58af61698612d655c414cd3aefadb262cf372e4495006e658123af8318486eb8.json",
+      "sha256": "58af61698612d655c414cd3aefadb262cf372e4495006e658123af8318486eb8",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/07/07c00d1639062bf27c2f6e8d229234b7cfa55d6dff70111478322a131d8d4dab.json",
+      "sha256": "07c00d1639062bf27c2f6e8d229234b7cfa55d6dff70111478322a131d8d4dab",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/16/16901c172930c182b48a1c9dad082578da79e65270e73561eaeffcc12c54c03c.json",
+      "sha256": "16901c172930c182b48a1c9dad082578da79e65270e73561eaeffcc12c54c03c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/df/df2ed40dd7ce1ce34e7c037698cb90df43cd6f51dd1a18c8877cb3cbc4b353a6.json",
+      "sha256": "df2ed40dd7ce1ce34e7c037698cb90df43cd6f51dd1a18c8877cb3cbc4b353a6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/df/dff8c7b438a7f084bc3bb56a3a58646e43f3c624909213dab440f60718f400fa.json",
+      "sha256": "dff8c7b438a7f084bc3bb56a3a58646e43f3c624909213dab440f60718f400fa",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/df/dffea9bb29c219c877f61f24304b9add1426b438fb9a7137a002a6133c16edda.json",
+      "sha256": "dffea9bb29c219c877f61f24304b9add1426b438fb9a7137a002a6133c16edda",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c0/c006163cead9f3911d9049cc8a1606c7c70ff906cc86aedb6c04bb7f28d5db70.json",
+      "sha256": "c006163cead9f3911d9049cc8a1606c7c70ff906cc86aedb6c04bb7f28d5db70",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/1f/1fb9e655051eb63ab064140e622b49432df8e6239924e088b27961a77547a545.json",
+      "sha256": "1fb9e655051eb63ab064140e622b49432df8e6239924e088b27961a77547a545",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/44/44be78f0ac1d3a31e18ef8e172291cb8bb4529cf5c89057ad2cc15c3530eede2.json",
+      "sha256": "44be78f0ac1d3a31e18ef8e172291cb8bb4529cf5c89057ad2cc15c3530eede2",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/34/349b63e1342cfd287f07258057f4d18033f81528e3686ac4b6e4a0475ea856bd.json",
+      "sha256": "349b63e1342cfd287f07258057f4d18033f81528e3686ac4b6e4a0475ea856bd",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/84/84351d8acf924bce6fb373e72bf8c37ffc4ea9b97ba4ef8468c65e97efac86b2.json",
+      "sha256": "84351d8acf924bce6fb373e72bf8c37ffc4ea9b97ba4ef8468c65e97efac86b2",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/84/8456fdc7ef96c734406ccef4bd1d1cd13fc692225ca688e9d7f7ecc08e990da2.json",
+      "sha256": "8456fdc7ef96c734406ccef4bd1d1cd13fc692225ca688e9d7f7ecc08e990da2",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/72/723be6e5f4e4faacf04b35246a34265f558034c5d8f4722ff89a866a0c57cbb5.json",
+      "sha256": "723be6e5f4e4faacf04b35246a34265f558034c5d8f4722ff89a866a0c57cbb5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/f8/f8dbdbc5703737b6164dd4c7f47e84d4bee95dc28dad5c26dfb1c0ba7b07da96.json",
+      "sha256": "f8dbdbc5703737b6164dd4c7f47e84d4bee95dc28dad5c26dfb1c0ba7b07da96",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/57/57d259a068e472dd90ea0e76ceaa7a3ab80b484cb7d88c504e0e173ab51c76ed.json",
+      "sha256": "57d259a068e472dd90ea0e76ceaa7a3ab80b484cb7d88c504e0e173ab51c76ed",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/57/573268d66a038a267ba77d4aab7bba1657f27da30693269cf5383acc1e72e5a1.json",
+      "sha256": "573268d66a038a267ba77d4aab7bba1657f27da30693269cf5383acc1e72e5a1",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/92/9279770f66758c5710e142f2ae8c0805b2b1b3d11e65924ae1f68941cd74830b.json",
+      "sha256": "9279770f66758c5710e142f2ae8c0805b2b1b3d11e65924ae1f68941cd74830b",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/60/603fbc4f74f3753d2c82505cb820259482afb9a6b0db31dbe293baed97a17667.json",
+      "sha256": "603fbc4f74f3753d2c82505cb820259482afb9a6b0db31dbe293baed97a17667",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/4a/4ac5aaaf566237991f86b8f74bba40d2183060ce55bbd4ab4396c48934efe82b.json",
+      "sha256": "4ac5aaaf566237991f86b8f74bba40d2183060ce55bbd4ab4396c48934efe82b",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a8/a8f0bbe0ad8d79390b8623ac522e70d03bc385b0d458880151ae4c0b51340c74.json",
+      "sha256": "a8f0bbe0ad8d79390b8623ac522e70d03bc385b0d458880151ae4c0b51340c74",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/38/3891664bc986cf67e3b197cc2c99e4e3ea2781f1346bf1e5717b49233b3ade9c.json",
+      "sha256": "3891664bc986cf67e3b197cc2c99e4e3ea2781f1346bf1e5717b49233b3ade9c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/55/551501543f95587f566c0b951a22af995f5f37790a19d12ea8c37e9cf7da3be5.json",
+      "sha256": "551501543f95587f566c0b951a22af995f5f37790a19d12ea8c37e9cf7da3be5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/0d/0d001c3dca10fb1ce1614732bcc03ed1a4a392d000f61342e9c95979fcc9f9e6.json",
+      "sha256": "0d001c3dca10fb1ce1614732bcc03ed1a4a392d000f61342e9c95979fcc9f9e6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/0d/0da263a22c4e1456c9aa8f29743ae57dcc07aed89efa296d630d3db99e93cbed.json",
+      "sha256": "0da263a22c4e1456c9aa8f29743ae57dcc07aed89efa296d630d3db99e93cbed",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ea/ea84d7c779aaf4453c81bc3d6d3d9ee4dfe7490024ab57542611122d4dfea6e8.json",
+      "sha256": "ea84d7c779aaf4453c81bc3d6d3d9ee4dfe7490024ab57542611122d4dfea6e8",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ea/eab803ffd7bed87cf9889c4b3e37bfcde76eb24817a2d2c6ec29d1a9d7c8334f.json",
+      "sha256": "eab803ffd7bed87cf9889c4b3e37bfcde76eb24817a2d2c6ec29d1a9d7c8334f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ea/ea4e323be0cabb36cff4adad66931cf902899c0a025202717952f341f3ad44b2.json",
+      "sha256": "ea4e323be0cabb36cff4adad66931cf902899c0a025202717952f341f3ad44b2",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ea/ea89eff106bf22fa0dc07d13683cce1fd1ef19071b1fa5cc93bead88033e3487.json",
+      "sha256": "ea89eff106bf22fa0dc07d13683cce1fd1ef19071b1fa5cc93bead88033e3487",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/26/26ebe4fcd630ef0a73959e7e6e54a08698d1a751e47d6f6ea73f28f644bb54b5.json",
+      "sha256": "26ebe4fcd630ef0a73959e7e6e54a08698d1a751e47d6f6ea73f28f644bb54b5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/95/9515c02f3dd1e7e79c6024fa331fcad572757b7273042176f8853b8c135aeaac.json",
+      "sha256": "9515c02f3dd1e7e79c6024fa331fcad572757b7273042176f8853b8c135aeaac",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/f3/f35dd8fd26777f65a03d55a6bccbb10ee93c9f61a564a90aa25541b6662ab057.json",
+      "sha256": "f35dd8fd26777f65a03d55a6bccbb10ee93c9f61a564a90aa25541b6662ab057",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/f3/f3d08f3c25b7e0ffbe07d3ecc960cfeb3df4923828c7004e0b3caf7147d158d3.json",
+      "sha256": "f3d08f3c25b7e0ffbe07d3ecc960cfeb3df4923828c7004e0b3caf7147d158d3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/f3/f3fc769aaa91fe209a482fc3bc6ccdd481713e48731f29ef277bef4e8f5a2ae3.json",
+      "sha256": "f3fc769aaa91fe209a482fc3bc6ccdd481713e48731f29ef277bef4e8f5a2ae3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/97/974ca5d9e06b1deccec6dea6a15c0cf0358c3b95156f669e301c61fcbb3a77c3.json",
+      "sha256": "974ca5d9e06b1deccec6dea6a15c0cf0358c3b95156f669e301c61fcbb3a77c3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/65/65774e6dbf1a85042ebdab08b1d5b5b54128f9f548e6ff989459a1e2f516ddf2.json",
+      "sha256": "65774e6dbf1a85042ebdab08b1d5b5b54128f9f548e6ff989459a1e2f516ddf2",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/65/65375fcd56d88b7b6848e9dc9212585a89761d0918182c622e235bc5759d92dc.json",
+      "sha256": "65375fcd56d88b7b6848e9dc9212585a89761d0918182c622e235bc5759d92dc",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/35/35e39d21e612ffd43a32a81ca9da2cd96c800c3bfc79089c05dd2e6dc25e5534.json",
+      "sha256": "35e39d21e612ffd43a32a81ca9da2cd96c800c3bfc79089c05dd2e6dc25e5534",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/fa/fa8299428a74ce6479a7d09823188ce702ed49176d4fa1767b3c7bf0774ee62f.json",
+      "sha256": "fa8299428a74ce6479a7d09823188ce702ed49176d4fa1767b3c7bf0774ee62f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/24/24a066ba0551fd6f9769dc9cfecfeb14370215e6c09a5c9f0552d0b8981bbd05.json",
+      "sha256": "24a066ba0551fd6f9769dc9cfecfeb14370215e6c09a5c9f0552d0b8981bbd05",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/24/24fd33d973985d7e2e23196524827868d2e11ad7e87f5abe122cc01900fbf6cc.json",
+      "sha256": "24fd33d973985d7e2e23196524827868d2e11ad7e87f5abe122cc01900fbf6cc",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/24/24a5ea6e86525b5b3519d909a5baa66ab35547ac332d103b2583c3d79a7f3e69.json",
+      "sha256": "24a5ea6e86525b5b3519d909a5baa66ab35547ac332d103b2583c3d79a7f3e69",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/24/24af3c08ef2ca8698f23c4e77cfff3d89443798b3d4ca86dd99290974c0c680c.json",
+      "sha256": "24af3c08ef2ca8698f23c4e77cfff3d89443798b3d4ca86dd99290974c0c680c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/5c/5c50d2246fdc89b175b8a9abdae98893b279013be81ccf6aae7beea806e86d69.json",
+      "sha256": "5c50d2246fdc89b175b8a9abdae98893b279013be81ccf6aae7beea806e86d69",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/10/101fddc16ce812d62661fd60450003586439b6944e3def9b680de592cf52170a.json",
+      "sha256": "101fddc16ce812d62661fd60450003586439b6944e3def9b680de592cf52170a",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/7f/7fd3b02b65b71dce7268a26bfd6e0f55b9cd869338908099108b849d3e7fbcab.json",
+      "sha256": "7fd3b02b65b71dce7268a26bfd6e0f55b9cd869338908099108b849d3e7fbcab",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/04/04a6e98fd738e7c82deff0e2f3aba225c3f53e40acb632715a0a1f1229be8500.json",
+      "sha256": "04a6e98fd738e7c82deff0e2f3aba225c3f53e40acb632715a0a1f1229be8500",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/94/943575d32456c390d9655c6217acd8c295a1bc74c8e198189f7d8f217e77b5b6.json",
+      "sha256": "943575d32456c390d9655c6217acd8c295a1bc74c8e198189f7d8f217e77b5b6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/2e/2e0e11bde5274e003956fdda3d10444061cf6ee9d131cd102de2ccd0d593fcbc.json",
+      "sha256": "2e0e11bde5274e003956fdda3d10444061cf6ee9d131cd102de2ccd0d593fcbc",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/2e/2ecff0167d235f23eea8b29095a9c5456e2c88d4e176e8e4b3495e5d9d465ed5.json",
+      "sha256": "2ecff0167d235f23eea8b29095a9c5456e2c88d4e176e8e4b3495e5d9d465ed5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/5e/5e7887748699462260675cd6f373ac706828a70f12a123d389797459ae7cfdaa.json",
+      "sha256": "5e7887748699462260675cd6f373ac706828a70f12a123d389797459ae7cfdaa",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/da/da6e638f8154ffd29440fc130bd3aae1f3bfbf1e697eb948e82a54d2159fe250.json",
+      "sha256": "da6e638f8154ffd29440fc130bd3aae1f3bfbf1e697eb948e82a54d2159fe250",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/e4/e4b289baf1decbe94d597deddd776f642afc5cceb5ccc7ee7556978ec2f9b8e2.json",
+      "sha256": "e4b289baf1decbe94d597deddd776f642afc5cceb5ccc7ee7556978ec2f9b8e2",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d3/d3417bc640106eb50cb9159bcd7bed6b3b4d7958e28452b9e0feea20dd99cc72.json",
+      "sha256": "d3417bc640106eb50cb9159bcd7bed6b3b4d7958e28452b9e0feea20dd99cc72",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d3/d3b93d751d7fbfc719710ba65b8bd2cb6b8aeda7150fd9ca507e4a54f4c9274d.json",
+      "sha256": "d3b93d751d7fbfc719710ba65b8bd2cb6b8aeda7150fd9ca507e4a54f4c9274d",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/03/0360d28f0cf33a824bd16c590d2449620ec100406d6f295d90bf20ad192704b8.json",
+      "sha256": "0360d28f0cf33a824bd16c590d2449620ec100406d6f295d90bf20ad192704b8",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/03/0351fa781140caeec51b484a0c99b1dda8bbd1bad71e0d98d9ba049e55694814.json",
+      "sha256": "0351fa781140caeec51b484a0c99b1dda8bbd1bad71e0d98d9ba049e55694814",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/03/037d32ea2cff441cc658203be108f82e68ba412002bab06847ce320c5ad0146e.json",
+      "sha256": "037d32ea2cff441cc658203be108f82e68ba412002bab06847ce320c5ad0146e",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/7b/7bfd45199f0f948081c8e8956cbac624bdbf070195ff7c8a9cf89a9a4c1e1621.json",
+      "sha256": "7bfd45199f0f948081c8e8956cbac624bdbf070195ff7c8a9cf89a9a4c1e1621",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c9/c97999ad267e5eec850066edf3c93581f645be834bbb15a192cdb050c2d3c794.json",
+      "sha256": "c97999ad267e5eec850066edf3c93581f645be834bbb15a192cdb050c2d3c794",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/7d/7d64161e753ed41c541e70edd3994264fc7ad240f970a968d92efba85beb6e5f.json",
+      "sha256": "7d64161e753ed41c541e70edd3994264fc7ad240f970a968d92efba85beb6e5f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/fd/fdef0b2a710438a38f936ee96292f49e94ae8503943fa0242f28bd5d62fc1c65.json",
+      "sha256": "fdef0b2a710438a38f936ee96292f49e94ae8503943fa0242f28bd5d62fc1c65",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/fd/fdec306f860aaf300815fc727146e4ab8c25813595140483dfe6071b915a607f.json",
+      "sha256": "fdec306f860aaf300815fc727146e4ab8c25813595140483dfe6071b915a607f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/4f/4f86b003c8f93f38f584966e38d9b933f1ab949eaee7a2b50f0d18969e6ac8a4.json",
+      "sha256": "4f86b003c8f93f38f584966e38d9b933f1ab949eaee7a2b50f0d18969e6ac8a4",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/32/32c73ea6276e1afd71b96832c15c84ef98b80c47cfd80df156da9112c3e13bca.json",
+      "sha256": "32c73ea6276e1afd71b96832c15c84ef98b80c47cfd80df156da9112c3e13bca",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/fe/fe49232e04029e45580c5182eddef3cb028c6c0ec50742e7c188f8c1cde9c3c8.json",
+      "sha256": "fe49232e04029e45580c5182eddef3cb028c6c0ec50742e7c188f8c1cde9c3c8",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/fe/fe92e95d1dfb41455f21e2db45b399fdca088f0ee1e25544dfcea1a5f8f8b853.json",
+      "sha256": "fe92e95d1dfb41455f21e2db45b399fdca088f0ee1e25544dfcea1a5f8f8b853",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a9/a96063d2230b505c0ac73c97cfe5e465789a2e4783a45fab5b30e7264e838612.json",
+      "sha256": "a96063d2230b505c0ac73c97cfe5e465789a2e4783a45fab5b30e7264e838612",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/81/815a35d02a56f41ef6bb49eaa9f7b7604acbcbb580bf1f168de4d8d433226076.json",
+      "sha256": "815a35d02a56f41ef6bb49eaa9f7b7604acbcbb580bf1f168de4d8d433226076",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/06/068d4baad1542ec737845680356a2c73c4642164369cdb55bad0fc890e89a847.json",
+      "sha256": "068d4baad1542ec737845680356a2c73c4642164369cdb55bad0fc890e89a847",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/12/12a23a0ce3136d046e5c6d5b5f7ba69903fe9fd0ce5ed602533d7517dde8a765.json",
+      "sha256": "12a23a0ce3136d046e5c6d5b5f7ba69903fe9fd0ce5ed602533d7517dde8a765",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/12/1250769d0685088a54cfdf0511269dee31e30a8cea4c05c975ba605b9c7667f4.json",
+      "sha256": "1250769d0685088a54cfdf0511269dee31e30a8cea4c05c975ba605b9c7667f4",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/e9/e91992d25150f5da40693364de39b7a2e6c3beff39646ae0dca0a4e1964396e7.json",
+      "sha256": "e91992d25150f5da40693364de39b7a2e6c3beff39646ae0dca0a4e1964396e7",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c2/c238d5c33b2baf313074bc851782e532203470016a8ff62651f6edb4037aa80a.json",
+      "sha256": "c238d5c33b2baf313074bc851782e532203470016a8ff62651f6edb4037aa80a",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ac/acba9e12d919f86b98ff4d08bf4de6622a2bdab56e4b516b4cd16c73c10de11c.json",
+      "sha256": "acba9e12d919f86b98ff4d08bf4de6622a2bdab56e4b516b4cd16c73c10de11c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/82/82fc76b48e5df7d504bd0725972298287a20ed4b37814d72b412b17b9cc09c64.json",
+      "sha256": "82fc76b48e5df7d504bd0725972298287a20ed4b37814d72b412b17b9cc09c64",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/82/82e04a17bac7f4985767cdba8126d16df2c07aa1b7b07f7f3054cc110a93b5d6.json",
+      "sha256": "82e04a17bac7f4985767cdba8126d16df2c07aa1b7b07f7f3054cc110a93b5d6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/bf/bf46a284fcccb706df6c316443447a89d8a52cfd06397076c858800b87d7d691.json",
+      "sha256": "bf46a284fcccb706df6c316443447a89d8a52cfd06397076c858800b87d7d691",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/bf/bf965a365e512f268b04c75999f01b09c8a7d30d474d5046bb23aeff75857d74.json",
+      "sha256": "bf965a365e512f268b04c75999f01b09c8a7d30d474d5046bb23aeff75857d74",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c7/c7cc5ca55daa523e1894c178ff1f796a1b074eec6290deb6e30d574ccc887caa.json",
+      "sha256": "c7cc5ca55daa523e1894c178ff1f796a1b074eec6290deb6e30d574ccc887caa",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/cf/cf8a61e318f677ee725914596a80dc678cb1e8022b8045b489fc34e25ff068a3.json",
+      "sha256": "cf8a61e318f677ee725914596a80dc678cb1e8022b8045b489fc34e25ff068a3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b4/b49a751676fc2ff957b583f3b0d098cee59589af773d3fa3a118ce25f7bdf3f0.json",
+      "sha256": "b49a751676fc2ff957b583f3b0d098cee59589af773d3fa3a118ce25f7bdf3f0",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b4/b415f01db0a8ff6f28c8867fda11d9f7a90025bce60de607edfe7738fe102676.json",
+      "sha256": "b415f01db0a8ff6f28c8867fda11d9f7a90025bce60de607edfe7738fe102676",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b4/b4f0fa5b0b8e0933b509daa010d3e70e80d0e9bfff43f21a7805ddad6a08aad5.json",
+      "sha256": "b4f0fa5b0b8e0933b509daa010d3e70e80d0e9bfff43f21a7805ddad6a08aad5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/71/71c78f7b645370d8a58f71f752c41f9236f860200610e7895385e1252214ff01.json",
+      "sha256": "71c78f7b645370d8a58f71f752c41f9236f860200610e7895385e1252214ff01",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ec/ecf492f5c67a9bf527540478b585e733e2441a63bccdd3f8d74039ff7d8f1138.json",
+      "sha256": "ecf492f5c67a9bf527540478b585e733e2441a63bccdd3f8d74039ff7d8f1138",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/64/64baaf6aa6d86d8138558e5c3ad365faa4bde3e0aa9e8b5ea44c63eb61e7dad6.json",
+      "sha256": "64baaf6aa6d86d8138558e5c3ad365faa4bde3e0aa9e8b5ea44c63eb61e7dad6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/64/64d41100d0fd949f8e0f05915cc6811192f5fcef020e487f07c7032fdf63d13f.json",
+      "sha256": "64d41100d0fd949f8e0f05915cc6811192f5fcef020e487f07c7032fdf63d13f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/eb/eb348fef4295536ea547609b165d3514a38c542fcaad379e4b19e1c0f8f89a63.json",
+      "sha256": "eb348fef4295536ea547609b165d3514a38c542fcaad379e4b19e1c0f8f89a63",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/02/021b1f865fcfd279f9f38a90b233ed4975622eaf304b2883ca82a39b506ed03c.json",
+      "sha256": "021b1f865fcfd279f9f38a90b233ed4975622eaf304b2883ca82a39b506ed03c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/30/30ea26e5636ab603c927affb9bfd6050ab986ab83fd112269f018f98189b5600.json",
+      "sha256": "30ea26e5636ab603c927affb9bfd6050ab986ab83fd112269f018f98189b5600",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/30/306a422dd1a37d85d52e2e7dfd75c1863f2e078f10d794834ca5c5f6db06bce4.json",
+      "sha256": "306a422dd1a37d85d52e2e7dfd75c1863f2e078f10d794834ca5c5f6db06bce4",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/30/3055852eb3b721530493b662f193d7708eb48009ba900167f6e5100b2897afdb.json",
+      "sha256": "3055852eb3b721530493b662f193d7708eb48009ba900167f6e5100b2897afdb",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/30/30a32abd562473a83eb20b0407c899538d3487170be4302c21a22200bdff3f35.json",
+      "sha256": "30a32abd562473a83eb20b0407c899538d3487170be4302c21a22200bdff3f35",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c3/c344002641ac2570d101d492014e9e2f353d1a08f68ab94751197868ea67de0f.json",
+      "sha256": "c344002641ac2570d101d492014e9e2f353d1a08f68ab94751197868ea67de0f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c3/c3bb9683cafa6a58a07750cec585c54f67cc70529ce4b3ff442fccd96fa27d6a.json",
+      "sha256": "c3bb9683cafa6a58a07750cec585c54f67cc70529ce4b3ff442fccd96fa27d6a",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/39/395888f48adf0227d80a8e287fe4e6b6a0f2a545b4f37e68e03b7e3c1808ab11.json",
+      "sha256": "395888f48adf0227d80a8e287fe4e6b6a0f2a545b4f37e68e03b7e3c1808ab11",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/0c/0c722468b68150aceaf8901ad05b8dc762f84326fb35543517393c49bc06ae72.json",
+      "sha256": "0c722468b68150aceaf8901ad05b8dc762f84326fb35543517393c49bc06ae72",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/11/11850033cac9e9beecd3ac9ed4c74ecb01e74e6a5da32e0df2393fafe9e3ec06.json",
+      "sha256": "11850033cac9e9beecd3ac9ed4c74ecb01e74e6a5da32e0df2393fafe9e3ec06",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/41/41a63ce729c0ca9fa3984ace8eaadc85c0ff42a64abcf229e763be8cf812df75.json",
+      "sha256": "41a63ce729c0ca9fa3984ace8eaadc85c0ff42a64abcf229e763be8cf812df75",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/37/37e8191910290f0056d2911e23b47a45a68c0878d71b6d53fbd79ff5da397a3e.json",
+      "sha256": "37e8191910290f0056d2911e23b47a45a68c0878d71b6d53fbd79ff5da397a3e",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d7/d7f6bbc76f10e2418c545e58e882cbb467b8c60d1fa2b02e4fd48fc706f24a5a.json",
+      "sha256": "d7f6bbc76f10e2418c545e58e882cbb467b8c60d1fa2b02e4fd48fc706f24a5a",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d7/d7f4dad8e610c301c490c1a9d2aac5f8eb0e3590dcb3a4cb40af1eb994574351.json",
+      "sha256": "d7f4dad8e610c301c490c1a9d2aac5f8eb0e3590dcb3a4cb40af1eb994574351",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/fc/fcb2c3c2931354fe47e251b986626168bb972d9279665489003aeda154c9aa4e.json",
+      "sha256": "fcb2c3c2931354fe47e251b986626168bb972d9279665489003aeda154c9aa4e",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/48/483e317ebce68c29f8990c8bb7c37edbb1edb2c357048e0c73c793da4d01461b.json",
+      "sha256": "483e317ebce68c29f8990c8bb7c37edbb1edb2c357048e0c73c793da4d01461b",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/98/9806261c60fca46e0cce97a1b6ac935384a266cebf485493f54ee130a279b0a6.json",
+      "sha256": "9806261c60fca46e0cce97a1b6ac935384a266cebf485493f54ee130a279b0a6",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/98/98089f8676075ed00ca0a540fc09ee976be3d16e7a55dafc753948b60b121c1e.json",
+      "sha256": "98089f8676075ed00ca0a540fc09ee976be3d16e7a55dafc753948b60b121c1e",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b0/b0fcae4818e517c7d0610a78e860448a5702b8d1ada56fa00fa46271caf20012.json",
+      "sha256": "b0fcae4818e517c7d0610a78e860448a5702b8d1ada56fa00fa46271caf20012",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b0/b01ba6de83ae8dd449a11c41721170b84ff2991f02533e54dc41ef4056adc3ba.json",
+      "sha256": "b01ba6de83ae8dd449a11c41721170b84ff2991f02533e54dc41ef4056adc3ba",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b0/b0a5aba642509d981c863f3d54214f07f59cdc7075090f5fad7bd1d1b7a57567.json",
+      "sha256": "b0a5aba642509d981c863f3d54214f07f59cdc7075090f5fad7bd1d1b7a57567",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/b0/b05c177f3fce1a6b416cb9e1e254151f57aa7857a07c4c0a14bcd79c2b486c9a.json",
+      "sha256": "b05c177f3fce1a6b416cb9e1e254151f57aa7857a07c4c0a14bcd79c2b486c9a",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/1c/1cb672059046b2dfd65fbd1a71aed03ed324f32e6a5057d3953b23a59dfbc083.json",
+      "sha256": "1cb672059046b2dfd65fbd1a71aed03ed324f32e6a5057d3953b23a59dfbc083",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/6e/6e09fb1531f6900e187b689204c860ff95626a2861fa35489d329c280b123c3b.json",
+      "sha256": "6e09fb1531f6900e187b689204c860ff95626a2861fa35489d329c280b123c3b",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/6e/6eff96253c7507f196ec07bb6976222bcb88f255dd5519a4a8452b89ab25d8cd.json",
+      "sha256": "6eff96253c7507f196ec07bb6976222bcb88f255dd5519a4a8452b89ab25d8cd",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/6e/6eb71c69cdc25f528b0aebaf123dbc0116bdd519e98f4e7a19be5885a515fa4f.json",
+      "sha256": "6eb71c69cdc25f528b0aebaf123dbc0116bdd519e98f4e7a19be5885a515fa4f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/bc/bcb219eca1c0d427e0b52bf5d488e63a47e836007faefeedc8537c494539fbf3.json",
+      "sha256": "bcb219eca1c0d427e0b52bf5d488e63a47e836007faefeedc8537c494539fbf3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/bc/bc303396d33196387bfa0b819a7b204bec2b1a78ac04b2a673745555c6eea131.json",
+      "sha256": "bc303396d33196387bfa0b819a7b204bec2b1a78ac04b2a673745555c6eea131",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d8/d8706ec7b4db5dd659bfe1434d40f48233845271acd8a41659aedab7b1b047e4.json",
+      "sha256": "d8706ec7b4db5dd659bfe1434d40f48233845271acd8a41659aedab7b1b047e4",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d8/d870f417aec28cb3e472fc54d5bcc84c7a3cd1e0b351e0b8c00414131aea71cd.json",
+      "sha256": "d870f417aec28cb3e472fc54d5bcc84c7a3cd1e0b351e0b8c00414131aea71cd",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/aa/aa75bbbda65dbcb6e8338c38e7898bb0f42a9c031f273feb71633776e62527fb.json",
+      "sha256": "aa75bbbda65dbcb6e8338c38e7898bb0f42a9c031f273feb71633776e62527fb",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/aa/aa6864aec5c0b92dd957d178e0dc916bb24c8c960389857022e185d27fdbe259.json",
+      "sha256": "aa6864aec5c0b92dd957d178e0dc916bb24c8c960389857022e185d27fdbe259",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/aa/aac9185ff12b27af77d8eb2dfebbe4d0506dec59b485c3cb10d21e6e45f98b8f.json",
+      "sha256": "aac9185ff12b27af77d8eb2dfebbe4d0506dec59b485c3cb10d21e6e45f98b8f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/20/20123cb21b513aa2ed440e7e3e1b7a38896aea37cdd59002271303941c2854d7.json",
+      "sha256": "20123cb21b513aa2ed440e7e3e1b7a38896aea37cdd59002271303941c2854d7",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/20/200d337fb34925db5f501399d3d5813118ad164ad0901613ef096152e0b0133b.json",
+      "sha256": "200d337fb34925db5f501399d3d5813118ad164ad0901613ef096152e0b0133b",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/73/73771fc48781b72f5043b1406a15d7c005909e4ceb1b3a3991cfa49dbc873c47.json",
+      "sha256": "73771fc48781b72f5043b1406a15d7c005909e4ceb1b3a3991cfa49dbc873c47",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/50/501869286fdd09b8e392d2cbcc24dbbdbcfa4fc6fa88f9aecd7a30b8b471f237.json",
+      "sha256": "501869286fdd09b8e392d2cbcc24dbbdbcfa4fc6fa88f9aecd7a30b8b471f237",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/69/69ff05b0340918d0170b984cf5d20e29874ef4a0303ef64e1c0152c78685639f.json",
+      "sha256": "69ff05b0340918d0170b984cf5d20e29874ef4a0303ef64e1c0152c78685639f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ae/ae53a0d99302c62280161bc47f4ef7280333048060df145c206a1bd850779342.json",
+      "sha256": "ae53a0d99302c62280161bc47f4ef7280333048060df145c206a1bd850779342",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/56/5689c7356722ff80446eabaa25c44f390f750a7cc8bd202bccc9aac4f9c49114.json",
+      "sha256": "5689c7356722ff80446eabaa25c44f390f750a7cc8bd202bccc9aac4f9c49114",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/56/56488ced7350310ced3ef8229645e655ddf061afda3e0e141d2c4398464bf338.json",
+      "sha256": "56488ced7350310ced3ef8229645e655ddf061afda3e0e141d2c4398464bf338",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/2b/2baa49cbb606223d2d324200e8bb21a1feb95b0542e908eae6a1d3dfa241efb2.json",
+      "sha256": "2baa49cbb606223d2d324200e8bb21a1feb95b0542e908eae6a1d3dfa241efb2",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/36/365f6089d099f5dae0b0c30ff9ae77ca2091277705d0232084c2548ae5d40ea5.json",
+      "sha256": "365f6089d099f5dae0b0c30ff9ae77ca2091277705d0232084c2548ae5d40ea5",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/36/36e40d0bf0dc84b62919105fc022e131ee97a4ba5ebcb0f8aa416ab2fa213b3b.json",
+      "sha256": "36e40d0bf0dc84b62919105fc022e131ee97a4ba5ebcb0f8aa416ab2fa213b3b",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ce/ce50a378cc1c58870a89a3715cb13bbcb9f94f8c0dde10f4f72b4b8f21ce1ebf.json",
+      "sha256": "ce50a378cc1c58870a89a3715cb13bbcb9f94f8c0dde10f4f72b4b8f21ce1ebf",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/ce/ce58900c2f135f44011cde2e21428f662970876c7cead63006899262b2d63dad.json",
+      "sha256": "ce58900c2f135f44011cde2e21428f662970876c7cead63006899262b2d63dad",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a5/a5006cbc6af06d53810edd64ea46c50a62d781cee2eed8d49ee3eb91b15a7610.json",
+      "sha256": "a5006cbc6af06d53810edd64ea46c50a62d781cee2eed8d49ee3eb91b15a7610",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a5/a52eae91f4c4d40f565ba382ec3f8d885fca1aa89165811cd99bae67a7f53ad1.json",
+      "sha256": "a52eae91f4c4d40f565ba382ec3f8d885fca1aa89165811cd99bae67a7f53ad1",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d4/d4e7ef00959b791ca026a7f3a81e8147d35883b704fde4b67d22497a9afd2d98.json",
+      "sha256": "d4e7ef00959b791ca026a7f3a81e8147d35883b704fde4b67d22497a9afd2d98",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d2/d2df8a6da28e9e0e0d6cd29b8614b1caf42a9350b43ea7a88bb00c1f4ff20fb1.json",
+      "sha256": "d2df8a6da28e9e0e0d6cd29b8614b1caf42a9350b43ea7a88bb00c1f4ff20fb1",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/d2/d23ea3142d57d700287bb33a0dc95e4ee918bc11729cee703f0d8bddec28b8b3.json",
+      "sha256": "d23ea3142d57d700287bb33a0dc95e4ee918bc11729cee703f0d8bddec28b8b3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/7c/7caf3c88323c62b7f182588f432605df0a66dc2ed963085091fc383c598cf1b3.json",
+      "sha256": "7caf3c88323c62b7f182588f432605df0a66dc2ed963085091fc383c598cf1b3",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/7c/7cb5f47d32977bfbfe4ba46c501129ffffc56a7fc476461d099103d00f75f49a.json",
+      "sha256": "7cb5f47d32977bfbfe4ba46c501129ffffc56a7fc476461d099103d00f75f49a",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/7c/7ca715b84878b019eb3a65784b045ed76a52acc093a90b9551c71478d4c59681.json",
+      "sha256": "7ca715b84878b019eb3a65784b045ed76a52acc093a90b9551c71478d4c59681",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/5a/5a12b69d0778077482d5cdae054abf797bb512063e98d3cd036002ce44f7f364.json",
+      "sha256": "5a12b69d0778077482d5cdae054abf797bb512063e98d3cd036002ce44f7f364",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/5a/5a5c2bad0e498a7fb3d8508dbfbdce014e250848ba17eab25d8f682740a6ffa4.json",
+      "sha256": "5a5c2bad0e498a7fb3d8508dbfbdce014e250848ba17eab25d8f682740a6ffa4",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/61/61462fc3e107deecf9e08d18ab3f4f2f04ecbfae19b1d4726e5ebf4a94f2bbf9.json",
+      "sha256": "61462fc3e107deecf9e08d18ab3f4f2f04ecbfae19b1d4726e5ebf4a94f2bbf9",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/61/611644ada9a503883e79af0bd4a6acd7a10709a6ed3d3c4dffa6071254f7283f.json",
+      "sha256": "611644ada9a503883e79af0bd4a6acd7a10709a6ed3d3c4dffa6071254f7283f",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/91/91a36cf258b078a44e1fc2165714031207c641c302c2f00e5d2a93cbf70b4fd0.json",
+      "sha256": "91a36cf258b078a44e1fc2165714031207c641c302c2f00e5d2a93cbf70b4fd0",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/67/674d158230d00180b2a99d3f3524683818abd9533923d42362d03cdf04a64ab0.json",
+      "sha256": "674d158230d00180b2a99d3f3524683818abd9533923d42362d03cdf04a64ab0",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/74/741f111099a78efbba9deba34c305ba171a832717920fba4a020c1c7738680d1.json",
+      "sha256": "741f111099a78efbba9deba34c305ba171a832717920fba4a020c1c7738680d1",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c6/c6583a027dd5bdc16f3bd354f0f4d5744138d17064d3ea07bb2aaa644980f1bc.json",
+      "sha256": "c6583a027dd5bdc16f3bd354f0f4d5744138d17064d3ea07bb2aaa644980f1bc",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c6/c6f2146edb1f37f2370fb1a100e82746021714b4c7e50ec5b1acad0eb1dd69dd.json",
+      "sha256": "c6f2146edb1f37f2370fb1a100e82746021714b4c7e50ec5b1acad0eb1dd69dd",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/c6/c6327f93bf6c015f49e39f22f123680f86d68603319e838e928913f77c5ab456.json",
+      "sha256": "c6327f93bf6c015f49e39f22f123680f86d68603319e838e928913f77c5ab456",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/a4/a4d12099c2325ee569d01895505d9f1b6e7fe4c17f5d1a1ade1bd67599eaca44.json",
+      "sha256": "a4d12099c2325ee569d01895505d9f1b6e7fe4c17f5d1a1ade1bd67599eaca44",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/08/08fa0a02763083da30e9b6d25f102f58cdaae97f006f2be06c2d20d693acdd37.json",
+      "sha256": "08fa0a02763083da30e9b6d25f102f58cdaae97f006f2be06c2d20d693acdd37",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/08/089ebb07faedc288c67819ebee24c2d8b0d179ec3c756fb3168c2219d0f56482.json",
+      "sha256": "089ebb07faedc288c67819ebee24c2d8b0d179ec3c756fb3168c2219d0f56482",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/87/873dbfd9c10f58c2d28c45ff6dc3c01b47f8c5f694405b6aba315fc12dff92c1.json",
+      "sha256": "873dbfd9c10f58c2d28c45ff6dc3c01b47f8c5f694405b6aba315fc12dff92c1",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/3e/3eace72de55944b4b8c71ef63fb18c77fdf727ec9575c1d1b18a8c85348222e7.json",
+      "sha256": "3eace72de55944b4b8c71ef63fb18c77fdf727ec9575c1d1b18a8c85348222e7",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/80/80f6118d74d2674eeeae7f1fe51323c0f23358cc733fa9adb7384d9b4a4268a8.json",
+      "sha256": "80f6118d74d2674eeeae7f1fe51323c0f23358cc733fa9adb7384d9b4a4268a8",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/80/80ff2c1b1e346456bae20f5174be34f4abcaa2031348e0f6adcd38046f77894e.json",
+      "sha256": "80ff2c1b1e346456bae20f5174be34f4abcaa2031348e0f6adcd38046f77894e",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/80/802feeed80ae17cb04004979fd668bbe5e4c945cfeb6c3f75c0620d65705fc1b.json",
+      "sha256": "802feeed80ae17cb04004979fd668bbe5e4c945cfeb6c3f75c0620d65705fc1b",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/1b/1bf1028181cf37b68da01aa2a033dd136878197bcc729cd07ad2067a6380edf1.json",
+      "sha256": "1bf1028181cf37b68da01aa2a033dd136878197bcc729cd07ad2067a6380edf1",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/23/2311d5efb7385f333886b01497716b94f21fc49aefa3082e9219651a8c4f82dc.json",
+      "sha256": "2311d5efb7385f333886b01497716b94f21fc49aefa3082e9219651a8c4f82dc",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/15/157eccf4994535bdc65d7bb4769b08f1bd890ee852fcc31bc7ac5041134e74cf.json",
+      "sha256": "157eccf4994535bdc65d7bb4769b08f1bd890ee852fcc31bc7ac5041134e74cf",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    },
+    {
+      "name": "anything-frontend-2026-11-21/research/cas/objects/15/150a35204326fba98f4ef2b3409215aee9d944461ebfdc5666c0baa17be9f87c.json",
+      "sha256": "150a35204326fba98f4ef2b3409215aee9d944461ebfdc5666c0baa17be9f87c",
+      "name_matches_hash": true,
+      "schema": "skill-candidate/v1",
+      "promoted": false,
+      "evaluation_connected": false
+    }
+  ],
+  "note": "Historical archive only. No R-ASI evaluator execution or promotion inferred. Current Git remains authoritative."
+}

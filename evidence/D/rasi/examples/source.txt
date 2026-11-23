@@ -1,0 +1,4 @@
+# Illustrative decomposition input only
+Record the initial state before inspecting an interface.
+Record the target state and observed result separately.
+Do not infer successful interaction from a screenshot alone.

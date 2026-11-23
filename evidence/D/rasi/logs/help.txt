@@ -1,0 +1,22 @@
+started_at: 2026-11-23T06:08:46.698879+00:00
+finished_at: 2026-11-23T06:08:46.779801+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "--help"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.080845
+--- stdout ---
+usage: rasi [-h] [--root ROOT] [--version]
+            {verify,candidate,cas-store,cas-verify,pipeline,lock,policy-check,cost-add,cost-report,campaign-check,resume-check,experience-add,experience-invalidate,experience-restore,query-check,execute,evaluate,promote}
+            ...
+
+sankai成果物を扱う薄い接続CLI
+
+positional arguments:
+  {verify,candidate,cas-store,cas-verify,pipeline,lock,policy-check,cost-add,cost-report,campaign-check,resume-check,experience-add,experience-invalidate,experience-restore,query-check,execute,evaluate,promote}
+
+options:
+  -h, --help            show this help message and exit
+  --root ROOT           repo root (既定cwd)
+  --version             show program's version number and exit
+--- stderr ---

@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:21:42.473383+00:00
+finished_at: 2026-11-23T06:21:42.592658+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "pipeline", "--sankai", "inputs/decomposition.json", "--store", "cas"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.119262
+--- stdout ---
+pipeline成功: /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi/.ga/receipts/pipeline-cada55551a68160056e2c9d7c2a46ce35bf47bdb366de26b0da1c08952532134.json
+--- stderr ---

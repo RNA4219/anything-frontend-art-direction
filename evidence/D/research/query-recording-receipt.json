@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "/workspace/scratch/a50c340f4e5f/tooling/imozuru/skills/imozuru/scripts/digest.py",
+    "add",
+    "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/research",
+    "--round",
+    "0",
+    "--by",
+    "session-D-sources"
+  ],
+  "exit_code": 0,
+  "stdout": "4本を /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/research/queries.jsonl に足した（ヒット 4件）\n",
+  "stderr": ""
+}

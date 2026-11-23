@@ -1,0 +1,114 @@
+{
+  "schema": "D-rasi-final-recording-summary/v1",
+  "campaign_id": "anything-frontend-D-20261123",
+  "decision": "HOLD",
+  "phase": "final-v1",
+  "experience_id": "D-final-evidence-20261123-02",
+  "experience_path": ".ga/experiences/D-final-evidence-20261123-02.json",
+  "previous_experience_id": "D-preliminary-evidence-20261123-01",
+  "final_manifest": {
+    "path": "external-evidence-final-v1.json",
+    "sha256": "e7947ae096731d01991121da2499cd5abb60fe7be46bc40caa777f7e4e954bcc",
+    "artifact_count": 31
+  },
+  "final_receipt": {
+    "path": ".ga/receipts/experience-add-a016ed193481cbe72a705f53dfa1bce646972b7fe13a88a3df66a1ae87d2686e.json",
+    "sha256": "a016ed193481cbe72a705f53dfa1bce646972b7fe13a88a3df66a1ae87d2686e"
+  },
+  "execution_results": {
+    "snapshot_freeze_exit_code": 0,
+    "artifact_manifest_verify_exit_code": 0,
+    "artifact_manifest_quality_evaluated": false,
+    "experience_add_exit_code": 0,
+    "formal_promotion_executed": false
+  },
+  "counts": {
+    "native_receipts_total": 9,
+    "native_receipts_added": 1,
+    "rasi_cli_observations_total": 22,
+    "rasi_cli_observations_added": 1,
+    "external_verification_observations_total": 3,
+    "external_verification_observations_added": 2,
+    "json_logs_total": 25,
+    "experience_records_total": 2,
+    "experience_records_added": 1,
+    "cost_events_total": 4,
+    "cas_objects_total": 1
+  },
+  "comparison_observations": {
+    "baseline_detection": {
+      "numerator": 3,
+      "denominator": 3
+    },
+    "candidate_detection": {
+      "numerator": 3,
+      "denominator": 3
+    },
+    "baseline_actionability": {
+      "numerator": 18,
+      "denominator": 18,
+      "fields": [
+        "location",
+        "symptom",
+        "basis",
+        "impact",
+        "repair_direction",
+        "reproduction"
+      ]
+    },
+    "candidate_actionability": {
+      "numerator": 18,
+      "denominator": 18,
+      "fields": [
+        "location",
+        "symptom",
+        "basis",
+        "impact",
+        "repair_direction",
+        "reproduction"
+      ]
+    },
+    "baseline_responsibility_owner": {
+      "numerator": 0,
+      "denominator": 3
+    },
+    "candidate_responsibility_owner": {
+      "numerator": 3,
+      "denominator": 3
+    },
+    "detection_improvement_established": false,
+    "trial_count_per_condition": 1
+  },
+  "runner_validation": {
+    "corrections": 3,
+    "synthetic_controls": 8,
+    "real_fixture_browser": "BLOCKED"
+  },
+  "portable_replay": {
+    "artifact_count": 11,
+    "raw_report_bytes_modified": false,
+    "initial_attempt_retained": true,
+    "final_replay_success": "three original report-gate results and manifest integrity reproduced; not a UI quality PASS"
+  },
+  "preservation": {
+    "previous_artifacts_checked": 35,
+    "previous_artifacts_unchanged": 35,
+    "details": "final-preservation-result.json"
+  },
+  "independence": {
+    "separate_context_adjudication": true,
+    "condition_labels_withheld": true,
+    "full_blinding_established": false,
+    "protected_holdout_established": false,
+    "os_isolation_established": false,
+    "formal_independent_receipt": null
+  },
+  "cost_scope": "Existing four-event ledger preserved. Final CLI wall time exists in its command observation; no total token/USD measurement or campaign cost estimate is inferred.",
+  "limitations": [
+    "Different review contexts and anonymized adjudication are not OS-protected blind evaluation.",
+    "The shared filesystem did not provide a protected oracle or holdout boundary.",
+    "One trial per condition, unknown exact model snapshot and sampling, descriptive comparison only.",
+    "Browser runner fixes are verified by synthetic controls; actual local fixture browser remains blocked.",
+    "Successful artifact or report contracts do not establish general skill effectiveness or product quality."
+  ]
+}

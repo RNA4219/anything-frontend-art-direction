@@ -1,0 +1,1 @@
+{"command":"cost-add","payload":{"amount_raw":1.4102408359999572,"event_id":"D-cli-wall-observed-01","measured":true,"resource":"wall_seconds"},"rasi_version":"0.0.2","schema":"rasi-receipt/v1"}

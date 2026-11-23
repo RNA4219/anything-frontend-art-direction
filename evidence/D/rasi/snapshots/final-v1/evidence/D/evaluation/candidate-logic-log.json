@@ -1,0 +1,323 @@
+{
+  "schema": "candidate-source-logic-log/v1",
+  "created_at": "2026-11-23T06:26:14.932Z",
+  "node": "v24.22.3",
+  "os": "linux",
+  "engine": "minimal DOM logic harness; inline JavaScript extracted without modification",
+  "limitations": [
+    "No browser was started.",
+    "No CSS or real DOM layout.",
+    "No native form validity; invalid-input submission is deliberately not tested.",
+    "No focus, actual click, keyboard, screenshot, accessibility tree, or assistive-technology observation.",
+    "Timers are manually drained; requested delay is recorded but wall-clock latency is not measured.",
+    "FormData and reset are stubs for the three specified inputs; the form reset consequence is additionally supported by source and HTML Standard."
+  ],
+  "artifacts": [
+    {
+      "path": "evaluation/common/subject/registration.html",
+      "sha256": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd"
+    },
+    {
+      "path": "evaluation/common/subject/requests.html",
+      "sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7"
+    }
+  ],
+  "records": [
+    {
+      "id": "REG-NORMAL",
+      "engine": "minimal DOM logic harness",
+      "before_completion": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "0",
+        "status": "登録しています…",
+        "fail": false,
+        "queued": 1
+      },
+      "timer_delay_requested_ms": [
+        350
+      ],
+      "after": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "1",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-001",
+        "fail": false,
+        "queued": 0
+      }
+    },
+    {
+      "id": "REG-ERROR-REENTRY",
+      "engine": "minimal DOM logic harness",
+      "after_failure": {
+        "name": "",
+        "email": "",
+        "seats": "1",
+        "count": "0",
+        "status": "送信に失敗しました。",
+        "fail": false,
+        "queued": 0
+      },
+      "recovery_action": "manually re-enter the original three input values; invoke submit handler again",
+      "after_reentry_retry": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "1",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-001",
+        "fail": false,
+        "queued": 0
+      }
+    },
+    {
+      "id": "REG-REPEAT",
+      "engine": "minimal DOM logic harness",
+      "method": "Invoke captured submit listener twice before draining its scheduled callbacks. No click/keyboard event was simulated.",
+      "pending": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "0",
+        "status": "登録しています…",
+        "fail": false,
+        "queued": 2
+      },
+      "after": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "2",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-002",
+        "fail": false,
+        "queued": 0
+      }
+    },
+    {
+      "id": "REG-VALID-1",
+      "engine": "minimal DOM logic harness",
+      "native_validation": "not implemented; handler receives a known valid payload",
+      "after": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "1",
+        "count": "1",
+        "status": "確認 太郎様、1名の参加を受け付けました。受付番号：C-001",
+        "fail": false,
+        "queued": 0
+      }
+    },
+    {
+      "id": "REG-VALID-8",
+      "engine": "minimal DOM logic harness",
+      "native_validation": "not implemented; handler receives a known valid payload",
+      "after": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "8",
+        "count": "1",
+        "status": "確認 太郎様、8名の参加を受け付けました。受付番号：C-001",
+        "fail": false,
+        "queued": 0
+      }
+    },
+    {
+      "id": "LIST-NORMAL",
+      "engine": "minimal DOM logic harness",
+      "trace": [
+        {
+          "action": "initial source evaluation",
+          "summary": "8件の依頼",
+          "page": "1 / 3",
+          "rows": [
+            [
+              "R-101",
+              "湯のみ制作",
+              "処理待ち"
+            ],
+            [
+              "R-102",
+              "大皿の修理",
+              "完了"
+            ],
+            [
+              "R-103",
+              "花器の制作",
+              "完了"
+            ]
+          ],
+          "prevDisabled": true,
+          "nextDisabled": false,
+          "query": "",
+          "filter": "all"
+        },
+        {
+          "action": "invoke next handler",
+          "summary": "8件の依頼",
+          "page": "2 / 3",
+          "rows": [
+            [
+              "R-104",
+              "夫婦茶碗",
+              "処理待ち"
+            ],
+            [
+              "R-105",
+              "急須の釉薬確認",
+              "完了"
+            ],
+            [
+              "R-106",
+              "小皿セット",
+              "完了"
+            ]
+          ],
+          "prevDisabled": false,
+          "nextDisabled": false,
+          "query": "",
+          "filter": "all"
+        },
+        {
+          "action": "invoke next handler",
+          "summary": "8件の依頼",
+          "page": "3 / 3",
+          "rows": [
+            [
+              "R-107",
+              "茶器の試作品",
+              "完了"
+            ],
+            [
+              "R-108",
+              "展示用の器",
+              "完了"
+            ]
+          ],
+          "prevDisabled": false,
+          "nextDisabled": true,
+          "query": "",
+          "filter": "all"
+        }
+      ]
+    },
+    {
+      "id": "LIST-FILTER-AFTER-PAGE",
+      "engine": "minimal DOM logic harness",
+      "after_filter": {
+        "summary": "2件の依頼",
+        "page": "3 / 1",
+        "rows": [],
+        "prevDisabled": false,
+        "nextDisabled": true,
+        "query": "",
+        "filter": "待ち"
+      },
+      "after_prev_once": {
+        "summary": "2件の依頼",
+        "page": "2 / 1",
+        "rows": [],
+        "prevDisabled": false,
+        "nextDisabled": true,
+        "query": "",
+        "filter": "待ち"
+      },
+      "after_prev_twice": {
+        "summary": "2件の依頼",
+        "page": "1 / 1",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-104",
+            "夫婦茶碗",
+            "処理待ち"
+          ]
+        ],
+        "prevDisabled": true,
+        "nextDisabled": true,
+        "query": "",
+        "filter": "待ち"
+      }
+    },
+    {
+      "id": "LIST-EMPTY-CLEAR",
+      "engine": "minimal DOM logic harness",
+      "empty": {
+        "summary": "0件の依頼",
+        "page": "1 / 1",
+        "rows": [],
+        "prevDisabled": true,
+        "nextDisabled": true,
+        "query": "存在しない依頼",
+        "filter": "all"
+      },
+      "after_clear": {
+        "summary": "8件の依頼",
+        "page": "1 / 3",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-102",
+            "大皿の修理",
+            "完了"
+          ],
+          [
+            "R-103",
+            "花器の制作",
+            "完了"
+          ]
+        ],
+        "prevDisabled": true,
+        "nextDisabled": false,
+        "query": "",
+        "filter": "all"
+      }
+    },
+    {
+      "id": "LIST-SEARCH-AFTER-PAGE",
+      "engine": "minimal DOM logic harness",
+      "after_query": {
+        "summary": "1件の依頼",
+        "page": "2 / 1",
+        "rows": [],
+        "prevDisabled": false,
+        "nextDisabled": true,
+        "query": "湯のみ",
+        "filter": "all"
+      },
+      "after_clear": {
+        "summary": "8件の依頼",
+        "page": "1 / 3",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-102",
+            "大皿の修理",
+            "完了"
+          ],
+          [
+            "R-103",
+            "花器の制作",
+            "完了"
+          ]
+        ],
+        "prevDisabled": true,
+        "nextDisabled": false,
+        "query": "",
+        "filter": "all"
+      }
+    }
+  ]
+}

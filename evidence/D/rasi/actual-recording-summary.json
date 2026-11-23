@@ -1,0 +1,80 @@
+{
+  "schema": "D-rasi-actual-recording-summary/v1",
+  "campaign_id": "anything-frontend-D-20261123",
+  "decision": "HOLD",
+  "source": {
+    "path": "inputs/source-decomposition.md",
+    "sha256": "08f82dee513f5faf8f2c8fb2c3fa19ebc1304b4c5271520d812bb04c83129e6a",
+    "line_count": 213,
+    "original_path": "evidence/D/decomposition.md",
+    "description": "Compiled sankai extraction of existing instructions plus D operational contracts, not primary source text."
+  },
+  "candidate": {
+    "cas_sha256": "37b43571a69d9a6eccb2f6a17e011baafa425738d014fc7649a201412c387358",
+    "candidate_id": "1778284f75f9d348edfb33f41fe17aa725ef3be9597eb035053087609f9d186b",
+    "units": 10,
+    "common_conditions": 1,
+    "unresolved": 3,
+    "trust": "UNTRUSTED_CANDIDATE",
+    "status": "quarantined",
+    "promoted": false
+  },
+  "external_evidence_manifest": {
+    "path": "external-evidence-manifest.json",
+    "sha256": "3c874b7c493bf0ae1be5e4383a9e28af4ac3dce9ec7f8680f4f9df9a706a0a73",
+    "artifact_count": 16,
+    "contract_valid": true
+  },
+  "observations": {
+    "gate_unit_tests_passed": 56,
+    "minimal_dom_logic_probes": 10,
+    "local_fixture_browser_status": "BLOCKED",
+    "local_fixture_browser_not_run": 8,
+    "existing_public_examples_observed": 2,
+    "final_baseline_candidate_comparison": "not frozen/included at this preliminary stage"
+  },
+  "native_receipts": [
+    ".ga/receipts/cas-verify-d3d8eea2e661bd726b973a38b779f55baf131535dea1cc686d86bb3fac16924c.json",
+    ".ga/receipts/cost-add-24fb9280ba4b1bbfc441af168c421208c61a93fe443f9bc9101adaddc7793370.json",
+    ".ga/receipts/cost-add-80df3ae7df6909fa433da750d27013c35f6709bf9c6b94f4b304fa386de3b63a.json",
+    ".ga/receipts/cost-add-cbf570203967386f52f4442ef1d8f231811acbfed99bdc11e271f7688007cb0b.json",
+    ".ga/receipts/cost-add-d4e81e63ebf0442015151ae1c03237f158e4efaa6278a67e06c878ddb748795e.json",
+    ".ga/receipts/experience-add-493f6c21aefcc5659b884ed14db9cef706621678cfa70d2cf4d45cd6f2853809.json",
+    ".ga/receipts/pipeline-cada55551a68160056e2c9d7c2a46ce35bf47bdb366de26b0da1c08952532134.json",
+    ".ga/receipts/verify-b35fbd6779d74c801729a142c32409157abdc702d8bef2e49fef523814432973.json"
+  ],
+  "supported_commands_executed": {
+    "verify": 0,
+    "pipeline": 0,
+    "cas-verify": 0,
+    "experience-add": 0,
+    "cost-add": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "campaign-check": 2,
+    "cost-report": 2
+  },
+  "cost": {
+    "measured_cli_observations": 16,
+    "measured_child_process_wall_seconds": 1.4102408359999572,
+    "wall_event": "inputs/cost-cli-wall.json",
+    "unmeasured": [
+      "input_tokens",
+      "output_tokens",
+      "external_api USD"
+    ],
+    "unknown_amount_encoding": "amount_raw=0 is only a schema-required placeholder under measured=false; actual_value=null. It is not a zero-cost measurement.",
+    "cost_report": "budget assessment unavailable, exit 2",
+    "scope": "Observed child process time only. Recording overhead and later calls are not included."
+  },
+  "limitations": [
+    "R-ASI is a control/recording plane; no automatic LLM improvement, execution, independent evaluation, or promotion occurred.",
+    "Native campaign/v1 status=hold permits recording existing costs but campaign-check fails on genuinely missing runtime image digest and evaluation policy.",
+    "No protected independent blind evaluation was performed.",
+    "Minimal DOM probes do not cover real CSS/layout/focus/native form validation.",
+    "Public browser checks are pre-existing pages, not candidate fixtures."
+  ]
+}

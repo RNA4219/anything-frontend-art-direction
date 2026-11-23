@@ -1,0 +1,67 @@
+{
+  "schema": "design-qa-public-smoke/v1",
+  "target_scope": "Published pre-existing examples; NOT candidate fixture validation",
+  "environment": {
+    "surface": "CUA cloud Chromium",
+    "viewport": [
+      1363,
+      936
+    ],
+    "dpr": 1,
+    "browser_version": "not exposed",
+    "build_sha": "Published URL only; Git equality not established"
+  },
+  "scenarios": [
+    {
+      "url": "https://rna4219.github.io/anything-frontend-art-direction/examples/shiomachi-film/",
+      "actions": [
+        "select 9.19",
+        "expand 群青航路 synopsis",
+        "collapse synopsis",
+        "select 9.20"
+      ],
+      "observed": [
+        "9.19 shows 18:30 群青航路 and 20:15 赤い帆の日",
+        "synopsis text appears and disappears",
+        "9.20 shows 18:30 赤い帆の日 and 20:05 凪のあと"
+      ],
+      "status": "observed_pass",
+      "evidence": [
+        "film-expanded.jpg",
+        "film-collapsed.jpg",
+        "film-expanded.txt",
+        "film-collapsed.txt"
+      ]
+    },
+    {
+      "url": "https://rna4219.github.io/anything-frontend-art-direction/examples/dead-air-fm/",
+      "actions": [
+        "turn motion off",
+        "open station info",
+        "Escape",
+        "select 92.4",
+        "stop reception"
+      ],
+      "observed": [
+        "modal has close-button focus",
+        "Escape restores focus to 放送局について",
+        "92.4 MHz Ghost Relay selected; receive state true",
+        "stop restores listen unchecked and stopped status"
+      ],
+      "status": "observed_pass",
+      "evidence": [
+        "radio-modal.jpg",
+        "radio-modal.txt",
+        "radio-selected.txt",
+        "radio-stopped.jpg",
+        "radio-stopped.txt"
+      ]
+    }
+  ],
+  "limitations": [
+    "No candidate fixtures were opened here.",
+    "No browser viewport emulation or full accessibility conformance audit was performed.",
+    "Audio state was observed in UI; acoustic playback quality not evaluated.",
+    "Two existing public examples are smoke checks, not controlled baseline/candidate trials."
+  ]
+}

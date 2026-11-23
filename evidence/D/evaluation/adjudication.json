@@ -1,0 +1,580 @@
+{
+  "schema": "design-qa-exploratory-adjudication/v1",
+  "language": "ja",
+  "input_scope": {
+    "root": "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/evaluation/adjudication-inputs",
+    "read_files": [
+      "Q/report-review.md",
+      "Q/report-source-checks.json",
+      "R/report-gate-results.json",
+      "R/report-logic-log.json",
+      "R/report-logic-probe.cjs",
+      "R/report-manifest-gate.json",
+      "R/report-manifest.json",
+      "R/report-registration-desktop.json",
+      "R/report-requests-desktop.json",
+      "R/report-requests-narrow.json",
+      "R/report-review.md",
+      "README.md",
+      "logic-probes.json",
+      "manifest.json",
+      "rubric.json",
+      "subjects/registration.html",
+      "subjects/requests.html",
+      "subjects/task-brief.md"
+    ],
+    "external_paths_followed": false,
+    "parent_assignment_original_reviews_skills_parent_evidence_read": false,
+    "browser_used": false,
+    "external_search_used": false,
+    "git_used": false,
+    "input_modified": false,
+    "harness_or_gate_rerun": false,
+    "output_files_only": [
+      "adjudication.md",
+      "adjudication.json"
+    ]
+  },
+  "independence": {
+    "fresh_evaluation_context": true,
+    "condition_labels_withheld": true,
+    "full_blinding_established": false,
+    "protected_holdout_established": false,
+    "os_isolation_established": false,
+    "format_may_reveal_method": true,
+    "trial_count_per_condition": 1,
+    "rubric_frozen_after_first_review": true,
+    "sampling_provider_version_cost_observable": false,
+    "scope": "exploratory comparison; not independent efficacy experiment"
+  },
+  "ground_truth": {
+    "known_cases": [
+      "REG-DUP",
+      "REG-LOSS",
+      "LIST-PAGE"
+    ],
+    "denominator": 3,
+    "additional_known_truth_cases_added": false,
+    "hypothesis": {
+      "id": "LIST-OVERLAP",
+      "rendering_truth": "unknown"
+    },
+    "probe_pass_means_product_acceptance": false
+  },
+  "reviews": {
+    "Q": {
+      "case_detection": {
+        "numerator": 3,
+        "denominator": 3,
+        "cases": [
+          {
+            "id": "REG-DUP",
+            "matched": true,
+            "finding_id": "REG-01",
+            "log_record": "registration-two-handlers-before-resolution",
+            "match_type": "expected_behavior_trace",
+            "actionability": {
+              "numerator": 6,
+              "denominator": 6,
+              "elements": {
+                "location": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L47"
+                },
+                "symptom": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L45,49"
+                },
+                "basis": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L47,49"
+                },
+                "impact": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L45"
+                },
+                "repair_direction": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L53"
+                },
+                "reproduction": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L49,51"
+                }
+              }
+            }
+          },
+          {
+            "id": "REG-LOSS",
+            "matched": true,
+            "finding_id": "REG-02",
+            "log_record": "registration-failure",
+            "match_type": "expected_behavior_trace",
+            "actionability": {
+              "numerator": 6,
+              "denominator": 6,
+              "elements": {
+                "location": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L61"
+                },
+                "symptom": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L59,63"
+                },
+                "basis": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L59,61,63"
+                },
+                "impact": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L59"
+                },
+                "repair_direction": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L67"
+                },
+                "reproduction": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L63,65"
+                }
+              }
+            }
+          },
+          {
+            "id": "LIST-PAGE",
+            "matched": true,
+            "finding_id": "LIST-01",
+            "log_record": "requests-filter-second-page",
+            "match_type": "expected_behavior_trace",
+            "actionability": {
+              "numerator": 6,
+              "denominator": 6,
+              "elements": {
+                "location": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L75"
+                },
+                "symptom": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L73,79-87"
+                },
+                "basis": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L75,79-87"
+                },
+                "impact": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L73,87"
+                },
+                "repair_direction": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L91"
+                },
+                "reproduction": {
+                  "present": true,
+                  "evidence": "Q/report-review.md L89"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "actionability": {
+        "numerator": 18,
+        "denominator": 18,
+        "fields": [
+          "location",
+          "symptom",
+          "basis",
+          "impact",
+          "repair_direction",
+          "reproduction"
+        ]
+      },
+      "unsupported_confirmations": {
+        "count": 0,
+        "unit": "distinct target finding or observation asserted as observed outside the declared evidence surface",
+        "scope": "supplied review and companion records; does not certify every statement or external-source retrieval",
+        "claims": []
+      },
+      "responsibility_assignment": {
+        "explicit_primary_category_owner_pairs": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "note": "機能問題という説明はあるが、所見ごとの一次責務とownerの対は明示しない。"
+      },
+      "uncertainty_control": {
+        "actual_script_model_distinguished_from_browser": true,
+        "native_validation_not_claimed_observed": true,
+        "visual_hypothesis_unconfirmed": true,
+        "human_completion_rate_not_claimed": true
+      },
+      "hypothesis_case": {
+        "id": "LIST-OVERLAP",
+        "classification": "unconfirmed visual risk",
+        "rendering_truth": "unknown",
+        "counted_as_true_or_false_positive": false
+      },
+      "negative_controls": {
+        "approved_art_not_defect": true,
+        "true_zero_results_not_automatically_dead_end": true,
+        "native_constraints_not_assumed_absent": true
+      },
+      "artifact_binding": {
+        "html_path_hashes": 2,
+        "requirements_hash_present": false,
+        "evidence_log_available": true,
+        "harness_supplied": false,
+        "evidence_manifest_supplied_by_review": false,
+        "reproduction_rerun_by_adjudicator": false,
+        "evidence_refs": [
+          "Q/report-source-checks.json.inputs",
+          "Q/report-source-checks.json.method",
+          "Q/report-review.md L31-39"
+        ]
+      },
+      "gate_discipline": {
+        "formal_three_way_separation": false,
+        "target_quality_pass_claimed": false,
+        "skill_promotion_claimed": false,
+        "browser_acceptance": "unconfirmed",
+        "note": "優先度・修正後条件・未確認事項を明示。Skill昇格の状態は未定義であり、誤昇格の観測ではない。"
+      }
+    },
+    "R": {
+      "case_detection": {
+        "numerator": 3,
+        "denominator": 3,
+        "cases": [
+          {
+            "id": "REG-DUP",
+            "matched": true,
+            "finding_id": "D-REG-02",
+            "log_record": "REG-REPEAT",
+            "match_type": "expected_behavior_trace",
+            "actionability": {
+              "numerator": 6,
+              "denominator": 6,
+              "elements": {
+                "location": {
+                  "present": true,
+                  "evidence": "R/report-review.md L51"
+                },
+                "symptom": {
+                  "present": true,
+                  "evidence": "R/report-review.md L49,55"
+                },
+                "basis": {
+                  "present": true,
+                  "evidence": "R/report-review.md L55,61"
+                },
+                "impact": {
+                  "present": true,
+                  "evidence": "R/report-review.md L57"
+                },
+                "repair_direction": {
+                  "present": true,
+                  "evidence": "R/report-review.md L59"
+                },
+                "reproduction": {
+                  "present": true,
+                  "evidence": "R/report-review.md L63-68"
+                }
+              }
+            }
+          },
+          {
+            "id": "REG-LOSS",
+            "matched": true,
+            "finding_id": "D-REG-01",
+            "log_record": "REG-ERROR-REENTRY",
+            "match_type": "expected_behavior_trace",
+            "actionability": {
+              "numerator": 6,
+              "denominator": 6,
+              "elements": {
+                "location": {
+                  "present": true,
+                  "evidence": "R/report-review.md L72"
+                },
+                "symptom": {
+                  "present": true,
+                  "evidence": "R/report-review.md L70,76"
+                },
+                "basis": {
+                  "present": true,
+                  "evidence": "R/report-review.md L76,82"
+                },
+                "impact": {
+                  "present": true,
+                  "evidence": "R/report-review.md L78"
+                },
+                "repair_direction": {
+                  "present": true,
+                  "evidence": "R/report-review.md L80"
+                },
+                "reproduction": {
+                  "present": true,
+                  "evidence": "R/report-review.md L84-89"
+                }
+              }
+            }
+          },
+          {
+            "id": "LIST-PAGE",
+            "matched": true,
+            "finding_id": "D-LIST-01",
+            "log_record": "LIST-FILTER-AFTER-PAGE",
+            "match_type": "same_behavior_different_trace",
+            "actionability": {
+              "numerator": 6,
+              "denominator": 6,
+              "elements": {
+                "location": {
+                  "present": true,
+                  "evidence": "R/report-review.md L93"
+                },
+                "symptom": {
+                  "present": true,
+                  "evidence": "R/report-review.md L91,97"
+                },
+                "basis": {
+                  "present": true,
+                  "evidence": "R/report-review.md L97,103"
+                },
+                "impact": {
+                  "present": true,
+                  "evidence": "R/report-review.md L99"
+                },
+                "repair_direction": {
+                  "present": true,
+                  "evidence": "R/report-review.md L101"
+                },
+                "reproduction": {
+                  "present": true,
+                  "evidence": "R/report-review.md L105-111"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "actionability": {
+        "numerator": 18,
+        "denominator": 18,
+        "fields": [
+          "location",
+          "symptom",
+          "basis",
+          "impact",
+          "repair_direction",
+          "reproduction"
+        ]
+      },
+      "unsupported_confirmations": {
+        "count": 0,
+        "unit": "distinct target finding or observation asserted as observed outside the declared evidence surface",
+        "scope": "supplied review and companion records; does not certify every statement or external-source retrieval",
+        "claims": []
+      },
+      "responsibility_assignment": {
+        "explicit_primary_category_owner_pairs": {
+          "numerator": 3,
+          "denominator": 3
+        },
+        "note": "既知3件すべてcategory=implementation, owner=C。視覚仮説はvisual/C。Cの実在担当者・受領は未確認。"
+      },
+      "uncertainty_control": {
+        "actual_script_model_distinguished_from_browser": true,
+        "native_validation_not_claimed_observed": true,
+        "visual_hypothesis_unconfirmed": true,
+        "human_completion_rate_not_claimed": true
+      },
+      "hypothesis_case": {
+        "id": "LIST-OVERLAP",
+        "classification": "unconfirmed visual risk",
+        "rendering_truth": "unknown",
+        "counted_as_true_or_false_positive": false
+      },
+      "negative_controls": {
+        "approved_art_not_defect": true,
+        "true_zero_results_not_automatically_dead_end": true,
+        "native_constraints_not_assumed_absent": true
+      },
+      "artifact_binding": {
+        "html_path_hashes": 2,
+        "requirements_hash_present": true,
+        "evidence_log_available": true,
+        "harness_supplied": true,
+        "manifest_artifact_count": 11,
+        "manifest_gate_declared_integrity_verified": true,
+        "manifest_covers_review_prose_and_gate_results": false,
+        "original_external_artifact_integrity_independently_verified": false,
+        "reproduction_rerun_by_adjudicator": false,
+        "evidence_refs": [
+          "R/report-manifest.json",
+          "R/report-manifest-gate.json",
+          "R/report-logic-probe.cjs",
+          "R/report-gate-results.json",
+          "R/report-review.md L30-36,L159-166"
+        ]
+      },
+      "gate_discipline": {
+        "formal_three_way_separation": true,
+        "records": [
+          {
+            "scope": "registration-desktop",
+            "contract_valid": true,
+            "target_decision": "REJECT",
+            "promotion_decision": "HOLD",
+            "exit_code": 2
+          },
+          {
+            "scope": "requests-desktop",
+            "contract_valid": true,
+            "target_decision": "REJECT",
+            "promotion_decision": "HOLD",
+            "exit_code": 2
+          },
+          {
+            "scope": "requests-narrow",
+            "contract_valid": true,
+            "target_decision": "HOLD",
+            "promotion_decision": "HOLD",
+            "exit_code": 2
+          }
+        ],
+        "independent_receipt_available": false,
+        "independent_gate_audit_performed": false,
+        "browser_task_status": "blocked",
+        "browser_completion": null,
+        "browser_steps_count": null
+      }
+    }
+  },
+  "derivative_integrity": {
+    "verified_count": 11,
+    "all_match": true,
+    "checks": [
+      {
+        "path": "Q/report-review.md",
+        "expected_derivative_sha256": "040db3255221ba8655b7d7c315ca4dbdeebda71ccc6c1da0cb1be8033995e869",
+        "actual_sha256": "040db3255221ba8655b7d7c315ca4dbdeebda71ccc6c1da0cb1be8033995e869",
+        "matches": true
+      },
+      {
+        "path": "Q/report-source-checks.json",
+        "expected_derivative_sha256": "379337aa8d0f5668ba3ebb05a25e764f1dfda29fd945b62f57b79f38ad6fd4c2",
+        "actual_sha256": "379337aa8d0f5668ba3ebb05a25e764f1dfda29fd945b62f57b79f38ad6fd4c2",
+        "matches": true
+      },
+      {
+        "path": "R/report-gate-results.json",
+        "expected_derivative_sha256": "57d39707c7ea15cf034b3daf87b71e572139fdba55a5533436918c73fa74230c",
+        "actual_sha256": "57d39707c7ea15cf034b3daf87b71e572139fdba55a5533436918c73fa74230c",
+        "matches": true
+      },
+      {
+        "path": "R/report-logic-log.json",
+        "expected_derivative_sha256": "a61b27c73a4cd0d32b898cb258a14ebad0742bafc8a1b18b42580e265d4cddf1",
+        "actual_sha256": "a61b27c73a4cd0d32b898cb258a14ebad0742bafc8a1b18b42580e265d4cddf1",
+        "matches": true
+      },
+      {
+        "path": "R/report-logic-probe.cjs",
+        "expected_derivative_sha256": "67e6e2d88a392895864c5e6838a7d47140a3c8a62bd139223bf27cf68969e225",
+        "actual_sha256": "67e6e2d88a392895864c5e6838a7d47140a3c8a62bd139223bf27cf68969e225",
+        "matches": true
+      },
+      {
+        "path": "R/report-manifest-gate.json",
+        "expected_derivative_sha256": "4b46d8980df0a79cc1d275b7f1faafedfe8c0fea4c6f9080853b7f82be54ff20",
+        "actual_sha256": "4b46d8980df0a79cc1d275b7f1faafedfe8c0fea4c6f9080853b7f82be54ff20",
+        "matches": true
+      },
+      {
+        "path": "R/report-manifest.json",
+        "expected_derivative_sha256": "80c4bea46f95e659895c13a079d6cc06309badfadf3973155e74c28ecb89e855",
+        "actual_sha256": "80c4bea46f95e659895c13a079d6cc06309badfadf3973155e74c28ecb89e855",
+        "matches": true
+      },
+      {
+        "path": "R/report-registration-desktop.json",
+        "expected_derivative_sha256": "515a8647914b8f1650f5e2aefefc0d144f57594eb2d0f1a7310d6bc729fd0a57",
+        "actual_sha256": "515a8647914b8f1650f5e2aefefc0d144f57594eb2d0f1a7310d6bc729fd0a57",
+        "matches": true
+      },
+      {
+        "path": "R/report-requests-desktop.json",
+        "expected_derivative_sha256": "da447bb6caf06fb1f186edea3ec1181a43e6a6b554193d47bcd0d2ba656331b9",
+        "actual_sha256": "da447bb6caf06fb1f186edea3ec1181a43e6a6b554193d47bcd0d2ba656331b9",
+        "matches": true
+      },
+      {
+        "path": "R/report-requests-narrow.json",
+        "expected_derivative_sha256": "3963a81393127b33bc9b87eac022f278b95df2f9e81881a5c5803095e208dc2d",
+        "actual_sha256": "3963a81393127b33bc9b87eac022f278b95df2f9e81881a5c5803095e208dc2d",
+        "matches": true
+      },
+      {
+        "path": "R/report-review.md",
+        "expected_derivative_sha256": "ec6d2bb378773078f3b97fef3ef4c67383ee0264ade58751306da5b723f12319",
+        "actual_sha256": "ec6d2bb378773078f3b97fef3ef4c67383ee0264ade58751306da5b723f12319",
+        "matches": true
+      }
+    ],
+    "subject_hashes": {
+      "registration.html": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd",
+      "requests.html": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+      "task-brief.md": "41eb48894d02684dc049bf7ec61ad3f9849c4548998979f6b97dc1c9f42a2db4"
+    },
+    "original_hashes_not_applied_to_masked_bytes": true,
+    "original_source_artifacts_outside_scope_verified": false,
+    "derivative_manifest_not_credited_to_Q_as_authored_binding": true
+  },
+  "comparative_judgment": {
+    "overall_winner": null,
+    "composite_score_used": false,
+    "equivalent_dimensions": [
+      "known-case detection 3/3",
+      "actionability 18/18",
+      "unsupported target confirmations identified 0",
+      "model versus browser distinction",
+      "negative controls"
+    ],
+    "R_documentation_advantages": [
+      "explicit primary category and owner mapping",
+      "broader input/evidence binding and inspectable harness",
+      "artifact contract / target outcome / skill promotion separation"
+    ],
+    "Q_specific_strengths": [
+      "explicit post-fix acceptance conditions",
+      "first-page pending-filter counterexample",
+      "direct second-page filter trace matching known probe"
+    ],
+    "efficacy_improvement_established": false,
+    "formal_skill_promotion_supported": false,
+    "decision_ja": "既知問題の検出と修正情報は同等。Rの責務・証拠・判定の明示は引き渡し用途に有利。一般的な検出能力、利用者成果、Skill昇格の優位は認定しない。"
+  },
+  "not_measurable": [
+    "general precision or recall",
+    "unknown-case generalization",
+    "real-browser manifestations",
+    "320px overlap truth",
+    "native validation and focus or assistive technology outcomes",
+    "human task completion",
+    "post-fix quality",
+    "time cost and token cost",
+    "measured reader usability",
+    "causal Skill effect"
+  ],
+  "interpretation_limits": [
+    "Actionability presence is not proof of fix success or measured usefulness.",
+    "R LIST-PAGE uses an equivalent behavior on a different trace; do not count extra cases.",
+    "15 Q scenarios and 9 R records have different aggregation granularity.",
+    "External-source retrieval and original execution history were not audited.",
+    "Record and derivative integrity do not establish product-quality PASS."
+  ]
+}

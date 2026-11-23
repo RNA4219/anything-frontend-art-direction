@@ -1,0 +1,65 @@
+{
+  "schema": "design-qa-portable-replay/v1",
+  "mapped_artifacts": 11,
+  "raw_reports_modified": false,
+  "report_gates": [
+    {
+      "report": "candidate-registration-desktop.json",
+      "exit_code": 1,
+      "stdout": {
+        "contract_valid": false,
+        "target_decision": "HOLD",
+        "promotion_decision": "HOLD",
+        "errors": [
+          "input JSON must be a regular file inside --root"
+        ]
+      },
+      "stderr": "",
+      "report_sha256": "35a0b6bb9304268e0e484a34d6e8adc780706da403545b1ae16e18b5ae0c111d"
+    },
+    {
+      "report": "candidate-requests-desktop.json",
+      "exit_code": 1,
+      "stdout": {
+        "contract_valid": false,
+        "target_decision": "HOLD",
+        "promotion_decision": "HOLD",
+        "errors": [
+          "input JSON must be a regular file inside --root"
+        ]
+      },
+      "stderr": "",
+      "report_sha256": "fe86af9062197b7d3f5a36692a4f9afa564b87fe18b0c66ad0229d893aae7561"
+    },
+    {
+      "report": "candidate-requests-narrow.json",
+      "exit_code": 1,
+      "stdout": {
+        "contract_valid": false,
+        "target_decision": "HOLD",
+        "promotion_decision": "HOLD",
+        "errors": [
+          "input JSON must be a regular file inside --root"
+        ]
+      },
+      "stderr": "",
+      "report_sha256": "508b85c77151c93c96ada0d4082867bb99195a8519bee50310bfa4656ea576c4"
+    }
+  ],
+  "manifest_gate": {
+    "exit_code": 1,
+    "stdout": {
+      "contract_valid": false,
+      "target_decision": "HOLD",
+      "promotion_decision": "HOLD",
+      "errors": [
+        "input JSON must be a regular file inside --root"
+      ]
+    },
+    "stderr": ""
+  },
+  "limitations": [
+    "Artifact and contract verification only; no browser or new model evaluation.",
+    "The original absolute execution paths remain in raw provenance records."
+  ]
+}

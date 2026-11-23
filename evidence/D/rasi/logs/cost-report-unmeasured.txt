@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:23:04.102834+00:00
+finished_at: 2026-11-23T06:23:04.186274+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "cost-report", "--campaign", "inputs/campaign-recording-only.json"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 2
+expected_exit_code: 2
+wall_seconds_measured: 0.083427
+--- stdout ---
+--- stderr ---
+エラー: 未計測のcostが存在するためbudget判定不可

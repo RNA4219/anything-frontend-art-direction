@@ -1,0 +1,152 @@
+{
+  "schema": "design-qa-report/v1",
+  "report_id": "assigned condition-requests-narrow",
+  "reviewed_artifacts": [
+    {
+      "path": "evaluation/common/subject/requests.html",
+      "sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7"
+    }
+  ],
+  "context": {
+    "task_id": "requests-narrow",
+    "requirements_sha256": "41eb48894d02684dc049bf7ec61ad3f9849c4548998979f6b97dc1c9f42a2db4",
+    "content_sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+    "evaluation_mode": "source inspection + minimal DOM logic harness; browser acceptance blocked",
+    "environment": {
+      "browser": "not executed: local launch prohibited and cloud file URL policy denied as supplied task constraint",
+      "version": "unknown: not run",
+      "os": "Linux 6.18.57 x86_64 (logic probe host only)",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "dpr": 1,
+      "locale": "ja-JP (target only; browser unobserved)",
+      "timezone": "Etc/UTC (workspace; browser unobserved)",
+      "fonts": [
+        "CSS declared Arial / Noto Sans CJK JP / sans-serif; rendered font unknown",
+        "CSS declared Georgia / serif on h1; rendered font unknown"
+      ],
+      "animation": "browser unobserved; logic timer callbacks manually drained",
+      "data_seed": "fixture bytes SHA-256 d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+      "input_modes": [
+        "source inspection",
+        "direct handler invocation in minimal DOM; no actual pointer/keyboard"
+      ]
+    },
+    "model": {
+      "id": "GPT-6 Astra Pro (session-provided label; internal snapshot unknown)",
+      "sampling": {
+        "observed": false,
+        "reason": "not exposed"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "source",
+      "path": "evaluation/common/subject/requests.html",
+      "sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+      "kind": "source",
+      "description": "Unmodified HTML source; line references in report-review.md. Not a rendered screen."
+    },
+    {
+      "id": "logic",
+      "path": "anything-frontend-D/evidence/D/evaluation/report-logic-log.json",
+      "sha256": "8c406fb92ce1460411b840dee7558347fad50f034cf3ef1d451077b73b2db7fe",
+      "kind": "test_log",
+      "description": "Node v24.22.3 minimal DOM logic harness, nine diagnostic records. No native validation, layout, focus, real clicks, screenshots or AT. Viewport-independent logic only."
+    }
+  ],
+  "findings": [
+    {
+      "id": "D-LIST-02",
+      "category": "visual",
+      "owner": "C",
+      "status": "hypothesis",
+      "severity": "minor",
+      "symptom": "狭幅で絶対配置の書き出しボタンが見出しを覆う可能性が高い。",
+      "expected": "320 CSS px相当でも見出し・状態・主要操作が互いを覆わない。承認済みの非対称な上部構図は保持する。",
+      "observed": "L5にheader position:relative、header-action position:absolute/right:0/top:55px、h1 font-size:34px、body左右padding各24pxを確認。狭幅用の分岐や見出し側の予約領域はない。320px時の内容幅はCSS上272px。実際の重なり、字幅、占有矩形は未観察。",
+      "impact": "重なれば画面名の可読性とボタン周辺の理解を損なう。依頼探索の完了不能は未立証のため暫定minor。実画面の影響次第で重大度を見直す。",
+      "repair_direction": "まず320pxと1280pxで同一内容の矩形・スクリーンショットを取得する。重なりを確認した場合は狭幅だけ見出しと操作の領域を分け、紙色、赤茶罫線、書体差、角形、広幅の構図を維持する。",
+      "reproduction": [
+        "DPR1・ja-JP・320×900 CSS pxでrequests.htmlを初期表示する。",
+        "headerの見出し全文と書き出しボタンの矩形・画像を記録し、覆われた文字と操作領域を特定する。",
+        "同一内容を1280×900で確認し、Tabフォーカス時も読めるか比較する。",
+        "本実行ではブラウザ禁止によりblocked。この手順は次回の確認手順で、実施済みではない。"
+      ],
+      "basis": {
+        "kind": "requirement",
+        "reference": "task-brief.md 一覧画面; WCAG 2.2 SC 1.4.10（補助的な確認観点）",
+        "clause": "広幅・狭幅で互いを覆わないこと。Reflowの二次元配置例外を表全体へ一律禁止として適用しない。今回WCAG違反は判定していない。"
+      },
+      "confidence": "medium",
+      "evidence_ids": [
+        "source"
+      ],
+      "location": {
+        "artifact": "evaluation/common/subject/requests.html",
+        "selector": "header h1; .header-action#export",
+        "state": "320×900 CSS px、初期表示、実フォント未確認",
+        "viewport": {
+          "width": 320,
+          "height": 900
+        }
+      }
+    }
+  ],
+  "task_runs": [
+    {
+      "task_id": "requests-narrow",
+      "scenario": "normal",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in report-review.md."
+    },
+    {
+      "task_id": "requests-narrow",
+      "scenario": "error",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in report-review.md."
+    },
+    {
+      "task_id": "requests-narrow",
+      "scenario": "boundary",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in report-review.md."
+    }
+  ],
+  "open_questions": [
+    "Actual browser input, native validation, focus, rendered fonts and CSS have not been observed.",
+    "Run the described normal/error/boundary browser cases after an authorized browser environment is available.",
+    "No independently authenticated protected-blind evaluation or receipt is available."
+  ],
+  "independence": {
+    "author_id": "review_assigned condition",
+    "evaluator_id": "review_assigned condition",
+    "blind": false,
+    "protected_holdout": false,
+    "evidence_ref": null
+  }
+}

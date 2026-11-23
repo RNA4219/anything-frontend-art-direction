@@ -1,0 +1,21 @@
+{
+  "schema": "design-qa-campaign/v1",
+  "campaign_id": "anything-frontend-D-20261123",
+  "session": "D",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "branch": "campaign/D-design-qa-20261123",
+  "upstream_main_verified": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "date": "2026-11-23",
+  "timezone": "Asia/Tokyo",
+  "allowed_paths": [
+    "extensions/D/",
+    "evidence/D/"
+  ],
+  "evaluation_design": "paired QA review of identical synthetic artifacts; condition changes skill instructions only",
+  "independent_blind_promotion": false,
+  "installation": "repository extension as explicitly requested; personal skill installation out of scope",
+  "limitations": [
+    "provider seed and sampling settings not exposed",
+    "protected holdout infrastructure unavailable"
+  ]
+}

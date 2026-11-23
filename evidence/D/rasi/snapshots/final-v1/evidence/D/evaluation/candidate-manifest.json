@@ -1,0 +1,60 @@
+{
+  "schema": "design-qa-artifacts/v1",
+  "artifacts": [
+    {
+      "path": "evaluation/common/subject/task-brief.md",
+      "sha256": "41eb48894d02684dc049bf7ec61ad3f9849c4548998979f6b97dc1c9f42a2db4",
+      "size_bytes": 2242
+    },
+    {
+      "path": "evaluation/common/subject/registration.html",
+      "sha256": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd",
+      "size_bytes": 3111
+    },
+    {
+      "path": "evaluation/common/subject/requests.html",
+      "sha256": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7",
+      "size_bytes": 4523
+    },
+    {
+      "path": "evaluation/common/art-direction/SKILL.md",
+      "sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5",
+      "size_bytes": 6468
+    },
+    {
+      "path": "evaluation/common/art-direction/extensions/D/SKILL.md",
+      "sha256": "3aee849271e5f41114b7e248144c48f5a6273889ce8ff37c3c8440cdeb35d8b2",
+      "size_bytes": 7993
+    },
+    {
+      "path": "evaluation/common/art-direction/extensions/D/checks/qa_gate.py",
+      "sha256": "cee33e3e9ba772d4c9915744059a9e86576c4592e0434b426f62c04ecf369a2a",
+      "size_bytes": 25356
+    },
+    {
+      "path": "anything-frontend-D/evidence/D/evaluation/candidate-logic-probe.cjs",
+      "sha256": "5ae5900a77d32c250988d52413337e351f6f585f4aa197e2ccad8ac0e3bffa72",
+      "size_bytes": 7878
+    },
+    {
+      "path": "anything-frontend-D/evidence/D/evaluation/candidate-logic-log.json",
+      "sha256": "8c406fb92ce1460411b840dee7558347fad50f034cf3ef1d451077b73b2db7fe",
+      "size_bytes": 8624
+    },
+    {
+      "path": "anything-frontend-D/evidence/D/evaluation/candidate-registration-desktop.json",
+      "sha256": "35a0b6bb9304268e0e484a34d6e8adc780706da403545b1ae16e18b5ae0c111d",
+      "size_bytes": 9473
+    },
+    {
+      "path": "anything-frontend-D/evidence/D/evaluation/candidate-requests-desktop.json",
+      "sha256": "fe86af9062197b7d3f5a36692a4f9afa564b87fe18b0c66ad0229d893aae7561",
+      "size_bytes": 7214
+    },
+    {
+      "path": "anything-frontend-D/evidence/D/evaluation/candidate-requests-narrow.json",
+      "sha256": "508b85c77151c93c96ada0d4082867bb99195a8519bee50310bfa4656ea576c4",
+      "size_bytes": 7298
+    }
+  ]
+}

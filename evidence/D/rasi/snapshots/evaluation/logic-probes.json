@@ -1,0 +1,231 @@
+{
+  "schema": "design-qa-logic-probes/v1",
+  "fixture_hashes": {
+    "registration.html": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd",
+    "requests.html": "d95eb231d500cd19e219eeb84b8614b3bcb52908daee9825bce43e0c45f90dc7"
+  },
+  "probe_count": 10,
+  "probe_result": "PASS",
+  "product_acceptance": "NOT_ASSERTED",
+  "environment": {
+    "node": "v24.22.3",
+    "engine": "Node vm + minimal DOM doubles",
+    "timers": "microtask substitution; not real timing"
+  },
+  "limitations": [
+    "No real browser layout, CSS, native form validation, focus, event targeting or accessibility tree.",
+    "Probe PASS means expected control/defect is observed; it does not mean the fixture is defect free.",
+    "Fixture-specific probes do not establish general Skill effectiveness."
+  ],
+  "observations": [
+    {
+      "id": "registration-normal",
+      "scenario": "normal",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "fill valid fields",
+        "submit"
+      ],
+      "state": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "1",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-001"
+      },
+      "probe_assertion": "one submission produces one mock receipt"
+    },
+    {
+      "id": "registration-error",
+      "scenario": "error",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "fill valid fields",
+        "select failure",
+        "submit"
+      ],
+      "state": {
+        "name": "",
+        "email": "",
+        "seats": "1",
+        "count": "",
+        "status": "送信に失敗しました。"
+      },
+      "probe_assertion": "probe detects loss of form values after rejected mock request"
+    },
+    {
+      "id": "registration-recovery",
+      "scenario": "error",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "refill cleared name/email/seats",
+        "submit"
+      ],
+      "state": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "1",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-001"
+      },
+      "probe_assertion": "recovery succeeds only after re-entry in this model"
+    },
+    {
+      "id": "registration-repeat",
+      "scenario": "boundary",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "fill valid fields",
+        "dispatch submit twice before resolution"
+      ],
+      "state": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "count": "2",
+        "status": "確認 太郎様、2名の参加を受け付けました。受付番号：C-002"
+      },
+      "probe_assertion": "probe detects duplicate accepted mock submissions"
+    },
+    {
+      "id": "registration-bounds",
+      "scenario": "boundary",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "inspect declared input attributes"
+      ],
+      "state": {
+        "minimum": 1,
+        "maximum": 8,
+        "required": true
+      },
+      "probe_assertion": "source contains constraints; native enforcement remains NOT RUN"
+    },
+    {
+      "id": "requests-normal",
+      "scenario": "normal",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "initial render",
+        "next page"
+      ],
+      "state": {
+        "summary": "8件の依頼",
+        "page": "2 / 3",
+        "rows": [
+          [
+            "R-104",
+            "夫婦茶碗",
+            "処理待ち"
+          ],
+          [
+            "R-105",
+            "急須の釉薬確認",
+            "完了"
+          ],
+          [
+            "R-106",
+            "小皿セット",
+            "完了"
+          ]
+        ],
+        "previousDisabled": false,
+        "nextDisabled": false
+      },
+      "probe_assertion": "second page has three expected fixed-data records"
+    },
+    {
+      "id": "requests-filter-after-page",
+      "scenario": "boundary",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "on second page",
+        "filter pending"
+      ],
+      "state": {
+        "summary": "2件の依頼",
+        "page": "2 / 1",
+        "rows": [],
+        "previousDisabled": false,
+        "nextDisabled": true
+      },
+      "probe_assertion": "probe detects count=2 but no visible rows and page=2/1"
+    },
+    {
+      "id": "requests-clear",
+      "scenario": "error",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "clear conditions"
+      ],
+      "state": {
+        "summary": "8件の依頼",
+        "page": "1 / 3",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-102",
+            "大皿の修理",
+            "完了"
+          ],
+          [
+            "R-103",
+            "花器の制作",
+            "完了"
+          ]
+        ],
+        "previousDisabled": true,
+        "nextDisabled": false
+      },
+      "probe_assertion": "clear restores a valid first-page state"
+    },
+    {
+      "id": "requests-first-page-filter",
+      "scenario": "normal",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "on first page",
+        "filter pending"
+      ],
+      "state": {
+        "summary": "2件の依頼",
+        "page": "1 / 1",
+        "rows": [
+          [
+            "R-101",
+            "湯のみ制作",
+            "処理待ち"
+          ],
+          [
+            "R-104",
+            "夫婦茶碗",
+            "処理待ち"
+          ]
+        ],
+        "previousDisabled": true,
+        "nextDisabled": true
+      },
+      "probe_assertion": "pending filter works on first page: important counterexample"
+    },
+    {
+      "id": "requests-zero",
+      "scenario": "error",
+      "execution_surface": "minimal_dom_model",
+      "steps": [
+        "search an absent name"
+      ],
+      "state": {
+        "summary": "0件の依頼",
+        "page": "1 / 1",
+        "rows": [],
+        "previousDisabled": true,
+        "nextDisabled": true
+      },
+      "probe_assertion": "zero results are explicitly counted; clear remains available, no invented universal empty-state defect"
+    }
+  ]
+}

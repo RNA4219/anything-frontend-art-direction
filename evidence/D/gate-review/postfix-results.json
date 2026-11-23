@@ -1,0 +1,149 @@
+{
+  "scope": "synthetic assertion/control-flow checks; no real browser or UI evaluated",
+  "runner_sha256": "6b25a31324fa9ca465a73159d36167549d4a9ec31efd24d19df65dea1959df23",
+  "assertions_succeeded": true,
+  "probes": [
+    {
+      "probe": "R1 lost seats rejected",
+      "expected_requirement_met": false,
+      "actual_requirement_met": false,
+      "observed": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "",
+        "message": "通信失敗",
+        "count_after_failure": "0",
+        "all_values_retained": false,
+        "retry": "not_run: original input was lost"
+      },
+      "clicks": [
+        "参加を登録する"
+      ]
+    },
+    {
+      "probe": "R1 successful synthetic retry accepted",
+      "expected_requirement_met": true,
+      "actual_requirement_met": true,
+      "observed": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "message": "通信失敗",
+        "count_after_failure": "0",
+        "all_values_retained": true,
+        "count_after_retry": "1",
+        "retry_message": "受付番号 C-001、2名"
+      },
+      "clicks": [
+        "参加を登録する",
+        "参加を登録する"
+      ]
+    },
+    {
+      "probe": "R1 duplicate retry rejected",
+      "expected_requirement_met": false,
+      "actual_requirement_met": false,
+      "observed": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "message": "通信失敗",
+        "count_after_failure": "0",
+        "all_values_retained": true,
+        "count_after_retry": "2",
+        "retry_message": "受付番号 C-001、2名"
+      },
+      "clicks": [
+        "参加を登録する",
+        "参加を登録する"
+      ]
+    },
+    {
+      "probe": "R1 wrong party size rejected",
+      "expected_requirement_met": false,
+      "actual_requirement_met": false,
+      "observed": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "2",
+        "message": "通信失敗",
+        "count_after_failure": "0",
+        "all_values_retained": true,
+        "count_after_retry": "1",
+        "retry_message": "受付番号 C-001、1名"
+      },
+      "clicks": [
+        "参加を登録する",
+        "参加を登録する"
+      ]
+    },
+    {
+      "probe": "R2 next no-op rejected",
+      "expected_requirement_met": false,
+      "actual_requirement_met": false,
+      "observed": {
+        "summary": "8件の依頼",
+        "page": "1 / 3",
+        "row_count": 3,
+        "row_ids": [
+          "R-101",
+          "R-102",
+          "R-103"
+        ]
+      },
+      "clicks": [
+        "次へ"
+      ]
+    },
+    {
+      "probe": "R2 wrong identities rejected",
+      "expected_requirement_met": false,
+      "actual_requirement_met": false,
+      "observed": {
+        "summary": "8件の依頼",
+        "page": "2 / 3",
+        "row_count": 3,
+        "row_ids": [
+          "R-101",
+          "R-102",
+          "R-103"
+        ]
+      },
+      "clicks": [
+        "次へ"
+      ]
+    },
+    {
+      "probe": "R2 synthetic next page accepted",
+      "expected_requirement_met": true,
+      "actual_requirement_met": true,
+      "observed": {
+        "summary": "8件の依頼",
+        "page": "2 / 3",
+        "row_count": 3,
+        "row_ids": [
+          "R-104",
+          "R-105",
+          "R-106"
+        ]
+      },
+      "clicks": [
+        "次へ"
+      ]
+    },
+    {
+      "probe": "R3 all cleanup exceptions persisted",
+      "result_json_written": true,
+      "status": "BLOCKED",
+      "cleanup_errors": [
+        "browser: synthetic close failure",
+        "playwright: synthetic stop failure"
+      ],
+      "case_cleanup_errors": [
+        "trace: synthetic stop failure",
+        "context: synthetic close failure"
+      ],
+      "observations_preserved": true
+    }
+  ]
+}

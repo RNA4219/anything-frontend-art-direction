@@ -1,0 +1,170 @@
+[
+  {
+    "file": "raw/fetch-log.jsonl",
+    "sha256": "8611d1dbd78c342d1e4978c430d43dd110ae649891f72caa5eb421b3426d74b6",
+    "bytes": 4927,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S01-web.txt",
+    "sha256": "09a3d191735c812ce75d21ca63e6e282e7935163975cb8269cd01ed4adb3869f",
+    "bytes": 8496,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S02-web.txt",
+    "sha256": "77e01fba03645ba7add3a04531e7893b6a613afd45b42126f5baff337c2c69bb",
+    "bytes": 7619,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S03-web.txt",
+    "sha256": "634e4f8781d3cfcb1b93115bf532c859b23908b0ba8b0ecdbcf5cb65b9c55662",
+    "bytes": 6369,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S04-web.txt",
+    "sha256": "5c62e3261ea9f82942006f73a3625ac0981846912e50ef4281bc56e4bef37ffc",
+    "bytes": 20545,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S05-web.txt",
+    "sha256": "bd5ab8bbc7537a647f18e104d9b58fad90892587ad48185972e01d7bf7141c90",
+    "bytes": 12761,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S06-web.txt",
+    "sha256": "4273b983941461b99afb64a25f66265587051811838f32102b9c34be9ba6c136",
+    "bytes": 6902,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S07-web.txt",
+    "sha256": "54ef00db88b3b6b53bbbbde051251d7e57f46d91ac7864927bbe194703d2c3c1",
+    "bytes": 7785,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S08-web.txt",
+    "sha256": "a909d3aaeaf60a6e4baf0e2103b79f4492a78c5023cf7d6e51629de4950f427a",
+    "bytes": 15579,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S09-web.txt",
+    "sha256": "1f9b7a869e297759f6059330970c32a222b3e96168489eef83fbe4ed693a0e59",
+    "bytes": 22312,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S10-web.txt",
+    "sha256": "af1738b34220fa0ef53acfcb4d829cdceea24833ea02f04f3a8863d366c0747f",
+    "bytes": 14282,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S11-web.txt",
+    "sha256": "d0e0a130b498ca33e0278021f46630dacf3aa5dbef73a87c92a1a3703be17dd2",
+    "bytes": 6591,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S12-web.txt",
+    "sha256": "8ad506ce86f13490ee3b5b7f4a73f46176f0a600d261c9a215c2b30e1df4dfb4",
+    "bytes": 6907,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S13-web.txt",
+    "sha256": "1ec3f9c44245f99a040a3aa150ecd9de20fda3aebcdd6a351955f5d8c19b640c",
+    "bytes": 8576,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S14-web.txt",
+    "sha256": "6a206d39aab24c42ba310f75a3b56d6984fd88cce605f964e976d694aa337bb9",
+    "bytes": 12384,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S15-web.txt",
+    "sha256": "cc4aa5d1f81e52ccdc038507d2634c0cbd4c82d7d2256f9068e789f484a0b449",
+    "bytes": 5846,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S16-web.txt",
+    "sha256": "134987e87e90e899ee3e0b9733a53be7113abcda6cca6dba709892b0d00e31b9",
+    "bytes": 6801,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S17-web.txt",
+    "sha256": "3c92fce15562faac3a92738a82dcd6e8ae34efcf3b1573337688190858680272",
+    "bytes": 8222,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S18-web.txt",
+    "sha256": "78061803aa5f4b747d90e2315ab7e8f74bc6e9ca6687a1a37eddebeff57f470f",
+    "bytes": 13587,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S19-web.txt",
+    "sha256": "c32c3a454094372e1cc84aaee3dbb21fa1156ca7858ffb6a22109e14f2652a9b",
+    "bytes": 8042,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/sources/S20-web.txt",
+    "sha256": "23f9eb99b99f78361321100775d16b36006cf5775d613206d8c3d51e5c055d98",
+    "bytes": 11652,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/web-details.json",
+    "sha256": "14474423ce38a4293bd604dcee916a1a79431520bc7e779fe8b44b48c7164ca9",
+    "bytes": 34633,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/web-find.json",
+    "sha256": "7cfdd380927774e0af1b777f40d7a1d0ea647c063cc00a75ffddf462e293c0a5",
+    "bytes": 30324,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/web-open-0.json",
+    "sha256": "d3b560e35cc6df65f400a959d9912afa12180321ce58b156ce0af0cd00d6bb60",
+    "bytes": 33294,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/web-open-1.json",
+    "sha256": "de84439e67bfe1968d3905d16485e1ac2ce3648ddf7cdf41df643bc18dbe445a",
+    "bytes": 32222,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/web-open-2.json",
+    "sha256": "4e4605777033ba67ef7bd9bde77d3e63b3e410971420adc244041a872be0937e",
+    "bytes": 27305,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/web-open-3.json",
+    "sha256": "574dd56e6deff80c5c76ed10850ca490c79578feee5566a9dfbccdcfc392181c",
+    "bytes": 31043,
+    "distribution": "excluded: source snapshots for local verification only"
+  },
+  {
+    "file": "raw/web-search.json",
+    "sha256": "73e2f4a3c5a4cb1b32c8cf62a4722ed306325a03e405c723c1d2842baaef85f4",
+    "bytes": 22661,
+    "distribution": "excluded: source snapshots for local verification only"
+  }
+]

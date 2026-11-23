@@ -1,0 +1,190 @@
+{
+  "schema": "design-qa-report/v1",
+  "report_id": "candidate-registration-desktop",
+  "reviewed_artifacts": [
+    {
+      "path": "evaluation/common/subject/registration.html",
+      "sha256": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd"
+    }
+  ],
+  "context": {
+    "task_id": "registration-desktop",
+    "requirements_sha256": "41eb48894d02684dc049bf7ec61ad3f9849c4548998979f6b97dc1c9f42a2db4",
+    "content_sha256": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd",
+    "evaluation_mode": "source inspection + minimal DOM logic harness; browser acceptance blocked",
+    "environment": {
+      "browser": "not executed: local launch prohibited and cloud file URL policy denied as supplied task constraint",
+      "version": "unknown: not run",
+      "os": "Linux 6.18.57 x86_64 (logic probe host only)",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "dpr": 1,
+      "locale": "ja-JP (target only; browser unobserved)",
+      "timezone": "Etc/UTC (workspace; browser unobserved)",
+      "fonts": [
+        "CSS declared Arial / Noto Sans CJK JP / sans-serif; rendered font unknown",
+        "CSS declared Georgia / serif on h1; rendered font unknown"
+      ],
+      "animation": "browser unobserved; logic timer callbacks manually drained",
+      "data_seed": "fixture bytes SHA-256 37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd",
+      "input_modes": [
+        "source inspection",
+        "direct handler invocation in minimal DOM; no actual pointer/keyboard"
+      ]
+    },
+    "model": {
+      "id": "GPT-6 Astra Pro (session-provided label; internal snapshot unknown)",
+      "sampling": {
+        "observed": false,
+        "reason": "not exposed"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "source",
+      "path": "evaluation/common/subject/registration.html",
+      "sha256": "37f5f73e7bda78cf6aaa511633b5c4d554d5205d06fbb1260e42cf06671a11dd",
+      "kind": "source",
+      "description": "Unmodified HTML source; line references in candidate-review.md. Not a rendered screen."
+    },
+    {
+      "id": "logic",
+      "path": "anything-frontend-D/evidence/D/evaluation/candidate-logic-log.json",
+      "sha256": "8c406fb92ce1460411b840dee7558347fad50f034cf3ef1d451077b73b2db7fe",
+      "kind": "test_log",
+      "description": "Node v24.22.3 minimal DOM logic harness, nine diagnostic records. No native validation, layout, focus, real clicks, screenshots or AT. Viewport-independent logic only."
+    }
+  ],
+  "findings": [
+    {
+      "id": "D-REG-01",
+      "category": "implementation",
+      "owner": "C",
+      "status": "confirmed",
+      "severity": "major",
+      "symptom": "失敗分岐が入力保持要件に反してフォームをresetする。",
+      "expected": "失敗後も代表者名・メール・人数2を保持し、再入力せず同じ申込を再試行できる。",
+      "observed": "L12にform.reset()を確認。最小DOMのREG-ERROR-REENTRYでは名前とメールが空、人数が1、件数0、失敗指定falseとなった。これはstub上の値更新で、ブラウザ操作結果ではない。",
+      "impact": "主要な失敗回復で3項目を再入力させる。人数の初期値1を見落とすと別の申込内容になり得る。再入力による回避は可能なためblockerではない。遭遇頻度は未測定。",
+      "repair_direction": "失敗分岐で入力を初期化しない。入力を残して再試行可能な状態へ戻し、同じ内容の成功時に件数が一度だけ増えることを確認する。",
+      "reproduction": [
+        "リロードし確認 太郎、qa@example.test、人数2を入力する。",
+        "次の通信を失敗させるを選び、登録を1回行い処理完了を待つ。",
+        "3項目の値と件数を確認し、再入力なしで同じ申込を再試行できるか確認する。",
+        "本実行ではこのブラウザ手順はblocked。probeのREG-ERROR-REENTRYはsubmit listenerの直接呼出しとreset stubで分岐だけを再現した。"
+      ],
+      "basis": {
+        "kind": "requirement",
+        "reference": "task-brief.md 登録画面; HTML Standard 4.10.5 input reset algorithm",
+        "clause": "通信失敗後は入力を維持し、同じ申込を再試行できる。resetはvalue属性または空文字へ戻す仕様。"
+      },
+      "confidence": "high",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "location": {
+        "artifact": "evaluation/common/subject/registration.html",
+        "selector": "#registration; submit handler failure branch",
+        "state": "有効入力で通信失敗を指定した送信の失敗分岐",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        }
+      }
+    },
+    {
+      "id": "D-REG-02",
+      "category": "implementation",
+      "owner": "C",
+      "status": "confirmed",
+      "severity": "major",
+      "symptom": "同一入力の処理が並行に走り、受付済み件数が2増える。",
+      "expected": "一度の申込意図による素早い反復操作で件数は1だけ増え、受付番号も一意に確定する。",
+      "observed": "L12は350msの待機前後に再入防止を持たず各呼出しでaccepted++する。REG-REPEATは待機完了前の2呼出しでqueued=2、完了後count=2、最終文言C-002を記録。実クリックの間隔や発火は未測定。",
+      "impact": "主要タスクの受付数が過大になる。利用者は最終番号しか確認できず、単にゆっくり押す以外の抑止がない。合成端末内処理であり実予約や課金の損失は発生していない。発生頻度は未測定。",
+      "repair_direction": "待機開始前に処理中状態を確定し、重複submitを受け付けない。ボタン状態と処理のガードを整合させ、失敗時は再試行可能に戻す。",
+      "reproduction": [
+        "リロードし標準データを入力、失敗指定をOFFにする。",
+        "登録完了前に登録ボタンを2回素早く操作する。キーボードEnterの反復も別途確認する。",
+        "終端で件数が1か2か、受付番号と文言が整合するか確認する。",
+        "本実行では実操作はblocked。REG-REPEATは抽出したsubmit listenerを2回直接呼び、待機callbackを順に完了した。"
+      ],
+      "basis": {
+        "kind": "requirement",
+        "reference": "task-brief.md 登録画面",
+        "clause": "正常時は1回の申込につき受付済み件数が1増える。素早い反復操作を対象とする。"
+      },
+      "confidence": "high",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "location": {
+        "artifact": "evaluation/common/subject/registration.html",
+        "selector": "#registration; #submit; #count; #status",
+        "state": "先の非同期処理が完了する前にsubmit listenerを2回呼んだ状態",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        }
+      }
+    }
+  ],
+  "task_runs": [
+    {
+      "task_id": "registration-desktop",
+      "scenario": "normal",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in candidate-review.md."
+    },
+    {
+      "task_id": "registration-desktop",
+      "scenario": "error",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in candidate-review.md."
+    },
+    {
+      "task_id": "registration-desktop",
+      "scenario": "boundary",
+      "status": "blocked",
+      "completion": null,
+      "steps_count": null,
+      "recovery": "not_run",
+      "evidence_ids": [
+        "source",
+        "logic"
+      ],
+      "observed": "Browser end-to-end case not executed due supplied environment policy. The source/logic findings do not establish browser completion. Normal: valid submit or paging; error: communication failure or no matches; boundary: invalid/edge seats or post-page filtering/320px. Detailed case coverage appears in candidate-review.md."
+    }
+  ],
+  "open_questions": [
+    "Actual browser input, native validation, focus, rendered fonts and CSS have not been observed.",
+    "Run the described normal/error/boundary browser cases after an authorized browser environment is available.",
+    "No independently authenticated protected-blind evaluation or receipt is available."
+  ],
+  "independence": {
+    "author_id": "review_candidate",
+    "evaluator_id": "review_candidate",
+    "blind": false,
+    "protected_holdout": false,
+    "evidence_ref": null
+  }
+}

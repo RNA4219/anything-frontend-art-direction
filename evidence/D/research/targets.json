@@ -1,0 +1,102 @@
+[
+  {
+    "id": "S01",
+    "slug": "nng-heuristics",
+    "url": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+  },
+  {
+    "id": "S02",
+    "slug": "nng-evaluation",
+    "url": "https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/"
+  },
+  {
+    "id": "S03",
+    "slug": "nng-severity",
+    "url": "https://www.nngroup.com/articles/how-to-rate-the-severity-of-usability-problems/"
+  },
+  {
+    "id": "S04",
+    "slug": "nng-success",
+    "url": "https://www.nngroup.com/articles/success-rate-the-simplest-usability-metric/"
+  },
+  {
+    "id": "S05",
+    "slug": "nng-tasks",
+    "url": "https://www.nngroup.com/articles/better-usability-tasks/"
+  },
+  {
+    "id": "S06",
+    "slug": "nng-errors",
+    "url": "https://www.nngroup.com/articles/error-message-guidelines/"
+  },
+  {
+    "id": "S07",
+    "slug": "w3c-wcag22",
+    "url": "https://www.w3.org/TR/WCAG22/"
+  },
+  {
+    "id": "S08",
+    "slug": "w3c-wcag-em2",
+    "url": "https://www.w3.org/TR/2026/NOTE-wcag-em-2-20260723/"
+  },
+  {
+    "id": "S09",
+    "slug": "w3c-evaluation",
+    "url": "https://www.w3.org/WAI/test-evaluate/"
+  },
+  {
+    "id": "S10",
+    "slug": "w3c-easy-checks",
+    "url": "https://www.w3.org/WAI/test-evaluate/preliminary/"
+  },
+  {
+    "id": "S11",
+    "slug": "uswds-accessibility",
+    "url": "https://designsystem.digital.gov/documentation/accessibility/"
+  },
+  {
+    "id": "S12",
+    "slug": "uswds-button-tests",
+    "url": "https://designsystem.digital.gov/components/button/accessibility-tests/"
+  },
+  {
+    "id": "S13",
+    "slug": "uswds-table-tests",
+    "url": "https://designsystem.digital.gov/components/table/accessibility-tests/"
+  },
+  {
+    "id": "S14",
+    "slug": "playwright-snapshots",
+    "url": "https://playwright.dev/docs/test-snapshots"
+  },
+  {
+    "id": "S15",
+    "slug": "playwright-trace",
+    "url": "https://playwright.dev/docs/trace-viewer"
+  },
+  {
+    "id": "S16",
+    "slug": "playwright-accessibility",
+    "url": "https://playwright.dev/docs/accessibility-testing"
+  },
+  {
+    "id": "S17",
+    "slug": "google-heart",
+    "url": "https://research.google/pubs/measuring-the-user-experience-on-a-large-scale-user-centered-metrics-for-web-applications/"
+  },
+  {
+    "id": "S18",
+    "slug": "neurips-llm-judge",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/91f18a1287b398d378ef22505bf41832-Paper-Datasets_and_Benchmarks.pdf"
+  },
+  {
+    "id": "S19",
+    "slug": "chi25-accessibility",
+    "url": "https://faculty.washington.edu/wobbrock/pubs/chi-25.02.pdf"
+  },
+  {
+    "id": "S20",
+    "slug": "nng-visual-hierarchy",
+    "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/"
+  }
+]

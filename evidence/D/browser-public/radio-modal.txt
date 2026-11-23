@@ -1,0 +1,99 @@
+- link "周波数の選択へ":
+  - /url: "#channels"
+- banner:
+  - link "Dead Air、放送画面へ":
+    - /url: "#broadcast"
+    - generic: DEAD AIRFM
+  - navigation "メイン":
+    - link "放送中":
+      - /url: "#broadcast"
+    - link "チャンネル":
+      - /url: "#channels"
+    - button "放送局について"
+  - button "映像の動き":
+    - generic: MOTION OFF
+- main:
+  - region "DEAD AIR FM 放送画面":
+    - generic: ON AIR
+    - generic: TOKYO, JP
+    - generic: / 15:15 JST
+    - heading "DEAD AIR FM" [level=1]:
+      - generic: DEAD DEAD
+      - generic: AIR
+      - generic: FM
+    - paragraph: 東京地下海賊放送局 / PIRATE RADIO
+    - button "放送を聴く":
+      - generic: 放送を聴く
+    - button "次の周波数に切り替える":
+      - generic: "87.9"
+      - generic: MHz
+    - text: KIRA
+    - text: TRANSMITTER OP.
+  - generic "現在の番組":
+    - generic: NOW ON AIR
+    - generic: ✦
+    - generic: 87.9 MHz
+    - generic: MIDNIGHT CIRCUIT
+    - generic: DARK ELECTRO / 128 BPM
+    - generic: ✦
+    - generic: 87.9 MHz
+    - generic: MIDNIGHT CIRCUIT
+    - generic: DARK ELECTRO / 128 BPM
+    - generic: ✦
+    - generic: 87.9 MHz
+    - generic: MIDNIGHT CIRCUIT
+    - generic: DARK ELECTRO / 128 BPM
+    - generic: ✦
+    - generic: 87.9 MHz
+    - generic: MIDNIGHT CIRCUIT
+    - generic: DARK ELECTRO / 128 BPM
+    - generic: ✦
+    - generic: 87.9 MHz
+    - generic: MIDNIGHT CIRCUIT
+    - generic: DARK ELECTRO / 128 BPM
+    - generic: ✦
+    - generic: 87.9 MHz
+    - generic: MIDNIGHT CIRCUIT
+    - generic: DARK ELECTRO / 128 BPM
+    - generic: 87.9 MHz、Midnight Circuit
+  - region "周波数を選ぶ.":
+    - paragraph: CHANNEL SELECT
+    - heading "周波数を選ぶ." [level=2]
+    - generic: FM 01—03
+    - group "受信チャンネル":
+      - button "CH / 01 Midnight Circuit DARK ELECTRO ／ 128 BPM 87.9 MHz" [pressed]:
+        - generic: CH / 01
+        - generic: Midnight Circuit
+        - generic: DARK ELECTRO ／ 128 BPM
+        - generic: 87.9 MHz
+      - button "CH / 02 Ghost Relay AMBIENT DUB ／ 84 BPM 92.4 MHz":
+        - generic: CH / 02
+        - generic: Ghost Relay
+        - generic: AMBIENT DUB ／ 84 BPM
+        - generic: 92.4 MHz
+        - generic: ↗
+      - button "CH / 03 Chrome Rush BREAKBEAT ／ 148 BPM 98.6 MHz":
+        - generic: CH / 03
+        - generic: Chrome Rush
+        - generic: BREAKBEAT ／ 148 BPM
+        - generic: 98.6 MHz
+        - generic: ↗
+    - status
+- contentinfo:
+  - link "DEAD AIR FM":
+    - /url: "#broadcast"
+  - generic: TOKYO UNDERGROUND RADIO
+  - button "局情報・クレジット ↗"
+- dialog "東京地下海賊放送局":
+  - generic: STATION INFO
+  - button "閉じる" [active]: ×
+  - heading "東京地下海賊放送局" [level=2]
+  - paragraph: DEAD AIR FM は、架空の東京の屋上からDJ KIRAが送る深夜放送。ダークエレクトロ、アンビエントダブ、ブレイクビーツの3回線を切り替えて聴けます。
+  - paragraph: 各チャンネルのために書いた譜面と編成指示をもとに、YuE2で3曲を生成しました。「周波数を選ぶ」で聴きたい局を押すと再生が始まります。「受信を止める」で停止できます。画面上部の MOTION で映像の動きを切り替えられます。
+  - separator
+  - paragraph:
+    - text: 画面設計：Anything Frontend Art Direction
+    - text: モーション：Motion Atlas（MIT）
+    - text: 音楽：YuE2-3B（インストゥルメンタル）
+    - text: イラスト：MOSS-Image
+    - text: 欧文：Archivo Black、Space Mono／和文：Noto Sans JP

@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:22:35.819185+00:00
+finished_at: 2026-11-23T06:22:35.894716+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "experience-add", "--experience", "inputs/experience-preliminary.json"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.075519
+--- stdout ---
+experience追加成功: /workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi/.ga/receipts/experience-add-493f6c21aefcc5659b884ed14db9cef706621678cfa70d2cf4d45cd6f2853809.json
+--- stderr ---

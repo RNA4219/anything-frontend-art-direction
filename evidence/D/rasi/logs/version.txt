@@ -1,0 +1,10 @@
+started_at: 2026-11-23T06:08:46.569885+00:00
+finished_at: 2026-11-23T06:08:46.650515+00:00
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python", "-m", "rasi", "--root", "/workspace/scratch/1acf7c2e1e4d/anything-frontend-D/evidence/D/rasi", "--version"]
+cwd: /workspace/scratch/1acf7c2e1e4d/tooling/R-ASI
+exit_code: 0
+expected_exit_code: 0
+wall_seconds_measured: 0.080616
+--- stdout ---
+0.0.2
+--- stderr ---

@@ -1,0 +1,43 @@
+{
+  "scope": "synthetic assertion/control-flow probes; no UI evaluated",
+  "findings": [
+    {
+      "id": "R1",
+      "synthetic_only": true,
+      "requirement_met": true,
+      "observed": {
+        "name": "確認 太郎",
+        "email": "qa@example.test",
+        "seats": "",
+        "message": "通信失敗。再試行不能"
+      },
+      "events": [
+        "check failure",
+        "click 参加を登録する",
+        "wait for failure"
+      ],
+      "proves": "lost seats and no retry can satisfy recovery-case predicate"
+    },
+    {
+      "id": "R2",
+      "synthetic_only": true,
+      "requirement_met": true,
+      "observed": {
+        "summary": "6件の依頼",
+        "page": "1 / 2",
+        "row_count": 3
+      },
+      "events": [
+        "click 次へ"
+      ],
+      "proves": "next-page no-op still satisfies normal-case predicate"
+    },
+    {
+      "id": "R3",
+      "synthetic_only": true,
+      "error": "synthetic transport already closed",
+      "result_json_written": false,
+      "proves": "cleanup exception prevents result persistence"
+    }
+  ]
+}
