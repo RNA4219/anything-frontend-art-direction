@@ -1,0 +1,184 @@
+[
+  {
+    "id": "S01",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_method_open2.web.txt"
+    ],
+    "url": "https://www.nasa.gov/reference/6-2-requirements-management/",
+    "quote_word_count": 6
+  },
+  {
+    "id": "S02",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_method_open1.web.txt"
+    ],
+    "url": "https://guides.18f.org/methods/decide/user-stories/",
+    "quote_word_count": 18
+  },
+  {
+    "id": "S03",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_method_open1.web.txt"
+    ],
+    "url": "https://guides.18f.org/methods/decide/design-hypothesis/",
+    "quote_word_count": 9
+  },
+  {
+    "id": "S04",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open8.web.txt",
+      "parent_open7.web.txt"
+    ],
+    "url": "https://guides.18f.org/ux-guide/research/make-research-actionable/",
+    "quote_word_count": 13
+  },
+  {
+    "id": "S05",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_method_open2.web.txt"
+    ],
+    "url": "https://guides.18f.org/methods/decide/task-flow-analysis/",
+    "quote_word_count": 10
+  },
+  {
+    "id": "S06",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_method_open2.web.txt"
+    ],
+    "url": "https://guides.18f.org/methods/validate/card-sorting/",
+    "quote_word_count": 17
+  },
+  {
+    "id": "S07",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open7.web.txt"
+    ],
+    "url": "https://github.com/18F/C2/wiki/Sprint-5:-Interaction-model-June-2016",
+    "quote_word_count": 19
+  },
+  {
+    "id": "S08",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_method_open2.web.txt"
+    ],
+    "url": "https://designsystem.digital.gov/patterns/complete-a-complex-form/progress-easily/",
+    "quote_word_count": 4
+  },
+  {
+    "id": "S09",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open3.web.txt"
+    ],
+    "url": "https://www.carbondesignsystem.com/building-blocks/core/patterns/global-header",
+    "quote_word_count": 19
+  },
+  {
+    "id": "S10",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open3.web.txt"
+    ],
+    "url": "https://www.w3.org/WAI/WCAG2/supplemental/patterns/o5p02-short-paths/",
+    "quote_word_count": 20
+  },
+  {
+    "id": "S11",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open4.web.txt"
+    ],
+    "url": "https://web.eecs.umich.edu/~kieras/docs/TA_Modeling/TaskAnalysisV2.pdf",
+    "quote_word_count": 11
+  },
+  {
+    "id": "S12",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open8.web.txt"
+    ],
+    "url": "https://hcibib.org/tcuid/chap-2.html",
+    "quote_word_count": 13
+  },
+  {
+    "id": "S13",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open4.web.txt"
+    ],
+    "url": "https://thearf-org-unified-admin.s3.amazonaws.com/MSI/2020/06/MSI_Report_05-101.pdf",
+    "quote_word_count": 6
+  },
+  {
+    "id": "S14",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open7.web.txt"
+    ],
+    "url": "https://www.dgp.toronto.edu/~joanna/papers/gi_2000_bloat.pdf",
+    "quote_word_count": 10
+  },
+  {
+    "id": "S15",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open5.web.txt",
+      "parent_open7.web.txt"
+    ],
+    "url": "https://www.dgp.toronto.edu/~joanna/papers/JMcGrenere_CHI_2002.pdf",
+    "quote_word_count": 12
+  },
+  {
+    "id": "S16",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open3.web.txt"
+    ],
+    "url": "https://www.nngroup.com/articles/progressive-disclosure/",
+    "quote_word_count": 11
+  },
+  {
+    "id": "S17",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open3.web.txt"
+    ],
+    "url": "https://www.nngroup.com/articles/ia-vs-navigation/",
+    "quote_word_count": 13
+  },
+  {
+    "id": "S18",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open7.web.txt"
+    ],
+    "url": "https://baymard.com/research-articles/ecommerce-over-categorization",
+    "quote_word_count": 15
+  },
+  {
+    "id": "S19",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open6.web.txt"
+    ],
+    "url": "https://baymard.com/research-articles/provide-comparison-features",
+    "quote_word_count": 15
+  },
+  {
+    "id": "S20",
+    "quote_found": true,
+    "snapshot_files": [
+      "parent_open6.web.txt"
+    ],
+    "url": "https://baymard.com/research-articles/product-listing-information",
+    "quote_word_count": 12
+  }
+]

@@ -1,0 +1,595 @@
+{
+  "schema_version": "1.0",
+  "case_id": "support-triage",
+  "visual_intent_id": "ops-charcoal-01",
+  "features": [
+    {
+      "id": "f_inbox",
+      "label": "問い合わせ一覧",
+      "disposition": "keep",
+      "target": null,
+      "object": "ticket",
+      "outcome": "select-ticket",
+      "roles": [
+        "operator"
+      ],
+      "goal_ids": [
+        "g_triage"
+      ],
+      "requirement_ids": [
+        "r_triage"
+      ],
+      "dependencies": [],
+      "reason": "期限・影響を並べて着手対象を選ぶ必須機能。全担当と自分の担当は同じチケット集合の絞込として一つの一覧にまとめる。",
+      "priority": "required",
+      "priority_basis": "g_triage と r_triage は必須であり、担当者の反復作業の入口になる。"
+    },
+    {
+      "id": "f_my_queue",
+      "label": "自分の対応一覧",
+      "disposition": "merge",
+      "target": "f_inbox",
+      "object": "ticket",
+      "outcome": "select-ticket",
+      "roles": [
+        "operator"
+      ],
+      "goal_ids": [
+        "g_triage"
+      ],
+      "requirement_ids": [
+        "r_triage"
+      ],
+      "dependencies": [],
+      "reason": "対象 ticket、成果 select-ticket、利用者 operator が受信箱と同一。独立した画面や保管場所を作らず、問い合わせ一覧の「自分の担当」ビューとして能力を残す。",
+      "priority": "high",
+      "priority_basis": "日々の着手選択に有用だが、独立機能ではなく必須一覧の絞込で満たせる。"
+    },
+    {
+      "id": "f_assign",
+      "label": "担当変更",
+      "disposition": "keep",
+      "target": null,
+      "object": "ticket",
+      "outcome": "assign-owner",
+      "roles": [
+        "operator"
+      ],
+      "goal_ids": [
+        "g_assign"
+      ],
+      "requirement_ids": [
+        "r_assign"
+      ],
+      "dependencies": [
+        "f_history"
+      ],
+      "reason": "担当の決定は着手対象の選択や履歴閲覧とは異なる成果。チケット詳細に担当ルール・現担当・変更操作をまとめ、依存する f_history を維持する。",
+      "priority": "required",
+      "priority_basis": "g_assign と r_assign が必須。割当ルールを知らずに変更させないため、ルール提示も同じ優先度とする。"
+    },
+    {
+      "id": "f_search",
+      "label": "問い合わせ検索（解決済み含む）",
+      "disposition": "keep",
+      "target": null,
+      "object": "ticket",
+      "outcome": "find-ticket",
+      "roles": [
+        "operator"
+      ],
+      "goal_ids": [
+        "g_find"
+      ],
+      "requirement_ids": [
+        "r_archive"
+      ],
+      "dependencies": [],
+      "reason": "対応中の優先順位付けとは別に、解決済みを含む記録の発見が必要。共通チケット集合を検索する専用の作業画面とし、解決済み記録を90日保持する要件を残す。",
+      "priority": "required",
+      "priority_basis": "g_find と r_archive が必須。解決済みを現在の対応一覧から外しても検索能力は失えない。"
+    },
+    {
+      "id": "f_history",
+      "label": "対応履歴",
+      "disposition": "keep",
+      "target": null,
+      "object": "ticket",
+      "outcome": "read-history",
+      "roles": [
+        "operator",
+        "manager"
+      ],
+      "goal_ids": [
+        "g_find",
+        "g_audit"
+      ],
+      "requirement_ids": [
+        "r_archive",
+        "r_audit"
+      ],
+      "dependencies": [],
+      "reason": "対応経緯を読む成果を維持し、検索結果と監査対象から同じチケット詳細へ接続する。担当変更と監査出力の依存先でもあるため独立した能力として残す。",
+      "priority": "required",
+      "priority_basis": "r_archive と r_audit の必須情報に加え、f_assign と f_export の依存先である。"
+    },
+    {
+      "id": "f_export",
+      "label": "監査エクスポート",
+      "disposition": "keep",
+      "target": null,
+      "object": "audit-record",
+      "outcome": "export-records",
+      "roles": [
+        "manager"
+      ],
+      "goal_ids": [
+        "g_audit"
+      ],
+      "requirement_ids": [
+        "r_audit"
+      ],
+      "dependencies": [
+        "f_history"
+      ],
+      "reason": "監査記録は ticket の着手選択とは異なる対象・成果で、manager 専用の責務。年4回という低頻度でも必須機能として専用の入口・画面を維持する。",
+      "priority": "required",
+      "priority_basis": "g_audit と r_audit が必須。利用頻度によって監査の必須性を下げない。"
+    },
+    {
+      "id": "f_trends",
+      "label": "月別ダッシュボード",
+      "disposition": "defer",
+      "target": null,
+      "object": "metrics",
+      "outcome": "read-trends",
+      "roles": [
+        "manager"
+      ],
+      "goal_ids": [
+        "g_trends"
+      ],
+      "requirement_ids": [
+        "r_trends"
+      ],
+      "dependencies": [],
+      "reason": "月別傾向には対応する目標があるが、r_trends は初回リリースに必須ではない。まず着手・割当・記録検索・監査を成立させ、月別集計の対象と集計軸が定まった時点で再検討する。",
+      "priority": "medium",
+      "priority_basis": "g_trends は should で初回必須ではない。監査エクスポートの延期とは切り離す。"
+    },
+    {
+      "id": "f_theme",
+      "label": "テーマギャラリー",
+      "disposition": "remove",
+      "target": null,
+      "object": "theme",
+      "outcome": "browse-themes",
+      "roles": [
+        "operator",
+        "manager"
+      ],
+      "goal_ids": [],
+      "requirement_ids": [],
+      "dependencies": [],
+      "reason": "入力内に対応する目標・要件がなく、既存 visual_intent を維持する今回の業務構成に寄与しないため、提案する機能集合とナビゲーションから除く。実データを消す判断ではない。",
+      "priority": "low",
+      "priority_basis": "必須目標・要件との関係がなく、既存意匠の維持条件とも整合しない。"
+    }
+  ],
+  "screens": [
+    {
+      "id": "s_triage",
+      "title": "問い合わせ一覧",
+      "purpose": "現在の対応対象について期限と影響を比較し、次に着手するチケットを選ぶ。全担当・自分の担当はこの画面の絞込ビューで、初期の状態範囲も画面に明示する。",
+      "goal_ids": [
+        "g_triage"
+      ],
+      "feature_ids": [
+        "f_inbox"
+      ],
+      "roles": [
+        "operator"
+      ],
+      "entry_for": [
+        "operator"
+      ],
+      "information": [
+        {
+          "id": "ticket_id",
+          "visibility": "primary",
+          "reason": "各行と詳細への入口を一意に対応させ、似た内容の問い合わせを取り違えない。"
+        },
+        {
+          "id": "summary",
+          "visibility": "primary",
+          "reason": "どの問い合わせに着手するかを行内の実内容で判断する。"
+        },
+        {
+          "id": "severity",
+          "visibility": "primary",
+          "reason": "影響の大小を期限と同じ行で比較する。詳細を開く操作を要求しない。"
+        },
+        {
+          "id": "due_at",
+          "visibility": "primary",
+          "reason": "期限を影響と同時に読み、着手順を判断する。"
+        },
+        {
+          "id": "owner",
+          "visibility": "primary",
+          "reason": "未割当・他担当・自分の担当を一覧上で区別する。"
+        },
+        {
+          "id": "status",
+          "visibility": "primary",
+          "reason": "未対応・対応中・解決済みを取り違えず、表示中の対象範囲を理解する。"
+        }
+      ]
+    },
+    {
+      "id": "s_search",
+      "title": "問い合わせ検索（解決済み含む）",
+      "purpose": "現行記録と90日保持される解決済み記録を同じ検索対象として探す。検索語と現在の条件を結果の有無にかかわらず表示し、結果から経緯を読む詳細へ進む。",
+      "goal_ids": [
+        "g_find"
+      ],
+      "feature_ids": [
+        "f_search"
+      ],
+      "roles": [
+        "operator"
+      ],
+      "entry_for": [],
+      "information": [
+        {
+          "id": "ticket_id",
+          "visibility": "primary",
+          "reason": "探す記録の識別子と詳細へのリンクを結果ごとに示す。"
+        },
+        {
+          "id": "summary",
+          "visibility": "primary",
+          "reason": "検索結果が探している問い合わせかを判断する。"
+        },
+        {
+          "id": "status",
+          "visibility": "primary",
+          "reason": "解決済みも対象に入っていることと各記録の状況を明示する。"
+        },
+        {
+          "id": "owner",
+          "visibility": "primary",
+          "reason": "同じような要約が並ぶ場合に担当で記録を識別する。"
+        },
+        {
+          "id": "retention",
+          "visibility": "primary",
+          "reason": "解決済み記録は90日保持されることを表示する。検索0件でも条件の問題と保持範囲の問題を確認できる。"
+        }
+      ]
+    },
+    {
+      "id": "s_ticket",
+      "title": "問い合わせ詳細・対応履歴",
+      "purpose": "一つのチケットの経緯を読む。担当者には担当ルールを参照した担当変更を同じ対象の文脈で提供し、管理責任者には監査のための履歴閲覧を提供する。",
+      "goal_ids": [
+        "g_assign",
+        "g_find",
+        "g_audit"
+      ],
+      "feature_ids": [
+        "f_assign",
+        "f_history"
+      ],
+      "roles": [
+        "operator",
+        "manager"
+      ],
+      "entry_for": [],
+      "information": [
+        {
+          "id": "ticket_id",
+          "visibility": "primary",
+          "reason": "検索・一覧・監査から引き継いだ対象を明示し、変更先を取り違えない。"
+        },
+        {
+          "id": "summary",
+          "visibility": "primary",
+          "reason": "選んだ問い合わせの内容を担当変更と履歴の両方に結び付ける。"
+        },
+        {
+          "id": "severity",
+          "visibility": "primary",
+          "reason": "一覧から移っても影響の判断材料を失わない。"
+        },
+        {
+          "id": "due_at",
+          "visibility": "primary",
+          "reason": "担当を決める時点でも期限を読める。"
+        },
+        {
+          "id": "owner",
+          "visibility": "primary",
+          "reason": "現担当と担当変更の対象を同じ領域で確認する。変更操作の提供は operator に限定する。"
+        },
+        {
+          "id": "status",
+          "visibility": "primary",
+          "reason": "履歴を読む対象の現在状態を明示する。解決済みを未対応と誤認させない。"
+        },
+        {
+          "id": "assignment_policy",
+          "visibility": "primary",
+          "reason": "operator が担当を決める場所に担当ルールを常時置く。本文は入力にないため作成せず product に確定を依頼する。"
+        },
+        {
+          "id": "history",
+          "visibility": "primary",
+          "reason": "経緯を読む画面の中心情報。折り畳みを開く前提にせず、長い履歴はスクロールで読める。"
+        },
+        {
+          "id": "retention",
+          "visibility": "primary",
+          "reason": "解決済み記録の90日保持を読めるようにし、検索・監査で扱う範囲との関係を示す。"
+        }
+      ]
+    },
+    {
+      "id": "s_audit",
+      "title": "監査記録の出力",
+      "purpose": "管理責任者が期間と対象範囲を確認して監査記録を取り出す。指定範囲の記録から経緯を確認できるようにし、着手選択の一覧とは分離する。",
+      "goal_ids": [
+        "g_audit"
+      ],
+      "feature_ids": [
+        "f_export",
+        "f_history"
+      ],
+      "roles": [
+        "manager"
+      ],
+      "entry_for": [
+        "manager"
+      ],
+      "information": [
+        {
+          "id": "date_range",
+          "visibility": "primary",
+          "reason": "出力対象の開始・終了を出力操作の前に確認するため常時表示する。"
+        },
+        {
+          "id": "retention",
+          "visibility": "primary",
+          "reason": "取得可能な保持範囲を期間選択と同じ画面に示す。90日を超える監査記録の保証は入力からは判断しない。"
+        },
+        {
+          "id": "export_scope",
+          "visibility": "primary",
+          "reason": "含める記録・履歴の範囲を出力前に確認する。出力対象をラベルだけで推測させない。"
+        },
+        {
+          "id": "ticket_id",
+          "visibility": "primary",
+          "reason": "指定範囲の対象記録を識別し、必要なものを同じ詳細へ開く。"
+        },
+        {
+          "id": "summary",
+          "visibility": "primary",
+          "reason": "監査対象の確認用一覧で各記録の内容を識別する。"
+        },
+        {
+          "id": "status",
+          "visibility": "primary",
+          "reason": "出力範囲に含まれる各記録の状態を確認する。"
+        },
+        {
+          "id": "history",
+          "visibility": "secondary",
+          "reason": "範囲確認を補助する履歴参照は対象記録を開いた先で全文を読む。監査出力に必要な期間・保持・範囲の表示を押しのけない。"
+        }
+      ]
+    }
+  ],
+  "navigation": [
+    {
+      "from": "s_triage",
+      "to": "s_triage",
+      "label": "すべての担当",
+      "roles": [
+        "operator"
+      ],
+      "kind": "local",
+      "rationale": "同じチケット集合の担当条件を切り替える。別の受信箱や記録複製を作らない。状態範囲は別条件として明示する。"
+    },
+    {
+      "from": "s_triage",
+      "to": "s_triage",
+      "label": "自分の担当",
+      "roles": [
+        "operator"
+      ],
+      "kind": "local",
+      "rationale": "f_my_queue の能力を担当条件として統合し、期限・影響の比較形式を変えない。"
+    },
+    {
+      "from": "s_triage",
+      "to": "s_search",
+      "label": "検索（解決済み含む）",
+      "roles": [
+        "operator"
+      ],
+      "kind": "global",
+      "rationale": "現在の対応対象にない解決済み記録へも、担当者の主な入口から到達できる。"
+    },
+    {
+      "from": "s_search",
+      "to": "s_triage",
+      "label": "問い合わせ一覧",
+      "roles": [
+        "operator"
+      ],
+      "kind": "global",
+      "rationale": "経緯の検索から日々の着手判断へ戻る行き先を固定する。"
+    },
+    {
+      "from": "s_triage",
+      "to": "s_ticket",
+      "label": "問い合わせの詳細・担当変更",
+      "roles": [
+        "operator"
+      ],
+      "kind": "contextual",
+      "rationale": "選択した ticket_id を保持したまま、担当ルールと現担当が読める場所に進む。"
+    },
+    {
+      "from": "s_search",
+      "to": "s_ticket",
+      "label": "対応履歴を見る",
+      "roles": [
+        "operator"
+      ],
+      "kind": "contextual",
+      "rationale": "検索で見つけた ticket_id の経緯を読む。解決済みも同じ詳細を用いる。"
+    },
+    {
+      "from": "s_search",
+      "to": "s_search",
+      "label": "検索条件を見直す",
+      "roles": [
+        "operator"
+      ],
+      "kind": "local",
+      "rationale": "0件でも現在の条件と90日の保持説明を残し、条件を修正する場所へ直接進める。"
+    },
+    {
+      "from": "s_ticket",
+      "to": "s_triage",
+      "label": "問い合わせ一覧",
+      "roles": [
+        "operator"
+      ],
+      "kind": "global",
+      "rationale": "担当を決めた対象の文脈から反復作業の入口に戻れる。元の担当・状態の絞込は戻り先の文脈として扱う。"
+    },
+    {
+      "from": "s_ticket",
+      "to": "s_search",
+      "label": "検索（解決済み含む）",
+      "roles": [
+        "operator"
+      ],
+      "kind": "global",
+      "rationale": "別の記録を探し直す入口を詳細からも提供する。検索起点の場合は元の検索条件への戻り先になる。"
+    },
+    {
+      "from": "s_audit",
+      "to": "s_ticket",
+      "label": "対象記録の対応履歴を見る",
+      "roles": [
+        "manager"
+      ],
+      "kind": "contextual",
+      "rationale": "指定した監査範囲の記録を ticket_id で開き、出力材料となる履歴を確認する。担当変更は提供しない。"
+    },
+    {
+      "from": "s_ticket",
+      "to": "s_audit",
+      "label": "監査記録の出力",
+      "roles": [
+        "manager"
+      ],
+      "kind": "global",
+      "rationale": "履歴確認から、指定していた期間・範囲の監査作業へ戻る。operator のナビゲーションにはこの入口を作らない。"
+    }
+  ],
+  "goal_routes": [
+    {
+      "goal_id": "g_triage",
+      "start_screen": "s_triage",
+      "target_screen": "s_triage",
+      "notes": "担当者の入口で ticket_id・summary・severity・due_at・owner・status を同じ行で読む。すべての担当／自分の担当を同じ一覧の条件として切り替えて着手対象を選ぶ。"
+    },
+    {
+      "goal_id": "g_assign",
+      "start_screen": "s_triage",
+      "target_screen": "s_ticket",
+      "notes": "選んだチケットの詳細で ticket_id・owner・assignment_policy を見て担当を決める。対応履歴 f_history を維持する。変更成功・失敗・同時更新の挙動はBへ渡す。"
+    },
+    {
+      "goal_id": "g_find",
+      "start_screen": "s_triage",
+      "target_screen": "s_ticket",
+      "notes": "グローバルの検索（解決済み含む）→ s_search の結果 → s_ticket の履歴。解決済みは90日保持する。検索0件では現在条件・retention・条件見直し先が残る。"
+    },
+    {
+      "goal_id": "g_audit",
+      "start_screen": "s_audit",
+      "target_screen": "s_audit",
+      "notes": "manager の入口で date_range・retention・export_scope を読んで期間指定の出力を行う。必要時は s_ticket で記録を確認して戻れる。年4回でも必須の到達経路として残し、operator には入口も出力機能も提示しない。"
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "u_assignment_policy",
+      "category": "function",
+      "owner": "product",
+      "impact": "担当変更の能力と配置は確定できるが、選択可能な担当と判断ルールを具体化できない。",
+      "blocking": true,
+      "question": "assignment_policy の正式な本文、割当可能な担当の範囲、解決済み記録の担当変更可否は何か。入力にない規則は補わない。"
+    },
+    {
+      "id": "u_retention_audit",
+      "category": "function",
+      "owner": "product",
+      "impact": "90日保持と年4回の監査だけでは、要求された監査期間を欠落なく出力できるか確定しない。",
+      "blocking": true,
+      "question": "解決済み90日の起算点と、監査用記録の保持期間・対象日時は何か。監査の date_range の対象日時、境界、タイムゾーン、export_scope の内容を定義できるか。"
+    },
+    {
+      "id": "u_status_scope",
+      "category": "information_architecture",
+      "owner": "product",
+      "impact": "初期一覧を未対応・対応中とする案は仮定であり、実運用の対象状態が異なると初期絞込を修正する必要がある。",
+      "blocking": false,
+      "question": "業務で着手候補となる状態は何か。初期範囲を未解決、担当条件をすべての担当としてよいか。"
+    },
+    {
+      "id": "u_support_interactions",
+      "category": "interaction",
+      "owner": "B",
+      "impact": "画面責務と行き先は定まるが、実操作時の保持・応答・復旧は別の設計が必要。",
+      "blocking": false,
+      "question": "割当・出力の成功／失敗・同時更新・再試行・通知と、一覧／検索／監査へ戻る際の条件と位置の保持をどう扱うか。Aでは状態遷移を実装しない。"
+    },
+    {
+      "id": "u_support_components",
+      "category": "implementation",
+      "owner": "C",
+      "impact": "広幅と狭幅の双方で期限・影響・対象の対応を失わない部品化が必要。",
+      "blocking": false,
+      "question": "六つの比較項目、長い履歴、条件入力をどの部品で示し、キーボード操作・読み上げ・ARIAをどう担保するか。"
+    },
+    {
+      "id": "u_support_data_access",
+      "category": "implementation",
+      "owner": "product",
+      "impact": "表示だけで役割権限や90日の保持を保証できず、10000件時の取得・検索方法も未確定。",
+      "blocking": true,
+      "question": "履歴保存・監査取得・manager の出力権限を担保する既存のデータ提供契約と実装担当は誰か。10000件のページ単位取得と検索の可否を確認できるか。"
+    }
+  ],
+  "decision_notes": [
+    "設計順序は、入力の役割・目標・必須要件の確認 → 対象と成果に基づく機能の維持／統合／延期／削除 → 画面責務 → 入口と到達経路 → primary／secondary 情報の指定とした。既存の機能名をそのまま画面数にしない。",
+    "既存 visual_intent ops-charcoal-01 を維持する。黒鉛色背景・白文字・琥珀色アクセント、システム書体、小さい角丸、テキストと罫線中心の意匠を引き継ぐ。色・書体・装飾の新案は作成していない。",
+    "features の roles・goal_ids・requirement_ids・dependencies は入力の対応を維持した。共通詳細に f_assign が含まれていても、機能単位の roles により manager へ担当変更を提示しない。f_export の役割は manager のみである。",
+    "担当者の入口は問い合わせ一覧、管理責任者の入口は監査記録の出力。manager が operator を兼ねるとは仮定しない。画面が複数役割を受け入れる場合も機能の権限を拡張しない。",
+    "f_my_queue は f_inbox の絞込ビューとして統合する。s_triage の自分の担当とすべての担当は同じデータを参照する。現在の着手候補の選択と解決済みを含む経緯の検索は成果が異なるため、f_search は維持する。",
+    "f_trends と g_trends は初回の範囲から延期するため、現行 screens・navigation・goal_routes にダミーの行き先を作らない。月別集計の定義と優先度が確認された時点で manager 向けの配置を再検討する。monthly_counts を監査の必須情報へ混ぜない。",
+    "監査画面の対象記録一覧は f_history への参照であり、別の履歴ストアや監査専用の編集機能を増やすものではない。f_export → f_history と f_assign → f_history の依存を保持する。",
+    "入力の実内容を変更しない。T-104 の高／本日16:00／未割当と T-105 の低／明日12:00／担当Aを一覧上で比較できる情報構成にする。T-099 の解決済み／11/20復旧確認を検索から読めるようにする。due_at の完了を期限切れの数値として扱わない。",
+    "0件では対象条件と見直し先を残し、検索では90日の保持説明も残す。1件でも同じ項目名で読む。10000件は同じ集合をページ単位でたどる構成とし、全件を一画面へ詰めない。ページ取得・応答時間・描画方式は未確認で、性能を保証したとは扱わない。",
+    "primary は開示操作なしで読める情報を指し、長い履歴などのスクロールを許す。狭幅でも期限・影響・対象識別の対応を保ち、比較のために別の詳細画面の値を記憶させない。具体的な部品はCへ渡す。",
+    "参考にした入力内の資料は SKILL.md、visual-composition.md の判断に必要な情報と操作をまとめる考え方、c-usability.md の業務語・記憶負担・反復操作・ヘルプの観点。g-state-forms.md のURLと履歴はBへの確認範囲を整理するために参照した。外部リンクの仕様や実物は確認していない。",
+    "blocking は該当能力を実装・提供する前に解決が必要という意味であり、このIA提案の出力自体を停止する意味ではない。既存機能の統合・延期・削除は提案であり、実データは変更していない。"
+  ]
+}

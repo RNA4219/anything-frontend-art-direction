@@ -1,0 +1,285 @@
+{
+  "checked_at": "2026-11-23",
+  "scope": "Product Design / Information Architecture の前段設計の原典候補探索。本文確認済み候補10件。資料の追加探索は行わず既存調査の記録を保存。",
+  "stop_reason": "依頼された8〜10件の候補を10件、本文の該当部と適用制約まで確認し、文献・著者をたどる経路も確認したため検索役の範囲を終了。飽和を判定したものではない。",
+  "source_ids": [
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20"
+  ],
+  "search_log_notes": [
+    "最初の検索だけ3クエリを一括実行し、ツールは47ヒットをまとめて返した。クエリ別の帰属は出力されなかったため推定で分割せず、入力した3クエリを || で連結した1つのバッチ記録として全件を保存した。",
+    "以後はクエリごとに別の検索結果を保持した。検索結果のタイトルが長い本文抜粋になっていた3件は先頭20語に短縮し、タイトル内にそのことを明記した。空タイトルはツール出力のまま。",
+    "通常の本文閲覧open/findは検索件数に含めていない。引用・著者追跡のリンクclickは経路と失敗を末尾に別記した。",
+    "queries-research.jsonは最終応答のJSON配列を保持し、このファイルに最終応答で配列外に置いた説明を保持した。"
+  ],
+  "search_counts": {
+    "web_search_inputs": 10,
+    "web_search_log_entries": 8,
+    "web_search_hits_returned_before_selection": 129,
+    "follow_link_log_entries": 5
+  },
+  "media": [
+    {
+      "title": "University of Michigan の著者公開ページ",
+      "url": "https://web.eecs.umich.edu/~kieras/goms.html",
+      "role": "タスク分析、機能設計、GOMSの原稿と研究紹介"
+    },
+    {
+      "title": "HCIBIB / Task-Centered User Interface Design",
+      "url": "https://hcibib.org/tcuid/",
+      "role": "Lewis/Riemanの公開教科書"
+    },
+    {
+      "title": "CMU Brad Myers 講義",
+      "url": "https://www.cs.cmu.edu/~bam/05-830/lecture04process.html",
+      "role": "task analysis / functional analysis と具体的な目標設定。本人講義であり独立した実験とは扱わない",
+      "ref": "turn963839885view5"
+    },
+    {
+      "title": "CMU Course readings",
+      "url": "https://cups.cs.cmu.edu/courses/ups-fa09/readings.html",
+      "role": "Kieras等の文献への入口"
+    },
+    {
+      "title": "McGrenere 著者業績一覧",
+      "url": "https://www.dgp.toronto.edu/~joanna/publications.html",
+      "role": "Graphics Interface / ACM CHI採択原稿へのリンク"
+    },
+    {
+      "title": "Journal of Marketing Research / MSI",
+      "url": "https://journals.sagepub.com/doi/10.1509/jmkr.2005.42.4.431",
+      "role": "Feature Fatigueの刊行書誌と著者working paper"
+    },
+    {
+      "title": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/ia-vs-navigation/",
+      "role": "IA/navigation、progressive/staged disclosureの専門家による定義・助言"
+    },
+    {
+      "title": "Baymard Research Articles",
+      "url": "https://baymard.com/research-articles/ecommerce-over-categorization",
+      "role": "分類、一覧、比較に関する本人研究の公開記事"
+    }
+  ],
+  "terms": [
+    {
+      "terms": [
+        "task and user analysis",
+        "representative tasks",
+        "scenario"
+      ],
+      "source_id": "S12"
+    },
+    {
+      "terms": [
+        "design of functionality",
+        "high-level GOMS",
+        "link analysis"
+      ],
+      "source_id": "S11"
+    },
+    {
+      "terms": [
+        "objective bloat",
+        "subjective bloat"
+      ],
+      "source_id": "S14"
+    },
+    {
+      "terms": [
+        "feature-shy",
+        "feature-keen",
+        "adaptive",
+        "adaptable"
+      ],
+      "source_id": "S15"
+    },
+    {
+      "terms": [
+        "capability",
+        "usability",
+        "expected utility",
+        "experienced utility",
+        "feature fatigue"
+      ],
+      "source_id": "S13"
+    },
+    {
+      "terms": [
+        "information architecture",
+        "navigation",
+        "taxonomy",
+        "metadata"
+      ],
+      "source_id": "S17"
+    },
+    {
+      "terms": [
+        "progressive disclosure",
+        "staged disclosure",
+        "information scent"
+      ],
+      "source_id": "S16"
+    },
+    {
+      "terms": [
+        "overcategorization",
+        "product-type filters"
+      ],
+      "source_id": "S18"
+    },
+    {
+      "terms": [
+        "comparison features"
+      ],
+      "source_id": "S19"
+    },
+    {
+      "terms": [
+        "category-specific attributes"
+      ],
+      "source_id": "S20"
+    }
+  ],
+  "traces": [
+    {
+      "route": "CMU読書リスト → Kieras",
+      "steps": [
+        {
+          "url": "https://cups.cs.cmu.edu/courses/ups-fa09/readings.html",
+          "result": "Task Analysis and the Design of Functionalityを参考文献として確認",
+          "ref": "turn585350636view0"
+        },
+        {
+          "url": "https://citeseer.ist.psu.edu/rd/52131071%2C168353%2C1%2C0.25%2CDownload/http%3A//citeseer.ist.psu.edu/cache/papers/cs/3446/ftp%3AzSzzSzftp.eecs.umich.eduzSzpeoplezSzkieraszSzTaskAnalysis.pdf/task-analysis-and-the.pdf",
+          "result": "旧リンク404",
+          "ref": "turn643077703view5"
+        },
+        {
+          "url": "https://web.eecs.umich.edu/~kieras/docs/TA_Modeling/TaskAnalysisV2.pdf",
+          "result": "題名で引き直して著者公開PDFの本文に到達",
+          "ref": "turn691785854view0"
+        },
+        {
+          "url": "https://web.eecs.umich.edu/~kieras/goms.html",
+          "result": "旧1997年版の書誌を確認し、V2との版違いを記録",
+          "ref": "turn727426163view2"
+        }
+      ]
+    },
+    {
+      "route": "McGrenere 著者業績一覧 → 2000原著と2002原著",
+      "steps": [
+        {
+          "url": "https://www.dgp.toronto.edu/~joanna/publications.html",
+          "result": "Refereed Conference Papersを確認",
+          "ref": "turn691785854view2"
+        },
+        {
+          "url": "https://www.dgp.toronto.edu/~joanna/papers/gi_2000_bloat.pdf",
+          "result": "リンク3をたどり本文確認",
+          "ref": "turn144737113view2"
+        },
+        {
+          "url": "https://www.dgp.toronto.edu/~joanna/papers/JMcGrenere_CHI_2002.pdf",
+          "result": "リンク1をたどり本文確認",
+          "ref": "turn144737113view1"
+        }
+      ]
+    },
+    {
+      "route": "Nielsen Progressive Disclosure → Training Wheels → Carroll原研究",
+      "steps": [
+        {
+          "url": "https://www.nngroup.com/articles/progressive-disclosure/",
+          "result": "研究根拠のリンク38を確認",
+          "ref": "turn643077703view0"
+        },
+        {
+          "url": "https://www.nngroup.com/articles/training-wheels-user-interface/",
+          "result": "記事内の研究紹介に到達",
+          "ref": "turn738166062view0"
+        },
+        {
+          "url": "https://portal.acm.org/citation.cfm?coll=portal&dl=ACM&id=358218",
+          "result": "403。原研究本文未確認",
+          "ref": "turn691785854view3"
+        },
+        {
+          "url": "https://portal.acm.org/citation.cfm?coll=portal&dl=ACM&id=275625",
+          "result": "403。原研究本文未確認",
+          "ref": "turn691785854view4"
+        }
+      ],
+      "limit": "Nielsenが紹介する効果量を原研究の本文と照合できていない。独立検証済み数値としては扱わない。"
+    }
+  ],
+  "duplicates_and_versions": [
+    {
+      "source_id": "S11",
+      "issue": "1997年版とV2の混同",
+      "detail": "CMU読書リスト・著者旧索引は1997年版。本文確認したV2は第2版向け原稿で2003年文献を含む。正確な刊行年と最終版の一致は未確定。"
+    },
+    {
+      "source_id": "S12",
+      "issue": "複数ホストの同題資料",
+      "detail": "HCIBIB、Calgary、Dalhousie等が検索に出た。候補根拠にはHCIBIB Chapter 1/2を使用。Dalhousieにはamended版の記載もあり、同一内容と仮定しない。"
+    },
+    {
+      "source_id": "S13",
+      "issue": "査読刊行版とworking paper",
+      "detail": "刊行版の書誌・抄録を確認し、全文はMSI working paperを確認。working paperは正式な学術査読を経ていない版と記載。本文の版間一致は未確認。"
+    },
+    {
+      "source_ids": [
+        "S14",
+        "S15"
+      ],
+      "issue": "関連研究は別論文",
+      "detail": "2000年の機能過多の利用者調査と、2002年の複数UI評価は別資料。後続の2004/2007題名も検索に出たが、今回の10候補へ追加せず未確認。"
+    },
+    {
+      "source_ids": [
+        "S16",
+        "S17",
+        "S19"
+      ],
+      "issue": "URLの計測パラメータ付き重複",
+      "detail": "検索全件には計測パラメータ付きURLも残した。候補の主URLには本文を開いた正規URLを使用。"
+    }
+  ],
+  "unavailable_or_unresolved": [
+    {
+      "item": "Kieras V2の正確な刊行年・最終版との一致",
+      "status": "未確定",
+      "source_id": "S11"
+    },
+    {
+      "item": "Feature Fatigueの査読刊行版全文",
+      "status": "刊行誌ページはRestricted access。書誌・抄録のみ確認。MSI working paper全文は確認。",
+      "source_id": "S13"
+    },
+    {
+      "item": "Carroll training-wheels 原研究本文",
+      "status": "旧ACMリンク2件が403。Nielsenの研究紹介まで確認。",
+      "source_id": "S16"
+    }
+  ],
+  "not_investigated_or_without_support": [
+    "1タスク＝1画面という一般則。",
+    "機能削除の普遍的な使用率閾値。",
+    "画面・カテゴリ・メニューの普遍的な個数上限。",
+    "役割・目標・要件・機能を一枚の追跡表にする特定テンプレート自体の効果検証。",
+    "情報探索の認知モデル全体。Furnas等の既存調査との重複は再研究していない。"
+  ],
+  "quote_note": "各候補は25語以内の確認済み短句。S14は最終応答で単一引用符にしていた箇所を、開いた原文の二重曲線引用符に合わせた。PDFの行折り返しは空白で連結した。"
+}
+

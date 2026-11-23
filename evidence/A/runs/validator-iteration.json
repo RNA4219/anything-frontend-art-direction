@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "verifier": "source_methods",
+  "checked_at": "2026-11-23",
+  "fixture_role": "契約の正常例を手で構成したunittest fixture。公開比較baselineや独立生成armの出力ではない。",
+  "permitted_inputs": [
+    "extensions/A/checks/validate_plan.py",
+    "extensions/A/references/plan-contract.md",
+    "extensions/A/tests/briefs/support-triage.json",
+    "extensions/A/tests/briefs/course-catalog.json"
+  ],
+  "benchmark_outputs_read": false,
+  "checker_modified_by_verifier": false,
+  "test_file": "extensions/A/tests/test_validate.py",
+  "runner": "Python standard-library unittest",
+  "pytest_required": false,
+  "runs": [
+    {
+      "stage": "after initial root fixes, before ORIGIN_ROLE_EXPANSION fix",
+      "command": "python3 -B; unittest.defaultTestLoader.discover('extensions/A/tests', pattern='test_validate.py'); unittest.TextTestRunner(verbosity=2).run(suite)",
+      "checker_sha256_before": "910cf21888a989799f85bf576c1fe0145a9a6fb229c862f521ac4d622c5d7a60",
+      "checker_sha256_after": "910cf21888a989799f85bf576c1fe0145a9a6fb229c862f521ac4d622c5d7a60",
+      "exit_code": 1,
+      "tests_run": 32,
+      "passed": 31,
+      "failures": 1,
+      "errors": 0,
+      "failure_test": "test_output_cannot_grant_operator_the_manager_only_export",
+      "failure_symptom": "manager専用の入力機能にoperator権限を追加し、screenとnavigationを整えると、検証器がPASSを返した。",
+      "output_kind": "captured combined output excerpt from the first run",
+      "output_excerpt": "FAIL: test_output_cannot_grant_operator_the_manager_only_export (test_validate.PlanContractTests.test_output_cannot_grant_operator_the_manager_only_export)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 328, in test_output_cannot_grant_operator_the_manager_only_export\n    self.assert_rejected(brief, plan)\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 187, in assert_rejected\n    self.assertEqual(\"FAIL\", result[\"status\"], json.dumps(result, ensure_ascii=False))\nAssertionError: 'FAIL' != 'PASS'\n- FAIL\n+ PASS\n : {\"status\": \"PASS\", \"issues\": [], \"counts\": {\"goals\": 5, \"features\": 8, \"kept_features\": 5, \"screens\": 4, \"navigation_edges\": 4}}\n\n----------------------------------------------------------------------\nRan 32 tests in 0.042s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "stage": "after root ORIGIN_ROLE_EXPANSION fix",
+      "command": "python3 -B -m unittest discover -s extensions/A/tests -p test_validate.py -v",
+      "checker_sha256_before": "1ceef2cbf2547288b0f8cac0592277cef539ba3ee7c1d3a4ebde3d8ea0f174c5",
+      "checker_sha256_after": "1ceef2cbf2547288b0f8cac0592277cef539ba3ee7c1d3a4ebde3d8ea0f174c5",
+      "exit_code": 0,
+      "tests_run": 32,
+      "passed": 32,
+      "failures": 0,
+      "errors": 0,
+      "output_file": "evidence/A/runs/validator-tests.txt",
+      "outcome": "All 32 tests passed using the standard-library unittest runner."
+    }
+  ],
+  "coverage": [
+    "必須機能・要件・must目標の保持",
+    "mergeの意味・循環・入力由来の義務の保持",
+    "元の機能権限とrole別ナビゲーション",
+    "入力依存の消去・未知依存・alias依存",
+    "入口・到達性・目標担当画面",
+    "判断画面のprimary情報と欠落・secondary化",
+    "不正JSON・不正型・未宣言参照・未知priority・重複",
+    "正当な戻りリンクと同一画面での判断",
+    "PASS/FAIL/HOLDとCLI終了コード"
+  ]
+}

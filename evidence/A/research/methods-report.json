@@ -1,0 +1,135 @@
+{
+  "researcher": "source_methods",
+  "checked_at": "2026-11-23",
+  "status": "completed",
+  "candidate_count": 10,
+  "query_count": 9,
+  "hit_record_count": 76,
+  "zero_result_query_count": 1,
+  "files_created": false,
+  "stopped_reason": "本文確認済みの重複しない候補10件と、引用リンクの追跡を完了したため。全体調査の停止判断は親が行う。",
+  "media_discovery": {
+    "method": "ドメインを限定しない一般語検索から開始",
+    "found": [
+      "HCI・人間工学の教科書／研究章",
+      "IIBAの業務分析資料",
+      "NN/G・IxDFのUX実務解説",
+      "18Fの政府実務ガイド",
+      "USWDS・IBM Carbonの公式デザインシステム",
+      "18F/C2の実施調査記録",
+      "NASAの要件管理ハンドブック",
+      "W3C/WAIの補足設計ガイダンス"
+    ],
+    "not_read_as_evidence": [
+      "IIBAのtask cards",
+      "National AcademiesのHuman-System Integration",
+      "The Handbook of Task Analysis for Human-Computer Interaction",
+      "NN/GのTask Analysis",
+      "IxDFのTask Analysis"
+    ]
+  },
+  "traversals": [
+    {
+      "from": "https://guides.18f.org/ux-guide/research/make-research-actionable/",
+      "link_label": "User stories",
+      "to": "https://guides.18f.org/methods/decide/user-stories/",
+      "status": "opened",
+      "ref": "turn641408889view0"
+    },
+    {
+      "from": "https://guides.18f.org/ux-guide/research/make-research-actionable/",
+      "link_label": "Design hypotheses",
+      "to": "https://guides.18f.org/methods/decide/design-hypothesis/",
+      "status": "opened",
+      "ref": "turn641408889view1"
+    },
+    {
+      "from": "https://guides.18f.org/ux-guide/research/make-research-actionable/",
+      "link_label": "Mental models",
+      "to": "https://guides.18f.org/methods/decide/mental-modeling/",
+      "status": "opened_not_selected",
+      "ref": "turn641408889view4"
+    },
+    {
+      "from": "https://guides.18f.org/methods/validate/card-sorting/",
+      "link_label": "Research plan including card sorting from 18F’s C2 project",
+      "to": "https://github.com/18F/C2/wiki/Sprint-5:-Interaction-model-June-2016",
+      "status": "opened",
+      "ref": "turn641408889view5"
+    },
+    {
+      "from": "https://www.w3.org/WAI/WCAG2/supplemental/patterns/o5p03-manageable-quantity/",
+      "link_label": "Making Content Usable for People with Cognitive and Learning Disabilities",
+      "to": "https://www.w3.org/TR/coga-usable/",
+      "status": "opened",
+      "ref": "turn252795649view3"
+    },
+    {
+      "from": "https://github.com/18F/methods",
+      "link_label": "consolidated 18F guides repository",
+      "to": "https://github.com/18F/guides",
+      "status": "opened",
+      "ref": "turn711638192view0"
+    }
+  ],
+  "failed_fetches": [
+    {
+      "url": "https://tech.gsa.gov/guides/effective_user_stories/",
+      "from": "https://guides.18f.org/methods/decide/user-stories/",
+      "status": "502 Bad Gateway",
+      "follow_up": "資料名で検索したが、読める同一資料の公式原本を検索結果から得られなかった。",
+      "ref": "turn252795649view1"
+    },
+    {
+      "url": "https://tech.gsa.gov/guides/glossary/",
+      "from": "https://guides.18f.org/methods/decide/user-stories/",
+      "status": "502 Bad Gateway",
+      "follow_up": "候補の根拠には採用しなかった。",
+      "ref": "turn252795649view2"
+    }
+  ],
+  "source_refs": [
+    {
+      "title": "6.2 Requirements Management",
+      "ref": "turn870190401view0"
+    },
+    {
+      "title": "User stories",
+      "ref": "turn641408889view0"
+    },
+    {
+      "title": "Design hypothesis",
+      "ref": "turn641408889view1"
+    },
+    {
+      "title": "Make research actionable",
+      "ref": "turn231545301view2",
+      "origin_ref": "turn493152678view0"
+    },
+    {
+      "title": "Task flow analysis",
+      "ref": "turn231545301view1"
+    },
+    {
+      "title": "Card sorting",
+      "ref": "turn231545301view0"
+    },
+    {
+      "title": "Sprint 5: Interaction model June 2016",
+      "ref": "turn641408889view5"
+    },
+    {
+      "title": "Progress easily",
+      "ref": "turn870190401view1"
+    },
+    {
+      "title": "Global header",
+      "ref": "turn252795649view0"
+    },
+    {
+      "title": "Make Short Critical Paths",
+      "ref": "turn641408889view3",
+      "parent_document_ref": "turn252795649view3"
+    }
+  ]
+}

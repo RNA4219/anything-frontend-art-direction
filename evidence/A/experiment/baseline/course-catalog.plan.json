@@ -1,0 +1,734 @@
+{
+  "schema_version": "1.0",
+  "case_id": "course-catalog",
+  "visual_intent_id": "catalog-paper-01",
+  "features": [
+    {
+      "id": "f_catalog",
+      "label": "講座を探す",
+      "disposition": "keep",
+      "target": null,
+      "object": "course",
+      "outcome": "discover-course",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [
+        "g_discover"
+      ],
+      "requirement_ids": [
+        "r_find"
+      ],
+      "dependencies": [],
+      "reason": "受講者が参加可能な講座を発見する共通の入口。トピック・レベル・日程・予算を同じ講座集合の条件として扱う。",
+      "priority": "required",
+      "priority_basis": "g_discover と r_find は必須で、比較・参加判断の候補を得る入口になる。"
+    },
+    {
+      "id": "f_topics",
+      "label": "トピック別講座",
+      "disposition": "merge",
+      "target": "f_catalog",
+      "object": "course",
+      "outcome": "discover-course",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [
+        "g_discover"
+      ],
+      "requirement_ids": [
+        "r_find"
+      ],
+      "dependencies": [],
+      "reason": "対象 course、成果 discover-course、利用者 learner が講座一覧と同じ。独立した講座置き場を作らず、同一一覧のトピック条件へ統合する。複数トピック所属を許す。",
+      "priority": "high",
+      "priority_basis": "トピック条件は r_find を満たすため必須だが、独立した機能・画面として維持する必要はない。"
+    },
+    {
+      "id": "f_workshops",
+      "label": "ワークショップ検索",
+      "disposition": "merge",
+      "target": "f_catalog",
+      "object": "course",
+      "outcome": "discover-course",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [
+        "g_discover"
+      ],
+      "requirement_ids": [
+        "r_find"
+      ],
+      "dependencies": [],
+      "reason": "入力の normal では講座一覧と同じデータを呼ぶ提案名で、対象・成果・役割にも差がない。同じ検索入口に統合し、入力にないワークショップ専用の分類やデータ集合を作らない。",
+      "priority": "high",
+      "priority_basis": "探索能力は必須一覧で保持する。同じ対象の別名による入口を増やす優先理由がない。"
+    },
+    {
+      "id": "f_compare",
+      "label": "候補を比較",
+      "disposition": "keep",
+      "target": null,
+      "object": "course-set",
+      "outcome": "compare-courses",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [
+        "g_compare"
+      ],
+      "requirement_ids": [
+        "r_compare",
+        "r_prereq"
+      ],
+      "dependencies": [],
+      "reason": "2講座を同じ属性で比較する成果は、候補発見や保存とは異なる。比較専用画面で双方の値を対応させ、前の画面の条件を覚えさせない。",
+      "priority": "required",
+      "priority_basis": "g_compare と r_compare が必須。r_prereq により参加前提・価格・空席も比較時に読める必要がある。"
+    },
+    {
+      "id": "f_details",
+      "label": "講座詳細",
+      "disposition": "keep",
+      "target": null,
+      "object": "course",
+      "outcome": "decide-enrollment",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [
+        "g_decide"
+      ],
+      "requirement_ids": [
+        "r_prereq",
+        "r_enroll"
+      ],
+      "dependencies": [],
+      "reason": "一つの講座について参加条件と空席を確認し、対応する申込先へ進む責務を維持する。",
+      "priority": "required",
+      "priority_basis": "g_decide、r_prereq、r_enroll が必須。申込対象と条件を取り違えないための判断地点となる。"
+    },
+    {
+      "id": "f_favorites",
+      "label": "保存した講座",
+      "disposition": "keep",
+      "target": null,
+      "object": "course-set",
+      "outcome": "save-courses",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [
+        "g_saved"
+      ],
+      "requirement_ids": [
+        "r_save"
+      ],
+      "dependencies": [],
+      "reason": "同じ利用者が候補講座を後で開く成果を一つの保存機能として維持する。保存した講座は共通一覧の絞込ビューで提供し、独立した講座データを持たせない。",
+      "priority": "medium",
+      "priority_basis": "g_saved は should。比較とは保存期間と目的が異なるため、任意目標として小さく維持する。"
+    },
+    {
+      "id": "f_wishlist",
+      "label": "受講したいリスト",
+      "disposition": "merge",
+      "target": "f_favorites",
+      "object": "course-set",
+      "outcome": "save-courses",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [
+        "g_saved"
+      ],
+      "requirement_ids": [
+        "r_save"
+      ],
+      "dependencies": [],
+      "reason": "対象 course-set、成果 save-courses、利用者 learner が f_favorites と一致する。同じ利用者の同じ保存集合に統合し、二重に保存させない。",
+      "priority": "medium",
+      "priority_basis": "r_save を一つの能力で満たし、保存先の使い分けを増やさない。"
+    },
+    {
+      "id": "f_news",
+      "label": "運営のお知らせ",
+      "disposition": "remove",
+      "target": null,
+      "object": "news",
+      "outcome": "read-news",
+      "roles": [
+        "learner"
+      ],
+      "goal_ids": [],
+      "requirement_ids": [],
+      "dependencies": [],
+      "reason": "今回の入力には対応する目標・要件がなく、講座の発見・比較・判断・保存・公開のいずれにも必要性が示されていない。提案する機能集合とナビゲーションから外す。",
+      "priority": "low",
+      "priority_basis": "必須目標にも should の保存目標にも関係する根拠がない。"
+    },
+    {
+      "id": "f_publish",
+      "label": "講座管理",
+      "disposition": "keep",
+      "target": null,
+      "object": "course",
+      "outcome": "publish-course",
+      "roles": [
+        "editor"
+      ],
+      "goal_ids": [
+        "g_publish"
+      ],
+      "requirement_ids": [
+        "r_publish"
+      ],
+      "dependencies": [],
+      "reason": "同じ course を扱っても公開する成果と editor の役割は受講者と異なる。編集者専用の管理入口と編集画面で維持する。",
+      "priority": "required",
+      "priority_basis": "g_publish と r_publish が必須。受講者の探索ナビゲーションから明確に分離する。"
+    }
+  ],
+  "screens": [
+    {
+      "id": "s_catalog",
+      "title": "講座を探す",
+      "purpose": "週末・初学者・予算などの条件で共通の講座集合を絞り、候補を選ぶ。トピック別は条件、保存した講座は同じ集合の保存済みビューとして扱い、結果から比較または詳細へ進む。現在の条件は0件でも表示する。",
+      "goal_ids": [
+        "g_discover",
+        "g_compare",
+        "g_saved"
+      ],
+      "feature_ids": [
+        "f_catalog",
+        "f_compare",
+        "f_favorites"
+      ],
+      "roles": [
+        "learner"
+      ],
+      "entry_for": [
+        "learner"
+      ],
+      "information": [
+        {
+          "id": "title",
+          "visibility": "primary",
+          "reason": "候補の識別と詳細・保存・比較操作の対象を同じまとまりで示す。長い題名も全文を読める。"
+        },
+        {
+          "id": "level",
+          "visibility": "primary",
+          "reason": "初学者向けかを結果ごとに判断でき、現在のレベル条件も確認できる。"
+        },
+        {
+          "id": "schedule",
+          "visibility": "primary",
+          "reason": "週末に参加できる候補かを判断し、絞込の現在値も確認する。"
+        },
+        {
+          "id": "price",
+          "visibility": "primary",
+          "reason": "予算条件と候補の価格を同じ画面で読める。無料は0円と表示し空欄にしない。"
+        },
+        {
+          "id": "topic",
+          "visibility": "primary",
+          "reason": "講座の内容とトピック条件の関係を示す。複数所属を一つに切り捨てない。"
+        },
+        {
+          "id": "prerequisites",
+          "visibility": "primary",
+          "reason": "候補を選ぶ時点で参加前提を確認する。長文を補足・折り畳み・省略記号だけに置き換えない。"
+        },
+        {
+          "id": "seats",
+          "visibility": "primary",
+          "reason": "参加できる候補かを判断する情報として残席を明示する。0も欠損や非表示にしない。"
+        },
+        {
+          "id": "venue",
+          "visibility": "secondary",
+          "reason": "一覧での主判断を補う会場情報。補足領域または詳細で確認でき、比較画面ではprimaryにする。"
+        }
+      ]
+    },
+    {
+      "id": "s_compare",
+      "title": "2講座を比較",
+      "purpose": "選んだ2講座を同じ属性・同じ順序で見比べ、次に詳しく確認する講座を選ぶ。候補が1件のときも対象を示し、共通一覧に戻って比較対象を追加できる。",
+      "goal_ids": [
+        "g_compare"
+      ],
+      "feature_ids": [
+        "f_compare"
+      ],
+      "roles": [
+        "learner"
+      ],
+      "entry_for": [],
+      "information": [
+        {
+          "id": "title",
+          "visibility": "primary",
+          "reason": "比較する2講座の名前を常に値と対応させ、長い題名も別講座と取り違えない。"
+        },
+        {
+          "id": "level",
+          "visibility": "primary",
+          "reason": "同じ属性の行で学習段階を比較する。"
+        },
+        {
+          "id": "schedule",
+          "visibility": "primary",
+          "reason": "双方の参加日時を同時に参照できる。前画面の日時を覚えさせない。"
+        },
+        {
+          "id": "price",
+          "visibility": "primary",
+          "reason": "同じ価格属性で0円を含む双方の価格を比較する。"
+        },
+        {
+          "id": "prerequisites",
+          "visibility": "primary",
+          "reason": "参加前提を双方とも全文で読み、参加できるか比較できる。長文でも開示操作を必要としない。"
+        },
+        {
+          "id": "venue",
+          "visibility": "primary",
+          "reason": "参加場所を同じ条件で比較するためprimaryに置く。"
+        },
+        {
+          "id": "seats",
+          "visibility": "primary",
+          "reason": "候補比較の時点で空席の有無を判断する。0は0のまま明示する。"
+        },
+        {
+          "id": "topic",
+          "visibility": "primary",
+          "reason": "複数トピック所属を保持して内容の違いを確認する。"
+        }
+      ]
+    },
+    {
+      "id": "s_course",
+      "title": "講座詳細・申込先",
+      "purpose": "一つの講座の参加条件・価格・日程・空席を確認し、その講座に対応する申込先へ進む。保存した候補を後で開く場合も同じ講座詳細を使う。",
+      "goal_ids": [
+        "g_decide",
+        "g_saved"
+      ],
+      "feature_ids": [
+        "f_details",
+        "f_favorites"
+      ],
+      "roles": [
+        "learner"
+      ],
+      "entry_for": [],
+      "information": [
+        {
+          "id": "title",
+          "visibility": "primary",
+          "reason": "参加を判断する対象を申込先・保存操作と結び付ける。元の長い題名も維持する。"
+        },
+        {
+          "id": "level",
+          "visibility": "primary",
+          "reason": "受講者自身の習熟度と参加する講座の水準を照合する。"
+        },
+        {
+          "id": "topic",
+          "visibility": "primary",
+          "reason": "対象の内容と複数所属を確認する。"
+        },
+        {
+          "id": "schedule",
+          "visibility": "primary",
+          "reason": "申込先へ進む前に参加日時を確認する。"
+        },
+        {
+          "id": "price",
+          "visibility": "primary",
+          "reason": "無料は0円として、申込判断の近くで価格を読み取れるようにする。"
+        },
+        {
+          "id": "prerequisites",
+          "visibility": "primary",
+          "reason": "申込判断の必須条件。全文をprimaryにし、長文でも折り畳みに隠さない。"
+        },
+        {
+          "id": "venue",
+          "visibility": "primary",
+          "reason": "参加先を申込判断の文脈で確認する。"
+        },
+        {
+          "id": "seats",
+          "visibility": "primary",
+          "reason": "残席を申込先と同じ判断領域に示す。0を空欄や利用可能な表示に置き換えない。"
+        },
+        {
+          "id": "enroll_link",
+          "visibility": "primary",
+          "reason": "現在の講座と対応する申込先を明示する。他の候補の申込先と混ざらないよう対象名と一緒に提供する。"
+        }
+      ]
+    },
+    {
+      "id": "s_manage",
+      "title": "講座管理",
+      "purpose": "講座担当が更新する講座と現在の公開状況を見つけ、対象の編集へ進む。受講者の探索入口とは分離した editor 専用の入口とする。",
+      "goal_ids": [
+        "g_publish"
+      ],
+      "feature_ids": [
+        "f_publish"
+      ],
+      "roles": [
+        "editor"
+      ],
+      "entry_for": [
+        "editor"
+      ],
+      "information": [
+        {
+          "id": "title",
+          "visibility": "primary",
+          "reason": "更新する対象講座を特定する。受講者向けと同じ講座レコードを参照する。"
+        },
+        {
+          "id": "publication_status",
+          "visibility": "primary",
+          "reason": "公開状態を対象講座と同じ行で示し、更新対象を選ぶ。入力に具体的な値がないため既定値を捏造しない。"
+        },
+        {
+          "id": "schedule",
+          "visibility": "primary",
+          "reason": "題名が似た講座や開催違いの対象を識別する補助とする。"
+        },
+        {
+          "id": "topic",
+          "visibility": "primary",
+          "reason": "管理対象の内容・所属を把握する。"
+        }
+      ]
+    },
+    {
+      "id": "s_edit",
+      "title": "講座情報の編集・公開",
+      "purpose": "特定した講座の情報を更新し、その対象と公開状況を確認して公開する。受講者が判断に使う情報と申込先の対応をここで管理する。",
+      "goal_ids": [
+        "g_publish"
+      ],
+      "feature_ids": [
+        "f_publish"
+      ],
+      "roles": [
+        "editor"
+      ],
+      "entry_for": [],
+      "information": [
+        {
+          "id": "title",
+          "visibility": "primary",
+          "reason": "いま編集・公開する講座の識別と更新内容を常時確認する。"
+        },
+        {
+          "id": "publication_status",
+          "visibility": "primary",
+          "reason": "対象講座の公開状況を公開操作と結び付ける。具体的な状態語と遷移は別途確定する。"
+        },
+        {
+          "id": "level",
+          "visibility": "primary",
+          "reason": "受講者の探索条件になるレベルを更新する。"
+        },
+        {
+          "id": "topic",
+          "visibility": "primary",
+          "reason": "複数所属を保持してトピック条件に使う情報を更新する。"
+        },
+        {
+          "id": "schedule",
+          "visibility": "primary",
+          "reason": "参加日時と探索条件に使う日程情報を更新する。"
+        },
+        {
+          "id": "price",
+          "visibility": "primary",
+          "reason": "受講判断に使う価格を更新し、0円も有効な内容として明示する。"
+        },
+        {
+          "id": "prerequisites",
+          "visibility": "primary",
+          "reason": "長い参加前提も全文を編集・確認し、受講者側で判断に使える内容を保つ。"
+        },
+        {
+          "id": "venue",
+          "visibility": "primary",
+          "reason": "受講者が比較する会場を更新する。"
+        },
+        {
+          "id": "seats",
+          "visibility": "primary",
+          "reason": "受講判断に使う空席数を更新・確認する。0も情報として保持する。"
+        },
+        {
+          "id": "enroll_link",
+          "visibility": "primary",
+          "reason": "現在の講座に対応する申込先を確認し、別講座へのリンク取り違えを防ぐ。"
+        }
+      ]
+    }
+  ],
+  "navigation": [
+    {
+      "from": "s_catalog",
+      "to": "s_catalog",
+      "label": "すべての講座",
+      "roles": [
+        "learner"
+      ],
+      "kind": "local",
+      "rationale": "保存済みの絞込を外して同じ講座集合を探す。トピック・レベル・日程・予算の条件と区別して表示する。"
+    },
+    {
+      "from": "s_catalog",
+      "to": "s_catalog",
+      "label": "保存した講座",
+      "roles": [
+        "learner"
+      ],
+      "kind": "local",
+      "rationale": "f_favorites と f_wishlist を一つの保存集合に統合し、同じ一覧と詳細で候補を再訪する。"
+    },
+    {
+      "from": "s_catalog",
+      "to": "s_catalog",
+      "label": "条件を見直す",
+      "roles": [
+        "learner"
+      ],
+      "kind": "local",
+      "rationale": "0件の場合も表示中のトピック・レベル・日程・予算・保存済み条件から修正先へ到達できる。"
+    },
+    {
+      "from": "s_catalog",
+      "to": "s_compare",
+      "label": "候補を比較",
+      "roles": [
+        "learner"
+      ],
+      "kind": "contextual",
+      "rationale": "選んだ候補を比較専用の責務へ渡す。1件でも追加先を示せる比較画面へ進める。"
+    },
+    {
+      "from": "s_catalog",
+      "to": "s_course",
+      "label": "講座の詳細・申込先",
+      "roles": [
+        "learner"
+      ],
+      "kind": "contextual",
+      "rationale": "選んだ講座の同じレコードを開き、参加条件と対応する申込先を確認する。保存した講座ビューでも同じ経路を使う。"
+    },
+    {
+      "from": "s_compare",
+      "to": "s_catalog",
+      "label": "比較する講座を追加・変更",
+      "roles": [
+        "learner"
+      ],
+      "kind": "local",
+      "rationale": "候補1件のときも次に行く場所を示す。元の探索条件と選択済み対象を文脈として保持する設計をBへ渡す。"
+    },
+    {
+      "from": "s_compare",
+      "to": "s_course",
+      "label": "この講座の詳細・申込先",
+      "roles": [
+        "learner"
+      ],
+      "kind": "contextual",
+      "rationale": "比較して選んだ一方の講座を特定し、その講座に対応する条件確認と申込先へ進む。"
+    },
+    {
+      "from": "s_compare",
+      "to": "s_catalog",
+      "label": "講座を探す",
+      "roles": [
+        "learner"
+      ],
+      "kind": "global",
+      "rationale": "比較作業から共通の探索入口へ戻る。トピック別やワークショップという別の入口を増やさない。"
+    },
+    {
+      "from": "s_course",
+      "to": "s_catalog",
+      "label": "講座を探す",
+      "roles": [
+        "learner"
+      ],
+      "kind": "global",
+      "rationale": "詳細からも共通の探索入口に戻れる。受講者向けナビゲーションに編集・公開の入口は含めない。"
+    },
+    {
+      "from": "s_course",
+      "to": "s_catalog",
+      "label": "元の一覧に戻る",
+      "roles": [
+        "learner"
+      ],
+      "kind": "local",
+      "rationale": "一覧から開いた場合に、保存済みを含む元の条件の一覧へ戻る。条件の保持方法はBが設計する。"
+    },
+    {
+      "from": "s_course",
+      "to": "s_compare",
+      "label": "比較に戻る",
+      "roles": [
+        "learner"
+      ],
+      "kind": "local",
+      "rationale": "比較から開いた場合に同じ2候補の比較へ戻り、条件を記憶して組み直す負担を避ける。"
+    },
+    {
+      "from": "s_manage",
+      "to": "s_edit",
+      "label": "講座を編集",
+      "roles": [
+        "editor"
+      ],
+      "kind": "contextual",
+      "rationale": "管理一覧で選んだ同じ講座の情報と公開状況を編集する。learner には提供しない。"
+    },
+    {
+      "from": "s_edit",
+      "to": "s_manage",
+      "label": "講座管理",
+      "roles": [
+        "editor"
+      ],
+      "kind": "global",
+      "rationale": "公開を担当する作業の入口へ戻る。受講者の探索ナビゲーションとは独立させる。"
+    }
+  ],
+  "goal_routes": [
+    {
+      "goal_id": "g_discover",
+      "start_screen": "s_catalog",
+      "target_screen": "s_catalog",
+      "notes": "共通一覧でトピック・レベル・日程・予算を組み合わせる。title・level・schedule・price・topic を結果に表示し、初学者かつ週末かつ予算内の候補を選ぶ。トピック別・ワークショップという別画面への探索は不要。"
+    },
+    {
+      "goal_id": "g_compare",
+      "start_screen": "s_catalog",
+      "target_screen": "s_compare",
+      "notes": "一覧または保存した講座ビューから候補を選び、同じ属性順で2講座を比較する。title・level・schedule・price・prerequisites・venue と seats を直接読み、前画面の値を記憶する必要をなくす。1件では追加先へ進める。"
+    },
+    {
+      "goal_id": "g_decide",
+      "start_screen": "s_catalog",
+      "target_screen": "s_course",
+      "notes": "一覧→詳細、または一覧→比較→詳細。title・prerequisites・seats・price・schedule を読んだうえで、その講座に対応する enroll_link から申込先へ進む。外部の申込画面は管理対象外なので内部画面IDを捏造しない。"
+    },
+    {
+      "goal_id": "g_saved",
+      "start_screen": "s_catalog",
+      "target_screen": "s_course",
+      "notes": "同じ利用者が「保存した講座」ビューを開き、title・schedule・price を読んで保存した候補の同じ詳細へ進む。お気に入りと受講したいリストは同一の保存機能として扱う。"
+    },
+    {
+      "goal_id": "g_publish",
+      "start_screen": "s_manage",
+      "target_screen": "s_edit",
+      "notes": "editor 専用の管理一覧で講座を選び、編集画面で title と publication_status および公開内容を確認して更新・公開する。learner には管理・編集・公開の入口も機能も提供しない。"
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "u_course_filter_semantics",
+      "category": "information_architecture",
+      "owner": "product",
+      "impact": "複数トピックと週末条件の組合せにより、利用者が期待する結果集合が変わる。",
+      "blocking": false,
+      "question": "複数トピック選択は選択したいずれかに所属すれば対象、異なる条件軸はANDとする仮定でよいか。週末は土曜・日曜でよいか。"
+    },
+    {
+      "id": "u_schedule_price_data",
+      "category": "implementation",
+      "owner": "product",
+      "impact": "表示例の文字列だけでは日程や予算の正確な絞込を保証できない。",
+      "blocking": true,
+      "question": "schedule は実日付・曜日・時刻をどう持ち、price は円の数値としてどう検索するか。表示内容を変えずに条件検索できる既存データ契約と担当を確認できるか。"
+    },
+    {
+      "id": "u_enrollment_destinations",
+      "category": "function",
+      "owner": "product",
+      "impact": "申込先A/B/Cは表示ラベルであり実URLがない。残席0で申込先へ進める意味も入力では未定義。",
+      "blocking": true,
+      "question": "各講座に対応する正式な申込URLは何か。残席0のとき申込先で可能な行動はあるか。キャンセル待ち等の能力は入力にないため追加せず、product の定義をBに渡す。"
+    },
+    {
+      "id": "u_saved_identity",
+      "category": "function",
+      "owner": "product",
+      "impact": "後で開く保存能力には利用者と講座の同一性が必要だが、永続化の範囲が未定義。",
+      "blocking": true,
+      "question": "同じ利用者をどのように識別し、保存した講座を再訪時・別端末でどこまで復元するか。入力にないログイン方式や保存期間は決めない。"
+    },
+    {
+      "id": "u_publication_model",
+      "category": "function",
+      "owner": "product",
+      "impact": "講座管理の責務は決められるが、入力のサンプルにはpublication_statusや安定した講座識別子がなく、編集可能範囲も未定義。",
+      "blocking": true,
+      "question": "講座を一意に識別する既存ID、publication_status の正式な値、編集者が更新できる情報と公開対象は何か。editor の権限を担保する実装担当を確認できるか。"
+    },
+    {
+      "id": "u_course_interactions",
+      "category": "interaction",
+      "owner": "B",
+      "impact": "比較対象の選択・保存・申込先への移動・公開の結果と復旧は、画面構成だけでは定まらない。",
+      "blocking": false,
+      "question": "比較対象が0／1／2件の場合の選択保持、一覧条件への復帰、保存と公開の成功／失敗、申込の状態遷移をどう扱うか。Aは行き先と必要情報までを指定する。"
+    },
+    {
+      "id": "u_course_components",
+      "category": "implementation",
+      "owner": "C",
+      "impact": "長文・残席0・0円を欠落させず、狭幅でも2候補の同じ属性を比較できる部品化が必要。",
+      "blocking": false,
+      "question": "長い題名と参加前提を全文で示し、一属性ごとに2講座の値を対応させる比較部品、条件入力、読み上げとキーボード操作をどう実装するか。"
+    },
+    {
+      "id": "u_catalog_scale",
+      "category": "implementation",
+      "owner": "product",
+      "impact": "5000講座は将来想定であり、現行の応答性能やデータ取得手段を実測した根拠はない。",
+      "blocking": false,
+      "question": "同じ条件付き集合をページ単位で取得できるか。実件数・利用頻度・取得時間を誰が確認するか。描画方式の決定は観測後とする。"
+    }
+  ],
+  "decision_notes": [
+    "先に役割・目標・要件を整理し、対象と成果が同じ機能を統合した後、画面責務、ナビゲーション、各画面の必要情報を決めた。機能要望を一つずつ独立した画面に配置する方針は採らない。",
+    "visual_intent catalog-paper-01 を維持する。既存の紙色背景・紺文字・朱色アクセント、システム書体、細い区切り線、情報中心の意匠をそのまま前提とし、新たなブランド案・装飾は作成していない。",
+    "機能の object・outcome・roles・goal_ids・requirement_ids・dependencies は入力の対応を保持した。f_topics と f_workshops の能力は f_catalog に、f_wishlist の能力は f_favorites に統合する。merge された機能を別の画面やグローバルナビゲーションへ再配置しない。",
+    "トピックは講座の複数所属可能な属性であり、講座を一か所だけに置く排他的な階層にはしない。ワークショップが独立した種別である根拠はないため、別集合や新しい種別条件を追加しない。",
+    "探索・比較・参加判断は異なる成果なので別の画面責務を持つ。比較対象は一時的に見比べる2候補、保存は同じ利用者が後日開く集合として区別し、保存しなければ比較できない設計にしない。状態管理の方式はBへ渡す。",
+    "保存した講座は共通一覧のローカルビューである。現在の保存済み条件も他の条件とともに表示する。保存候補0件と条件による検索0件を区別できる情報をBへ渡し、いずれもすべての講座または条件見直しへ到達可能にする。",
+    "learner の入口は講座を探す、editor の入口は講座管理とする。役割を兼ねるとは仮定しない。受講者向け画面・ナビゲーションには公開機能を含めず、役割分離は表示だけでなく実装上も担保する必要がある。",
+    "s_compare では各属性に2講座の値を対応させる。広幅・狭幅とも二つの独立した詳細を往復して記憶する構成にしない。狭幅では一属性ごとの2値を近接して読める順序を指定し、部品の具体化はCへ渡す。",
+    "prerequisites・price・seats は候補選択、比較、参加判断の画面でprimaryとする。無料の0円、残席0、長い参加前提を省略や折り畳みの中へ移さない。primary はスクロールを許すが開示操作を要求しない。",
+    "入力の実内容は変更しない。「はじめての木工」は初学者／土曜10:00／0円／残席4／申込先A、「写真から始める長い題名の地域アーカイブ制作講座」は初学者／日曜13:00／2000円／残席0／申込先B、「中級木工の接合技法」は中級／平日19:00／6000円／残席2／申込先Cとの対応を維持する。表示時は入力の文字列をそのまま用いる。",
+    "各 enroll_link は同じ講座レコードに結び付けて s_course に表示する。外部申込先への出口はこの情報で定義し、navigation の内部 screen ID として架空の申込画面を追加しない。満席時の申込やキャンセル待ちの挙動は未決事項とする。",
+    "0件でも現在のトピック・レベル・日程・予算・保存済み条件と条件見直し先が残る。比較候補1件ではその候補と追加先を示す。条件解除・候補選択の状態遷移はBに委ねる。",
+    "5000講座への増加は観測済みの性能問題ではない。全件を一度に見せる前提を置かず、同じ条件付き集合をページ単位でたどれる情報構成とする。ページ取得・描画・仮想化の実装方式は未決である。",
+    "f_news の remove は今回の機能構成から外す提案であり、既存のお知らせ内容やデータの廃棄を実行するものではない。題材やコピーの好みを優先度の根拠にしない。",
+    "参考にした入力内の資料は SKILL.md、visual-composition.md の主判断と必要情報の関係・比較時の密度・広幅から狭幅への読み順、c-usability.md の業務語・記憶負担・次の行き先の観点。g-state-forms.md は戻り先の文脈とBへの引継ぎ範囲を整理するために参照した。外部の原典・画面は未確認である。",
+    "blocking は各能力を実装・提供する前に必要な情報が未確定という意味。このIA案はその空白を値の捏造で埋めず、担当と影響を記録している。"
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "S01",
+    "url": "https://www.nasa.gov/reference/6-2-requirements-management/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS01\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S02",
+    "url": "https://guides.18f.org/methods/decide/user-stories/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS02\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S03",
+    "url": "https://guides.18f.org/methods/decide/design-hypothesis/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS03\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S04",
+    "url": "https://guides.18f.org/ux-guide/research/make-research-actionable/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS04\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S05",
+    "url": "https://guides.18f.org/methods/decide/task-flow-analysis/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS05\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S06",
+    "url": "https://guides.18f.org/methods/validate/card-sorting/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS06\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S07",
+    "url": "https://github.com/18F/C2/wiki/Sprint-5:-Interaction-model-June-2016",
+    "exit_code": 1,
+    "stdout": "FAIL\tS07\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S08",
+    "url": "https://designsystem.digital.gov/patterns/complete-a-complex-form/progress-easily/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS08\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S09",
+    "url": "https://www.carbondesignsystem.com/building-blocks/core/patterns/global-header",
+    "exit_code": 1,
+    "stdout": "FAIL\tS09\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  },
+  {
+    "id": "S10",
+    "url": "https://www.w3.org/WAI/WCAG2/supplemental/patterns/o5p02-short-paths/",
+    "exit_code": 1,
+    "stdout": "FAIL\tS10\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": ""
+  }
+]

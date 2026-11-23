@@ -1,0 +1,51 @@
+{
+  "schema": "session-a-tool-discovery/v1",
+  "campaign_id": "anything-frontend-A-20261123",
+  "checked_at": "2026-11-23T06:08:11.622011+00:00",
+  "components": {
+    "imozuru": {
+      "revision": "30c3b59a076ce228f05aa3036809297422f23dee",
+      "kind": "skill-and-scripts"
+    },
+    "sankai": {
+      "revision": "0e2521453ad758cfb680110da0fdddc994d000be",
+      "kind": "skill"
+    },
+    "R-ASI": {
+      "revision": "f5b638085dece1f997210f9b653aceb8fe9b32d4",
+      "version": "0.0.2",
+      "kind": "python-cli",
+      "verified_git_blobs": 29,
+      "mismatched_git_blobs": 0
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "linux",
+    "container_image_digest": null,
+    "container_image_digest_status": "not_exposed"
+  },
+  "upstream_pytest": {
+    "status": "not_run",
+    "reason": "pytest package unavailable"
+  },
+  "capabilities": {
+    "execute": "unconnected_exit_3",
+    "evaluate": "unconnected_exit_3",
+    "promote": "unconnected_exit_3",
+    "cas": "skill-candidate/v1 only",
+    "failure_receipt": "not_implemented"
+  },
+  "cost": {
+    "amount": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "measured": false,
+    "budget_status": "not_evaluated"
+  },
+  "gate": {
+    "decision": "HOLD",
+    "reason": "tool discovery alone does not establish candidate quality, independent evaluation, or promotion readiness"
+  },
+  "private_source_included": false
+}

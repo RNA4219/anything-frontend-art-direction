@@ -1,0 +1,40 @@
+{
+  "status": "HOLD",
+  "issues": [
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_schedule_price_data",
+      "symptom": "表示例の文字列だけでは日程や予算の正確な絞込を保証できない。",
+      "category": "implementation",
+      "severity": "hold"
+    },
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_enrollment_destinations",
+      "symptom": "申込先A/B/Cは表示ラベルであり実URLがない。残席0で申込先へ進める意味も入力では未定義。",
+      "category": "function",
+      "severity": "hold"
+    },
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_saved_identity",
+      "symptom": "後で開く保存能力には利用者と講座の同一性が必要だが、永続化の範囲が未定義。",
+      "category": "function",
+      "severity": "hold"
+    },
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_publication_model",
+      "symptom": "講座管理の責務は決められるが、入力のサンプルにはpublication_statusや安定した講座識別子がなく、編集可能範囲も未定義。",
+      "category": "function",
+      "severity": "hold"
+    }
+  ],
+  "counts": {
+    "goals": 5,
+    "features": 9,
+    "kept_features": 5,
+    "screens": 5,
+    "navigation_edges": 13
+  }
+}

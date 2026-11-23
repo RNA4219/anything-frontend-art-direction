@@ -1,0 +1,263 @@
+[
+  {
+    "id": "S11",
+    "title": "David Kieras — Task Analysis and the Design of Functionality（第2版向け公開原稿、刊行年未確定）",
+    "url": "https://web.eecs.umich.edu/~kieras/docs/TA_Modeling/TaskAnalysisV2.pdf",
+    "alternate_urls": [
+      "https://web.eecs.umich.edu/~kieras/goms.html"
+    ],
+    "section": "Introduction; The Critical Role of Task Analysis and Design of Functionality; Task properties of both types of systems; Level of detail; high-level GOMS と ECAD事例。PDF pp.1–5, 10–11, 15–21。Web抽出 L112–118, L158–168, L653–663, L721–743, L935–949。",
+    "checked_at": "2026-11-23",
+    "kind": "本人・研究者によるハンドブック原稿。方法論、既存研究、事例を含む。",
+    "quote": "A task analysis should be conducted before developing the system requirements",
+    "claim_type": "author_guidance",
+    "claim": "Kierasは、ユーザーが達成する仕事を理解してからシステム要件と機能を選ぶよう提案する。全体システム、操作者の役割、個別タスクを区別し、機能設計を具体的なUI操作の設計と分けて扱う。",
+    "limits": "単一の新規実験の報告ではない。高水準のタスクモデルから画面数やメニュー構造が一意に決まるとは述べていない。CMU読書リストと著者の旧索引は1997年版だが、今回読んだV2は第2版向け原稿で2003年文献を含むため、1997年版と同一版扱いしない。正確な刊行年と最終版との一致は未確定。",
+    "principle_use": "役割・目標・必要情報・機能・手順・例外処理の対応を確認する前段設計に使う。ECAD事例は、機能間で出力の手作業転記が生じる設計を点検する根拠にできる。固定の画面数規則には使わない。",
+    "ref": "turn691785854view0",
+    "provenance": {
+      "route": "CMU Usable Privacy and Security の Course readings → Kieras文献リンク（404）→ 題名検索 → 著者のMichigan公開PDF → 著者GOMS索引で書誌確認",
+      "entry_url": "https://cups.cs.cmu.edu/courses/ups-fa09/readings.html",
+      "additional_refs": [
+        "turn585350636view0",
+        "turn643077703view5",
+        "turn144737113view5",
+        "turn727426163view7",
+        "turn727426163view2"
+      ],
+      "quote_verification": "開いたPDFの本文にある短句を確認。Web抽出 L112–114。改行のみ連結。"
+    }
+  },
+  {
+    "id": "S12",
+    "title": "Clayton Lewis and John Rieman（1993/1994）— Task-Centered User Interface Design",
+    "url": "https://hcibib.org/tcuid/chap-2.html",
+    "alternate_urls": [
+      "https://hcibib.org/tcuid/chap-1.html",
+      "https://hcibib.org/tcuid/"
+    ],
+    "section": "Chapter 2: §2.2 Learning About the Users’ Tasks; §2.3 Using the Tasks in Design; HyperTopic: Integrating Task-Centered Design and Traditional Requirements Analysis。Web抽出 L41–80, L99–115, L131–145。",
+    "checked_at": "2026-11-23",
+    "kind": "本人による公開教科書。著者の開発事例と方法論を含む。",
+    "quote": "define what the user needs to do, not how it will be done.",
+    "claim_type": "author_guidance",
+    "claim": "LewisとRiemanは、設計に依存しない具体的な代表タスクを集め、特定設計での実行をシナリオとして検討する方法を示す。抽象的な機能要件と、一連の現実のタスクは相互補完として扱っている。",
+    "limits": "サンプルタスクを処理できることだけでは一般的な妥当性は保証できない。ユーザーの現在の要望も将来利用の完全な予測ではない。本文の交通モデル開発は本人の事例であり、全製品を比較した実験ではない。",
+    "principle_use": "機能一覧に加え、複数機能が一連の作業を通じてどう協働するかを確認する。役割ごとの達成内容を先に書き、画面やメニューを要件に先取りしない。",
+    "ref": "turn738166062view1",
+    "provenance": {
+      "route": "task centered user interface design の用語検索 → HCIBIBのChapter 1/2をopen",
+      "additional_refs": [
+        "turn459439608view1",
+        "turn459439608view2",
+        "turn643077703view1"
+      ],
+      "quote_verification": "開いたChapter 2本文のRequirements Analysis節、Web抽出 L134に一致。"
+    }
+  },
+  {
+    "id": "S13",
+    "title": "Debora Viana Thompson, Rebecca W. Hamilton, and Roland T. Rust（2005）— Feature Fatigue: When Product Capabilities Become Too Much of a Good Thing",
+    "url": "https://thearf-org-unified-admin.s3.amazonaws.com/MSI/2020/06/MSI_Report_05-101.pdf",
+    "alternate_urls": [
+      "https://journals.sagepub.com/doi/10.1509/jmkr.2005.42.4.431",
+      "https://msi.org/working-papers/feature-fatigue-when-product-capabilities-become-too-much-of-a-good-thing/"
+    ],
+    "section": "Study 3: Contrasting Evaluations Made before and after Product Use; General Discussion; Managerial Implications。PDF pp.11–15, 18–20。Web抽出 L798–840, L988–1022, L1346–1393。",
+    "checked_at": "2026-11-23",
+    "kind": "実証研究。全文確認はMSI公開working paper。刊行版はJournal of Marketing Research 42(4), 431–442（書誌・抄録を確認）。",
+    "quote": "Our findings partially support this prediction.",
+    "claim_type": "empirical_observation",
+    "claim": "利用前後で能力と使いやすさの評価上の重みを調べた研究。公開版では、利用後に使いやすさの重みが増えるというH4bは、満足度では支持されたが総合製品評価では不変であり、部分支持と記載されている。",
+    "limits": "大学生、音声・動画プレーヤー、単一の実験セッションが中心。長期の習熟や回避行動の変化は将来研究。機能数を減らすほど常に良いという一般則ではない。MSI版は正式な学術査読を経ていない版と明記され、査読刊行版全文との一致は未確認。",
+    "principle_use": "機能の要望調査や利用前の選好だけで優先度を決めず、試作品の利用後にも評価する理由に使う。最適機能数の普遍的閾値としては使わない。",
+    "ref": "turn396940155view5",
+    "provenance": {
+      "route": "feature fatigue の用語検索 → 公式刊行誌ページとMSI公開PDFをopen",
+      "additional_refs": [
+        "turn459439608view4",
+        "turn643077703view4",
+        "turn963839885view0",
+        "turn396940155view4"
+      ],
+      "quote_verification": "開いたMSI PDF本文のH4b検証、Web抽出 L1013に一致。"
+    }
+  },
+  {
+    "id": "S14",
+    "title": "Joanna McGrenere and Gale Moore（2000）— Are We All In the Same “Bloat”?",
+    "url": "https://www.dgp.toronto.edu/~joanna/papers/gi_2000_bloat.pdf",
+    "alternate_urls": [
+      "https://www.dgp.toronto.edu/~joanna/publications.html"
+    ],
+    "section": "§3 Methods; §4 Quantitative Method; §5 Qualitative Method; §7 Bringing it All Together: Directions for Design。PDF pp.3–6, 9。Web抽出 L284–303, L504–524, L894–946。",
+    "checked_at": "2026-11-23",
+    "kind": "論文・測定あり。Graphics Interface 2000の著者公開採択原稿。Torontoの研究。",
+    "quote": "my favourite function, may be your “bloat” and vice versa.",
+    "claim_type": "empirical_observation",
+    "claim": "Word利用者53人の質問紙と聞き取りで、使っていない機能をすべて除去したいという回答は少数で、新しい機能を発見したい利用者もいた。著者は多数の人が使わない機能と、個人が使わず望まない機能を区別している。",
+    "limits": "利用情報は自己申告で操作ログではない。一つのアプリの利用者調査。削除の閾値はアプリに依存すると著者も限定している。カナダの研究であり米国機関の研究とは区別する。",
+    "principle_use": "未使用率だけで一律削除を決めないために使う。役割・利用者ごとに必要機能が異なることと、現在未使用でも将来の発見を望むことを確認する。",
+    "ref": "turn963839885view2",
+    "provenance": {
+      "route": "McGrenereの研究を検索 → 本人の業績一覧 → Refereed Conference PapersのPDFリンク3をclick",
+      "entry_url": "https://www.dgp.toronto.edu/~joanna/publications.html",
+      "additional_refs": [
+        "turn691785854view2",
+        "turn144737113view2",
+        "turn396940155view1"
+      ],
+      "quote_verification": "開いたPDFの§7、Web抽出 L941–942に一致。最終応答の便宜的な単一引用符を原文の二重曲線引用符に合わせた。改行のみ連結。"
+    }
+  },
+  {
+    "id": "S15",
+    "title": "Joanna McGrenere, Ronald M. Baecker, and Kellogg S. Booth（2002）— An Evaluation of a Multiple Interface Design Solution for Bloated Software",
+    "url": "https://www.dgp.toronto.edu/~joanna/papers/JMcGrenere_CHI_2002.pdf",
+    "alternate_urls": [
+      "https://www.dgp.toronto.edu/~joanna/publications.html"
+    ],
+    "section": "Quantitative Results; Approach to Using Two Interfaces; Limitations and Constraints; Conclusions and Future Work。PDF pp.5–8。Web抽出 L386–438, L643–657, L688–710。",
+    "checked_at": "2026-11-23",
+    "kind": "論文・測定あり。ACM CHI 2002の著者公開採択原稿。Toronto/UBCの研究。",
+    "quote": "Results favour the adaptable design but the adaptive interface definitely had support.",
+    "claim_type": "empirical_observation",
+    "claim": "20人で個人用UIと全機能UIの切替を現場評価した。ログのある19人のうち14人はPersonal利用期間の半分以上を個人用UIで過ごした。一方、個人化に必要な時間を不満として途中でやめた利用者もいた。",
+    "limits": "一つのアプリでの評価で、長期の再現確認と利用順のカウンターバランスに制約がある。主観的な学習容易性等を客観的タスク時間の改善に置き換えない。カナダの研究。",
+    "principle_use": "削除、システムによる自動非表示、利用者が選ぶ個人用UIを別の選択肢として比較する。個人化の操作費用も検討対象に含める。",
+    "ref": "turn963839885view1",
+    "provenance": {
+      "route": "McGrenereの研究を検索 → 本人の業績一覧 → Refereed Conference PapersのPDFリンク1をclick。2000原著と同じ著者をたどった。",
+      "entry_url": "https://www.dgp.toronto.edu/~joanna/publications.html",
+      "additional_refs": [
+        "turn691785854view2",
+        "turn144737113view1",
+        "turn727426163view4"
+      ],
+      "quote_verification": "開いたPDFのConclusions and Future Work、Web抽出 L700–701に一致。改行のみ連結。"
+    }
+  },
+  {
+    "id": "S16",
+    "title": "Jakob Nielsen（2006）— Progressive Disclosure",
+    "url": "https://www.nngroup.com/articles/progressive-disclosure/",
+    "alternate_urls": [
+      "https://www.nngroup.com/articles/training-wheels-user-interface/"
+    ],
+    "section": "Usability Criteria for Progressive Disclosure; Staged Disclosure: One Step at a Time。Web抽出 L85–106。",
+    "checked_at": "2026-11-23",
+    "kind": "本人・専門家の設計助言。記事自体は新規実験の方法や標本を報告する論文ではない。",
+    "quote": "You must get the right split between initial and secondary features.",
+    "claim_type": "author_guidance",
+    "claim": "Nielsenは、初期表示と二次表示の分け方、二次表示への明瞭な操作とラベル、観察による利用統計の補完を求める。重要度によるprogressive disclosureと、タスクの順番によるstaged disclosureを区別している。",
+    "limits": "2段を超える構造への懸念は実務指針であり普遍的画面数上限ではない。根拠リンクのTraining Wheels紹介までは到達したが、Carrollらの原研究への旧ACMリンク2件は403で、紹介された効果量を原研究本文と照合していない。",
+    "principle_use": "必要情報をいつ提示するかと、使用頻度が低い機能をどう分離するかを別判断にする。比較に必要な情報や機能の存在を隠してよいという根拠には使わない。",
+    "ref": "turn643077703view0",
+    "provenance": {
+      "route": "information architecture/progressive disclosure の用語検索 → 記事をopen → 本文リンク38からTraining Wheels User Interfaceへ → 原研究の旧ACMリンク29/30は403",
+      "additional_refs": [
+        "turn459439608view5",
+        "turn396940155view0",
+        "turn738166062view0",
+        "turn691785854view3",
+        "turn691785854view4"
+      ],
+      "quote_verification": "開いた記事のUsability Criteria for Progressive Disclosure、Web抽出 L88に一致。"
+    }
+  },
+  {
+    "id": "S17",
+    "title": "Jen Cardello（2014）— The Difference Between Information Architecture (IA) and Navigation",
+    "url": "https://www.nngroup.com/articles/ia-vs-navigation/",
+    "alternate_urls": [
+      "https://www.nngroup.com/articles/ia-vs-navigation/?lm=navigation-you-are-here&pt=article"
+    ],
+    "section": "What Is Website Information Architecture?; What Is Website Navigation?; Define the IA Before Designing Navigation。Web抽出 L60–92。",
+    "checked_at": "2026-11-23",
+    "kind": "本人・専門家の定義と設計助言。独立した比較実験ではない。",
+    "quote": "The IA doesn’t need to be final before beginning to wireframe and prototype",
+    "claim_type": "author_guidance",
+    "claim": "Cardelloは、IAを内容・機能の同定とその構造・関係・命名、navigationを到達のためのUIとして区別する。内容量と複雑さを把握するIA初稿をナビゲーション形式の選択より先に用意するよう助言している。",
+    "limits": "IAの完全確定を待つ直列工程を要求していない。定義と実務上の助言であり、この順序の効果量を測った比較実験ではない。",
+    "principle_use": "内容・機能の台帳、分類、命名、関係の設計を、ワイヤーフレームやナビゲーション部品の選択と区別する。",
+    "ref": "turn691785854view1",
+    "provenance": {
+      "route": "記事名でNNGroupを検索 → 正規URLをopen",
+      "additional_refs": [
+        "turn633567354search3"
+      ],
+      "quote_verification": "開いた記事のDefine the IA Before Designing Navigation、Web抽出 L92に一致。"
+    }
+  },
+  {
+    "id": "S18",
+    "title": "Edward Scott / Baymard（2023）— Overcategorization of the Product Catalog Can Lead to Abandonment",
+    "url": "https://baymard.com/research-articles/ecommerce-over-categorization",
+    "alternate_urls": [],
+    "section": "How Overcategorization Harms Users’ Ability to Navigate the Product Catalog; How Using Filters Instead for Product Types with Shared Attributes Alleviates These Issues; How to Get Started Evaluating the Site Catalog。Web抽出 L139–147, L161–202, L224–257。",
+    "checked_at": "2026-11-23",
+    "kind": "本人研究・観察あり・宣伝あり。試験観察、サイトベンチマーク、設計助言を含む。",
+    "quote": "determining whether a group of product types should be filters or categories is site specific",
+    "claim_type": "empirical_observation",
+    "claim": "共通属性を持つ候補が別カテゴリに分かれると、試験参加者は比較や一覧把握に苦労し、商品を見落とす場合があったとBaymardは報告する。共通属性で比較する候補をフィルタとして扱う方法を提案している。",
+    "limits": "属性群が異なる商品、専門店と総合店、件数の違いによって適切な分け方は変わる。10–30件は著者も必ずではない兆候と限定する。見出しの75%はベンチマークサイトの実装比率で、離脱率ではない。",
+    "principle_use": "同時に比較される候補を分類の境界で分断していないか確認する。すべてのカテゴリを統合する一般則にはしない。",
+    "ref": "turn963839885view3",
+    "provenance": {
+      "route": "site:baymard.com/blog categories filters overcategorization を検索 → 研究記事をopen",
+      "additional_refs": [
+        "turn585350636view3",
+        "turn643077703view2",
+        "turn144737113view7"
+      ],
+      "quote_verification": "開いた記事本文、Web抽出 L230に一致。"
+    }
+  },
+  {
+    "id": "S19",
+    "title": "Mark Crowley / Baymard（2022）— Product Comparison UX: Always Provide Comparison Features for Spec-Driven Industries",
+    "url": "https://baymard.com/research-articles/provide-comparison-features",
+    "alternate_urls": [],
+    "section": "Why Comparing Spec-Driven Products in Product Lists Is Difficult; How to Facilitate Easy Selection of Products for Comparison。Web抽出 L117–140, L174–207。特にL207の推奨改訂。",
+    "checked_at": "2026-11-23",
+    "kind": "本人研究・観察あり・宣伝あり。",
+    "quote": "Recent testing has shown, however, that they should appear without any action needed from users",
+    "claim_type": "empirical_observation",
+    "claim": "多属性商品の一覧と別ページの往復には比較の負担があったと報告する。比較チェックボックスをhover時だけ出す従来推奨を、後の試験に基づいて常時表示へ変更したと明記している。",
+    "limits": "仕様比較中心の商品が対象。67%は同社の特定試験での比較機能利用率であり、全サイトの利用率や売上改善率ではない。チェックボックス常時表示の助言を、すべての機能の常時表示へ拡張しない。",
+    "principle_use": "見える要素の削減と機能の発見可能性の関係を検討する反例に使う。比較に必要な候補や属性は同時に参照できるか確認する。",
+    "ref": "turn643077703view3",
+    "provenance": {
+      "route": "site:baymard.com/blog product comparison specifications attributes を検索 → 研究記事をopen",
+      "additional_refs": [
+        "turn585350636view4",
+        "turn459439608view7"
+      ],
+      "quote_verification": "開いた記事本文、Web抽出 L207に一致。"
+    }
+  },
+  {
+    "id": "S20",
+    "title": "Iva Olah / Baymard（2023）— Product Listing UX: What Information to Display in Product Listings",
+    "url": "https://baymard.com/research-articles/product-listing-information",
+    "alternate_urls": [],
+    "section": "導入の観察結果; Provide 5 Essential Product Attributes; Provide Category-Specific Product Attributes for Spec-Driven Products。Web抽出 L117–143, L195–225, L226以降。",
+    "checked_at": "2026-11-23",
+    "kind": "本人研究・観察あり・宣伝あり。",
+    "quote": "missing list item attributes caused participants to miss out on relevant products",
+    "claim_type": "empirical_observation",
+    "claim": "一覧の属性が欠けることで、適合する商品を飛ばしたり、各商品の詳細ページを往復したりする参加者を観察したと報告する。共通属性とカテゴリ固有属性を区別している。",
+    "limits": "記事の5属性をあらゆる業務画面に転用する根拠はない。小規模・DTCサイトでのレビューや、商品種別ごとのバリエーション表示には記事内でも例外がある。50%はサイトのベンチマーク値で、ユーザー失敗率ではない。",
+    "principle_use": "一覧から候補を選択・棄却する判断に必要な情報を具体的に特定する。詳細画面にあれば十分とはせず、判断時点で見えるかを確認する。",
+    "ref": "turn585350636view5",
+    "provenance": {
+      "route": "site:baymard.com/blog product comparison specifications attributes を検索 → 一覧情報の研究記事をopen",
+      "additional_refs": [
+        "turn963839885view4",
+        "turn459439608view8"
+      ],
+      "quote_verification": "開いた記事本文、Web抽出 L122に一致。"
+    }
+  }
+]
+

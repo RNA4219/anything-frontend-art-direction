@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-11-23",
+  "kind": "retrieved-primary-source-text-excerpts",
+  "original_full_file_download": false,
+  "raw_excerpt_storage": "outside repository; not redistributed",
+  "snapshots": [
+    {
+      "name": "parent_method_open1.web.txt",
+      "bytes": 30943,
+      "sha256": "db65f204a74574ab37ef6113be0ca27e2703cc0871b22766daa31efb6a60c958"
+    },
+    {
+      "name": "parent_method_open2.web.txt",
+      "bytes": 33103,
+      "sha256": "505f79a39d55821a607fb82eaade7047831436a7be92654c6bcf8f3d617c2eb4"
+    },
+    {
+      "name": "parent_open3.web.txt",
+      "bytes": 34798,
+      "sha256": "0b13fc5668dbd44e832267ea1c271ce1373f10282e087045cd379df9ab220744"
+    },
+    {
+      "name": "parent_open4.web.txt",
+      "bytes": 31682,
+      "sha256": "d209daf9f4c1c580991789078cb39677d109bae3ad577b2b70ed241eba8544a4"
+    },
+    {
+      "name": "parent_open5.web.txt",
+      "bytes": 26795,
+      "sha256": "8ee7f91ef56cce36bc54906bd35e5362cab18d55abd45d997e15227cb200d036"
+    },
+    {
+      "name": "parent_open6.web.txt",
+      "bytes": 36002,
+      "sha256": "229a9923ff41ddb92b8ed6cf5ec115733785342d286985e0a19eade42dcbbda3"
+    },
+    {
+      "name": "parent_open7.web.txt",
+      "bytes": 31715,
+      "sha256": "77516002753496a56779d2206160a2d73b33dc453b3c6f0548587bbf88ec2cba"
+    },
+    {
+      "name": "parent_open8.web.txt",
+      "bytes": 32881,
+      "sha256": "0cd41ab0ff6115966fa987d304454a813e531e8c55b3bed561b876941699256d"
+    }
+  ]
+}

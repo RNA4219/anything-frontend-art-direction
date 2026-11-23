@@ -1,0 +1,49 @@
+{
+  "schema": "A-generation-protocol/v1",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "baseline_agent": "/root/baseline_execution",
+  "candidate_agent": "/root/candidate_execution",
+  "fresh_threads": true,
+  "fork_turns": "none",
+  "model_override": null,
+  "model": "same inherited parent model, identifier not exposed",
+  "sampler": null,
+  "runtime_image_digest": null,
+  "cost": null,
+  "token_usage": null,
+  "attempts_per_arm": 1,
+  "prompt_difference": "only absolute arm directory and added product-ia SKILL/reference material",
+  "baseline_request_reconstructed": "exact first message restored from baseline agent own history after generation; not inferred",
+  "case_data_identical": true,
+  "generation_read_restriction": "own input only; checks/tests/oracles/other output disallowed; logical not OS enforcement",
+  "candidate_skill_files": [
+    {
+      "path": "extensions/A/SKILL.md",
+      "sha256": "1be76b4b80cdcc7e06a4bdfb7c504852f2183a2481681062c8ef80f7460b6062"
+    },
+    {
+      "path": "extensions/A/examples/decisions.md",
+      "sha256": "ecd2246049ad8d14b334401ab799ae913640adec1fd83662750eeaac7c5a14a4"
+    },
+    {
+      "path": "extensions/A/references/disclosure-and-verification.md",
+      "sha256": "a275f76285b9c476140a15793e6188c26ca8f4ebb2d6cc31f9b653411a793872"
+    },
+    {
+      "path": "extensions/A/references/goals-and-features.md",
+      "sha256": "6a51cc69edc1a041bccd6f270d1b390d1b4e55c336e9d271057122bdc20b3a3f"
+    },
+    {
+      "path": "extensions/A/references/information-architecture.md",
+      "sha256": "c7b254390f3b05162d93fa4e5371b40221d24e09240f7f9da5e2493809fabfbb"
+    },
+    {
+      "path": "extensions/A/references/plan-contract.md",
+      "sha256": "5c8ab67f0e9e920bea44969113f685700d00a21557fb7406357c139f73cdcf20"
+    },
+    {
+      "path": "extensions/A/references/sources.md",
+      "sha256": "a5e2dce251f5587c12da052c11ce9b50af18ed5ed1342735e8a5f975787e69c6"
+    }
+  ]
+}
