@@ -42,6 +42,12 @@ DEAD AIR FM は、東京の深夜を舞台にした架空の海賊ラジオ局�
 
 247作品から集めた書体の調査記録292件を、CSVとSQLiteで読めます。うち46作品では文字の形や大きさ、配置などの工夫を確かめ、制作側が述べた理由と照合しました。
 
+### Product Design と一緒に使う
+
+見た目に加えて利用者の操作も設計したいときは、このスキルと [Product Design](https://github.com/RNA4219/anything-frontend-product-design) の両方の `SKILL.md` をエージェントが読める状態にします。すでに配色や書体が決まっていれば、その案から始められます。[両スキルの受け渡し例](https://github.com/RNA4219/anything-frontend-product-design/blob/main/references/handoff.md#art-direction)
+
+> Art Direction と Product Design を使って、この映画祭の上映表を改善してください。今の書体と配色を生かし、スマホで上映日を選んだ人が、その日の作品名と開始時刻を見つけられるようにしてください。日付を切り替え、表示が選んだ日に対応するか確かめてください。
+
 ## ライセンス
 
 このリポジトリで作成した解説、調査データの記述と編集内容、テンプレート、作例のコード、画像、音源は [MIT License](LICENSE) で配布します。
