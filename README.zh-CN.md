@@ -10,9 +10,9 @@ Anything Frontend Art Direction 是一个日语前端设计技能，帮助你根
 
 [![DEAD AIR FM 页面。右侧是戴耳机的 DJ，左侧是粉色台名和青色播放按钮。](docs/dead-air-fm.webp)](https://rna4219.github.io/anything-frontend-art-direction/examples/dead-air-fm/)
 
-DEAD AIR FM 是一家虚构的深夜东京地下电台。我们用 Anything Frontend Art Direction 从插画中提取界面配色：台名用耳机线的粉色，播放按钮用 DJ 夹克上的青色。换台时，频率数字会短暂跳动，再定格在新频率上。这段动效使用了 [Motion Atlas](https://github.com/RNA4219/motion-atlas)。
+DEAD AIR FM 是一个虚构的海盗电台，故事发生在深夜的东京。我们用 Anything Frontend Art Direction 从插画中选取界面用色。台名用了耳机线的粉色，播放按钮则用了 DJ 夹克上的青色。换台时，屏幕上的数字先快速跳动，随后显示新电台的频率。这段动效使用了 [Motion Atlas](https://github.com/RNA4219/motion-atlas)。
 
-在 **「周波数を選ぶ」（选择频率）** 下点选电台即可收听。**三首曲目均由 YuE2 生成。** 87.9 MHz 播放暗黑电子乐（dark electro），92.4 MHz 播放氛围 dub（ambient dub），98.6 MHz 播放碎拍（breakbeat）。插画、音频和字体都嵌在一个 HTML 文件里，保存后可以离线收听。[下载独立 HTML 文件](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/dead-air-fm/index.html) · [查看 HTML 源码](examples/dead-air-fm/index.html)
+点击 **“周波数を選ぶ”（选择频率）** 下方的任一电台，就能收听该频道。**三首曲目均由 YuE2 生成。** 87.9 MHz 播放暗黑电子乐（dark electro），92.4 MHz 播放氛围 dub（ambient dub），98.6 MHz 播放碎拍（breakbeat）。插画、音频和字体都嵌在一个 HTML 文件里，保存后可以离线收听。[下载独立 HTML 文件](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/dead-air-fm/index.html) · [查看 HTML 源码](examples/dead-air-fm/index.html)
 
 ## 示例：潮待电影节
 
@@ -20,7 +20,7 @@ DEAD AIR FM 是一家虚构的深夜东京地下电台。我们用 Anything Fron
 
 ![潮待电影节桌面页面。黄昏的港口上叠着白色明朝体标题，下方列出日期、地点，并提供放映日程入口。](docs/shiomachi-film.png)
 
-潮待电影节（潮待ち映画祭）是一个设在港口的虚构露天电影节。日文标题采用粗字重的 Shippori Mincho B1（しっぽり明朝B1），英文副标题采用 Cormorant Garamond 斜体。在放映表中选择日期，即可看到当天的两部影片。放映时间用 Noto Sans JP，旁边的片名用明朝体。
+潮待电影节（潮待ち映画祭）是一个设在港口的虚构露天电影节。日文标题采用粗字重的 Shippori Mincho B1（しっぽり明朝B1），英文副标题采用 Cormorant Garamond 斜体。在放映日程中选一天，就能看到当天放映的两部影片。开场时间用 Noto Sans JP，旁边的片名用明朝体。
 
 [下载电影节的 HTML 文件](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/shiomachi-film/index.html)后，用浏览器打开即可。桌面和手机所用的图片、字体、CSS 和 JavaScript 都在同一个文件里。离线也能切换日期、展开或收起影片简介。[查看 HTML 源码](examples/shiomachi-film/index.html)
 
@@ -40,7 +40,7 @@ DEAD AIR FM 是一家虚构的深夜东京地下电台。我们用 Anything Fron
 | 复现页面实现中的问题 | [11 种 HTML 模板](templates/README.md) · [12 个领域的索引](SKILL.md) · [来源列表](sources.md) |
 | 评审页面 | [无障碍](checklists/accessibility.md) · [表单](checklists/forms.md) · [动效](checklists/motion.md) · [性能](checklists/performance.md) |
 
-字体调查收录了来自 247 个作品的 292 条记录，提供 CSV 和 SQLite 两种格式。其中 46 个作品的记录还将实际字形、大小和排列等细节与设计者陈述的理由作了对照。
+字体调查共收录 247 件作品，整理出 292 条记录，有 CSV 和 SQLite 两种格式。其中有 46 件作品，我们还对照设计者的说明，逐一查看了字形、字号和排布。
 
 ## 许可证
 

@@ -2,7 +2,7 @@
 
 [日本語](README.md) · [English](README.en.md) · [简体中文](README.zh-CN.md) · **한국어**
 
-Anything Frontend Art Direction은 주제에 맞는 색, 서체, 여백, 구도를 고르는 데 쓰는 일본어 프런트엔드 디자인 스킬입니다. 실제 작품과 디자이너의 설명을 나란히 보며 내 화면에 어떤 표현을 적용할지 판단할 수 있습니다. 구현이나 검토 중 궁금한 점이 생기면 12개 분야, 1,464개 항목의 색인에서 관련 명세와 연구 원문을 찾아볼 수 있습니다.
+Anything Frontend Art Direction은 주제에 맞는 색, 서체, 여백, 구도를 고르는 데 쓰는 일본어 프런트엔드 디자인 스킬입니다. 실제 작품을 보면서 디자이너가 왜 그렇게 디자인했는지 읽고, 내 화면에 활용할 표현을 고를 수 있습니다. 구현이나 검토 중 궁금한 점이 생기면 12개 분야, 1,464개 항목의 색인에서 관련 명세와 연구 원문을 찾아볼 수 있습니다.
 
 ## Motion Atlas와 함께 만든 예제 · DEAD AIR FM
 
@@ -10,9 +10,9 @@ Anything Frontend Art Direction은 주제에 맞는 색, 서체, 여백, 구도�
 
 [![DEAD AIR FM 화면. 오른쪽에는 헤드폰을 쓴 DJ가 보이고, 왼쪽에는 분홍색 방송국 이름과 청록색 재생 버튼이 있다.](docs/dead-air-fm.webp)](https://rna4219.github.io/anything-frontend-art-direction/examples/dead-air-fm/)
 
-DEAD AIR FM은 도쿄의 한밤중을 배경으로 한 가상의 해적 라디오 방송국입니다. Anything Frontend Art Direction을 사용해 일러스트에서 화면에 쓸 색을 골랐습니다. 방송국 이름에는 헤드폰 선의 분홍색을, 재생 버튼에는 DJ 재킷의 청록색을 썼습니다. 채널을 바꾸면 주파수 숫자가 잠깐 뒤섞였다가 새 주파수로 정렬됩니다. 이 효과에는 [Motion Atlas](https://github.com/RNA4219/motion-atlas)를 사용했습니다.
+DEAD AIR FM은 도쿄의 한밤중을 배경으로 한 가상의 해적 라디오 방송국입니다. Anything Frontend Art Direction을 사용해 일러스트에서 화면에 쓸 색을 골랐습니다. 방송국 이름에는 헤드폰 선의 분홍색을, 재생 버튼에는 DJ 재킷의 청록색을 썼습니다. 채널을 바꾸면 숫자가 잠깐 뒤섞인 뒤 새 주파수가 표시됩니다. 이 효과에는 [Motion Atlas](https://github.com/RNA4219/motion-atlas)를 사용했습니다.
 
-**「周波数を選ぶ」(주파수 선택)** 아래에서 방송국을 누르면 음악이 나옵니다. **세 채널의 곡은 모두 YuE2로 생성했습니다.** 87.9 MHz에서는 다크 일렉트로, 92.4 MHz에서는 앰비언트 덥, 98.6 MHz에서는 브레이크비트를 들을 수 있습니다. 일러스트와 음원, 글꼴을 HTML 파일 하나에 담아 저장하면 오프라인에서도 들을 수 있습니다. [단일 HTML 파일 다운로드](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/dead-air-fm/index.html) · [HTML 소스 보기](examples/dead-air-fm/index.html)
+**「周波数を選ぶ」(주파수 선택)** 아래에서 듣고 싶은 채널을 누르면 곡이 재생됩니다. **세 채널의 곡은 모두 YuE2로 생성했습니다.** 87.9 MHz에서는 다크 일렉트로, 92.4 MHz에서는 앰비언트 덥, 98.6 MHz에서는 브레이크비트를 들을 수 있습니다. 일러스트와 음원, 글꼴이 HTML 파일 하나에 들어 있습니다. 이 파일을 저장하면 오프라인에서도 들을 수 있습니다. [단일 HTML 파일 다운로드](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/dead-air-fm/index.html) · [HTML 소스 보기](examples/dead-air-fm/index.html)
 
 ## 예제 · 시오마치 영화제
 
@@ -30,7 +30,7 @@ DEAD AIR FM은 도쿄의 한밤중을 배경으로 한 가상의 해적 라디�
 2. ZIP을 사용했다면 압축을 푼 폴더의 이름을 `anything-frontend-art-direction`으로 바꿉니다. 폴더를 사용 중인 도구의 스킬 디렉터리에 넣습니다. 사용 지침은 [SKILL.md](SKILL.md)에 있습니다.
 3. 다음과 같이 요청해 보세요. “anything-frontend-art-direction으로 항구에서 열리는 야외 영화제 페이지를 만들어 줘. 실제 영화제 이름으로 서체 두 가지를 비교하고, 휴대폰에서도 상영 시각을 쉽게 찾을 수 있게 해 줘.”
 
-참고 자료는 일본어 Markdown 문서로 바로 읽을 수 있습니다. 각 항목의 링크를 따라가면 원래 게시된 곳에서 작품 이미지와 자료 원문을 확인할 수 있습니다.
+참고 자료는 일본어로 작성한 Markdown 문서입니다. 각 항목의 링크를 열면 원래 게시된 사이트에서 작품 이미지와 자료 원문을 볼 수 있습니다.
 
 | 알아보고 싶은 것 | 참고 자료 |
 | --- | --- |

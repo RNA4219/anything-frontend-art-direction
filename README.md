@@ -10,7 +10,7 @@ Anything Frontend Art Direction は、題材に合う配色・書体・余白・
 
 [![DEAD AIR FMの画面。右にヘッドホンのDJ、左にピンクの局名とシアンの再生ボタン。](docs/dead-air-fm.webp)](https://rna4219.github.io/anything-frontend-art-direction/examples/dead-air-fm/)
 
-DEAD AIR FM は、東京の深夜を舞台にした架空の海賊ラジオ局です。Anything Frontend Art Direction でイラストから画面の色を選び、コードのピンクを局名に、ジャケットのシアンを再生ボタンに使いました。[Motion Atlas](https://github.com/RNA4219/motion-atlas) を使った選局演出では、周波数の数字が一瞬乱れてから、新しい局の番号にそろいます。
+DEAD AIR FM は、東京の深夜を舞台にした架空の海賊ラジオ局です。Anything Frontend Art Direction で、イラストをもとに画面の配色を決めました。局名にはヘッドホンのコードと同じピンクを、再生ボタンにはDJのジャケットと同じシアンを使っています。選局すると、数字が一瞬乱れたあと、選んだ局の周波数が表示されます。この演出には [Motion Atlas](https://github.com/RNA4219/motion-atlas) を使いました。
 
 「周波数を選ぶ」で局を押すと、その場で曲が流れます。**3局の曲はすべて YuE2 で生成しました。** 87.9 MHz はダークエレクトロ、92.4 MHz はアンビエントダブ、98.6 MHz はブレイクビーツです。イラスト、音源、フォントを1枚のHTMLに収めているので、保存してオフラインでも聴けます。[単体HTMLをダウンロード](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/dead-air-fm/index.html)・[HTMLのソース](examples/dead-air-fm/index.html)
 

@@ -2,7 +2,7 @@
 
 [日本語](README.md) · **English** · [简体中文](README.zh-CN.md) · [한국어](README.ko.md)
 
-Anything Frontend Art Direction is a Japanese-language frontend design skill for choosing a color palette, typefaces, spacing, and composition to suit a project. You can compare finished work with the designers’ own accounts to decide which ideas to use. For implementation and review, an index of 1,464 entries across 12 topics links to the original specifications and research.
+Anything Frontend Art Direction is a Japanese-language frontend design skill for choosing a color palette, typefaces, spacing, and composition to suit a project. Look at each design alongside the designer’s explanation to decide what might work on your own page. When you build or review a page, you can use the index to find the original specifications and research. Its 1,464 entries are grouped into 12 topics.
 
 ## DEAD AIR FM, built with Motion Atlas
 
@@ -10,7 +10,7 @@ Anything Frontend Art Direction is a Japanese-language frontend design skill for
 
 [![DEAD AIR FM with a headphone-wearing DJ on the right and the station name in pink above a cyan play button on the left.](docs/dead-air-fm.webp)](https://rna4219.github.io/anything-frontend-art-direction/examples/dead-air-fm/)
 
-DEAD AIR FM is a fictional pirate radio station broadcasting after dark in Tokyo. We used Anything Frontend Art Direction to draw the interface colors from the illustration. The station name picks up the pink of the headphone cable, and the play button uses the cyan from the DJ’s jacket. When you change stations, the frequency digits briefly scramble before settling on the new frequency. That effect uses [Motion Atlas](https://github.com/RNA4219/motion-atlas).
+DEAD AIR FM is a fictional pirate radio station broadcasting after dark in Tokyo. We used Anything Frontend Art Direction to choose colors from the illustration. The station name takes its pink from the headphone cable, and the play button takes its cyan from the DJ’s jacket. When you tune in to another station, the digits briefly scramble before the dial shows the new frequency. We built that effect with [Motion Atlas](https://github.com/RNA4219/motion-atlas).
 
 Choose a station under **周波数を選ぶ** (“Choose a frequency”) to start listening. **All three tracks were generated with YuE2.** Tune to 87.9 MHz for dark electro, 92.4 MHz for ambient dub, or 98.6 MHz for breakbeat. The illustration, recordings, and fonts are embedded in a single HTML file, so you can save it and listen offline. [Download the standalone HTML](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/dead-air-fm/index.html) · [View the HTML source](examples/dead-air-fm/index.html)
 
@@ -40,7 +40,7 @@ You can read the Japanese reference material directly in Markdown. The links lea
 | Reproduce an implementation issue | [11 HTML templates](templates/README.md) · [Index of 12 topics](SKILL.md) · [Source list](sources.md) |
 | Review a screen | [Accessibility](checklists/accessibility.md) · [Forms](checklists/forms.md) · [Motion](checklists/motion.md) · [Performance](checklists/performance.md) |
 
-The typography dataset contains 292 records from 247 works, available in CSV and SQLite. For 46 of those works, the research compares details such as letterforms, scale, and placement with the designers’ stated reasons.
+The typography dataset is available in CSV and SQLite and contains 292 records from 247 works. For 46 of those works, we compared the letterforms, sizes, and placement on screen with the designers’ explanations.
 
 ## License
 
