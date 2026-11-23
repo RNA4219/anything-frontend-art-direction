@@ -1,5 +1,7 @@
 # Anything Frontend Art Direction
 
+**日本語** · [English](README.en.md) · [简体中文](README.zh-CN.md) · [한국어](README.ko.md)
+
 Anything Frontend Art Direction は、題材に合う配色・書体・余白・構図を選ぶための日本語のフロントエンドデザインスキルです。作品と制作者の解説を見比べながら、自分の画面に取り入れたい工夫を探せます。実装やレビューで迷ったときは、12分野・1,464項目の索引から仕様や研究の原文をたどれます。
 
 ## Motion Atlas との併用作例「DEAD AIR FM」
