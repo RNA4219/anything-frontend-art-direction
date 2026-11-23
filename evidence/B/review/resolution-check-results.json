@@ -1,0 +1,147 @@
+[
+  {
+    "input": "evidence/B/review/wait-recovery-cycle.json",
+    "input_sha256": "4f955f236b23a78616d7f006084f754c6b59fde509927471bc26d750ca2b0b4c",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/review/wait-recovery-cycle.json",
+      "--json"
+    ],
+    "expected_exit_code": 1,
+    "exit_code": 1,
+    "stdout": {
+      "schema": "ux-flow-check/v1",
+      "status": "fail",
+      "ok": false,
+      "issues": [
+        {
+          "code": "WAIT_TIMEOUT_STUCK",
+          "location": "$.transitions[4].to",
+          "message": "No user/timer path from timeout reaches success or explained exit. A recovery/task state that only returns to waiting is not an escape; system-only local paths need separate review."
+        }
+      ],
+      "limitations": [
+        "Natural-language guards are not evaluated: graph reachability ignores guards.",
+        "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+        "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+        "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts.",
+        "Timeout escape checks user/timer paths to success or explained exit; local system events are not distinguished from service responses."
+      ]
+    },
+    "stderr": "",
+    "matches_expected": true
+  },
+  {
+    "input": "evidence/B/review/wait-task-bridge-cycle.json",
+    "input_sha256": "2a1a19c9df4d12a1a566729ece5f11225ef43d4b88a80dfd6b83aaf001a6d5d7",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/review/wait-task-bridge-cycle.json",
+      "--json"
+    ],
+    "expected_exit_code": 1,
+    "exit_code": 1,
+    "stdout": {
+      "schema": "ux-flow-check/v1",
+      "status": "fail",
+      "ok": false,
+      "issues": [
+        {
+          "code": "WAIT_TIMEOUT_STUCK",
+          "location": "$.transitions[4].to",
+          "message": "No user/timer path from timeout reaches success or explained exit. A recovery/task state that only returns to waiting is not an escape; system-only local paths need separate review."
+        }
+      ],
+      "limitations": [
+        "Natural-language guards are not evaluated: graph reachability ignores guards.",
+        "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+        "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+        "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts.",
+        "Timeout escape checks user/timer paths to success or explained exit; local system events are not distinguished from service responses."
+      ]
+    },
+    "stderr": "",
+    "matches_expected": true
+  },
+  {
+    "input": "extensions/B/tests/fixtures/booking.json",
+    "input_sha256": "b8d1e90a00c9518cd1b9124ed2b8c8df5445ba169c006ce522c856663f2d7152",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/tests/fixtures/booking.json",
+      "--json"
+    ],
+    "expected_exit_code": 0,
+    "exit_code": 0,
+    "stdout": {
+      "schema": "ux-flow-check/v1",
+      "status": "pass",
+      "ok": true,
+      "issues": [],
+      "limitations": [
+        "Natural-language guards are not evaluated: graph reachability ignores guards.",
+        "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+        "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+        "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts.",
+        "Timeout escape checks user/timer paths to success or explained exit; local system events are not distinguished from service responses."
+      ]
+    },
+    "stderr": "",
+    "matches_expected": true
+  },
+  {
+    "input": "extensions/B/tests/fixtures/report.json",
+    "input_sha256": "0abcf9d9ed2846fa4ab0314a9d1f5f3c49e175101cbb34b590f7b8d3c550a7a4",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/tests/fixtures/report.json",
+      "--json"
+    ],
+    "expected_exit_code": 0,
+    "exit_code": 0,
+    "stdout": {
+      "schema": "ux-flow-check/v1",
+      "status": "pass",
+      "ok": true,
+      "issues": [],
+      "limitations": [
+        "Natural-language guards are not evaluated: graph reachability ignores guards.",
+        "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+        "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+        "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts.",
+        "Timeout escape checks user/timer paths to success or explained exit; local system events are not distinguished from service responses."
+      ]
+    },
+    "stderr": "",
+    "matches_expected": true
+  },
+  {
+    "kind": "focused_regression_tests",
+    "test_count": 5,
+    "cwd": "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/tests",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_flow_check.FlowContractTests.test_timeout_recovery_bridge_is_not_an_escape",
+      "test_flow_check.FlowContractTests.test_timeout_task_bridge_is_not_an_escape",
+      "test_flow_check.FlowContractTests.test_timeout_recovery_can_reach_exit_through_task",
+      "test_flow_check.FlowContractTests.test_timeout_wait_loop_with_user_escape_is_allowed",
+      "test_flow_check.FlowContractTests.test_timeout_self_loop_cannot_rely_only_on_system_success"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_timeout_recovery_bridge_is_not_an_escape (test_flow_check.FlowContractTests.test_timeout_recovery_bridge_is_not_an_escape) ... ok\ntest_timeout_task_bridge_is_not_an_escape (test_flow_check.FlowContractTests.test_timeout_task_bridge_is_not_an_escape) ... ok\ntest_timeout_recovery_can_reach_exit_through_task (test_flow_check.FlowContractTests.test_timeout_recovery_can_reach_exit_through_task) ... ok\ntest_timeout_wait_loop_with_user_escape_is_allowed (test_flow_check.FlowContractTests.test_timeout_wait_loop_with_user_escape_is_allowed) ... ok\ntest_timeout_self_loop_cannot_rely_only_on_system_success (test_flow_check.FlowContractTests.test_timeout_self_loop_cannot_rely_only_on_system_success) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.003s\n\nOK\n",
+    "matches_expected": true
+  }
+]

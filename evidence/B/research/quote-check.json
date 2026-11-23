@@ -1,0 +1,18 @@
+{
+  "tool": "imozuru report.py --check",
+  "command": [
+    "python",
+    "/workspace/scratch/392a80e65402/tools-B/imozuru/skills/imozuru/scripts/report.py",
+    "/workspace/scratch/392a80e65402/research-B",
+    "--check"
+  ],
+  "returncode": 0,
+  "stdout": "照合 OK: 抜き書き 19 件がすべて原文のとおり\n",
+  "stderr": "",
+  "checked_at": "2026-11-23T06:30:09.688051+00:00",
+  "scope": "19 short quotes match web tool extraction cache; not original byte-level HTTP authentication",
+  "fetch_attempts": "fetch-attempts.json",
+  "fallback": "web search service open/click extraction; not direct raw download",
+  "raw_cache": "transient scratch, copyrighted complete sources not redistributed",
+  "cache_hashes_source": "sources.json"
+}

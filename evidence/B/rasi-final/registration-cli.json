@@ -1,0 +1,40 @@
+{
+  "schema": "b-native-rasi-registration-run/v1",
+  "started_at": "2026-11-23T06:49:47.495903+00:00",
+  "finished_at": "2026-11-23T06:49:47.591904+00:00",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-m",
+    "rasi",
+    "--root",
+    "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B",
+    "experience-add",
+    "--experience",
+    "rasi-final/experience.json"
+  ],
+  "cwd": "/workspace/scratch/392a80e65402/anything-frontend-session-B",
+  "rasi_repository_revision": "f5b638085dece1f997210f9b653aceb8fe9b32d4",
+  "rasi_version": "0.0.2",
+  "returncode": 0,
+  "stdout": "experience追加成功: /workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/.ga/receipts/experience-add-59822d0433b98d0efdc0b6c14a0d7bacd322453e528745fb07a1a5181e63bcb4.json\n",
+  "stderr": "",
+  "measured_subprocess_wall_seconds": 0.09596911200014802,
+  "input_experience_file_sha256": "1fc6d5f10bdd6facfd3fca52b677020433cf05e11e506689fdfe2646400de4c2",
+  "evidence_ref": "rasi-final/evaluation-evidence.json",
+  "evidence_sha256_before": "c53da7c072a8a40f2c2b594bf023f28df8743943310a628e83bdc0e63a2501e9",
+  "formal_gate": "HOLD",
+  "native_action_scope": "Record an experience containing links to externally executed evidence; not execute/evaluate/promote the Skill.",
+  "native_experience": {
+    "path": ".ga/experiences/B-UXFLOW-20261123-62f6f5075ca9-r1.json",
+    "sha256": "7dc0adc5bb4fc3b0b1004ff096b6b815ce5f2b369509c19fc17b5e86a54718d1",
+    "canonical_bytes_match_input": true
+  },
+  "native_receipt": {
+    "path": ".ga/receipts/experience-add-59822d0433b98d0efdc0b6c14a0d7bacd322453e528745fb07a1a5181e63bcb4.json",
+    "sha256": "59822d0433b98d0efdc0b6c14a0d7bacd322453e528745fb07a1a5181e63bcb4",
+    "filename_hash_matches_bytes": true
+  },
+  "evidence_sha256_after": "c53da7c072a8a40f2c2b594bf023f28df8743943310a628e83bdc0e63a2501e9",
+  "post_registration_artifact_hashes_unchanged": true,
+  "post_registration_skill_hashes_unchanged": true
+}

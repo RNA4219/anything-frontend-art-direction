@@ -1,0 +1,4 @@
+interface:
+  display_name: "Anything Frontend UX Flow"
+  short_description: "タスク完了・操作状態・非同期処理・失敗復帰を設計して検証する"
+  default_prompt: "$anything-frontend-ux-flow を使い、この画面の開始から完了までの状態遷移と失敗時の復帰経路を設計して検証して。"

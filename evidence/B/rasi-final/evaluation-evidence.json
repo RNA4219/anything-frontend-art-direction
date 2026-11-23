@@ -1,0 +1,262 @@
+{
+  "schema": "b-final-external-evidence/v1",
+  "frozen_at": "2026-11-23T06:49:11+00:00",
+  "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+  "base_git_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "baseline_art_direction": {
+    "skill": "SKILL.md",
+    "sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5"
+  },
+  "candidate_generation_input": {
+    "git_commit": "58bed659cc7f39d316794625ad0475084b38df7e",
+    "skill_tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+    "manifest": {
+      "path_base": "evidence/B",
+      "path": "experiments/generation-skill-input.json",
+      "sha256": "3be8e7b8fd44474235ea0681845777c9b5eb25d289e46a29f0412267667e3775",
+      "bytes": 1547
+    }
+  },
+  "final_skill_implementation": {
+    "git_commit": "6fc0c3dd6c82c4dd2f77764c5da512fbfdbaa911",
+    "skill_tree_sha256": "62f6f5075ca97e48a4d811d6039cd27ce2488425915e1bd4c41a62da6619d1bf",
+    "manifest": {
+      "path_base": "evidence/B",
+      "path": "final-skill-manifest.json",
+      "sha256": "922e3cf60e45c3bfd6af53deee96cc18658a4db5377ad787fe53a299e3128fda",
+      "bytes": 2000
+    },
+    "was_used_to_regenerate_the_comparison_arms": false
+  },
+  "rasi_decomposition_descriptor": {
+    "candidate_content_id": "57d1b2372555c5493ab91e5ae679e2441581795c1998c1681fdc050b1abb7552",
+    "cas_object_sha256": "5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34",
+    "status": "quarantined",
+    "trust": "UNTRUSTED_CANDIDATE",
+    "is_implementation_identity": false,
+    "historical_extraction_only": true,
+    "note": "Descriptor is the original sankai packaging. B10 applicability and checker fixes are reflected in the final Skill identity, not retroactively in this descriptor."
+  },
+  "generated_submissions": {
+    "baseline": {
+      "manifest": {
+        "path_base": "evidence/B",
+        "path": "experiments/baseline-submission.json",
+        "sha256": "83136553d4eeb41bdf0753321c5f30214216be3e8b7bb8d718322e326bdc48c2",
+        "bytes": 1231
+      },
+      "tree_sha256": "88820b368e6ee063a1c469d6604db8db9b13896ff2ef41de9ddcb7b0ef83d451",
+      "submission_count": 1,
+      "repaired_after_common_evaluation": false
+    },
+    "candidate": {
+      "manifest": {
+        "path_base": "evidence/B",
+        "path": "experiments/candidate-submission.json",
+        "sha256": "5bc05c3c1a6d01d0b6d789b8a35d518e92be87463f4d59daf5560689f9fce3cf",
+        "bytes": 2102
+      },
+      "tree_sha256": "9b64bfc862b888b0b48ab876b0f8af081d7aec907b7da561a13d3068e29c7dea",
+      "submission_count": 1,
+      "repaired_after_common_evaluation": false
+    }
+  },
+  "comparison": {
+    "first_submission_result": {
+      "path_base": "evidence/B",
+      "path": "experiments/results/first-submission/comparison.json",
+      "sha256": "e5740bc334418781802dfdba0e631155d53b4e2b627f0a65f23f7e12f6783ac1",
+      "bytes": 612504
+    },
+    "replay_result": {
+      "path_base": "evidence/B",
+      "path": "runs/final/comparison/comparison.json",
+      "sha256": "bb890a9d929b27eace805f7f380dafffe42c5b4bcffc827e6bb70251cf840cb9",
+      "bytes": 612504
+    },
+    "evaluator_sha256": "e31b62a1edd0a95e765ddea89fc2ca8df43b31da39156e6345fda423babedd26",
+    "model_submissions_per_arm": 1,
+    "case_count_per_arm": 40,
+    "task_counts_per_arm": {
+      "reservation": 20,
+      "import": 20
+    },
+    "case_category_counts_per_arm": {
+      "normal": 6,
+      "boundary": 20,
+      "error": 14
+    },
+    "baseline": {
+      "pass": 40,
+      "fail": 0,
+      "not_run": 0
+    },
+    "candidate": {
+      "pass": 40,
+      "fail": 0,
+      "not_run": 0
+    },
+    "pass_count_delta": 0,
+    "additional_efficacy_established": false,
+    "independent_blind": false,
+    "scope": "controller behavior with in-memory API; no DOM, rendering, keyboard or real network verification",
+    "limitations": [
+      "One generated sample per arm; model revision and seed not exposed.",
+      "Shared filesystem is not an enforced holdout.",
+      "I14 checks unknown-outcome safety only; it does not prove recovery affordance or liveness.",
+      "API exactly-once behavior is a simulation contract, not a production guarantee."
+    ]
+  },
+  "final_implementation_verification": {
+    "run": {
+      "path_base": "evidence/B",
+      "path": "runs/final/run.json",
+      "sha256": "e6154b2a00ef10918bbaa093a4f678cd8ad23b126b91e20d86e60bffc0f00cdb",
+      "bytes": 2972
+    },
+    "unit_tests": {
+      "passed": 70,
+      "total": 70
+    },
+    "bundled_flow_contracts": {
+      "passed": 2,
+      "total": 2
+    },
+    "shared_api_simulation_tests": {
+      "passed": 9,
+      "total": 9
+    },
+    "generated_flow_contracts": {
+      "passed": 2,
+      "total": 2,
+      "evidence": {
+        "path_base": "evidence/B",
+        "path": "runs/final/candidate-flow-revalidation.json",
+        "sha256": "282cc57580aec861d63c6c8498229b8cd630c3373136011ca5707e3608702048",
+        "bytes": 2828
+      }
+    },
+    "bundle": {
+      "ok": true,
+      "problems": [],
+      "principles": 10,
+      "local_links": 59,
+      "source_records": 19,
+      "distinct_works": 18,
+      "limitations": [
+        "Link checks do not refetch remote sources.",
+        "S17/S19 count as one work.",
+        "Git scope checks tracked changes; final handoff additionally inspects untracked/staged paths."
+      ]
+    },
+    "correction_history": {
+      "intermediate_unit_result": "69/70 reported by root; standalone initial log not preserved",
+      "cause": "positive test used leave_before instead of actual fixture transition leave",
+      "correction": "test points to leave; final 70/70 log retained",
+      "history_ref": "rasi-final/trial-history.snapshot.json"
+    }
+  },
+  "diagnostic_review": {
+    "findings_resolved": [
+      "B-REV-01",
+      "B-REV-02"
+    ],
+    "counterexamples_rejected": 2,
+    "normal_fixtures_accepted": 2,
+    "focused_regressions_passed": 5,
+    "focused_regressions_total": 5,
+    "separate_agent": true,
+    "independent_blind": false,
+    "experiments_read_by_reviewer": false,
+    "report": {
+      "path_base": "evidence/B",
+      "path": "review/resolution-review.md",
+      "sha256": "fffff54e2a9cba20013be7c7486c8c04d108bb7f13652dde947ac3fdf4eae2e2",
+      "bytes": 8545
+    },
+    "results": {
+      "path_base": "evidence/B",
+      "path": "review/resolution-check-results.json",
+      "sha256": "3f4f4f203a48d451cf17d8bed8ab8a625a053384039095b062c53affb144331d",
+      "bytes": 7609
+    },
+    "scope": "Limited followup on known findings; not a blind oracle."
+  },
+  "sources": {
+    "source_records": 19,
+    "distinct_works": 18,
+    "same_work_records": [
+      "S17",
+      "S19"
+    ],
+    "short_quotes_checked": 19,
+    "quote_check": {
+      "path_base": "evidence/B",
+      "path": "research/quote-check.json",
+      "sha256": "fdf66f1d692f5962131b0d9c1d329481b088424a162e7a643bbcc0d0e4cd4548",
+      "bytes": 751
+    },
+    "scope": "Quotes matched extraction cache, not original byte-level HTTP authentication; no full external sources redistributed."
+  },
+  "browser": {
+    "state": "blocked_not_run",
+    "evidence": {
+      "path_base": "evidence/B",
+      "path": "experiments/browser-blocker.md",
+      "sha256": "f620f144f332650f1139f01e16a046426ac377bcce3def06fe54687e6d9851d9",
+      "bytes": 1231
+    },
+    "screenshots": null,
+    "keyboard_walkthrough": null,
+    "dom_rendering_checked": false
+  },
+  "excluded_from_common_score": [
+    "Candidate-only HTTP simulation self-test",
+    "Generator self-checks",
+    "Historical 1947-shape aggregate without original case-level logs",
+    "Browser/DOM/keyboard checks that did not run"
+  ],
+  "artifact_manifest": {
+    "path_base": "evidence/B",
+    "path": "rasi-final/artifact-manifest.json",
+    "sha256": "2ccf2aeedeb11bc86e0ed2997b8f9f9eff7ee835c3bdfc215ae1de9de4d5f27e",
+    "bytes": 22663
+  },
+  "integrity_check": {
+    "path_base": "evidence/B",
+    "path": "rasi-final/integrity-check.json",
+    "sha256": "9eade8a30c02d9f6c19a2e3454b7fec4aecd5c0a40ab1e19791357b358eb4495",
+    "bytes": 1824
+  },
+  "trial_history_snapshot": {
+    "path_base": "evidence/B",
+    "path": "rasi-final/trial-history.snapshot.json",
+    "sha256": "d96e8897a4913ef08186cfef9222c7c61d23d19c0719f2cc36d3e37052f5e0e5",
+    "bytes": 9379
+  },
+  "cost_history_snapshot": {
+    "path_base": "evidence/B",
+    "path": "rasi-final/cost-history.snapshot.json",
+    "sha256": "a741ae0475e6d273607fd5fa78ee7b72428c1f64b2d55c8b3e16b74ebeb6e480",
+    "bytes": 4298
+  },
+  "formal_gate": {
+    "decision": "HOLD",
+    "reasons": [
+      "No independent blind evaluation or enforced secret holdout.",
+      "Browser verification blocked/not run.",
+      "One submitted sample per arm; exact model revision/seed unavailable.",
+      "Both arms passed the same 40 cases, with delta zero; added efficacy not established.",
+      "Corrected final Skill was not used to regenerate a new comparison sample.",
+      "R-ASI formal campaign lock/policy/cost contracts remain incomplete."
+    ]
+  },
+  "promotion": {
+    "performed": false,
+    "rasi_promote_connected": false
+  },
+  "rasi_cost_ledger": {
+    "written": false,
+    "reason": "No valid configured native cost budget; unknown costs retained as null in external records."
+  }
+}

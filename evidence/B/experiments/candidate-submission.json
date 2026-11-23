@@ -1,0 +1,31 @@
+{
+  "schema": "b-submission-snapshot/v1",
+  "arm": "candidate",
+  "submission": 1,
+  "recorded_at": "2026-11-23T06:42:48.096930+00:00",
+  "files": {
+    "controller-utils.mjs": "bd59546de22228bf4d04977885afb77fd60a73a62cbc6fbb0437ee88e2d61708",
+    "decisions.md": "de7ca8c1205bcf584cf5b0c78770b45a57e24b6996022510874edcdf2b2a613c",
+    "demo-client.mjs": "f9e3071cf99e7039121bbc06eeac85d01ce26c7bd74234a27786a90f051ed4af",
+    "demo-progress.mjs": "00fa33946cf705845d8924877272b6e3df1456eb016b301acb67fa606d981155",
+    "demo-server.mjs": "d51d62b2f238db4e47096729cc8ec2b37481e64c2bcc240afc8c084107adaa59",
+    "import-job.mjs": "4632bf05a31deb59fa1fe985a38a1343a1d1dffb56f2ecf975e6f3cea9b5b8e0",
+    "import.flow.json": "455aafac915839fc137a7a0a1c162fe7a75ef37596763e1f1fb38581ae615bdc",
+    "index.html": "2fdb4583da040526cf0aaede9e92e0718df3d763cfa5ddc65b8b297d18edb666",
+    "manifest.json": "85f67d433ea84be9f407e0efc45e2810212be9fd6b75ae904a671374f0f7fbee",
+    "reservation.flow.json": "edd1d75d524a7607f4978bcbfa6fb2ca9695bade63b778afc1abcac55778a163",
+    "reservation.mjs": "a49bdc92613c43de526ffc74cbaf5ec738f097e9ad9a95edf9a83afc0564fa54",
+    "self-check-results.json": "ddfdddcbeb69d6c066c31ba508cbbcb364623dd5806f2ad7c263b39286cc40cf",
+    "self-check.log": "385818ced3f0c3d83697fceaf3e75fa62ffbdc3622e203bcbdc90fc17c758ffd",
+    "self-check.mjs": "cba35d73a73f0cbe3a0d841b43f4f438e3cca9298856bc2019394cc512706a4b",
+    "structural-check-results.json": "50b72945de73468716f64683edfa7f5c1f38bbec12cf66b1e4f0a43753b7e592",
+    "ui.mjs": "ee11bb7045b3f94233c1af9a09e89dd3d2d1bb966e028a0addba10088c039d1d"
+  },
+  "tree_sha256": "9b64bfc862b888b0b48ab876b0f8af081d7aec907b7da561a13d3068e29c7dea",
+  "notes": [
+    "First submitted artifact after generator self checks; internal pre-submission edits are not captured as separate trials.",
+    "No shared evaluator results were given to the generator.",
+    "This snapshot precedes common evaluation; no repairs to submitted code.",
+    "HTTP simulation self-test is not browser verification and not part of matched controller scoring."
+  ]
+}

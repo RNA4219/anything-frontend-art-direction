@@ -1,0 +1,21 @@
+{
+  "schema": "b-skill-snapshot/v1",
+  "label": "candidate generation input; before diagnostic review fixes",
+  "recorded_at": "2026-11-23T06:30:43.982693+00:00",
+  "files": {
+    ".gitignore": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+    "SKILL.md": "b35c407cad3c8a71261a7e7717d30beed315692fbb5aa49bcf7937a350e1ab2c",
+    "agents/openai.yaml": "71b072a096533fb7b59803900bc775e56ff921c19d7abe16122894fc797c7a88",
+    "checks/check_flow.py": "22ea66ddbeb50f0cb91baa8562d2b3c8300ebb3bedb47f4a812f9347a83a196d",
+    "examples/application.md": "698df480ac082517b64976145407f47dfea00ce40678fb6fb49b725021735624",
+    "references/flow-contract.md": "1d233722c509b3b053de203969e9b00dbf4a221f8164ef07cc28517ae6f09c72",
+    "references/integration.md": "384dafa8eb269c98e2bbd0e5fe4ef14665eb70e6dae886de71910edb8e7962d4",
+    "references/principles.md": "a3a0a6b0f5c9957d526b054c08a82bb7a83c4fd5ada5cd2c6138261db7efa4ca",
+    "references/sources.md": "fd18d96feaab6fb488f6228018852f8d88459dd03a49e426f630c10255ddf1c7",
+    "tests/fixtures/booking.json": "b8d1e90a00c9518cd1b9124ed2b8c8df5445ba169c006ce522c856663f2d7152",
+    "tests/fixtures/report.json": "0abcf9d9ed2846fa4ab0314a9d1f5f3c49e175101cbb34b590f7b8d3c550a7a4",
+    "tests/test_flow_check.py": "7c892d5aecf72f9ecdd67439943e8cac2df2c8d835c6d0f3c6e013357b5f65f4"
+  },
+  "tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+  "tree_algorithm": "SHA256 of UTF-8 JSON relative-path->SHA256 sorted keys compact separators; excludes bytecode"
+}

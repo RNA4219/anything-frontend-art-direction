@@ -1,0 +1,569 @@
+{
+  "schema": "ux-flow/v1",
+  "id": "workshop-reservation",
+  "actor": "ワークショップへの参加を希望する利用者",
+  "goal": "指定した名前と人数の予約を1件確定し、予約番号を見直せる。",
+  "entry_condition": "名前と人数を未入力。公開reserve/lookup APIを利用できる。",
+  "entry_state": "idle",
+  "success_predicate": "reserveまたはlookupから返ったstatus=confirmedのreceiptがあり、予約番号・名前・人数を表示する。",
+  "assumptions": [
+    "利用者の実地観察は行っていない。操作順序は固定課題から設計した。",
+    "共通APIは同じkey・同じ正規化入力を重複確定しない。異なる入力は拒否する。harnessの寿命以外の保存期限・本番永続化は未確認。",
+    "lookupのnot-foundは以前の送信が絶対に実行されない証拠として扱わない。予約取消APIは存在しない。",
+    "Flowのvalidation/slow/checkingは表示上の状態を含む。controllerのphase語彙を追加するものではない。",
+    "画面を離れる経路はブラウザーの標準操作。送信済み予約の取消しや成功とは表示しない。"
+  ],
+  "operations": [
+    {
+      "id": "reserve",
+      "side_effect": "write",
+      "retry": "same_key",
+      "idempotency": "server_key",
+      "outcome_lookup": true,
+      "cancel": "unavailable",
+      "stale_response": "一度に一つの送信。送信中・結果不明中は入力とkeyを固定し、別の送信意図を受け付けない。",
+      "contract_evidence": "../shared/tasks.md と ../shared/api.mjs の公開API契約。保証範囲はharnessの存続中。"
+    },
+    {
+      "id": "lookup",
+      "side_effect": "read",
+      "retry": "safe_read",
+      "idempotency": "inherent",
+      "outcome_lookup": true,
+      "cancel": "unavailable",
+      "stale_response": "reserve/retry/lookupを相互排他にし、現在のkeyだけを照会する。",
+      "contract_evidence": "../shared/tasks.md と ../shared/api.mjs の公開API契約。保証範囲はharnessの存続中。"
+    }
+  ],
+  "states": [
+    {
+      "id": "idle",
+      "kind": "task",
+      "description": "名前と人数は空欄。入力を始められる。"
+    },
+    {
+      "id": "editing",
+      "kind": "task",
+      "description": "未送信の入力を修正し、有効なら予約できる。"
+    },
+    {
+      "id": "validation",
+      "kind": "recovery",
+      "description": "入力エラーを項目ごとに表示する。入力を保持し、修正または破棄できる。"
+    },
+    {
+      "id": "submitting",
+      "kind": "wait",
+      "description": "同じ送信意図の応答待ち。編集・再送・破棄を抑止する。",
+      "operation": "reserve",
+      "timeout_event": "submitting_slow_notice",
+      "wait_policy": "UIの12秒経過は長時間待機の説明だけを表示する。controllerの結果や送信意図を変更しない。通信を取り消したと表示しない。ブラウザーを離れる選択を説明する。controllerに自動タイマー・自動再送は入れない。"
+    },
+    {
+      "id": "failed",
+      "kind": "recovery",
+      "description": "書込みなしの確定拒否。入力修正、同じ意図の再試行、未送信破棄が可能。"
+    },
+    {
+      "id": "uncertain",
+      "kind": "recovery",
+      "description": "予約済みか不明。入力とkeyを保持し、照会か同一再試行を行う。"
+    },
+    {
+      "id": "checking",
+      "kind": "wait",
+      "description": "現在のkeyを照会中。重複照会や再送を抑止する。",
+      "operation": "lookup",
+      "timeout_event": "checking_slow_notice",
+      "wait_policy": "UIの12秒経過は長時間待機の説明だけを表示する。controllerの結果や送信意図を変更しない。通信を取り消したと表示しない。ブラウザーを離れる選択を説明する。controllerに自動タイマー・自動再送は入れない。"
+    },
+    {
+      "id": "slow_submit",
+      "kind": "recovery",
+      "description": "予約の応答待ちが続く。説明を読み待機するか、取消しではないと理解して画面を離れる。"
+    },
+    {
+      "id": "slow_lookup",
+      "kind": "recovery",
+      "description": "照会の応答待ちが続く。結果不明の説明を保持する。"
+    },
+    {
+      "id": "succeeded",
+      "kind": "success",
+      "description": "予約番号と送信内容を見直せる。",
+      "proof": "serverが返したreceipt.id、receipt.status=confirmed、name、people。"
+    },
+    {
+      "id": "cancelled",
+      "kind": "exit",
+      "description": "未送信の入力を破棄した。",
+      "reason": "この予約を送信せず終了した。新しい入力は別の予約タスクとして開始できる。"
+    },
+    {
+      "id": "left",
+      "kind": "exit",
+      "description": "結果不明または送信待ちの説明を確認して画面を離れた。",
+      "reason": "予約結果は未解決。閉じる操作は予約取消しではない。現fixtureは再読み込み後の予約意図保存を保証しないため、再送前に結果確認が必要。"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "r-edit",
+      "from": "idle",
+      "to": "editing",
+      "event": "setDraft",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "入力内容を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-submit",
+      "from": "editing",
+      "to": "submitting",
+      "event": "submit",
+      "actor": "user",
+      "guard": "名前が空白だけではなく人数が1〜8の整数",
+      "effect": "server_write",
+      "feedback": "予約を送信しています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "reserve"
+    },
+    {
+      "id": "r-invalid",
+      "from": "editing",
+      "to": "validation",
+      "event": "submit",
+      "actor": "user",
+      "guard": "名前または人数が無効",
+      "effect": "local",
+      "feedback": "入力箇所と修正方法を示す。書込みしない。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-fix",
+      "from": "validation",
+      "to": "editing",
+      "event": "setDraft",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "修正した入力を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-discard",
+      "from": "editing",
+      "to": "cancelled",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "未送信かつ進行中のAPIなし",
+      "effect": "local",
+      "feedback": "未送信の入力を破棄しました。",
+      "preserves": []
+    },
+    {
+      "id": "r-invalid-discard",
+      "from": "validation",
+      "to": "cancelled",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "書込み未実行",
+      "effect": "local",
+      "feedback": "未送信の入力を破棄しました。",
+      "preserves": []
+    },
+    {
+      "id": "r-confirm",
+      "from": "submitting",
+      "to": "succeeded",
+      "event": "reserve_response",
+      "actor": "system",
+      "guard": "confirmed receiptあり",
+      "effect": "none",
+      "feedback": "予約番号と確定内容を示す。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-reject",
+      "from": "submitting",
+      "to": "failed",
+      "event": "reserve_response",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みなし",
+      "effect": "none",
+      "feedback": "入力を保持し、修正または再試行を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-unknown",
+      "from": "submitting",
+      "to": "uncertain",
+      "event": "reserve_response",
+      "actor": "system",
+      "guard": "unknownまたは以前の不明な書込みが未解決",
+      "effect": "none",
+      "feedback": "予約結果が確認できません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-definite-retry",
+      "from": "failed",
+      "to": "submitting",
+      "event": "retry",
+      "actor": "user",
+      "guard": "有効な送信済み意図と同じkeyあり",
+      "effect": "server_write",
+      "feedback": "同じ内容で再試行しています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "reserve"
+    },
+    {
+      "id": "r-change",
+      "from": "failed",
+      "to": "editing",
+      "event": "setDraft",
+      "actor": "user",
+      "guard": "過去の未解決書込みなし",
+      "effect": "local",
+      "feedback": "修正後の予約は新しい送信意図として扱う。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-failed-discard",
+      "from": "failed",
+      "to": "cancelled",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "server未確定の予約が存在しない",
+      "effect": "local",
+      "feedback": "未送信の入力を破棄しました。",
+      "preserves": []
+    },
+    {
+      "id": "r-retry",
+      "from": "uncertain",
+      "to": "submitting",
+      "event": "retry",
+      "actor": "user",
+      "guard": "同じkey・正規化入力を保持しAPI進行中ではない",
+      "effect": "server_write",
+      "feedback": "同じ予約として再試行しています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "reserve"
+    },
+    {
+      "id": "r-lookup",
+      "from": "uncertain",
+      "to": "checking",
+      "event": "reconcile",
+      "actor": "user",
+      "guard": "現在のkeyがありAPI進行中ではない",
+      "effect": "reconcile",
+      "feedback": "予約結果を確認しています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "lookup"
+    },
+    {
+      "id": "r-found",
+      "from": "checking",
+      "to": "succeeded",
+      "event": "lookup_response",
+      "actor": "system",
+      "guard": "found=trueかつconfirmed receiptあり",
+      "effect": "none",
+      "feedback": "予約番号と確定内容を示す。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-not-found",
+      "from": "checking",
+      "to": "uncertain",
+      "event": "lookup_response",
+      "actor": "system",
+      "guard": "found=falseまたはreceiptなし",
+      "effect": "none",
+      "feedback": "まだ見つかりません。未実行とは確定していません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-read-error",
+      "from": "checking",
+      "to": "uncertain",
+      "event": "lookup_response",
+      "actor": "system",
+      "guard": "照会エラー",
+      "effect": "none",
+      "feedback": "予約結果は不明のままです。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-leave",
+      "from": "uncertain",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "結果不明の説明を確認した",
+      "effect": "none",
+      "feedback": "画面を離れても予約は取り消されません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-slow-submitting",
+      "from": "submitting",
+      "to": "slow_submit",
+      "event": "submitting_slow_notice",
+      "actor": "timer",
+      "guard": "UIの待機説明期限12秒を超え、応答待ちが続いている",
+      "effect": "local",
+      "feedback": "応答に時間がかかっています。閉じても取消しではありません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-leave-slow_submit",
+      "from": "slow_submit",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "待機説明を確認した",
+      "effect": "none",
+      "feedback": "結果は未解決のまま画面を離れます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-slow-confirm",
+      "from": "slow_submit",
+      "to": "succeeded",
+      "event": "reserve_response",
+      "actor": "system",
+      "guard": "confirmed receiptあり",
+      "effect": "none",
+      "feedback": "予約が確定しました。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-slow-reject",
+      "from": "slow_submit",
+      "to": "failed",
+      "event": "reserve_response",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みなし",
+      "effect": "none",
+      "feedback": "入力を保持して再試行できます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-slow-unknown",
+      "from": "slow_submit",
+      "to": "uncertain",
+      "event": "reserve_response",
+      "actor": "system",
+      "guard": "unknownまたは過去の書込み未解決",
+      "effect": "none",
+      "feedback": "照会か同じ内容の再試行ができます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-slow-checking",
+      "from": "checking",
+      "to": "slow_lookup",
+      "event": "checking_slow_notice",
+      "actor": "timer",
+      "guard": "UIの待機説明期限12秒を超え、応答待ちが続いている",
+      "effect": "local",
+      "feedback": "応答に時間がかかっています。閉じても取消しではありません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-leave-slow_lookup",
+      "from": "slow_lookup",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "待機説明を確認した",
+      "effect": "none",
+      "feedback": "結果は未解決のまま画面を離れます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-slow-found",
+      "from": "slow_lookup",
+      "to": "succeeded",
+      "event": "lookup_response",
+      "actor": "system",
+      "guard": "found=trueかつconfirmed receiptあり",
+      "effect": "none",
+      "feedback": "予約が確定しています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "r-slow-not-found",
+      "from": "slow_lookup",
+      "to": "uncertain",
+      "event": "lookup_response",
+      "actor": "system",
+      "guard": "found=falseまたはreceiptなしまたは照会エラー",
+      "effect": "none",
+      "feedback": "結果不明を保持し、再照会できます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "reservation-normal",
+      "category": "normal",
+      "path": [
+        "r-edit",
+        "r-submit",
+        "r-confirm"
+      ],
+      "expected_state": "succeeded",
+      "assertions": [
+        "R01: server receiptが存在しsnapshot変更から独立している。"
+      ]
+    },
+    {
+      "id": "reservation-fix",
+      "category": "error",
+      "path": [
+        "r-edit",
+        "r-invalid",
+        "r-fix",
+        "r-submit",
+        "r-confirm"
+      ],
+      "expected_state": "succeeded",
+      "assertions": [
+        "R02: 無効入力では書込みなし。修正後は成功。"
+      ]
+    },
+    {
+      "id": "reservation-unknown",
+      "category": "boundary",
+      "path": [
+        "r-edit",
+        "r-submit",
+        "r-unknown",
+        "r-lookup",
+        "r-not-found",
+        "r-retry",
+        "r-confirm"
+      ],
+      "expected_state": "succeeded",
+      "assertions": [
+        "R06: 同じkeyと内容を使用し予約は1件。"
+      ]
+    },
+    {
+      "id": "reservation-leave",
+      "category": "boundary",
+      "path": [
+        "r-edit",
+        "r-submit",
+        "r-slow-submitting",
+        "r-leave-slow_submit"
+      ],
+      "expected_state": "left",
+      "assertions": [
+        "UIはnot_run。待機説明に取消しではないことを記載。controllerにはタイマーなし。"
+      ]
+    }
+  ]
+}

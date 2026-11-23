@@ -1,0 +1,111 @@
+{
+  "schema": "b-cost-history/v1",
+  "recorded_at": "2026-11-23T06:49:11+00:00",
+  "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+  "status": "external_evidence_frozen_with_partial_measurements",
+  "currency": null,
+  "entries": [
+    {
+      "event_id": "B-cost-upstream-test-wall-1",
+      "trial_id": "B-tool-upstream-1",
+      "resource": "wall_seconds",
+      "amount": 11.86,
+      "measured": true,
+      "measurement_scope": "pytest-reported elapsed duration of the upstream R-ASI suite only",
+      "evidence_ref": "rasi/upstream-tests.json",
+      "monetary_amount": null
+    },
+    {
+      "event_id": "B-size-generation-skill-input-1",
+      "trial_id": "B-skill-input-1",
+      "resource": "artifact_bytes",
+      "amount": 116966,
+      "measured": true,
+      "measurement_scope": "Sum of the 12 generation Skill input file blobs at the pinned commit, not cumulative storage billing",
+      "evidence_ref": "experiments/generation-skill-input.json",
+      "monetary_amount": null
+    },
+    {
+      "event_id": "B-cost-generation-baseline-1",
+      "trial_id": "B-generation-baseline-1",
+      "input_tokens": null,
+      "output_tokens": null,
+      "wall_seconds": null,
+      "cpu_seconds": null,
+      "gpu_seconds": null,
+      "external_api_calls": null,
+      "monetary_amount": null,
+      "measured": false,
+      "reason": "No token, model-billing or complete timing receipt exposed. Submission recorded_at is not the generation start/end duration."
+    },
+    {
+      "event_id": "B-cost-generation-candidate-1",
+      "trial_id": "B-generation-candidate-1",
+      "input_tokens": null,
+      "output_tokens": null,
+      "wall_seconds": null,
+      "cpu_seconds": null,
+      "gpu_seconds": null,
+      "external_api_calls": null,
+      "monetary_amount": null,
+      "measured": false,
+      "reason": "No token, model-billing or complete timing receipt exposed. Submission recorded_at is not the generation start/end duration."
+    },
+    {
+      "event_id": "B-cost-final-unit-wall-1",
+      "trial_id": "B-skill-revision-2",
+      "resource": "wall_seconds",
+      "amount": 0.971,
+      "measured": true,
+      "measurement_scope": "unittest-reported elapsed duration for 70 final checker tests only",
+      "evidence_ref": "runs/final/flow-unit.log",
+      "monetary_amount": null
+    },
+    {
+      "event_id": "B-cost-final-api-wall-1",
+      "trial_id": "B-skill-revision-2",
+      "resource": "wall_seconds",
+      "amount": 0.207040767,
+      "measured": true,
+      "measurement_scope": "Node test runner duration_ms / 1000 for 9 shared API simulation tests only",
+      "evidence_ref": "runs/final/api-selftest.log",
+      "monetary_amount": null
+    },
+    {
+      "event_id": "B-cost-review-focused-wall-1",
+      "trial_id": "B-skill-review-1",
+      "resource": "wall_seconds",
+      "amount": 0.003,
+      "measured": true,
+      "measurement_scope": "unittest-reported duration for 5 limited reviewer regression tests only",
+      "evidence_ref": "review/resolution-check-results.json",
+      "monetary_amount": null
+    },
+    {
+      "event_id": "B-size-final-skill-1",
+      "trial_id": "B-skill-revision-2",
+      "resource": "artifact_bytes",
+      "amount": 121400,
+      "measured": true,
+      "measurement_scope": "Final Skill file sizes; not additive to generation snapshot sizes as a storage bill",
+      "evidence_ref": "final-skill-manifest.json",
+      "monetary_amount": null
+    }
+  ],
+  "campaign_totals": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "wall_seconds": null,
+    "cpu_seconds": null,
+    "gpu_seconds": null,
+    "external_api_calls": null,
+    "monetary_amount": null
+  },
+  "budget_verdict": "UNDETERMINED",
+  "native_rasi_cost_ledger": {
+    "written": false,
+    "reason": "campaign.cost_settings is unconfigured. Native cost-event/v1 requires numeric amount_raw even for unmeasured events; no fabricated zero or budget conversion is supplied."
+  },
+  "interpretation": "Measured stage-local quantities are retained at their actual scope. They are not summed into a campaign total or treated as financial cost. Null means unknown, not zero.",
+  "native_registration_cost": "Not included before execution; detached registration-cli.json records measured subprocess duration later."
+}

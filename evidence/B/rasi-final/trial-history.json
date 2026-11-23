@@ -1,0 +1,290 @@
+{
+  "schema": "b-trial-history/v1",
+  "recorded_at": "2026-11-23T06:51:05.921729+00:00",
+  "status": "recorded_external_evidence_formal_hold",
+  "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+  "entries": [
+    {
+      "trial_id": "B-tool-upstream-1",
+      "kind": "tool verification",
+      "state": "completed_with_failures",
+      "evidence_ref": "rasi/upstream-tests.json",
+      "result": {
+        "passed": 147,
+        "failed": 2,
+        "returncode": 1
+      },
+      "counts_as_skill_efficacy_evaluation": false
+    },
+    {
+      "trial_id": "B-sankai-packaging-1",
+      "kind": "decomposition descriptor verification and native CAS packaging",
+      "state": "completed",
+      "evidence_ref": "rasi/sankai-registration-cli.json",
+      "result": {
+        "verify_returncode": 0,
+        "pipeline_returncode": 0,
+        "cas_verify_returncode": 0
+      },
+      "counts_as_skill_efficacy_evaluation": false
+    },
+    {
+      "trial_id": "B-skill-input-1",
+      "kind": "generation input freeze",
+      "state": "frozen",
+      "git_commit": "58bed659cc7f39d316794625ad0475084b38df7e",
+      "skill_tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+      "evidence_ref": "experiments/generation-skill-input.json",
+      "result": null
+    },
+    {
+      "trial_id": "B-skill-review-1",
+      "kind": "non-blind diagnostic review",
+      "state": "findings_resolved_by_limited_followup",
+      "evidence_refs": [
+        "review/skill-review.md",
+        "review/wait-counterexample-results.json"
+      ],
+      "summary_from_root": "Two wait-escape checker counterexamples and ambiguous B10 applicability; revisions planned after generation finishes.",
+      "independent_blind": false,
+      "resolution": {
+        "evidence_refs": [
+          "review/resolution-review.md",
+          "review/resolution-check-results.json",
+          "review/resolution-snapshot.json"
+        ],
+        "findings_resolved": [
+          "B-REV-01",
+          "B-REV-02"
+        ],
+        "separate_agent": true,
+        "independent_blind": false,
+        "scope": "Same diagnostic reviewer, experiments not read; limited correction check."
+      }
+    },
+    {
+      "trial_id": "B-generation-baseline-1",
+      "kind": "fresh-agent generation",
+      "state": "first_submission_frozen",
+      "planned_attempts_per_arm": 1,
+      "observed_attempt_number_reported_by_root": 1,
+      "evidence_ref": "experiments/generation-inputs.json",
+      "final_output_manifest": {
+        "path_base": "evidence/B",
+        "path": "experiments/baseline-submission.json",
+        "sha256": "83136553d4eeb41bdf0753321c5f30214216be3e8b7bb8d718322e326bdc48c2",
+        "bytes": 1231
+      },
+      "test_result": {
+        "common_evaluator_passed": 40,
+        "common_evaluator_total": 40,
+        "evidence_ref": "experiments/results/first-submission/comparison.json"
+      },
+      "seed": null,
+      "resolved_model_revision": null,
+      "started_at": null,
+      "finished_at": null,
+      "submission_recorded_at": "2026-11-23T06:39:35.510434+00:00",
+      "internal_pre_submission_edit_count": null,
+      "internal_pre_submission_edit_note": "Generator self checks and revisions before submission are not separately captured; do not claim one-shot raw model generation.",
+      "matched_scoring_exclusions": [
+        "Generator-specific self checks",
+        "Candidate-only HTTP simulation checks",
+        "DOM/browser/keyboard validation"
+      ]
+    },
+    {
+      "trial_id": "B-generation-candidate-1",
+      "kind": "fresh-agent generation",
+      "state": "first_submission_frozen",
+      "planned_attempts_per_arm": 1,
+      "observed_attempt_number_reported_by_root": 1,
+      "input_skill_tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+      "evidence_ref": "experiments/generation-inputs.json",
+      "final_output_manifest": {
+        "path_base": "evidence/B",
+        "path": "experiments/candidate-submission.json",
+        "sha256": "5bc05c3c1a6d01d0b6d789b8a35d518e92be87463f4d59daf5560689f9fce3cf",
+        "bytes": 2102
+      },
+      "test_result": {
+        "common_evaluator_passed": 40,
+        "common_evaluator_total": 40,
+        "evidence_ref": "experiments/results/first-submission/comparison.json"
+      },
+      "seed": null,
+      "resolved_model_revision": null,
+      "started_at": null,
+      "finished_at": null,
+      "submission_recorded_at": "2026-11-23T06:42:48.096930+00:00",
+      "internal_pre_submission_edit_count": null,
+      "internal_pre_submission_edit_note": "Generator self checks and revisions before submission are not separately captured; do not claim one-shot raw model generation.",
+      "matched_scoring_exclusions": [
+        "Generator-specific self checks",
+        "Candidate-only HTTP simulation checks",
+        "DOM/browser/keyboard validation"
+      ]
+    },
+    {
+      "trial_id": "B-skill-revision-2",
+      "kind": "diagnostic review repair",
+      "state": "fixed_and_revalidated",
+      "input_skill_tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+      "output_skill_tree_sha256": "62f6f5075ca97e48a4d811d6039cd27ce2488425915e1bd4c41a62da6619d1bf",
+      "retests": {
+        "evidence_ref": "runs/final/run.json",
+        "unit_passed": 70,
+        "unit_total": 70,
+        "bundled_flows_passed": 2,
+        "bundled_flows_total": 2,
+        "review_evidence_ref": "review/resolution-check-results.json",
+        "review_focus_passed": 5,
+        "review_focus_total": 5
+      },
+      "output_skill_commit": "6fc0c3dd6c82c4dd2f77764c5da512fbfdbaa911",
+      "changes": [
+        "WAIT_TIMEOUT_STUCK detects recovery/task bridges that only return to waiting; retains documented local-system-event limitation.",
+        "B10 separates ordinary task work from comparative/upgrade campaigns; R-ASI is not a prerequisite for ordinary fixes."
+      ]
+    },
+    {
+      "trial_id": "B-comparison-1",
+      "kind": "shared deterministic scenario evaluation",
+      "state": "completed",
+      "evaluator_sha256": "e31b62a1edd0a95e765ddea89fc2ca8df43b31da39156e6345fda423babedd26",
+      "scenario_count_planned": 40,
+      "independent_blind": false,
+      "result": {
+        "baseline_pass": 40,
+        "candidate_pass": 40,
+        "cases_per_arm": 40,
+        "reservation_per_arm": 20,
+        "import_per_arm": 20,
+        "improvement_pass_count": 0,
+        "added_efficacy_established": false,
+        "evidence_ref": "experiments/results/first-submission/comparison.json"
+      }
+    },
+    {
+      "trial_id": "B-repair-test-fixture-correction",
+      "kind": "intermediate regression-test fixture correction",
+      "state": "reported_failure_then_corrected",
+      "initial_report": {
+        "passed": 69,
+        "total": 70,
+        "failure_reason": "Positive regression test referred to nonexistent leave_before; existing fixture uses leave.",
+        "raw_log_ref": null,
+        "intermediate_revision_sha": null
+      },
+      "correction": "Use the existing fixture transition name leave.",
+      "final_result_ref": "runs/final/run.json",
+      "provenance": "Root execution report, retained as reported history in review/resolution-review.md; do not present the missing initial raw log as available.",
+      "counts_as_model_generation_trial": false
+    },
+    {
+      "trial_id": "B-comparison-replay-1",
+      "kind": "rerun same frozen generated artifacts",
+      "state": "completed",
+      "evidence_ref": "runs/final/comparison/comparison.json",
+      "baseline_pass": 40,
+      "candidate_pass": 40,
+      "cases_per_arm": 40,
+      "counts_as_model_generation_trial": false,
+      "uses_final_skill_as_generation_input": false
+    },
+    {
+      "trial_id": "B-final-candidate-flow-validation",
+      "kind": "corrected checker applied to unchanged generated Flow JSON",
+      "state": "completed",
+      "evidence_ref": "runs/final/candidate-flow-revalidation.json",
+      "passed": 2,
+      "total": 2,
+      "counts_as_model_generation_trial": false
+    },
+    {
+      "trial_id": "B-historical-shape-probe",
+      "kind": "historical aggregate-only diagnostic result",
+      "state": "historical_aggregate_not_reexecuted",
+      "reported_case_count": 1947,
+      "reported_crashes": 0,
+      "raw_per_case_log_ref": null,
+      "reconstructed_script_ref": "review/shape-probe-replay.py",
+      "source_ref": "review/resolution-review.md",
+      "used_as_final_primary_gate": false
+    },
+    {
+      "trial_id": "B-native-experience-registration-1",
+      "kind": "native evidence record write",
+      "state": "completed",
+      "returncode": 0,
+      "started_at": "2026-11-23T06:49:47.495903+00:00",
+      "finished_at": "2026-11-23T06:49:47.591904+00:00",
+      "experience_id": "B-UXFLOW-20261123-62f6f5075ca9-r1",
+      "evidence_ref": "rasi-final/evaluation-evidence.json",
+      "evidence_sha256": "c53da7c072a8a40f2c2b594bf023f28df8743943310a628e83bdc0e63a2501e9",
+      "receipt_ref": ".ga/receipts/experience-add-59822d0433b98d0efdc0b6c14a0d7bacd322453e528745fb07a1a5181e63bcb4.json",
+      "counts_as_model_generation_trial": false,
+      "counts_as_independent_evaluation": false
+    },
+    {
+      "trial_id": "B-initial-checker-test-author-report",
+      "kind": "initial checker development test repair",
+      "state": "author_reported_not_independently_replayed",
+      "reported_at": "2026-11-23T06:51:05.921729+00:00",
+      "initial_report": {
+        "passed": 66,
+        "total": 67,
+        "reason": "A test expected every Python runtime to reject nested JSON at depth 1500 with a depth-decoding diagnostic.",
+        "raw_log_ref": null,
+        "initial_bytes_ref": null
+      },
+      "reported_correction": "Test accepts the appropriate diagnostic without a traceback across Python runtime behavior differences.",
+      "reported_after_correction": {
+        "passed": 67,
+        "total": 67
+      },
+      "saved_initial_skill_commit": "58bed659cc7f39d316794625ad0475084b38df7e",
+      "provenance": "Checker author report relayed by root after native experience registration. No original failure log or exact initial bytes are preserved.",
+      "counts_as_independently_verified_test": false,
+      "counts_as_model_generation_trial": false,
+      "used_as_primary_final_gate": false,
+      "primary_final_evidence": "runs/final/run.json (70/70 with saved log)",
+      "added_after_native_registration": true
+    }
+  ],
+  "counting_rules": [
+    "One model-generation attempt per arm is the planned experimental unit. Do not count deterministic assertions as extra model trials.",
+    "Preserve original generated artifacts and record repairs as distinct revisions.",
+    "Generator self-checks are not independent evaluation; record their files separately when finalized.",
+    "Missing costs or times stay null; no inferred token counts, seed values, or API prices."
+  ],
+  "final_trial_count": {
+    "model_generation_submissions": 2,
+    "submissions_per_arm": 1,
+    "matched_evaluator_runs": 2,
+    "matched_evaluator_runs_are_independent_samples": false,
+    "internal_generator_selfcheck_iterations": null
+  },
+  "formal_gate": "HOLD",
+  "native_registration": {
+    "state": "completed",
+    "experience_id": "B-UXFLOW-20261123-62f6f5075ca9-r1",
+    "returncode": 0,
+    "native_receipt": ".ga/receipts/experience-add-59822d0433b98d0efdc0b6c14a0d7bacd322453e528745fb07a1a5181e63bcb4.json",
+    "log": "rasi-final/registration-cli.json",
+    "formal_gate": "HOLD",
+    "promotion_performed": false
+  },
+  "pre_registration_snapshot": {
+    "path": "rasi-final/trial-history.snapshot.json",
+    "sha256": "d96e8897a4913ef08186cfef9222c7c61d23d19c0719f2cc36d3e37052f5e0e5"
+  },
+  "post_registration_addenda": [
+    {
+      "kind": "author-reported early test history",
+      "trial_id": "B-initial-checker-test-author-report",
+      "added_at": "2026-11-23T06:51:05.921729+00:00",
+      "note": "The immutable pre-registration snapshot and its registered hash remain unchanged; this is an explicitly later history supplement."
+    }
+  ]
+}

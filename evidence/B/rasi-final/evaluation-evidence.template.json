@@ -1,0 +1,131 @@
+{
+  "schema": "b-final-evidence-preparation/v1",
+  "recorded_at": "2026-11-23T06:35:31+00:00",
+  "state": "PREPARED_NOT_REGISTERED",
+  "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+  "base_git_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "baseline_art_direction": {
+    "skill": "SKILL.md",
+    "sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5"
+  },
+  "candidate_generation_input": {
+    "git_commit": "58bed659cc7f39d316794625ad0475084b38df7e",
+    "skill_tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+    "tree_algorithm": "SHA256 of UTF-8 JSON relative-path->SHA256 sorted keys compact separators; excludes bytecode",
+    "manifest": {
+      "path_base": "evidence/B",
+      "path": "experiments/generation-skill-input.json",
+      "sha256": "3be8e7b8fd44474235ea0681845777c9b5eb25d289e46a29f0412267667e3775"
+    },
+    "commit_blob_verification": {
+      "files": 12,
+      "matched": 12,
+      "bytes": 116966
+    }
+  },
+  "final_skill_implementation": {
+    "git_commit": null,
+    "skill_tree_sha256": null,
+    "tree_algorithm": "SHA256 of UTF-8 JSON relative-path->SHA256 sorted keys compact separators; excludes bytecode",
+    "manifest": null,
+    "status": "awaiting review fixes and final freeze"
+  },
+  "rasi_decomposition_descriptor": {
+    "candidate_content_id": "57d1b2372555c5493ab91e5ae679e2441581795c1998c1681fdc050b1abb7552",
+    "cas_object_sha256": "5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34",
+    "trust": "UNTRUSTED_CANDIDATE",
+    "status": "quarantined",
+    "is_implementation_identity": false,
+    "source_registration": {
+      "path_base": "evidence/B",
+      "path": "rasi/sankai-registration-cli.json",
+      "sha256": "b971e2c857361bde586bf003ad749e41c9246e2a023f5a6c235dbeefd737e553"
+    }
+  },
+  "evaluator": {
+    "path_base": "evidence/B",
+    "path": "experiments/evaluate.mjs",
+    "frozen_sha256": "e31b62a1edd0a95e765ddea89fc2ca8df43b31da39156e6345fda423babedd26",
+    "current_sha256_at_preparation": "e31b62a1edd0a95e765ddea89fc2ca8df43b31da39156e6345fda423babedd26",
+    "matches_frozen_sha256_at_preparation": true,
+    "authorship": "root from shared requirements, before generated modules were inspected",
+    "independent_blind": false,
+    "planned_scenarios": 40,
+    "results": null
+  },
+  "generated_arms": {
+    "baseline": {
+      "status": "generation in progress as reported by root",
+      "artifact_manifest": null,
+      "task_results": null
+    },
+    "candidate": {
+      "status": "generation in progress as reported by root",
+      "artifact_manifest": null,
+      "task_results": null
+    }
+  },
+  "verification_artifacts": {
+    "final_skill_checks": null,
+    "comparison_results": null,
+    "review_resolution": null,
+    "browser_evidence": null
+  },
+  "source_refs_at_preparation": [
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/generation-skill-input.json",
+      "sha256": "3be8e7b8fd44474235ea0681845777c9b5eb25d289e46a29f0412267667e3775"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/generation-inputs.json",
+      "sha256": "bccececce2f6c7e7f473ab9f412de223552dfd2374555442216fe086a68f1da0"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/evaluator-freeze.json",
+      "sha256": "a82ada6b848b536f54dc850aae6e61adbe855fffa832c3998c0016d96232d585"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/protocol.md",
+      "sha256": "dcfd60a4fc836a6b8bbeca3f7b9155e0a476f3867534c450980e6a05f711f27c"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/reviewed-snapshot.json",
+      "sha256": "db3b13b4e9af928772dbe249a0839ce635f11addb1a9cb7f663954a0aa82b818"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/skill-review.md",
+      "sha256": "caaddd351c81cc2832820ccb1e41cf6271393442d827301c6c735738aa9160e5"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/wait-counterexample-results.json",
+      "sha256": "9bd6e624fadba12c67be5deeb66171ff0e0583eee9e2b353ff73610fe3ed148f"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi/sankai-registration-cli.json",
+      "sha256": "b971e2c857361bde586bf003ad749e41c9246e2a023f5a6c235dbeefd737e553"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi/upstream-tests.json",
+      "sha256": "1273cfbb01a5767cda8c89a9a390271feddff3ee481277f503cc5e7f76862cb5"
+    }
+  ],
+  "formal_gate": {
+    "decision": "HOLD",
+    "stage": "preparation",
+    "reason": "No final results frozen; independent blind evaluator/holdout not established; R-ASI campaign contracts incomplete."
+  },
+  "promotion": {
+    "performed": false,
+    "mechanism": "R-ASI promote is unconnected"
+  },
+  "content_integrity_note": "Every future path/hash must identify actual bytes. R-ASI evidence_ref validation does not enforce referenced bytes; an external check is required before experience-add."
+}

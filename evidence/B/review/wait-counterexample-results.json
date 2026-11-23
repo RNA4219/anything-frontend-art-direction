@@ -1,0 +1,66 @@
+[
+  {
+    "mode": "recovery_only_returns_to_wait",
+    "counterexample": "wait-recovery-cycle.json",
+    "sha256": "4f955f236b23a78616d7f006084f754c6b59fde509927471bc26d750ca2b0b4c",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/review/wait-recovery-cycle.json",
+      "--json"
+    ],
+    "exit_code": 0,
+    "stdout": {
+      "schema": "ux-flow-check/v1",
+      "status": "pass",
+      "ok": true,
+      "issues": [],
+      "limitations": [
+        "Natural-language guards are not evaluated: graph reachability ignores guards.",
+        "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+        "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+        "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts."
+      ]
+    },
+    "stderr": "",
+    "reachable_without_system_response": [
+      "generating",
+      "slow"
+    ],
+    "terminal_reachable_without_system_response": [],
+    "expected": "Reject or explicitly limit the timeout check: no terminal/recovery escape independent of the absent service response exists."
+  },
+  {
+    "mode": "automatic_task_bridge",
+    "counterexample": "wait-task-bridge-cycle.json",
+    "sha256": "2a1a19c9df4d12a1a566729ece5f11225ef43d4b88a80dfd6b83aaf001a6d5d7",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+      "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/review/wait-task-bridge-cycle.json",
+      "--json"
+    ],
+    "exit_code": 0,
+    "stdout": {
+      "schema": "ux-flow-check/v1",
+      "status": "pass",
+      "ok": true,
+      "issues": [],
+      "limitations": [
+        "Natural-language guards are not evaluated: graph reachability ignores guards.",
+        "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+        "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+        "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts."
+      ]
+    },
+    "stderr": "",
+    "reachable_without_system_response": [
+      "generating",
+      "slow"
+    ],
+    "terminal_reachable_without_system_response": [],
+    "expected": "Reject or explicitly limit the timeout check: no terminal/recovery escape independent of the absent service response exists."
+  }
+]

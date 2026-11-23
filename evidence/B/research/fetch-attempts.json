@@ -1,0 +1,164 @@
+[
+  {
+    "id": "S01",
+    "name": "nng-journeys-flows",
+    "url": "https://www.nngroup.com/articles/user-journeys-vs-user-flows/",
+    "returncode": 1,
+    "stdout": "FAIL\tnng-journeys-flows\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.218
+  },
+  {
+    "id": "S02",
+    "name": "nng-task-analysis",
+    "url": "https://www.nngroup.com/articles/task-analysis/",
+    "returncode": 1,
+    "stdout": "FAIL\tnng-task-analysis\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.217
+  },
+  {
+    "id": "S03",
+    "name": "nng-cancel-close",
+    "url": "https://www.nngroup.com/articles/cancel-vs-close/",
+    "returncode": 1,
+    "stdout": "FAIL\tnng-cancel-close\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.178
+  },
+  {
+    "id": "S04",
+    "name": "wai-multipage",
+    "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+    "returncode": 1,
+    "stdout": "FAIL\twai-multipage\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.192
+  },
+  {
+    "id": "S05",
+    "name": "wai-notification",
+    "url": "https://www.w3.org/WAI/tutorials/forms/notifications/",
+    "returncode": 1,
+    "stdout": "FAIL\twai-notification\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.234
+  },
+  {
+    "id": "S06",
+    "name": "wai-status-messages",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html",
+    "returncode": 1,
+    "stdout": "FAIL\twai-status-messages\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.217
+  },
+  {
+    "id": "S07",
+    "name": "uswds-step-indicator",
+    "url": "https://designsystem.digital.gov/components/step-indicator/",
+    "returncode": 1,
+    "stdout": "FAIL\tuswds-step-indicator\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.189
+  },
+  {
+    "id": "S08",
+    "name": "carbon-notifications",
+    "url": "https://www.carbondesignsystem.com/building-blocks/core/patterns/notifications",
+    "returncode": 1,
+    "stdout": "FAIL\tcarbon-notifications\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.228
+  },
+  {
+    "id": "S09",
+    "name": "carbon-loading",
+    "url": "https://www.carbondesignsystem.com/building-blocks/core/patterns/loading",
+    "returncode": 1,
+    "stdout": "FAIL\tcarbon-loading\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.234
+  },
+  {
+    "id": "S10",
+    "name": "apple-progress",
+    "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators.md",
+    "returncode": 1,
+    "stdout": "FAIL\tapple-progress\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.117
+  },
+  {
+    "id": "S11",
+    "name": "fluent-wait",
+    "url": "https://fluent2.microsoft.design/wait-ux",
+    "returncode": 1,
+    "stdout": "FAIL\tfluent-wait\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.128
+  },
+  {
+    "id": "S12",
+    "name": "aws-idempotent",
+    "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+    "returncode": 1,
+    "stdout": "FAIL\taws-idempotent\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.123
+  },
+  {
+    "id": "S13",
+    "name": "john-kieras-1996-goms",
+    "url": "https://web.eecs.umich.edu/~kieras/docs/GOMS/Which-GOMS.pdf",
+    "returncode": 1,
+    "stdout": "FAIL\tjohn-kieras-1996-goms\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.241
+  },
+  {
+    "id": "S14",
+    "name": "abowd-dix-1992-undo",
+    "url": "https://www.alandix.com/academic/papers/undo92/undo.pdf",
+    "returncode": 1,
+    "stdout": "FAIL\tabowd-dix-1992-undo\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.114
+  },
+  {
+    "id": "S15",
+    "name": "harrison-2007-progress",
+    "url": "https://chrisharrison.net/projects/progressbars/ProgBarHarrison.pdf",
+    "returncode": 1,
+    "stdout": "FAIL\tharrison-2007-progress\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.113
+  },
+  {
+    "id": "S16",
+    "name": "shneiderman-golden-rules",
+    "url": "https://www.cs.umd.edu/users/ben/goldenrules.html",
+    "returncode": 1,
+    "stdout": "FAIL\tshneiderman-golden-rules\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.194
+  },
+  {
+    "id": "S17",
+    "name": "lewis-rieman-task-centered",
+    "url": "https://hcibib.perlman.hosting.acm.org/tcuid/chap-4.html",
+    "returncode": 1,
+    "stdout": "FAIL\tlewis-rieman-task-centered\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.204
+  },
+  {
+    "id": "S18",
+    "name": "w3c-wcag22",
+    "url": "https://www.w3.org/TR/WCAG22/",
+    "returncode": 1,
+    "stdout": "FAIL\tw3c-wcag22\tホストを引けない（[Errno -3] Temporary failure in name resolution）\n",
+    "stderr": "",
+    "seconds": 0.204
+  }
+]

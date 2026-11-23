@@ -1,0 +1,7 @@
+{
+  "reported_model_family": "GPT-6 Astra Pro",
+  "source": "inherited session developer metadata",
+  "resolved_backend_model_id": null,
+  "sampling_seed": null,
+  "status": "exact model identity unavailable; do not infer independent evaluation"
+}

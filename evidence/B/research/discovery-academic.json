@@ -1,0 +1,303 @@
+[
+  {
+    "query": "site.cs.cmu.edu \"cognitive walkthrough\" \"1994\"",
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "Bonnie E. John - Research",
+        "url": "https://www.cs.cmu.edu/~bej/BEJResearch.html"
+      },
+      {
+        "title": "Cathleen Wharton, John Rieman, Clayton Lewis, & Peter Polson (1994) | References | Textbook of Usability",
+        "url": "https://www.textbookofusability.com/references/wharton1994.html"
+      },
+      {
+        "title": "Cognitive Walkthrough",
+        "url": "https://www.gerrystahl.net/hci/cw1.htm"
+      },
+      {
+        "title": "Cognitive Walkthrough | Usability Body of Knowledge",
+        "url": "https://usabilitybok.org/cognitive-walkthrough/"
+      },
+      {
+        "title": "Chapter 4. Cognitive Walkthrough",
+        "url": "https://edithlaw.ca/teaching/cs449/s21/files/walkthrough.pdf"
+      },
+      {
+        "title": "Task-Centered User Interface Design : 4. Evaluating the Design Without Users",
+        "url": "https://hcibib.perlman.hosting.acm.org/tcuid/chap-4.html"
+      },
+      {
+        "title": "(title not returned)",
+        "url": "https://www.cs.tufts.edu/~jacob/isgw/Polson.html"
+      },
+      {
+        "title": "Microsoft Word - HCI-notes-5-0.doc",
+        "url": "https://www.cl.cam.ac.uk/teaching/0304/HCI/HCI2003.pdf"
+      },
+      {
+        "title": "Usability Evaluation Methods",
+        "url": "https://citeseerx.ist.psu.edu/document?doi=faf3bd11eeda3ddcd3961751f3e0358d931bbcf4&repid=rep1&type=pdf"
+      },
+      {
+        "title": "Using cognitive walkthrough for evaluating a CSCW application | Conference Companion on Human Factors in Computing Systems",
+        "url": "https://doi.org/10.1145/259963.260065"
+      }
+    ]
+  },
+  {
+    "query": "site.cs.umd.edu \"goldenrules\"",
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "Accessibility Evaluation (1) (pdf) - CliffsNotes",
+        "url": "https://www.cliffsnotes.com/study-notes/28602996"
+      },
+      {
+        "title": "IT 331 Final Project: PayPal Application Overview and Analysis - Studocu",
+        "url": "https://www.studocu.com/en-us/document/southern-new-hampshire-university/human-factors-in-information-technology/it-331-final-project-paypal-application-overview-and-analysis/144009039?origin=related-document"
+      },
+      {
+        "title": "Usability and aesthetics of website design to measure Indonesian teacher competency 4.0",
+        "url": "https://www.researchgate.net/publication/351140526_Usability_and_aesthetics_of_website_design_to_measure_Indonesian_teacher_competency_40"
+      },
+      {
+        "title": "Ben Shneiderman",
+        "url": "https://www.cs.umd.edu/users/ben/index.html"
+      },
+      {
+        "title": "Ben Shneiderman",
+        "url": "https://www.cs.umd.edu/users/ben/"
+      },
+      {
+        "title": "Recent News & Accomplishments | UMD Department of Computer Science",
+        "url": "https://www.cs.umd.edu/news/2024/node/21842?page=134"
+      },
+      {
+        "title": "How To Contact Us | UMD Department of Computer Science",
+        "url": "https://www.cs.umd.edu/contact"
+      },
+      {
+        "title": "Ben Shneiderman",
+        "url": "https://www.cs.umd.edu/~ben/index.html"
+      }
+    ]
+  },
+  {
+    "query": "\"Rethinking the Progress Bar\" \"pdf\"",
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "Microsoft Word - RethinkingtheProgressBar10.doc",
+        "url": "https://chrisharrison.net/projects/progressbars/ProgBarHarrison.pdf"
+      },
+      {
+        "title": "Chris Harrison | Rethinking the Progress Bar",
+        "url": "https://www.chrisharrison.net/index.php/Research/ProgressBars"
+      },
+      {
+        "title": "Rethinking the Progress Bar",
+        "url": "https://citeseerx.ist.psu.edu/document?doi=8dff60b3a929b85d096ba10008c29f34b273f07c&repid=rep1&type=pdf"
+      },
+      {
+        "title": "User Interface Software and Technology - Keywords (bar)",
+        "url": "https://uist.acm.org/archive/html/keywords/kwbar.html"
+      },
+      {
+        "title": "Rethinking the progress bar",
+        "url": "https://asu.elsevierpure.com/en/publications/rethinking-the-progress-bar/"
+      },
+      {
+        "title": "Rethinking the progress bar",
+        "url": "https://www.researchgate.net/publication/220876993_Rethinking_the_progress_bar"
+      },
+      {
+        "title": "Rethinking the progress bar",
+        "url": "https://scispace.com/papers/rethinking-the-progress-bar-3aawmao7v8"
+      }
+    ]
+  },
+  {
+    "query": "\"John\" \"Kieras\" \"1996\" \"GOMS\" \"pdf\"",
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "Contents of this ftp directory as of 3/21/2010",
+        "url": "https://web.eecs.umich.edu/~kieras/docs/README.pdf"
+      },
+      {
+        "title": "Index of /~kieras/docs/GOMS",
+        "url": "https://web.eecs.umich.edu/~kieras/docs/GOMS/?C=N%3BO%3DD"
+      },
+      {
+        "title": "GOMS Model Work",
+        "url": "https://web.eecs.umich.edu/~kieras/goms.html"
+      },
+      {
+        "title": "Using GOMS for user interface design and evaluation",
+        "url": "https://cir.nii.ac.jp/crid/1361699993386199808"
+      },
+      {
+        "title": "John & Kieras 1994 TR",
+        "url": "https://web.eecs.umich.edu/~kieras/docs/GOMS/John-Kieras-TR94.pdf"
+      },
+      {
+        "title": "The GOMS family of user interface analysis techniques",
+        "url": "https://www.tandfonline.com/servlet/linkout?type=Scholix&url=https%3A%2F%2Fdx.doi.org%2F10.1145%252F235833.236054"
+      },
+      {
+        "title": "A Guide to GOMS Model Usability",
+        "url": "https://web.eecs.umich.edu/~kieras/docs/GOMS/NGOMSL_Guide.pdf"
+      },
+      {
+        "title": "292 • Bonnie E. John and David E. Kieras",
+        "url": "https://research.cs.vt.edu/ns/cs5724papers/3.perfmodels.goms.john.usinggoms.pdf"
+      }
+    ]
+  },
+  {
+    "query": "site.cs.cmu.edu Harrison Amento Kuznetsov Bell rethinking progress bar 2007 pdf",
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "Chris Harrison | Rethinking the Progress Bar",
+        "url": "https://chrisharrison.net/index.php/Research/ProgressBars"
+      },
+      {
+        "title": "Chris Harrison | Rethinking the Progress Bar",
+        "url": "https://www.chrisharrison.net/index.php/Research/ProgressBars"
+      },
+      {
+        "title": "Rethinking the Progress Bar",
+        "url": "https://citeseerx.ist.psu.edu/document?doi=e9d15c66d2f167f3ee16163329f6d9ad8ed94617&repid=rep1&type=pdf"
+      },
+      {
+        "title": "User Interface Software and Technology - Keywords (bar)",
+        "url": "https://uist.acm.org/archive/html/keywords/kwbar.html"
+      },
+      {
+        "title": "dblp: Stacey Kuznetsov",
+        "url": "https://dblp.org/pid/22/6871.html"
+      },
+      {
+        "title": "Rethinking the progress bar",
+        "url": "https://www.researchgate.net/publication/220876993_Rethinking_the_progress_bar"
+      },
+      {
+        "title": "Rethinking the progress bar",
+        "url": "https://experts.azregents.edu/en/publications/rethinking-the-progress-bar/"
+      }
+    ]
+  },
+  {
+    "query": "site.cs.cmu.edu John Kieras GOMS models performance task completion 1996 pdf",
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "GOMS Model Work",
+        "url": "https://web.eecs.umich.edu/~kieras/goms.html"
+      },
+      {
+        "title": "The GOMS family of user interface analysis techniques",
+        "url": "https://www.tandfonline.com/servlet/linkout?type=Scholix&url=https%3A%2F%2Fdx.doi.org%2F10.1145%252F235833.236054"
+      },
+      {
+        "title": "292 • Bonnie E. John and David E. Kieras",
+        "url": "https://research.cs.vt.edu/ns/cs5724papers/3.perfmodels.goms.john.usinggoms.pdf"
+      },
+      {
+        "title": "The GOMS family of user interface analysis techniques: comparison and contrast (pdf) | Paperity",
+        "url": "https://paperity.org/p/376841402/the-goms-family-of-user-interface-analysis-techniques-comparison-and-contrast"
+      },
+      {
+        "title": "A guide to GOMS model usability evaluation using NGOMSL",
+        "url": "https://www.researchgate.net/publication/2448776_A_guide_to_GOMS_model_usability_evaluation_using_NGOMSL"
+      }
+    ]
+  },
+  {
+    "query": "Abowd Dix Giving undo attention interacting with computers 1992 pdf author",
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "Giving undo attention",
+        "url": "https://academic.oup.com/iwc/article-abstract/4/3/317/730147"
+      },
+      {
+        "title": "# Giving undo attention",
+        "url": "https://www.alandix.com/academic/papers/undo92/undo.pdf"
+      },
+      {
+        "title": "Giving undo attention",
+        "url": "https://www.alandix.com/academic/papers/undo92/undo92.html"
+      },
+      {
+        "title": "Giving undo attention",
+        "url": "https://www.sciencedirect.com/science/article/pii/0953543892900217"
+      },
+      {
+        "title": "Giving undo attention",
+        "url": "https://pure.cardiffmet.ac.uk/en/publications/giving-undo-attention/"
+      },
+      {
+        "title": "Volume 4 Issue 3 | Interacting with Computers | Oxford Academic",
+        "url": "https://academic.oup.com/iwc/issue/4/3"
+      },
+      {
+        "title": "Volume 4 Issue 3 | Interacting with Computers | Oxford Academic",
+        "url": "https://academic.oup.com/iwc/issue/4/3?browseBy=volume"
+      },
+      {
+        "title": "Alan Dix: Publications 1990-1994",
+        "url": "https://alandix.com/academic/publist-90-94.html"
+      },
+      {
+        "title": "Author: Gregory D. Abowd | IxDF",
+        "url": "https://assets.interaction-design.org/literature/author/gregory-d-abowd"
+      }
+    ]
+  },
+  {
+    "query": "[initial multi-query batch; engine returned merged hits]",
+    "queries": [
+      "site.cs.cmu.edu Harrison Amento Kuznetsov Bell rethinking progress bar 2007 pdf",
+      "site.cs.cmu.edu John Kieras GOMS models performance task completion 1996 pdf",
+      "Abowd Dix Giving undo attention interacting with computers 1992 pdf author"
+    ],
+    "method": "WebSearch",
+    "hits": [
+      {
+        "title": "Chris Harrison | Rethinking the Progress Bar",
+        "url": "https://chrisharrison.net/index.php/Research/ProgressBars"
+      },
+      {
+        "title": "2a_GOMS_Architectures",
+        "url": "https://www.cs.cmu.edu/~bej/CognitiveModelingForUIDesign/2a_GOMS_Architectures.pdf"
+      },
+      {
+        "title": "The GOMS family of user interface analysis techniques",
+        "url": "https://www.tandfonline.com/servlet/linkout?type=Scholix&url=https%3A%2F%2Fdx.doi.org%2F10.1145%252F235833.236054"
+      },
+      {
+        "title": "Giving undo attention",
+        "url": "https://www.alandix.com/academic/papers/undo92/undo92.html"
+      },
+      {
+        "title": "Giving undo attention",
+        "url": "https://academic.oup.com/iwc/article-abstract/4/3/317/730147"
+      },
+      {
+        "title": "Alan Dix: Publications 1990-1994",
+        "url": "https://alandix.com/academic/publist-90-94.html"
+      },
+      {
+        "title": "GOMS Model Work",
+        "url": "https://web.eecs.umich.edu/~kieras/goms.html"
+      },
+      {
+        "title": "## The user’s p",
+        "url": "https://www.alandix.com/academic/papers/undo92/undo.pdf"
+      }
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "status": "unmeasured",
+  "billable_model_cost": null,
+  "model_input_tokens": null,
+  "model_output_tokens": null,
+  "note": "Not sent to cost-add because no valid budget configuration exists. Unknown is not zero."
+}

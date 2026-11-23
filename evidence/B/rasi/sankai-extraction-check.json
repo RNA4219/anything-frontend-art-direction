@@ -1,0 +1,11 @@
+{
+  "input_chars_excluding_newlines": 31713,
+  "human_deliverable_chars_excluding_newlines": 17594,
+  "ratio": 0.5548,
+  "default_max_ratio": 1.3,
+  "within_default_length": true,
+  "note": "The Markdown is the human deliverable; JSON is its machine representation and source snapshot is input preservation, not a separate hidden condition sheet.",
+  "units": 10,
+  "unique_source_records": 19,
+  "formal_gate": "HOLD"
+}

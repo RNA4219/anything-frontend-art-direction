@@ -1,0 +1,12 @@
+{
+  "schema": "b-final-integrity/v1",
+  "recorded_at": "2026-11-23T06:52:16.288983+00:00",
+  "artifact_manifest_sha256": "2ccf2aeedeb11bc86e0ed2997b8f9f9eff7ee835c3bdfc215ae1de9de4d5f27e",
+  "frozen_artifacts": 78,
+  "final_skill_files": 12,
+  "native_registration_refs": 3,
+  "mismatches": [],
+  "passed": true,
+  "formal_gate": "HOLD",
+  "note": "Byte-integrity check by root, not independent correctness evaluation."
+}

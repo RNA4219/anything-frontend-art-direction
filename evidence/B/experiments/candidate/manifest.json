@@ -1,0 +1,125 @@
+{
+  "kind": "初回提出成果物",
+  "frozen_at_utc": "2026-11-23T06:41:46.677051+00:00",
+  "inputs": [
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-B-base/SKILL.md",
+      "bytes": 6468,
+      "sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/SKILL.md",
+      "bytes": 7654,
+      "sha256": "b35c407cad3c8a71261a7e7717d30beed315692fbb5aa49bcf7937a350e1ab2c"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/shared/tasks.md",
+      "bytes": 14479,
+      "sha256": "92b7aeb64c2b8d00694e62be1135fe166096c285436cc0a289aebc216ac10772"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/shared/visual-lock.md",
+      "bytes": 1218,
+      "sha256": "7d542816e25b728a2a0cdb8fd8785ad9c8e1a121be29022ff2325023902b617e"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/shared/api.mjs",
+      "bytes": 12831,
+      "sha256": "b2dd678d050d5b51351f3daf846ccdae1cc1ef247068e7b0e682d2f6f272d1e1"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/controller-utils.mjs",
+      "bytes": 881,
+      "sha256": "bd59546de22228bf4d04977885afb77fd60a73a62cbc6fbb0437ee88e2d61708"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/decisions.md",
+      "bytes": 14692,
+      "sha256": "de7ca8c1205bcf584cf5b0c78770b45a57e24b6996022510874edcdf2b2a613c"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/demo-client.mjs",
+      "bytes": 1289,
+      "sha256": "f9e3071cf99e7039121bbc06eeac85d01ce26c7bd74234a27786a90f051ed4af"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/demo-progress.mjs",
+      "bytes": 920,
+      "sha256": "00fa33946cf705845d8924877272b6e3df1456eb016b301acb67fa606d981155"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/demo-server.mjs",
+      "bytes": 3606,
+      "sha256": "d51d62b2f238db4e47096729cc8ec2b37481e64c2bcc240afc8c084107adaa59"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/import-job.mjs",
+      "bytes": 9331,
+      "sha256": "4632bf05a31deb59fa1fe985a38a1343a1d1dffb56f2ecf975e6f3cea9b5b8e0"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/import.flow.json",
+      "bytes": 57513,
+      "sha256": "455aafac915839fc137a7a0a1c162fe7a75ef37596763e1f1fb38581ae615bdc"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/index.html",
+      "bytes": 10163,
+      "sha256": "2fdb4583da040526cf0aaede9e92e0718df3d763cfa5ddc65b8b297d18edb666"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/reservation.flow.json",
+      "bytes": 18198,
+      "sha256": "edd1d75d524a7607f4978bcbfa6fb2ca9695bade63b778afc1abcac55778a163"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/reservation.mjs",
+      "bytes": 4762,
+      "sha256": "a49bdc92613c43de526ffc74cbaf5ec738f097e9ad9a95edf9a83afc0564fa54"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/self-check-results.json",
+      "bytes": 252346,
+      "sha256": "ddfdddcbeb69d6c066c31ba508cbbcb364623dd5806f2ad7c263b39286cc40cf"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/self-check.log",
+      "bytes": 1829,
+      "sha256": "385818ced3f0c3d83697fceaf3e75fa62ffbdc3622e203bcbdc90fc17c758ffd"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/self-check.mjs",
+      "bytes": 21791,
+      "sha256": "cba35d73a73f0cbe3a0d841b43f4f438e3cca9298856bc2019394cc512706a4b"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/structural-check-results.json",
+      "bytes": 3700,
+      "sha256": "50b72945de73468716f64683edfa7f5c1f38bbec12cf66b1e4f0a43753b7e592"
+    },
+    {
+      "path": "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/ui.mjs",
+      "bytes": 10298,
+      "sha256": "ee11bb7045b3f94233c1af9a09e89dd3d2d1bb966e028a0addba10088c039d1d"
+    }
+  ],
+  "runtime": "v24.22.3",
+  "self_checks": {
+    "executed": 23,
+    "passed": 23,
+    "failed": 0
+  },
+  "flow_checks": "2ファイルpass",
+  "syntax_checks": 8,
+  "browser": "not_run",
+  "independent_evaluation": "not_run / not_read",
+  "model_id": null,
+  "seed": null,
+  "cost": null,
+  "notes": [
+    "モデルID・seed・費用は実行メタデータとして取得していない。",
+    "manifest自体は循環参照を避けて自身のhash一覧から除外。"
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "schema": "b-external-artifact-manifest/v1",
+  "frozen_at": "2026-11-23T06:49:11+00:00",
+  "artifacts": [
+    {
+      "path_base": "evidence/B",
+      "path": ".ga/receipts/cas-verify-5dfdd3e031bcae5b9f41291963b3c4144450da4d5b25a2da584d35626781732e.json",
+      "sha256": "5dfdd3e031bcae5b9f41291963b3c4144450da4d5b25a2da584d35626781732e",
+      "bytes": 347,
+      "role": "prior_native_rasi_receipt; not independent UX evaluation"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": ".ga/receipts/pipeline-03edde585a739a7cc3ee0befc66cddd8fdf79da592c6b470e08f812263c67634.json",
+      "sha256": "03edde585a739a7cc3ee0befc66cddd8fdf79da592c6b470e08f812263c67634",
+      "bytes": 1110,
+      "role": "prior_native_rasi_receipt; not independent UX evaluation"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": ".ga/receipts/verify-fe36fdf4f387bdd32827d72d149bc499fb23f6e50c17ef72421c51cef398cc5a.json",
+      "sha256": "fe36fdf4f387bdd32827d72d149bc499fb23f6e50c17ef72421c51cef398cc5a",
+      "bytes": 356,
+      "role": "prior_native_rasi_receipt; not independent UX evaluation"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "existing-audit.md",
+      "sha256": "21e2c905329af04511c76845647967e64156cec918ac75d08210604e48514013",
+      "bytes": 10746,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline-prompt.md",
+      "sha256": "14d385a254a42ad65d9e92784f69d73f955739f41da45f0d5b146a71791a836e",
+      "bytes": 2149,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline-submission.json",
+      "sha256": "83136553d4eeb41bdf0753321c5f30214216be3e8b7bb8d718322e326bdc48c2",
+      "bytes": 1231,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/common.mjs",
+      "sha256": "a94615927d38a0a608e1f502938747bf6273939b8c498c9ac1b8656065800e65",
+      "bytes": 990,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/decisions.md",
+      "sha256": "204e4b43e681146bdbab9b6eeed076b8ce921362e84a3222700ffdacb11b34e1",
+      "bytes": 13209,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/demo-runtime.mjs",
+      "sha256": "054c010ca4ed74f98414f3528c30b6cbac18df29182d5198036d7e4588ac7d3f",
+      "bytes": 3580,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/import-job.mjs",
+      "sha256": "8edbe177fa46db47da502762b5564f498f87c301d0aa1d9d488acac974de97bd",
+      "bytes": 8611,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/index.html",
+      "sha256": "6a3faabb714d316f7cbc4e5a32be8a158aee425dab07bf3a13dd82db341c367a",
+      "bytes": 10209,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/reservation.mjs",
+      "sha256": "7982ec58eafe3c744aa9f27983d34a4e020b3b0514a2a21c32b809397f303f82",
+      "bytes": 4237,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/self-check.mjs",
+      "sha256": "c2ebc98edc3eeff18c71ef94d7ba91bf5012ad523ea50e12458c6ca2a5f2abd3",
+      "bytes": 17921,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/baseline/ui.mjs",
+      "sha256": "4b1c24217b05b6a2219e8dad7c011233bdbe5eb61589d3095d308a9b50537b77",
+      "bytes": 13808,
+      "role": "frozen_baseline_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/browser-blocker.md",
+      "sha256": "f620f144f332650f1139f01e16a046426ac377bcce3def06fe54687e6d9851d9",
+      "bytes": 1231,
+      "role": "blocked_not_run_evidence"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate-prompt.md",
+      "sha256": "5237f80f6d1cbe21ee7a6741887192a71ec4ac68656c8daa23019375146ea7b2",
+      "bytes": 2229,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate-submission.json",
+      "sha256": "5bc05c3c1a6d01d0b6d789b8a35d518e92be87463f4d59daf5560689f9fce3cf",
+      "bytes": 2102,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/controller-utils.mjs",
+      "sha256": "bd59546de22228bf4d04977885afb77fd60a73a62cbc6fbb0437ee88e2d61708",
+      "bytes": 881,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/decisions.md",
+      "sha256": "de7ca8c1205bcf584cf5b0c78770b45a57e24b6996022510874edcdf2b2a613c",
+      "bytes": 14692,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/demo-client.mjs",
+      "sha256": "f9e3071cf99e7039121bbc06eeac85d01ce26c7bd74234a27786a90f051ed4af",
+      "bytes": 1289,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/demo-progress.mjs",
+      "sha256": "00fa33946cf705845d8924877272b6e3df1456eb016b301acb67fa606d981155",
+      "bytes": 920,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/demo-server.mjs",
+      "sha256": "d51d62b2f238db4e47096729cc8ec2b37481e64c2bcc240afc8c084107adaa59",
+      "bytes": 3606,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/import-job.mjs",
+      "sha256": "4632bf05a31deb59fa1fe985a38a1343a1d1dffb56f2ecf975e6f3cea9b5b8e0",
+      "bytes": 9331,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/import.flow.json",
+      "sha256": "455aafac915839fc137a7a0a1c162fe7a75ef37596763e1f1fb38581ae615bdc",
+      "bytes": 57513,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/index.html",
+      "sha256": "2fdb4583da040526cf0aaede9e92e0718df3d763cfa5ddc65b8b297d18edb666",
+      "bytes": 10163,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/manifest.json",
+      "sha256": "85f67d433ea84be9f407e0efc45e2810212be9fd6b75ae904a671374f0f7fbee",
+      "bytes": 5402,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/reservation.flow.json",
+      "sha256": "edd1d75d524a7607f4978bcbfa6fb2ca9695bade63b778afc1abcac55778a163",
+      "bytes": 18198,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/reservation.mjs",
+      "sha256": "a49bdc92613c43de526ffc74cbaf5ec738f097e9ad9a95edf9a83afc0564fa54",
+      "bytes": 4762,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/self-check-results.json",
+      "sha256": "ddfdddcbeb69d6c066c31ba508cbbcb364623dd5806f2ad7c263b39286cc40cf",
+      "bytes": 252346,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/self-check.log",
+      "sha256": "385818ced3f0c3d83697fceaf3e75fa62ffbdc3622e203bcbdc90fc17c758ffd",
+      "bytes": 1829,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/self-check.mjs",
+      "sha256": "cba35d73a73f0cbe3a0d841b43f4f438e3cca9298856bc2019394cc512706a4b",
+      "bytes": 21791,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/structural-check-results.json",
+      "sha256": "50b72945de73468716f64683edfa7f5c1f38bbec12cf66b1e4f0a43753b7e592",
+      "bytes": 3700,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/candidate/ui.mjs",
+      "sha256": "ee11bb7045b3f94233c1af9a09e89dd3d2d1bb966e028a0addba10088c039d1d",
+      "bytes": 10298,
+      "role": "frozen_candidate_submission; self-check files are supplemental, not matched-scoring results"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/evaluate.mjs",
+      "sha256": "e31b62a1edd0a95e765ddea89fc2ca8df43b31da39156e6345fda423babedd26",
+      "bytes": 28624,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/evaluator-freeze.json",
+      "sha256": "a82ada6b848b536f54dc850aae6e61adbe855fffa832c3998c0016d96232d585",
+      "bytes": 281,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/generation-inputs.json",
+      "sha256": "bccececce2f6c7e7f473ab9f412de223552dfd2374555442216fe086a68f1da0",
+      "bytes": 1361,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/generation-skill-input.json",
+      "sha256": "3be8e7b8fd44474235ea0681845777c9b5eb25d289e46a29f0412267667e3775",
+      "bytes": 1547,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/protocol.md",
+      "sha256": "dcfd60a4fc836a6b8bbeca3f7b9155e0a476f3867534c450980e6a05f711f27c",
+      "bytes": 2318,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/results/first-submission/comparison.json",
+      "sha256": "e5740bc334418781802dfdba0e631155d53b4e2b627f0a65f23f7e12f6783ac1",
+      "bytes": 612504,
+      "role": "external_execution_evidence"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/results/first-submission/comparison.md",
+      "sha256": "06ad9bc054e951c98781fff2cba16346430a182a198675e1909ea75e767e49aa",
+      "bytes": 4420,
+      "role": "external_execution_evidence"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/shared/api.mjs",
+      "sha256": "b2dd678d050d5b51351f3daf846ccdae1cc1ef247068e7b0e682d2f6f272d1e1",
+      "bytes": 12831,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/shared/api.test.mjs",
+      "sha256": "427a3b644d7fe849679695377c851ffa9177b015319b6a65dfce1cf3e55ba2d0",
+      "bytes": 7120,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/shared/tasks.md",
+      "sha256": "92b7aeb64c2b8d00694e62be1135fe166096c285436cc0a289aebc216ac10772",
+      "bytes": 14479,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "experiments/shared/visual-lock.md",
+      "sha256": "7d542816e25b728a2a0cdb8fd8785ad9c8e1a121be29022ff2325023902b617e",
+      "bytes": 1218,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "final-skill-manifest.json",
+      "sha256": "922e3cf60e45c3bfd6af53deee96cc18658a4db5377ad787fe53a299e3128fda",
+      "bytes": 2000,
+      "role": "identity_and_controlled_inputs"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-final/cost-history.snapshot.json",
+      "sha256": "a741ae0475e6d273607fd5fa78ee7b72428c1f64b2d55c8b3e16b74ebeb6e480",
+      "bytes": 4298,
+      "role": "immutable_pre_registration_history"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-final/trial-history.snapshot.json",
+      "sha256": "d96e8897a4913ef08186cfef9222c7c61d23d19c0719f2cc36d3e37052f5e0e5",
+      "bytes": 9379,
+      "role": "immutable_pre_registration_history"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-input/campaign.json",
+      "sha256": "d789714a0ad3c51d5de6b57d60a624bd14f977b6708b071773c1e04f242127f4",
+      "bytes": 1368,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-input/environment.json",
+      "sha256": "2959e4307724a1258ba4bfa31786e863a2a80fc0bd7afb03c5ab2fe576db812e",
+      "bytes": 322,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-input/lock.json",
+      "sha256": "df4bbead13c3577e2a1c5b78ba624fe9ff46ca7837a7b93897a187f6196d4db9",
+      "bytes": 1039,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-input/model.json",
+      "sha256": "f48b251f7dfbad79d1585f1de3743d622d23855b7f97fa75249c9ac89391331a",
+      "bytes": 248,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-input/policy.json",
+      "sha256": "9ca0d69ed22c8aac75e8e51bad5cb83aa1e73db8ab231115ec825dea02399671",
+      "bytes": 1069,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi-source-integrity.json",
+      "sha256": "4f861627b38d824470090652e6944732cc7273fb821a68a5e39963a11b9339a3",
+      "bytes": 8307,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi/cas/objects/5b/5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34.json",
+      "sha256": "5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34",
+      "bytes": 48737,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi/discovery-cli.json",
+      "sha256": "21dad48f8bf6b8acd067bd7ecf682e871d17364788db366250376ba7be181dc5",
+      "bytes": 3151,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi/sankai-registration-cli.json",
+      "sha256": "b971e2c857361bde586bf003ad749e41c9246e2a023f5a6c235dbeefd737e553",
+      "bytes": 1782,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "rasi/upstream-tests.json",
+      "sha256": "1273cfbb01a5767cda8c89a9a390271feddff3ee481277f503cc5e7f76862cb5",
+      "bytes": 1546,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "research/fetch-attempts.json",
+      "sha256": "9a38a0834f9439e2ea19a7b5d04063821698bd0446ed84c8da29027e6c6f76b5",
+      "bytes": 5679,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "research/quote-check.json",
+      "sha256": "fdf66f1d692f5962131b0d9c1d329481b088424a162e7a643bbcc0d0e4cd4548",
+      "bytes": 751,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "research/sources.json",
+      "sha256": "6383eec1fd2e669bdd534c0920f927d3fdae2bcff91b8ff922a53e621f4a398d",
+      "bytes": 20605,
+      "role": "source_or_tool_provenance"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/resolution-check-results.json",
+      "sha256": "3f4f4f203a48d451cf17d8bed8ab8a625a053384039095b062c53affb144331d",
+      "bytes": 7609,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/resolution-review.md",
+      "sha256": "fffff54e2a9cba20013be7c7486c8c04d108bb7f13652dde947ac3fdf4eae2e2",
+      "bytes": 8545,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/resolution-snapshot.json",
+      "sha256": "40f7c2caf712e699c69c337a10e04850fc185c63100a9c2f96375f3eb6f9a57c",
+      "bytes": 1401,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/reviewed-snapshot.json",
+      "sha256": "db3b13b4e9af928772dbe249a0839ce635f11addb1a9cb7f663954a0aa82b818",
+      "bytes": 2215,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/shape-probe-replay.py",
+      "sha256": "b1f3350c0e962e689a75b1e71db5bd1fd06673c896e07843ee85779422d1f5d5",
+      "bytes": 1751,
+      "role": "historical_probe_reconstruction; not executed during final review; no case-level original log"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/skill-review.md",
+      "sha256": "caaddd351c81cc2832820ccb1e41cf6271393442d827301c6c735738aa9160e5",
+      "bytes": 16212,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/wait-counterexample-results.json",
+      "sha256": "9bd6e624fadba12c67be5deeb66171ff0e0583eee9e2b353ff73610fe3ed148f",
+      "bytes": 2857,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/wait-recovery-cycle.json",
+      "sha256": "4f955f236b23a78616d7f006084f754c6b59fde509927471bc26d750ca2b0b4c",
+      "bytes": 7054,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "review/wait-task-bridge-cycle.json",
+      "sha256": "2a1a19c9df4d12a1a566729ece5f11225ef43d4b88a80dfd6b83aaf001a6d5d7",
+      "bytes": 7038,
+      "role": "diagnostic_review_not_blind"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/api-selftest.log",
+      "sha256": "0815bf40a01a2e031e89a0c7e5fdbb5662e36d5514b5556d99e5195fffe19af8",
+      "bytes": 2161,
+      "role": "final_execution_log"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/booking-contract.log",
+      "sha256": "bf7fef3fe66d003a7496f61fe2ab1d05c43c6165578bc592efc297cb0cb2f970",
+      "bytes": 659,
+      "role": "final_execution_log"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/candidate-flow-revalidation.json",
+      "sha256": "282cc57580aec861d63c6c8498229b8cd630c3373136011ca5707e3608702048",
+      "bytes": 2828,
+      "role": "external_execution_evidence"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/comparison.log",
+      "sha256": "52f52fcc41d97b684b932aaa549129ce9c98985815525a02860619b9516ef4e4",
+      "bytes": 510,
+      "role": "final_execution_log"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/comparison/comparison.json",
+      "sha256": "bb890a9d929b27eace805f7f380dafffe42c5b4bcffc827e6bb70251cf840cb9",
+      "bytes": 612504,
+      "role": "external_execution_evidence"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/comparison/comparison.md",
+      "sha256": "06ad9bc054e951c98781fff2cba16346430a182a198675e1909ea75e767e49aa",
+      "bytes": 4420,
+      "role": "external_execution_evidence"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/flow-unit.log",
+      "sha256": "a3eb2a3ae6c443e1b6abca224bd878d71593edca734e3c6eec701ccc129d9c3c",
+      "bytes": 8466,
+      "role": "final_execution_log"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/report-contract.log",
+      "sha256": "bf7fef3fe66d003a7496f61fe2ab1d05c43c6165578bc592efc297cb0cb2f970",
+      "bytes": 659,
+      "role": "final_execution_log"
+    },
+    {
+      "path_base": "evidence/B",
+      "path": "runs/final/run.json",
+      "sha256": "e6154b2a00ef10918bbaa093a4f678cd8ad23b126b91e20d86e60bffc0f00cdb",
+      "bytes": 2972,
+      "role": "external_execution_evidence"
+    }
+  ],
+  "final_skill_files": {
+    "path_base": "repository_root",
+    "root": "extensions/B",
+    "files": {
+      ".gitignore": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+      "SKILL.md": "a1bbb43cc1d13439d87d84be6a2c2102344f3c087c96a88c669fb9da0253a033",
+      "agents/openai.yaml": "71b072a096533fb7b59803900bc775e56ff921c19d7abe16122894fc797c7a88",
+      "checks/check_flow.py": "d3e18b0e94a4d8726841706a64b1fb67afc4c01feb49efa32c7827ca7662721b",
+      "examples/application.md": "13cd5d2e1b5c37ccc44a30f1ddce0317dfc2f3cc1e0504301b1b748df71c14ff",
+      "references/flow-contract.md": "0a28fa5459cbac3c08f3481275d6d3c80a51bae02528f51230a7480f1b66aae1",
+      "references/integration.md": "384dafa8eb269c98e2bbd0e5fe4ef14665eb70e6dae886de71910edb8e7962d4",
+      "references/principles.md": "b7912503fc5f545e91a9a7b39894fa4ec3bdcce52ace03392ccc18f6c43db72b",
+      "references/sources.md": "fd18d96feaab6fb488f6228018852f8d88459dd03a49e426f630c10255ddf1c7",
+      "tests/fixtures/booking.json": "b8d1e90a00c9518cd1b9124ed2b8c8df5445ba169c006ce522c856663f2d7152",
+      "tests/fixtures/report.json": "0abcf9d9ed2846fa4ab0314a9d1f5f3c49e175101cbb34b590f7b8d3c550a7a4",
+      "tests/test_flow_check.py": "1a80e05f85eb922a22ed848f90251a2e734322143dc9884f050a4975f55c3f3c"
+    }
+  },
+  "scope_note": "Hash verification is file-integrity/provenance evidence, not proof of evaluator correctness. Native experience record and registration log are created later and deliberately excluded to avoid cyclic hashes."
+}

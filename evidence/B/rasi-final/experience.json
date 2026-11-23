@@ -1,0 +1,42 @@
+{
+  "schema": "experience/v1",
+  "experience_id": "B-UXFLOW-20261123-62f6f5075ca9-r1",
+  "content": "SESSION Bの外部実行証拠を記録する。生成入力は58bed659/1fba407c、最終Skillは6fc0c3dd/62f6f507で別identity。最終checker unittest70/70、同梱Flow2/2、共通API simulation9/9、生成Flow再照合2/2。初回提出の共通40scenario比較はbaseline40/40、candidate40/40、差0で追加効果は未立証。最終再実行は同じ生成コードのreplayであり修正版Skillの新規生成試験ではない。別agent診断追確認で2所見を解消、ただし独立blindではない。ブラウザ検証はblocked/not_run。18原典19records。初期69/70はpositive fixtureのleave_before誤参照をleaveへ直して70/70となった報告履歴を残す。R-ASIは記録に使用し実行・独立評価・昇格は未接続。formal gate HOLD、promoted=false。",
+  "provenance": {
+    "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+    "evidence_ref": "rasi-final/evaluation-evidence.json",
+    "evidence_sha256": "c53da7c072a8a40f2c2b594bf023f28df8743943310a628e83bdc0e63a2501e9",
+    "evidence_path_base": "evidence/B",
+    "hash_verified_before_registration": true,
+    "hash_verifier_record": "rasi-final/integrity-check.json"
+  },
+  "scope": {
+    "task_family": "transactional reservation; asynchronous import with partial failure",
+    "skill_area": "B — Interaction Design / UX Flow"
+  },
+  "dependencies": [],
+  "status": "active",
+  "history": [
+    {
+      "action": "external_evidence_frozen",
+      "at": "2026-11-23T06:49:11+00:00",
+      "reason": "Freeze checked actual artifacts and preserve limitations before native experience registration; no promotion.",
+      "refs": [
+        "rasi-final/evaluation-evidence.json",
+        "rasi-final/artifact-manifest.json",
+        "rasi-final/integrity-check.json",
+        "rasi-final/trial-history.snapshot.json"
+      ]
+    }
+  ],
+  "recording_state": "READY_TO_RECORD_EXTERNAL_EVIDENCE",
+  "implementation_tree_sha256": "62f6f5075ca97e48a4d811d6039cd27ce2488425915e1bd4c41a62da6619d1bf",
+  "implementation_git_commit": "6fc0c3dd6c82c4dd2f77764c5da512fbfdbaa911",
+  "generation_input_tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+  "generation_input_git_commit": "58bed659cc7f39d316794625ad0475084b38df7e",
+  "rasi_descriptor_content_id": "57d1b2372555c5493ab91e5ae679e2441581795c1998c1681fdc050b1abb7552",
+  "rasi_descriptor_cas_sha256": "5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34",
+  "formal_gate": "HOLD",
+  "promoted": false,
+  "status_semantics": "active is the mandatory initial experience-store status. It does not assert test PASS or promotion."
+}

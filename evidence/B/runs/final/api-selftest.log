@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: reservation: same-key retries produce one receipt; key conflicts do not write
+ok 1 - reservation: same-key retries produce one receipt; key conflicts do not write
+  ---
+  duration_ms: 5.393903
+  type: 'test'
+  ...
+# Subtest: reservation: validation checks empty names, both integer bounds, and fractions
+ok 2 - reservation: validation checks empty names, both integer bounds, and fractions
+  ---
+  duration_ms: 1.811416
+  type: 'test'
+  ...
+# Subtest: reservation: identical timeout errors cover commit and no-commit outcomes
+ok 3 - reservation: identical timeout errors cover commit and no-commit outcomes
+  ---
+  duration_ms: 1.101766
+  type: 'test'
+  ...
+# Subtest: deferred effects, reordering, and inspection cannot mutate server state
+ok 4 - deferred effects, reordering, and inspection cannot mutate server state
+  ---
+  duration_ms: 1.13573
+  type: 'test'
+  ...
+# Subtest: import: processing, failed-subset retry, and retry dedupe preserve successful work
+ok 5 - import: processing, failed-subset retry, and retry dedupe preserve successful work
+  ---
+  duration_ms: 3.391931
+  type: 'test'
+  ...
+# Subtest: import: cancel changes server state only on acknowledgement and preserves completed items
+ok 6 - import: cancel changes server state only on acknowledgement and preserves completed items
+  ---
+  duration_ms: 0.745686
+  type: 'test'
+  ...
+# Subtest: import: successful completion can win the race against cancellation
+ok 7 - import: successful completion can win the race against cancellation
+  ---
+  duration_ms: 1.515323
+  type: 'test'
+  ...
+# Subtest: import: stale read can arrive after a newer result without changing server state
+ok 8 - import: stale read can arrive after a newer result without changing server state
+  ---
+  duration_ms: 1.583146
+  type: 'test'
+  ...
+# Subtest: import: reading an existing job never starts new work; invalid inputs have no effects
+ok 9 - import: reading an existing job never starts new work; invalid inputs have no effects
+  ---
+  duration_ms: 2.520582
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 207.040767

@@ -1,0 +1,9 @@
+{
+  "python_version": "3.12.14",
+  "python_implementation": "CPython",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "node_version": "v24.22.3",
+  "runtime_bundle_version": "26.1119.11507",
+  "oci_image_digest": null,
+  "oci_image_digest_status": "not exposed by this executor; no synthetic digest substituted"
+}

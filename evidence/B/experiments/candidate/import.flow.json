@@ -1,0 +1,1697 @@
+{
+  "schema": "ux-flow/v1",
+  "id": "inventory-import",
+  "actor": "在庫データを取り込む利用者",
+  "goal": "選んだ項目の結果を確認し、失敗項目だけを再試行して全件の取込みを完了する。",
+  "entry_condition": "未選択または既存のjobIdを保持している。公開createJob/getJob/retryItems/cancelJob APIを利用できる。",
+  "entry_state": "idle",
+  "success_predicate": "serverのjob.phase=succeededで、全resultsがsucceeded。jobIdと項目別の結果を見直せる。",
+  "assumptions": [
+    "利用者調査は未実施。操作順序は共通課題に基づく。",
+    "APIは同一create key/入力とretry key/対象を重複処理しない。保証範囲はメモリfixture存続中であり、本番永続化は未確認。",
+    "同一jobのversionは単調増加しgenerationは再試行batchで増える。別jobのversionは比較しない。",
+    "cancelは未完了項目だけを取り消し、すでに成功したjobなら成功を返す。",
+    "Flowのreading・slow・failedは表示状態も含む。poll中とpollエラーではcontrollerは既知のphaseとjobを保持する。",
+    "12秒の案内はUIだけ。controllerは明示的poll以外の自動取得をしない。",
+    "デモのNodeサーバーが共通APIを保持し、画面はjobIdだけをsessionStorageへ保存する。新しいHTTP clientとcontrollerからのresumeは実行確認済み。実ブラウザーの再読込み操作は未実行。サーバープロセス終了後の永続化はない。"
+  ],
+  "operations": [
+    {
+      "id": "create",
+      "side_effect": "write",
+      "retry": "same_key",
+      "idempotency": "server_key",
+      "outcome_lookup": false,
+      "cancel": "unavailable",
+      "stale_response": "同一jobのversionと表示epochで古い応答を除外する。",
+      "contract_evidence": "../shared/tasks.md と ../shared/api.mjs の公開API契約。保証範囲はharnessの存続中。"
+    },
+    {
+      "id": "get",
+      "side_effect": "read",
+      "retry": "safe_read",
+      "idempotency": "inherent",
+      "outcome_lookup": true,
+      "cancel": "unavailable",
+      "stale_response": "同一jobのversionと表示epochで古い応答を除外する。",
+      "contract_evidence": "../shared/tasks.md と ../shared/api.mjs の公開API契約。保証範囲はharnessの存続中。"
+    },
+    {
+      "id": "retry",
+      "side_effect": "write",
+      "retry": "same_key",
+      "idempotency": "server_key",
+      "outcome_lookup": true,
+      "cancel": "unavailable",
+      "stale_response": "同一jobのversionと表示epochで古い応答を除外する。",
+      "contract_evidence": "../shared/tasks.md と ../shared/api.mjs の公開API契約。保証範囲はharnessの存続中。"
+    },
+    {
+      "id": "cancel",
+      "side_effect": "write",
+      "retry": "reconcile_first",
+      "idempotency": "inherent",
+      "outcome_lookup": true,
+      "cancel": "server_confirmed",
+      "stale_response": "同一jobのversionと表示epochで古い応答を除外する。",
+      "contract_evidence": "../shared/tasks.md と ../shared/api.mjs の公開API契約。保証範囲はharnessの存続中。"
+    }
+  ],
+  "states": [
+    {
+      "id": "idle",
+      "kind": "task",
+      "description": "未選択。選択または既存jobの読取りを始められる。"
+    },
+    {
+      "id": "editing",
+      "kind": "task",
+      "description": "対象項目を選択し、空配列・重複IDなしで開始できる。"
+    },
+    {
+      "id": "failed",
+      "kind": "recovery",
+      "description": "入力またはAPI操作が失敗した。既知の結果は保持し、原因に応じ選択修正・再試行・再照会・再開が可能。"
+    },
+    {
+      "id": "starting",
+      "kind": "wait",
+      "description": "新しい取込みまたは同じ開始意図の応答待ち。",
+      "operation": "create",
+      "timeout_event": "starting_slow_notice",
+      "wait_policy": "UIの12秒経過は長時間待機の説明だけを表示する。controllerの結果や送信意図を変更しない。通信を取り消したと表示しない。ブラウザーを離れる選択を説明する。controllerに自動タイマー・自動再送は入れない。"
+    },
+    {
+      "id": "running",
+      "kind": "task",
+      "description": "serverが処理している。利用者は明示的に進捗を読むか、未完了分の取消しを要求できる。"
+    },
+    {
+      "id": "reading",
+      "kind": "wait",
+      "description": "表示中のjobを保持して進捗の読取りを待つ。",
+      "operation": "get",
+      "timeout_event": "reading_slow_notice",
+      "wait_policy": "UIの12秒経過は長時間待機の説明だけを表示する。controllerの結果や送信意図を変更しない。通信を取り消したと表示しない。ブラウザーを離れる選択を説明する。controllerに自動タイマー・自動再送は入れない。"
+    },
+    {
+      "id": "partial",
+      "kind": "recovery",
+      "description": "処理は終了したが失敗項目が残る。成功項目を保持して失敗分だけ再試行する。"
+    },
+    {
+      "id": "retrying",
+      "kind": "wait",
+      "description": "失敗項目だけの再試行を受け付けている。",
+      "operation": "retry",
+      "timeout_event": "retrying_slow_notice",
+      "wait_policy": "UIの12秒経過は長時間待機の説明だけを表示する。controllerの結果や送信意図を変更しない。通信を取り消したと表示しない。ブラウザーを離れる選択を説明する。controllerに自動タイマー・自動再送は入れない。"
+    },
+    {
+      "id": "cancelling",
+      "kind": "wait",
+      "description": "取消しを要求したが、serverの結果はまだ返っていない。",
+      "operation": "cancel",
+      "timeout_event": "cancelling_slow_notice",
+      "wait_policy": "UIの12秒経過は長時間待機の説明だけを表示する。controllerの結果や送信意図を変更しない。通信を取り消したと表示しない。ブラウザーを離れる選択を説明する。controllerに自動タイマー・自動再送は入れない。"
+    },
+    {
+      "id": "loading",
+      "kind": "wait",
+      "description": "保持したjobIdを使って既存jobを読み戻す。",
+      "operation": "get",
+      "timeout_event": "loading_slow_notice",
+      "wait_policy": "UIの12秒経過は長時間待機の説明だけを表示する。controllerの結果や送信意図を変更しない。通信を取り消したと表示しない。ブラウザーを離れる選択を説明する。controllerに自動タイマー・自動再送は入れない。"
+    },
+    {
+      "id": "uncertain",
+      "kind": "recovery",
+      "description": "書込み結果が不明。開始は同じ意図を再送し、jobがあれば照会・同じ再試行・取消し再確認を行う。"
+    },
+    {
+      "id": "succeeded",
+      "kind": "success",
+      "description": "全件の取込みが完了した。",
+      "proof": "server job.phase=succeeded と各results.status=succeeded。"
+    },
+    {
+      "id": "cancelled",
+      "kind": "exit",
+      "description": "未完了分の取消しをserverが確認した。",
+      "reason": "全件取込みは完了していない。成功済み項目を保持し、取消し済み項目を明記する。"
+    },
+    {
+      "id": "left",
+      "kind": "exit",
+      "description": "説明を確認して画面を離れた。",
+      "reason": "画面を閉じる操作は取込み取消しではない。jobIdがあれば公開readで復帰する。server保持期限とページ再読み込み時の永続化は別途必要。"
+    },
+    {
+      "id": "slow_starting",
+      "kind": "recovery",
+      "description": "startingの応答に時間がかかっている。controllerの送信意図と既知結果を保持し、画面を離れても取消しではないと説明する。"
+    },
+    {
+      "id": "slow_reading",
+      "kind": "recovery",
+      "description": "readingの応答に時間がかかっている。controllerの送信意図と既知結果を保持し、画面を離れても取消しではないと説明する。"
+    },
+    {
+      "id": "slow_retrying",
+      "kind": "recovery",
+      "description": "retryingの応答に時間がかかっている。controllerの送信意図と既知結果を保持し、画面を離れても取消しではないと説明する。"
+    },
+    {
+      "id": "slow_cancelling",
+      "kind": "recovery",
+      "description": "cancellingの応答に時間がかかっている。controllerの送信意図と既知結果を保持し、画面を離れても取消しではないと説明する。"
+    },
+    {
+      "id": "slow_loading",
+      "kind": "recovery",
+      "description": "loadingの応答に時間がかかっている。controllerの送信意図と既知結果を保持し、画面を離れても取消しではないと説明する。"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "i-select",
+      "from": "idle",
+      "to": "editing",
+      "event": "setItems",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "対象項目を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-start",
+      "from": "editing",
+      "to": "starting",
+      "event": "start",
+      "actor": "user",
+      "guard": "項目が1件以上・IDと名前あり・ID重複なし",
+      "effect": "server_write",
+      "feedback": "取込みの開始を受け付けています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "create"
+    },
+    {
+      "id": "i-invalid",
+      "from": "editing",
+      "to": "failed",
+      "event": "start",
+      "actor": "user",
+      "guard": "空配列・ID重複・IDまたは名前なし",
+      "effect": "local",
+      "feedback": "選択の修正方法を表示し、書込みしない。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-fix",
+      "from": "failed",
+      "to": "editing",
+      "event": "setItems",
+      "actor": "user",
+      "guard": "進行中jobも未解決の書込みもない",
+      "effect": "local",
+      "feedback": "選択内容を修正する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-restart",
+      "from": "failed",
+      "to": "starting",
+      "event": "start",
+      "actor": "user",
+      "guard": "開始が確定拒否され、同じ有効な選択が残っている",
+      "effect": "server_write",
+      "feedback": "同じ開始意図を再試行する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "create"
+    },
+    {
+      "id": "i-poll",
+      "from": "running",
+      "to": "reading",
+      "event": "poll",
+      "actor": "user",
+      "guard": "jobIdあり・読取り進行中ではない",
+      "effect": "reconcile",
+      "feedback": "既知の結果を保持して最新の進捗を確認する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "get"
+    },
+    {
+      "id": "i-retry",
+      "from": "partial",
+      "to": "retrying",
+      "event": "retryFailed",
+      "actor": "user",
+      "guard": "job.phase=partialかつfailed項目あり・書込み待ちなし",
+      "effect": "server_write",
+      "feedback": "失敗項目だけを再試行する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "retry"
+    },
+    {
+      "id": "i-cancel",
+      "from": "running",
+      "to": "cancelling",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "job.phase=runningかつ取消し要求未送信",
+      "effect": "server_cancel",
+      "feedback": "取消しの結果を確認しています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "cancel"
+    },
+    {
+      "id": "i-read-cancel",
+      "from": "reading",
+      "to": "cancelling",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "既知のjob.phase=runningかつ書込み待ちなし",
+      "effect": "server_cancel",
+      "feedback": "進捗応答の順序にかかわらずserverに取消しを要求する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "cancel"
+    },
+    {
+      "id": "i-resume",
+      "from": "idle",
+      "to": "loading",
+      "event": "resume",
+      "actor": "user",
+      "guard": "保持した空でないjobIdあり",
+      "effect": "reconcile",
+      "feedback": "以前の結果を読み戻しています。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "get"
+    },
+    {
+      "id": "i-resume-retry",
+      "from": "failed",
+      "to": "loading",
+      "event": "resume",
+      "actor": "user",
+      "guard": "正しいjobIdの入力または読取り再試行",
+      "effect": "reconcile",
+      "feedback": "既存jobを再度読み戻す。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "get"
+    },
+    {
+      "id": "i-poll-retry",
+      "from": "failed",
+      "to": "reading",
+      "event": "poll",
+      "actor": "user",
+      "guard": "jobIdあり・読取り失敗で既知のjobを保持している",
+      "effect": "reconcile",
+      "feedback": "既知の結果を残し再確認する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "get"
+    },
+    {
+      "id": "i-retry-after-failure",
+      "from": "failed",
+      "to": "retrying",
+      "event": "retryFailed",
+      "actor": "user",
+      "guard": "再試行が確定拒否されjob.phase=partialでfailed項目あり",
+      "effect": "server_write",
+      "feedback": "同じ失敗項目の再試行を再送する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "retry"
+    },
+    {
+      "id": "i-cancel-after-failure",
+      "from": "failed",
+      "to": "cancelling",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "取消しが確定拒否されjob.phase=running",
+      "effect": "server_cancel",
+      "feedback": "取消しを再要求する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "cancel"
+    },
+    {
+      "id": "i-unknown-start",
+      "from": "uncertain",
+      "to": "starting",
+      "event": "start",
+      "actor": "user",
+      "guard": "開始結果不明かつjobId未取得・元のkeyと選択を保持",
+      "effect": "server_write",
+      "feedback": "同じ選択内容で開始結果を確認する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "create"
+    },
+    {
+      "id": "i-unknown-read",
+      "from": "uncertain",
+      "to": "reading",
+      "event": "poll",
+      "actor": "user",
+      "guard": "jobIdあり・API進行中ではない",
+      "effect": "reconcile",
+      "feedback": "結果を照会する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "get"
+    },
+    {
+      "id": "i-unknown-retry",
+      "from": "uncertain",
+      "to": "retrying",
+      "event": "retryFailed",
+      "actor": "user",
+      "guard": "再試行結果不明かつ既知のjobはpartialで同一keyと対象を保持",
+      "effect": "server_write",
+      "feedback": "同じ失敗項目を同じ意図で再試行する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "retry"
+    },
+    {
+      "id": "i-unknown-cancel",
+      "from": "uncertain",
+      "to": "cancelling",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "取消し結果不明かつ既知のjobはrunning",
+      "effect": "server_cancel",
+      "feedback": "未完了分の取消しを再確認する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ],
+      "operation": "cancel"
+    },
+    {
+      "id": "i-leave-running",
+      "from": "running",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "未完了と閉じる意味を理解した",
+      "effect": "none",
+      "feedback": "画面を離れても処理取消しにはなりません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-partial",
+      "from": "partial",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "未完了と閉じる意味を理解した",
+      "effect": "none",
+      "feedback": "画面を離れても処理取消しにはなりません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-failed",
+      "from": "failed",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "未完了と閉じる意味を理解した",
+      "effect": "none",
+      "feedback": "画面を離れても処理取消しにはなりません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-uncertain",
+      "from": "uncertain",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "未完了と閉じる意味を理解した",
+      "effect": "none",
+      "feedback": "画面を離れても処理取消しにはなりません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-editing",
+      "from": "editing",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "未完了と閉じる意味を理解した",
+      "effect": "none",
+      "feedback": "画面を離れても処理取消しにはなりません。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-starting-running",
+      "from": "starting",
+      "to": "running",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=running",
+      "effect": "none",
+      "feedback": "項目別結果とrunningに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-starting-partial",
+      "from": "starting",
+      "to": "partial",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=partial",
+      "effect": "none",
+      "feedback": "項目別結果とpartialに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-starting-succeeded",
+      "from": "starting",
+      "to": "succeeded",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=succeeded",
+      "effect": "none",
+      "feedback": "項目別結果とsucceededに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-starting-cancelled",
+      "from": "starting",
+      "to": "cancelled",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=cancelled",
+      "effect": "none",
+      "feedback": "項目別結果とcancelledに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-starting-rejected",
+      "from": "starting",
+      "to": "failed",
+      "event": "create_error",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みなし",
+      "effect": "none",
+      "feedback": "入力と既知の結果を保持して再操作を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-starting-unknown",
+      "from": "starting",
+      "to": "uncertain",
+      "event": "create_error",
+      "actor": "system",
+      "guard": "unknownまたは過去の書込みが未解決",
+      "effect": "none",
+      "feedback": "結果は不明です。照会か安全な同一再試行ができます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow-starting",
+      "from": "starting",
+      "to": "slow_starting",
+      "event": "starting_slow_notice",
+      "actor": "timer",
+      "guard": "UI待機説明期限12秒を超えて応答待ちが続いている",
+      "effect": "local",
+      "feedback": "長時間待機の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-slow_starting",
+      "from": "slow_starting",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "待機説明を確認した",
+      "effect": "none",
+      "feedback": "未完了の結果と復帰方法を説明する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_starting-running",
+      "from": "slow_starting",
+      "to": "running",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=runningで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_starting-partial",
+      "from": "slow_starting",
+      "to": "partial",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=partialで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_starting-succeeded",
+      "from": "slow_starting",
+      "to": "succeeded",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=succeededで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_starting-cancelled",
+      "from": "slow_starting",
+      "to": "cancelled",
+      "event": "create_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=cancelledで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_starting-error",
+      "from": "slow_starting",
+      "to": "uncertain",
+      "event": "create_error",
+      "actor": "system",
+      "guard": "unknownまたは過去の未解決書込みが残る。終了済みの結果が別のreadで確認されていない",
+      "effect": "none",
+      "feedback": "状況に応じた再試行・再照会を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-reading-running",
+      "from": "reading",
+      "to": "running",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=running、以前の不明な書込みが残らない根拠がある",
+      "effect": "none",
+      "feedback": "項目別結果とrunningに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-reading-partial",
+      "from": "reading",
+      "to": "partial",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=partial、以前の不明な書込みが残らない根拠がある",
+      "effect": "none",
+      "feedback": "項目別結果とpartialに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-reading-succeeded",
+      "from": "reading",
+      "to": "succeeded",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=succeeded、以前の不明な書込みが残らない根拠がある",
+      "effect": "none",
+      "feedback": "項目別結果とsucceededに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-reading-cancelled",
+      "from": "reading",
+      "to": "cancelled",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=cancelled、以前の不明な書込みが残らない根拠がある",
+      "effect": "none",
+      "feedback": "項目別結果とcancelledに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-reading-error",
+      "from": "reading",
+      "to": "failed",
+      "event": "get_error",
+      "actor": "system",
+      "guard": "読取り失敗かつ過去の未解決書込みなし",
+      "effect": "none",
+      "feedback": "既知の結果を保持して読み直す手段を示す。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-reading-unresolved",
+      "from": "reading",
+      "to": "uncertain",
+      "event": "get_response_or_error",
+      "actor": "system",
+      "guard": "読取り結果またはエラーでは過去の不明な書込みを解決できない",
+      "effect": "none",
+      "feedback": "未解決を維持し、照会または同じ意図の再試行を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow-reading",
+      "from": "reading",
+      "to": "slow_reading",
+      "event": "reading_slow_notice",
+      "actor": "timer",
+      "guard": "UI待機説明期限12秒を超えて応答待ちが続いている",
+      "effect": "local",
+      "feedback": "長時間待機の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-slow_reading",
+      "from": "slow_reading",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "待機説明を確認した",
+      "effect": "none",
+      "feedback": "未完了の結果と復帰方法を説明する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_reading-running",
+      "from": "slow_reading",
+      "to": "running",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=runningで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_reading-partial",
+      "from": "slow_reading",
+      "to": "partial",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=partialで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_reading-succeeded",
+      "from": "slow_reading",
+      "to": "succeeded",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=succeededで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_reading-cancelled",
+      "from": "slow_reading",
+      "to": "cancelled",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=cancelledで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_reading-error",
+      "from": "slow_reading",
+      "to": "failed",
+      "event": "get_error",
+      "actor": "system",
+      "guard": "応答エラー。副作用不明の書込みは不明として保つ",
+      "effect": "none",
+      "feedback": "状況に応じた再試行・再照会を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-retrying-running",
+      "from": "retrying",
+      "to": "running",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=running",
+      "effect": "none",
+      "feedback": "項目別結果とrunningに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-retrying-partial",
+      "from": "retrying",
+      "to": "partial",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=partial",
+      "effect": "none",
+      "feedback": "項目別結果とpartialに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-retrying-succeeded",
+      "from": "retrying",
+      "to": "succeeded",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=succeeded",
+      "effect": "none",
+      "feedback": "項目別結果とsucceededに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-retrying-cancelled",
+      "from": "retrying",
+      "to": "cancelled",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=cancelled",
+      "effect": "none",
+      "feedback": "項目別結果とcancelledに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-retrying-rejected",
+      "from": "retrying",
+      "to": "failed",
+      "event": "retry_error",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みなし",
+      "effect": "none",
+      "feedback": "入力と既知の結果を保持して再操作を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-retrying-unknown",
+      "from": "retrying",
+      "to": "uncertain",
+      "event": "retry_error",
+      "actor": "system",
+      "guard": "unknownまたは過去の書込みが未解決",
+      "effect": "none",
+      "feedback": "結果は不明です。照会か安全な同一再試行ができます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow-retrying",
+      "from": "retrying",
+      "to": "slow_retrying",
+      "event": "retrying_slow_notice",
+      "actor": "timer",
+      "guard": "UI待機説明期限12秒を超えて応答待ちが続いている",
+      "effect": "local",
+      "feedback": "長時間待機の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-slow_retrying",
+      "from": "slow_retrying",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "待機説明を確認した",
+      "effect": "none",
+      "feedback": "未完了の結果と復帰方法を説明する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_retrying-running",
+      "from": "slow_retrying",
+      "to": "running",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=runningで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_retrying-partial",
+      "from": "slow_retrying",
+      "to": "partial",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=partialで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_retrying-succeeded",
+      "from": "slow_retrying",
+      "to": "succeeded",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=succeededで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_retrying-cancelled",
+      "from": "slow_retrying",
+      "to": "cancelled",
+      "event": "retry_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=cancelledで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_retrying-error",
+      "from": "slow_retrying",
+      "to": "uncertain",
+      "event": "retry_error",
+      "actor": "system",
+      "guard": "unknownまたは過去の未解決書込みが残る。終了済みの結果が別のreadで確認されていない",
+      "effect": "none",
+      "feedback": "状況に応じた再試行・再照会を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-cancelling-partial",
+      "from": "cancelling",
+      "to": "partial",
+      "event": "cancel_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=partial",
+      "effect": "none",
+      "feedback": "項目別結果とpartialに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-cancelling-succeeded",
+      "from": "cancelling",
+      "to": "succeeded",
+      "event": "cancel_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=succeeded",
+      "effect": "none",
+      "feedback": "項目別結果とsucceededに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-cancelling-cancelled",
+      "from": "cancelling",
+      "to": "cancelled",
+      "event": "cancel_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=cancelled",
+      "effect": "none",
+      "feedback": "項目別結果とcancelledに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-cancelling-rejected",
+      "from": "cancelling",
+      "to": "failed",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みなし、かつ進行中の読取りで処理終了を確認していない",
+      "effect": "none",
+      "feedback": "入力と既知の結果を保持して再操作を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-cancelling-unknown",
+      "from": "cancelling",
+      "to": "uncertain",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "unknownまたは過去の書込みが未解決、かつ進行中の読取りで処理終了を確認していない",
+      "effect": "none",
+      "feedback": "結果は不明です。照会か安全な同一再試行ができます。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow-cancelling",
+      "from": "cancelling",
+      "to": "slow_cancelling",
+      "event": "cancelling_slow_notice",
+      "actor": "timer",
+      "guard": "UI待機説明期限12秒を超えて応答待ちが続いている",
+      "effect": "local",
+      "feedback": "長時間待機の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-slow_cancelling",
+      "from": "slow_cancelling",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "待機説明を確認した",
+      "effect": "none",
+      "feedback": "未完了の結果と復帰方法を説明する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-partial",
+      "from": "slow_cancelling",
+      "to": "partial",
+      "event": "cancel_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=partialで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-succeeded",
+      "from": "slow_cancelling",
+      "to": "succeeded",
+      "event": "cancel_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=succeededで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-cancelled",
+      "from": "slow_cancelling",
+      "to": "cancelled",
+      "event": "cancel_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=cancelledで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-error",
+      "from": "slow_cancelling",
+      "to": "uncertain",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "unknownまたは過去の未解決書込みが残る。終了済みの結果が別のreadで確認されていない",
+      "effect": "none",
+      "feedback": "状況に応じた再試行・再照会を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-loading-running",
+      "from": "loading",
+      "to": "running",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=running",
+      "effect": "none",
+      "feedback": "項目別結果とrunningに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-loading-partial",
+      "from": "loading",
+      "to": "partial",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=partial",
+      "effect": "none",
+      "feedback": "項目別結果とpartialに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-loading-succeeded",
+      "from": "loading",
+      "to": "succeeded",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=succeeded",
+      "effect": "none",
+      "feedback": "項目別結果とsucceededに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-loading-cancelled",
+      "from": "loading",
+      "to": "cancelled",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "現在の表示対象と一致し、受理できるversionで、job.phase=cancelled",
+      "effect": "none",
+      "feedback": "項目別結果とcancelledに対応する日本語の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-loading-error",
+      "from": "loading",
+      "to": "failed",
+      "event": "get_error",
+      "actor": "system",
+      "guard": "読取り失敗かつ過去の未解決書込みなし",
+      "effect": "none",
+      "feedback": "既知の結果を保持して読み直す手段を示す。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-loading-unresolved",
+      "from": "loading",
+      "to": "uncertain",
+      "event": "get_response_or_error",
+      "actor": "system",
+      "guard": "読取り結果またはエラーでは過去の不明な書込みを解決できない",
+      "effect": "none",
+      "feedback": "未解決を維持し、照会または同じ意図の再試行を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow-loading",
+      "from": "loading",
+      "to": "slow_loading",
+      "event": "loading_slow_notice",
+      "actor": "timer",
+      "guard": "UI待機説明期限12秒を超えて応答待ちが続いている",
+      "effect": "local",
+      "feedback": "長時間待機の説明を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-leave-slow_loading",
+      "from": "slow_loading",
+      "to": "left",
+      "event": "browser_leave",
+      "actor": "user",
+      "guard": "待機説明を確認した",
+      "effect": "none",
+      "feedback": "未完了の結果と復帰方法を説明する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_loading-running",
+      "from": "slow_loading",
+      "to": "running",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=runningで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_loading-partial",
+      "from": "slow_loading",
+      "to": "partial",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=partialで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_loading-succeeded",
+      "from": "slow_loading",
+      "to": "succeeded",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=succeededで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_loading-cancelled",
+      "from": "slow_loading",
+      "to": "cancelled",
+      "event": "get_response",
+      "actor": "system",
+      "guard": "受理できるjob.phase=cancelledで過去の不明な書込みが解決した",
+      "effect": "none",
+      "feedback": "確定した項目別結果を表示する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_loading-error",
+      "from": "slow_loading",
+      "to": "failed",
+      "event": "get_error",
+      "actor": "system",
+      "guard": "応答エラー。副作用不明の書込みは不明として保つ",
+      "effect": "none",
+      "feedback": "状況に応じた再試行・再照会を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_starting-error-definitive",
+      "from": "slow_starting",
+      "to": "failed",
+      "event": "create_error",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みも別readによる確定結果もない",
+      "effect": "none",
+      "feedback": "入力と既知の結果を保持して修正または再試行を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_retrying-error-definitive",
+      "from": "slow_retrying",
+      "to": "failed",
+      "event": "retry_error",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みも別readによる確定結果もない",
+      "effect": "none",
+      "feedback": "入力と既知の結果を保持して修正または再試行を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-error-definitive",
+      "from": "slow_cancelling",
+      "to": "failed",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "definitive拒否かつ過去の未解決書込みも別readによる確定結果もない",
+      "effect": "none",
+      "feedback": "入力と既知の結果を保持して修正または再試行を案内する。",
+      "preserves": [
+        "入力または選択",
+        "確定済み結果",
+        "同じ送信意図の識別子"
+      ]
+    },
+    {
+      "id": "i-cancelling-known-succeeded",
+      "from": "cancelling",
+      "to": "succeeded",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "取消し応答が失敗したが、先行readがjob.phase=succeededを確認済み",
+      "effect": "none",
+      "feedback": "取消し操作のエラーとともに確認済みの取込み結果を表示する。",
+      "preserves": [
+        "既知のjob",
+        "項目別結果",
+        "処理番号"
+      ]
+    },
+    {
+      "id": "i-cancelling-known-cancelled",
+      "from": "cancelling",
+      "to": "cancelled",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "取消し応答が失敗したが、先行readがjob.phase=cancelledを確認済み",
+      "effect": "none",
+      "feedback": "取消し操作のエラーとともに確認済みの取込み結果を表示する。",
+      "preserves": [
+        "既知のjob",
+        "項目別結果",
+        "処理番号"
+      ]
+    },
+    {
+      "id": "i-cancelling-known-partial",
+      "from": "cancelling",
+      "to": "partial",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "取消し応答が失敗したが、先行readがjob.phase=partialを確認済み",
+      "effect": "none",
+      "feedback": "取消し操作のエラーとともに確認済みの取込み結果を表示する。",
+      "preserves": [
+        "既知のjob",
+        "項目別結果",
+        "処理番号"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-known-succeeded",
+      "from": "slow_cancelling",
+      "to": "succeeded",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "取消し応答が失敗したが、先行readがjob.phase=succeededを確認済み",
+      "effect": "none",
+      "feedback": "取消し操作のエラーとともに確認済みの取込み結果を表示する。",
+      "preserves": [
+        "既知のjob",
+        "項目別結果",
+        "処理番号"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-known-cancelled",
+      "from": "slow_cancelling",
+      "to": "cancelled",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "取消し応答が失敗したが、先行readがjob.phase=cancelledを確認済み",
+      "effect": "none",
+      "feedback": "取消し操作のエラーとともに確認済みの取込み結果を表示する。",
+      "preserves": [
+        "既知のjob",
+        "項目別結果",
+        "処理番号"
+      ]
+    },
+    {
+      "id": "i-slow_cancelling-known-partial",
+      "from": "slow_cancelling",
+      "to": "partial",
+      "event": "cancel_error",
+      "actor": "system",
+      "guard": "取消し応答が失敗したが、先行readがjob.phase=partialを確認済み",
+      "effect": "none",
+      "feedback": "取消し操作のエラーとともに確認済みの取込み結果を表示する。",
+      "preserves": [
+        "既知のjob",
+        "項目別結果",
+        "処理番号"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "import-normal",
+      "category": "normal",
+      "path": [
+        "i-select",
+        "i-start",
+        "i-starting-running",
+        "i-poll",
+        "i-reading-succeeded"
+      ],
+      "expected_state": "succeeded",
+      "assertions": [
+        "全項目成功をserverが返したときだけ全件完了を示す。"
+      ]
+    },
+    {
+      "id": "import-partial",
+      "category": "error",
+      "path": [
+        "i-select",
+        "i-start",
+        "i-starting-running",
+        "i-poll",
+        "i-reading-partial",
+        "i-retry",
+        "i-retrying-running",
+        "i-poll",
+        "i-reading-succeeded"
+      ],
+      "expected_state": "succeeded",
+      "assertions": [
+        "I03: 成功項目の処理回数は1回、失敗したbだけ2回になる。"
+      ]
+    },
+    {
+      "id": "import-cancel",
+      "category": "boundary",
+      "path": [
+        "i-select",
+        "i-start",
+        "i-starting-running",
+        "i-cancel",
+        "i-cancelling-cancelled"
+      ],
+      "expected_state": "cancelled",
+      "assertions": [
+        "I05: cancellingは応答受領まで保持される。古いpollで巻き戻らない。"
+      ]
+    },
+    {
+      "id": "import-resume",
+      "category": "normal",
+      "path": [
+        "i-resume",
+        "i-loading-running",
+        "i-poll",
+        "i-reading-succeeded"
+      ],
+      "expected_state": "succeeded",
+      "assertions": [
+        "I08: resumeはreadのみで、書込み回数もjob件数も増やさない。"
+      ]
+    },
+    {
+      "id": "import-create-unknown",
+      "category": "error",
+      "path": [
+        "i-select",
+        "i-start",
+        "i-starting-unknown",
+        "i-unknown-start",
+        "i-starting-running"
+      ],
+      "expected_state": "running",
+      "assertions": [
+        "I11: 同じ開始意図で一つのjobを取得する。"
+      ]
+    }
+  ]
+}

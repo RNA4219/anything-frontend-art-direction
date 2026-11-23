@@ -1,0 +1,37 @@
+{
+  "schema": "campaign/v1",
+  "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+  "objective": "Interaction Design / UX Flow independent extension",
+  "status": "hold",
+  "identity": {
+    "component_lock_sha256": "e14e05c5b50b925028201e1aa59aa66271a7a39521e6b149bc1d5c4ad1cc6d4a",
+    "model_identity_sha256": "c6968f0fc0a629575fdca015aaf426215ec80ad64e7d5ad98c69adb9adf6e7ca",
+    "task_identity_sha256": "65d7ac0d32cf27358524321347fc0848592a35bfe928b6af06604290a5305ca5",
+    "environment_identity_sha256": "2b88166114b1f48c367dc31b5884ab4691cc6d5daad14e4f1f3d5fdac10c6869"
+  },
+  "policy_ref": {
+    "path": "rasi-input/policy.json",
+    "sha256": "0d2f081d7d4e0d98b80f0b0cacda112f9a0d42a0ae3edabc9e7fbed4570ddf30"
+  },
+  "lock_ref": {
+    "path": "rasi-input/lock.json",
+    "sha256": "e14e05c5b50b925028201e1aa59aa66271a7a39521e6b149bc1d5c4ad1cc6d4a"
+  },
+  "cost_settings": null,
+  "zones": {
+    "vault": [],
+    "sandbox": [
+      "rasi-input",
+      "rasi"
+    ],
+    "dmz": []
+  },
+  "formal_gate": "HOLD",
+  "incomplete_reasons": [
+    "Actual OCI runtime digest unavailable.",
+    "Exact model version and seed unavailable.",
+    "Noise calibration and independent holdout unavailable.",
+    "Per-resource and aggregate budgets/conversions not configured; monetary cost not measured."
+  ],
+  "captured_at": "2026-11-23T06:08:27+00:00"
+}

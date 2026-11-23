@@ -1,0 +1,50 @@
+{
+  "schema": "b-evidence-integrity-check/v1",
+  "checked_at": "2026-11-23T06:49:11+00:00",
+  "skill_identities": [
+    {
+      "identity": "generation",
+      "commit": "58bed659cc7f39d316794625ad0475084b38df7e",
+      "tree_sha256": "1fba407c2a0452ad1f458c75bb6590cdc22e7c8a98bf04e2cc2554a317fb8ee5",
+      "files": 12,
+      "commit_blob_matches": true,
+      "working_tree_checked": false
+    },
+    {
+      "identity": "final",
+      "commit": "6fc0c3dd6c82c4dd2f77764c5da512fbfdbaa911",
+      "tree_sha256": "62f6f5075ca97e48a4d811d6039cd27ce2488425915e1bd4c41a62da6619d1bf",
+      "files": 12,
+      "commit_blob_matches": true,
+      "working_tree_checked": true
+    }
+  ],
+  "baseline_root_skill_matches_base_commit": true,
+  "generation_submissions": {
+    "baseline": {
+      "tree_sha256": "88820b368e6ee063a1c469d6604db8db9b13896ff2ef41de9ddcb7b0ef83d451",
+      "listed_files": 8,
+      "all_listed_files_match_current_bytes": true
+    },
+    "candidate": {
+      "tree_sha256": "9b64bfc862b888b0b48ab876b0f8af081d7aec907b7da561a13d3068e29c7dea",
+      "listed_files": 16,
+      "all_listed_files_match_current_bytes": true
+    }
+  },
+  "frozen_evaluator_matches_bytes": true,
+  "comparison_input_and_module_hashes_match": true,
+  "final_test_log_hashes_match": true,
+  "reviewed_snapshot_hashes_match_final_skill": true,
+  "native_descriptor_cas_hash_matches": true,
+  "artifact_manifest": {
+    "path_base": "evidence/B",
+    "path": "rasi-final/artifact-manifest.json",
+    "sha256": "2ccf2aeedeb11bc86e0ed2997b8f9f9eff7ee835c3bdfc215ae1de9de4d5f27e",
+    "bytes": 22663
+  },
+  "artifact_count": 78,
+  "tests_rerun_by_recorder": false,
+  "test_evidence_source": "Existing actual executor logs; recorder checks hashes/counts/consistency and does not substitute fabricated reruns.",
+  "formal_gate": "HOLD"
+}

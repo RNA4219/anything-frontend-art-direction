@@ -1,0 +1,13 @@
+{
+  "schema": "ux-flow-check/v1",
+  "status": "pass",
+  "ok": true,
+  "issues": [],
+  "limitations": [
+    "Natural-language guards are not evaluated: graph reachability ignores guards.",
+    "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+    "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+    "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts.",
+    "Timeout escape checks user/timer paths to success or explained exit; local system events are not distinguished from service responses."
+  ]
+}

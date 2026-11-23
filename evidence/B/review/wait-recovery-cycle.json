@@ -1,0 +1,255 @@
+{
+  "schema": "ux-flow/v1",
+  "id": "review-recovery_only_returns_to_wait",
+  "actor": "集計結果を取得する利用者",
+  "goal": "指定条件のレポートを取得し対象条件を確認する",
+  "entry_condition": "閲覧権限があり、期間と対象を選べる。",
+  "entry_state": "configure",
+  "success_predicate": "現在の条件とrequest generationに対応するdownload URLと件数が取得済みである。",
+  "assumptions": [
+    "これは構造検査用の合成fixture。実データ取得や本番APIへの通信を行わない。"
+  ],
+  "operations": [
+    {
+      "id": "report",
+      "side_effect": "read",
+      "retry": "safe_read",
+      "idempotency": "inherent",
+      "outcome_lookup": true,
+      "cancel": "local_only",
+      "stale_response": "条件変更または退出時にgenerationを増やす。以前のgenerationの応答で現画面を更新しない。",
+      "contract_evidence": "fixtureの模擬read契約。GETには業務上の書込効果がなく、同一request IDで生成状態を確認できる。実API未検証。"
+    }
+  ],
+  "states": [
+    {
+      "id": "configure",
+      "kind": "task",
+      "description": "期間と対象を選択できる。"
+    },
+    {
+      "id": "generating",
+      "kind": "wait",
+      "description": "現在条件のレポート取得を待っている。",
+      "operation": "report",
+      "timeout_event": "deadline",
+      "wait_policy": "期限後はslowへ移る。slowから同じ応答の待機へ戻る。退出経路はない。"
+    },
+    {
+      "id": "slow",
+      "kind": "recovery",
+      "description": "遅延を表示する。次にできることは同じ応答を待ち直すことだけ。"
+    },
+    {
+      "id": "failed",
+      "kind": "recovery",
+      "description": "取得に失敗した。選択条件を保持してreadを再試行できる。"
+    },
+    {
+      "id": "empty",
+      "kind": "recovery",
+      "description": "現在条件の結果は0件。条件変更へ戻れる。"
+    },
+    {
+      "id": "ready",
+      "kind": "success",
+      "description": "現在条件と件数を伴うdownload URLを表示する。",
+      "proof": "request generation、条件、件数、取得済みのdownload URL。"
+    },
+    {
+      "id": "left",
+      "kind": "exit",
+      "description": "ローカルの待機を解除し一覧へ戻る。",
+      "reason": "レポート取得タスクを完了せず退出した。サーバー処理の取消を保証しない。条件を保持して後で再開できる。"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "start",
+      "from": "configure",
+      "to": "generating",
+      "event": "generate",
+      "actor": "user",
+      "guard": "条件が有効",
+      "effect": "local",
+      "feedback": "条件を保持し取得中と表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ],
+      "operation": "report"
+    },
+    {
+      "id": "ready",
+      "from": "generating",
+      "to": "ready",
+      "event": "complete",
+      "actor": "system",
+      "guard": "現在のgenerationと一致し件数が1以上",
+      "effect": "none",
+      "feedback": "対象条件、件数、取得用リンクを表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "empty",
+      "from": "generating",
+      "to": "empty",
+      "event": "complete",
+      "actor": "system",
+      "guard": "現在のgenerationと一致し件数が0",
+      "effect": "none",
+      "feedback": "0件であることと条件変更への操作を表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "failure",
+      "from": "generating",
+      "to": "failed",
+      "event": "read_failed",
+      "actor": "system",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "取得失敗と再試行手段を表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "deadline",
+      "from": "generating",
+      "to": "slow",
+      "event": "deadline",
+      "actor": "timer",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "取得が長いと表示し、同じ応答の待機を再開する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "keep_waiting",
+      "from": "slow",
+      "to": "generating",
+      "event": "continue_waiting",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "同じrequestの待機を続ける。重複した生成操作は発火しない。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "retry",
+      "from": "failed",
+      "to": "generating",
+      "event": "retry",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "保持した条件で読取を再試行する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ],
+      "operation": "report"
+    },
+    {
+      "id": "change",
+      "from": "empty",
+      "to": "configure",
+      "event": "change_conditions",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "以前の条件を残して変更できる。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "leave",
+      "from": "configure",
+      "to": "left",
+      "event": "leave",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "条件を保持して一覧へ戻る。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "normal-result",
+      "category": "normal",
+      "path": [
+        "start",
+        "ready"
+      ],
+      "expected_state": "ready",
+      "assertions": [
+        "対象条件と件数を表示する。",
+        "現在generationに一致するURLだけを提示する。"
+      ]
+    },
+    {
+      "id": "error-retry",
+      "category": "error",
+      "path": [
+        "start",
+        "failure",
+        "retry",
+        "ready"
+      ],
+      "expected_state": "ready",
+      "assertions": [
+        "期間と対象を再入力させない。",
+        "read再試行で業務書込を発生させない。"
+      ]
+    },
+    {
+      "id": "boundary-repeat-wait",
+      "category": "boundary",
+      "path": [
+        "start",
+        "deadline",
+        "keep_waiting",
+        "ready"
+      ],
+      "expected_state": "ready",
+      "assertions": [
+        "応答が来れば終了する。無応答時は同じ待機へ戻る。"
+      ]
+    },
+    {
+      "id": "boundary-empty",
+      "category": "boundary",
+      "path": [
+        "start",
+        "empty",
+        "change",
+        "start",
+        "ready"
+      ],
+      "expected_state": "ready",
+      "assertions": [
+        "0件の結果から条件を変更して完了できる。"
+      ]
+    }
+  ]
+}

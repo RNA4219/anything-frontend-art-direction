@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ワークショップ参加予約・在庫データ取込み</title>
+  <style>
+    :root { color-scheme: light; --ink:#172323; --paper:#f6f2e9; --accent:#245b48; --line:#b8bcb0; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:1rem/1.7 system-ui,sans-serif; }
+    main { max-width:1160px; padding:40px 32px 64px; margin:auto; }
+    .page-header { margin-bottom:36px; border-bottom:2px solid var(--ink); padding-bottom:20px; }
+    h1,h2 { font-family:"Yu Mincho","Hiragino Mincho ProN",serif; line-height:1.5; }
+    h1 { font-size:clamp(1.6rem,4vw,2.2rem); margin:0; }
+    h2 { font-size:1.5rem; margin:0 0 10px; }
+    h3 { font-size:1rem; margin:0 0 12px; }
+    p { margin:0 0 16px; }
+    .tasks { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:48px; }
+    .task { min-width:0; }
+    .eyebrow { color:var(--accent); font-size:.85rem; letter-spacing:.1em; font-weight:650; margin-bottom:8px; }
+    .description { margin-bottom:26px; }
+    .field { margin-bottom:18px; }
+    label,legend { font-weight:650; }
+    .field label { display:block; margin-bottom:7px; }
+    input:not([type=checkbox]) { width:100%; min-height:46px; border:1px solid var(--ink); border-radius:3px; background:#fffdf8; color:var(--ink); padding:10px 12px; font:inherit; }
+    input[type=number] { max-width:180px; }
+    input:disabled { opacity:1; background:#e8e6dc; color:#4a554e; }
+    input[type=checkbox] { width:20px; height:20px; accent-color:var(--accent); flex:0 0 auto; }
+    input[aria-invalid=true] { border-width:2px; border-style:solid; }
+    button { min-height:46px; padding:10px 16px; border:1px solid var(--accent); border-radius:3px; background:var(--accent); color:var(--paper); font:650 1rem/1.45 system-ui,sans-serif; cursor:pointer; overflow-wrap:anywhere; }
+    button.secondary { background:transparent; color:var(--accent); }
+    button:disabled { opacity:.48; cursor:default; }
+    :focus-visible { outline:3px solid var(--ink); outline-offset:4px; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .hint { font-size:.875rem; color:#435148; margin-top:10px; }
+    .field-error { font-size:.875rem; font-weight:650; margin:6px 0 0; }
+    .field-error:empty { display:none; }
+    .feedback { margin-top:24px; border-top:1px solid var(--line); padding-top:18px; }
+    .status { font-weight:650; margin:0 0 10px; }
+    .error { border-left:3px solid var(--ink); padding:8px 12px; margin:12px 0; font-weight:600; }
+    .slow { margin:12px 0; border:1px solid var(--line); padding:12px; }
+    .receipt { margin-top:20px; border:1px solid var(--accent); padding:18px; }
+    dl { margin:0; }
+    dl div { display:grid; grid-template-columns:5.5em minmax(0,1fr); gap:12px; margin-top:6px; }
+    dt { font-size:.9rem; }
+    dd { margin:0; overflow-wrap:anywhere; }
+    fieldset { margin:0; border:0; padding:0; min-width:0; }
+    legend { margin-bottom:8px; }
+    .selection { border-top:1px solid var(--line); }
+    .selection label { display:flex; gap:12px; align-items:center; padding:12px 4px; border-bottom:1px solid var(--line); }
+    progress { display:block; width:100%; accent-color:var(--accent); height:12px; margin:10px 0; }
+    .results { list-style:none; margin:16px 0; padding:0; }
+    .results li { padding:10px 0; border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 18px; justify-content:space-between; }
+    .result-name { font-weight:650; }
+    .result-state { color:var(--accent); }
+    .row-error { flex-basis:100%; font-size:.875rem; }
+    .resume { margin-top:28px; border-top:1px solid var(--line); padding-top:20px; }
+    .resume .actions { margin-top:12px; }
+    .number { overflow-wrap:anywhere; }
+    [hidden] { display:none !important; }
+    @media(max-width:760px) { main { padding:24px 20px 40px; } .tasks { grid-template-columns:1fr; gap:40px; } .task + .task { border-top:2px solid var(--ink); padding-top:30px; } .page-header { margin-bottom:28px; } }
+    @media(max-width:420px) { .actions button { flex:1 1 100%; } h2 { font-size:1.35rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="page-header"><p class="eyebrow">お手続き</p><h1>予約とデータ取込み</h1></header>
+    <div class="tasks">
+      <section class="task" aria-labelledby="reservation-title">
+        <p class="eyebrow">01 / 参加予約</p>
+        <h2 id="reservation-title">ワークショップ参加予約</h2>
+        <p class="description">参加する人の名前と人数を入力してください。</p>
+        <form id="reservation-form">
+          <div class="field">
+            <label for="reservation-name">名前</label>
+            <input id="reservation-name" name="name" autocomplete="name" required aria-describedby="name-error" placeholder="例：山田 太郎">
+            <p id="name-error" class="field-error"></p>
+          </div>
+          <div class="field">
+            <label for="reservation-people">参加人数（1〜8人）</label>
+            <input id="reservation-people" name="people" type="number" inputmode="numeric" min="1" max="8" step="1" required aria-describedby="people-error" placeholder="例：2">
+            <p id="people-error" class="field-error"></p>
+          </div>
+          <div class="actions">
+            <button id="reserve-submit" type="submit" disabled>この内容で予約する</button>
+            <button id="reserve-cancel" class="secondary" type="button" disabled>未送信の入力を破棄</button>
+          </div>
+          <p class="hint">送信後の予約取消しは、この画面ではできません。</p>
+        </form>
+        <div class="feedback">
+          <p id="reserve-status" class="status" role="status" aria-live="polite" aria-atomic="true">名前と人数を入力してください。</p>
+          <p id="reserve-error" class="error" role="alert" hidden></p>
+          <p id="reserve-slow" class="slow" hidden>応答に時間がかかっています。画面を離れても予約は取り消されません。結果が分かるまで、別の予約として送信しないでください。</p>
+          <div class="actions">
+            <button id="reserve-reconcile" type="button" hidden>予約結果を確認する</button>
+            <button id="reserve-retry" type="button" class="secondary" hidden>同じ内容で再試行</button>
+          </div>
+          <section id="receipt" class="receipt" aria-labelledby="receipt-heading" hidden>
+            <h3 id="receipt-heading">予約が確定しました</h3>
+            <dl><div><dt>予約番号</dt><dd id="receipt-id"></dd></div><div><dt>名前</dt><dd id="receipt-name"></dd></div><div><dt>参加人数</dt><dd id="receipt-people"></dd></div></dl>
+          </section>
+          <div class="actions"><button id="reserve-new" type="button" class="secondary" hidden>新しい予約を入力する</button></div>
+        </div>
+      </section>
+
+      <section class="task" aria-labelledby="import-title">
+        <p class="eyebrow">02 / 在庫管理</p>
+        <h2 id="import-title">在庫データ取込み</h2>
+        <p class="description">選んだ3件の在庫データを取り込みます。</p>
+        <fieldset id="import-selection"><legend>取込み対象</legend><div id="item-options" class="selection"></div></fieldset>
+        <div class="actions">
+          <button id="import-start" type="button">取込みを開始</button>
+          <button id="import-cancel" class="secondary" type="button" hidden>未完了の取込みを取り消す</button>
+        </div>
+        <div class="feedback">
+          <p id="import-status" class="status" role="status" aria-live="polite" aria-atomic="true">取込み対象を確認してください。</p>
+          <p id="import-error" class="error" role="alert" hidden></p>
+          <p id="import-slow" class="slow" hidden>応答に時間がかかっています。画面を離れても取込みは取り消されません。処理番号を控えて、後で結果を確認できます。</p>
+          <p id="import-job-id" class="number" hidden></p>
+          <div id="progress-region" hidden>
+            <label for="import-progress" id="progress-label">処理済み件数</label>
+            <progress id="import-progress" max="3" value="0"></progress>
+          </div>
+          <ul id="import-results" class="results" aria-label="項目ごとの結果"></ul>
+          <div class="actions">
+            <button id="import-poll" type="button" class="secondary" hidden>進捗を更新</button>
+            <button id="import-retry" type="button" hidden>失敗した項目だけ再試行</button>
+          </div>
+          <p id="import-cancel-note" class="hint" hidden>取消しは未完了の項目が対象です。取込み済みの項目は残ります。</p>
+        </div>
+        <form id="resume-form" class="resume">
+          <div class="field"><label for="resume-id">処理番号から結果を開く</label><input id="resume-id" name="jobId" autocomplete="off" required placeholder="例：job-0001"></div>
+          <div class="actions"><button id="import-resume" type="submit" class="secondary">結果を読み戻す</button></div>
+          <p class="hint">この画面で確認した直近の処理番号を保持します。</p>
+        </form>
+      </section>
+    </div>
+    <noscript><p>操作を続けるにはJavaScriptを有効にしてください。</p></noscript>
+  </main>
+  <script type="module">
+    import { INVENTORY_ITEMS } from '../shared/api.mjs';
+    import { createReservationController } from './reservation.mjs';
+    import { createImportController } from './import-job.mjs';
+    import { createDemoClient } from './demo-client.mjs';
+    import { mount } from './ui.mjs';
+
+    const service = createDemoClient();
+    mount({
+      reservation: createReservationController(service.reservation),
+      inventory: createImportController(service.inventory),
+      items: INVENTORY_ITEMS,
+    });
+  </script>
+</body>
+</html>

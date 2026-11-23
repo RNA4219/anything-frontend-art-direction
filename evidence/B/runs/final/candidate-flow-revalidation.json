@@ -1,0 +1,59 @@
+{
+  "recorded_at": "2026-11-23T06:44:42.978659+00:00",
+  "note": "Revalidate unchanged first-submission Flow JSON with the corrected checker; not a new LLM generation or a new efficacy experiment",
+  "checker_sha256": "d3e18b0e94a4d8726841706a64b1fb67afc4c01feb49efa32c7827ca7662721b",
+  "records": [
+    {
+      "file": "evidence/B/experiments/candidate/reservation.flow.json",
+      "sha256": "edd1d75d524a7607f4978bcbfa6fb2ca9695bade63b778afc1abcac55778a163",
+      "command": [
+        "python",
+        "-B",
+        "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+        "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/reservation.flow.json",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "schema": "ux-flow-check/v1",
+        "status": "pass",
+        "ok": true,
+        "issues": [],
+        "limitations": [
+          "Natural-language guards are not evaluated: graph reachability ignores guards.",
+          "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+          "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+          "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts.",
+          "Timeout escape checks user/timer paths to success or explained exit; local system events are not distinguished from service responses."
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "file": "evidence/B/experiments/candidate/import.flow.json",
+      "sha256": "455aafac915839fc137a7a0a1c162fe7a75ef37596763e1f1fb38581ae615bdc",
+      "command": [
+        "python",
+        "-B",
+        "/workspace/scratch/392a80e65402/anything-frontend-session-B/extensions/B/checks/check_flow.py",
+        "/workspace/scratch/392a80e65402/anything-frontend-session-B/evidence/B/experiments/candidate/import.flow.json",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "schema": "ux-flow-check/v1",
+        "status": "pass",
+        "ok": true,
+        "issues": [],
+        "limitations": [
+          "Natural-language guards are not evaluated: graph reachability ignores guards.",
+          "Backend idempotency, cancellation, receipts and lookup APIs are declarations, not verified facts.",
+          "Passing this check does not establish task discoverability, WCAG conformance or user completion.",
+          "normal/error/boundary scenarios are this skill's completion requirement; traces are not execution receipts.",
+          "Timeout escape checks user/timer paths to success or explained exit; local system events are not distinguished from service responses."
+        ]
+      },
+      "stderr": ""
+    }
+  ]
+}

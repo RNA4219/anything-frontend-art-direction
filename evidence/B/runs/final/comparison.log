@@ -1,0 +1,36 @@
+{
+  "baseline": {
+    "reservation": {
+      "pass": 20,
+      "fail": 0,
+      "not_run": 0
+    },
+    "import": {
+      "pass": 20,
+      "fail": 0,
+      "not_run": 0
+    },
+    "all": {
+      "pass": 40,
+      "fail": 0,
+      "not_run": 0
+    }
+  },
+  "candidate": {
+    "reservation": {
+      "pass": 20,
+      "fail": 0,
+      "not_run": 0
+    },
+    "import": {
+      "pass": 20,
+      "fail": 0,
+      "not_run": 0
+    },
+    "all": {
+      "pass": 40,
+      "fail": 0,
+      "not_run": 0
+    }
+  }
+}

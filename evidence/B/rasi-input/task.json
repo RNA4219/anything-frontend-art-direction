@@ -1,0 +1,20 @@
+{
+  "session_id": "B",
+  "objective": "Interaction Design / UX Flow independent extension",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "branch": "campaign/B-interaction-ux-flow",
+  "allowed_paths": [
+    "extensions/B/",
+    "evidence/B/"
+  ],
+  "baseline": {
+    "skill": "SKILL.md",
+    "sha256": "f1bc815f6b0765a9df35efd7498caa4448ec7b3ff193b25a6322b0f40ee5e4f5"
+  },
+  "candidate": {
+    "skill": "extensions/B/SKILL.md",
+    "sha256": null,
+    "status": "not frozen yet"
+  },
+  "formal_gate": "HOLD"
+}

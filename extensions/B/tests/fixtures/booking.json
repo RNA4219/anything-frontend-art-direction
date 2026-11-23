@@ -1,0 +1,395 @@
+{
+  "schema": "ux-flow/v1",
+  "id": "booking-request",
+  "actor": "予約する利用者",
+  "goal": "確認済みの内容で予約を一件確定する",
+  "entry_condition": "ログイン済み。対象枠を選び、人数を入力できる。",
+  "entry_state": "edit",
+  "success_predicate": "サーバーが同一操作IDのreceiptと予約内容を返し、それを画面で確認できる。",
+  "assumptions": [
+    "これは構造検査用の合成fixture。server契約は模擬であり、実APIの保証ではない。"
+  ],
+  "operations": [
+    {
+      "id": "book",
+      "side_effect": "write",
+      "retry": "same_key",
+      "idempotency": "server_key",
+      "outcome_lookup": true,
+      "cancel": "server_confirmed",
+      "stale_response": "操作IDとrequest generationを照合し、別操作の応答では現在表示を更新しない。取消後は同じ操作IDの確定結果を再確認する。",
+      "contract_evidence": "このfixtureの模擬契約: キーは利用者×予約操作、payload固定、有効24時間、異payloadは409。実運用API未検証。"
+    }
+  ],
+  "states": [
+    {
+      "id": "edit",
+      "kind": "task",
+      "description": "利用者は対象と人数を編集できる。まだ予約は送信していない。"
+    },
+    {
+      "id": "invalid",
+      "kind": "recovery",
+      "description": "人数の入力が無効。入力値を保持して該当欄を直せる。"
+    },
+    {
+      "id": "review",
+      "kind": "task",
+      "description": "入力した予約内容を確認し、編集へ戻るか確定送信を選べる。"
+    },
+    {
+      "id": "sending",
+      "kind": "wait",
+      "description": "同じ操作IDの受付結果を待つ。予約確定とは表示しない。",
+      "operation": "book",
+      "timeout_event": "deadline",
+      "wait_policy": "模擬5秒の応答期限後はunknownへ移る。待機中は取消要求または退出を選べる。"
+    },
+    {
+      "id": "unknown",
+      "kind": "recovery",
+      "description": "通信だけでは確定成否が不明。操作IDで状態照会、同一キーの再試行、説明付き退出ができる。"
+    },
+    {
+      "id": "rejected",
+      "kind": "recovery",
+      "description": "サーバーが対象枠の受付を拒否した。保持した入力を編集できる。"
+    },
+    {
+      "id": "cancelling",
+      "kind": "wait",
+      "description": "取消を要求したが、サーバーによる取消完了はまだ確認していない。",
+      "operation": "book",
+      "timeout_event": "cancel_deadline",
+      "wait_policy": "模擬5秒後はunknownへ移り、同一操作IDの状態を照会する。応答なしを取消完了と扱わない。"
+    },
+    {
+      "id": "confirmed",
+      "kind": "success",
+      "description": "サーバーreceiptと予約内容を確認できる。",
+      "proof": "同一操作IDに対するbooking_id、receipt、確定した人数。"
+    },
+    {
+      "id": "cancelled",
+      "kind": "exit",
+      "description": "サーバー確認済みの取消結果を表示する。",
+      "reason": "予約は取消済み。新しく予約する場合は別タスクとして開始できる。"
+    },
+    {
+      "id": "left",
+      "kind": "exit",
+      "description": "この画面での作業を終え、保存済みの操作IDを示す。",
+      "reason": "未送信なら予約なし。送信済みなら成否は未確定で、履歴から同一操作IDを照会する。"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "validate_invalid",
+      "from": "edit",
+      "to": "invalid",
+      "event": "continue",
+      "actor": "user",
+      "guard": "人数が1〜8の整数ではない",
+      "effect": "local",
+      "feedback": "人数のエラーと修正方法を示す。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "fix_input",
+      "from": "invalid",
+      "to": "edit",
+      "event": "edit",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "元の人数を残して編集欄へ戻る。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "review_input",
+      "from": "edit",
+      "to": "review",
+      "event": "continue",
+      "actor": "user",
+      "guard": "人数が1〜8の整数",
+      "effect": "local",
+      "feedback": "対象枠と人数を確認用に表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "edit_again",
+      "from": "review",
+      "to": "edit",
+      "event": "edit",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "入力を保持して編集へ戻り、確認済み扱いを解除する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "submit",
+      "from": "review",
+      "to": "sending",
+      "event": "confirm",
+      "actor": "user",
+      "guard": "always",
+      "effect": "server_write",
+      "feedback": "受付結果を確認中と表示し、同じ送信の重複起動を抑止する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ],
+      "operation": "book"
+    },
+    {
+      "id": "accepted",
+      "from": "sending",
+      "to": "confirmed",
+      "event": "accepted",
+      "actor": "system",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "サーバーreceiptと確定内容を表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "rejected",
+      "from": "sending",
+      "to": "rejected",
+      "event": "business_rejected",
+      "actor": "system",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "枠の受付不可を示し、入力を保持して変更先を示す。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "edit_rejected",
+      "from": "rejected",
+      "to": "edit",
+      "event": "edit",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "入力を保持して別枠を選択できる。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "lost_response",
+      "from": "sending",
+      "to": "unknown",
+      "event": "connection_lost",
+      "actor": "system",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "成否不明と伝え、状態確認を提示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "timed_out",
+      "from": "sending",
+      "to": "unknown",
+      "event": "deadline",
+      "actor": "timer",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "待機が長い。処理の成否は不明と表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "lookup",
+      "from": "unknown",
+      "to": "sending",
+      "event": "check_status",
+      "actor": "user",
+      "guard": "always",
+      "effect": "reconcile",
+      "feedback": "元の操作IDで状態を照会する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ],
+      "operation": "book"
+    },
+    {
+      "id": "retry_same",
+      "from": "unknown",
+      "to": "sending",
+      "event": "retry",
+      "actor": "user",
+      "guard": "同一キー・同一payload・契約期限内である",
+      "effect": "server_write",
+      "feedback": "同一操作IDの結果を再確認する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ],
+      "operation": "book"
+    },
+    {
+      "id": "leave_unknown",
+      "from": "unknown",
+      "to": "left",
+      "event": "leave",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "操作IDと履歴での確認方法を表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "request_cancel",
+      "from": "sending",
+      "to": "cancelling",
+      "event": "cancel",
+      "actor": "user",
+      "guard": "always",
+      "effect": "server_cancel",
+      "feedback": "取消を要求したことと、まだ確認待ちであることを伝える。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ],
+      "operation": "book"
+    },
+    {
+      "id": "cancel_ack",
+      "from": "cancelling",
+      "to": "cancelled",
+      "event": "cancelled",
+      "actor": "system",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "サーバー確認済みの取消結果を表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "cancel_too_late",
+      "from": "cancelling",
+      "to": "confirmed",
+      "event": "already_accepted",
+      "actor": "system",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "取消前に確定した事実とreceiptを表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "cancel_timeout",
+      "from": "cancelling",
+      "to": "unknown",
+      "event": "cancel_deadline",
+      "actor": "timer",
+      "guard": "always",
+      "effect": "none",
+      "feedback": "取消の成否も未確定として状態確認へ案内する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    },
+    {
+      "id": "leave_edit",
+      "from": "edit",
+      "to": "left",
+      "event": "leave",
+      "actor": "user",
+      "guard": "always",
+      "effect": "local",
+      "feedback": "未送信のため予約は作成されていないと表示する。",
+      "preserves": [
+        "入力値",
+        "対象ID"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "normal-confirm",
+      "category": "normal",
+      "path": [
+        "review_input",
+        "submit",
+        "accepted"
+      ],
+      "expected_state": "confirmed",
+      "assertions": [
+        "receiptと人数が一致する。",
+        "同一操作IDの予約レコードは一件。"
+      ]
+    },
+    {
+      "id": "error-recover",
+      "category": "error",
+      "path": [
+        "validate_invalid",
+        "fix_input",
+        "review_input",
+        "submit",
+        "lost_response",
+        "lookup",
+        "accepted"
+      ],
+      "expected_state": "confirmed",
+      "assertions": [
+        "修正対象以外の入力を保持する。",
+        "成否不明の間に成功表示を出さない。",
+        "状態照会の操作IDを変えない。"
+      ]
+    },
+    {
+      "id": "boundary-cancel-race",
+      "category": "boundary",
+      "path": [
+        "review_input",
+        "submit",
+        "request_cancel",
+        "cancel_timeout",
+        "retry_same",
+        "accepted"
+      ],
+      "expected_state": "confirmed",
+      "assertions": [
+        "取消要求だけで取消済みと表示しない。",
+        "同一キー再試行で予約を二重作成しない。"
+      ]
+    }
+  ]
+}

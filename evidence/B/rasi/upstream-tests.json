@@ -1,0 +1,32 @@
+{
+  "tool": "R-ASI",
+  "repository_revision": "f5b638085dece1f997210f9b653aceb8fe9b32d4",
+  "source_files_modified": false,
+  "command": "python -m pytest -q",
+  "python": "3.12.14",
+  "pytest": "9.2.0",
+  "platform": "Linux",
+  "returncode": 1,
+  "passed": 147,
+  "failed": 2,
+  "skipped": 0,
+  "elapsed_seconds_reported_by_pytest": 11.86,
+  "failures": [
+    {
+      "test_id": "tests/test_cli.py::test_verify_deep_json_input_error[array]",
+      "expected_stderr_substring": "深すぎ",
+      "actual_stderr": "エラー: トップレベルがobjectでない\n",
+      "observed_cli_returncode": 2,
+      "traceback_in_cli_stderr": false
+    },
+    {
+      "test_id": "tests/test_cli.py::test_verify_deep_json_input_error[object]",
+      "expected_stderr_substring": "深すぎ",
+      "actual_stderr": "エラー: schema不一致: None\n",
+      "observed_cli_returncode": 2,
+      "traceback_in_cli_stderr": false
+    }
+  ],
+  "interpretation": "Upstream suite is not all green in this executor. Both failures are error-message assertions for deeply nested invalid JSON; the CLI still rejects both inputs with exit 2 and no traceback. Runtime-specific parse depth behavior is a hypothesis, not a verified root cause. This is tool verification and does not count as extension B task completion or independent UX evaluation.",
+  "source_privacy": "Failure source-code excerpts are not redistributed; this record retains test identifiers, observed errors and counts. The pinned upstream private repository is needed to reproduce the suite."
+}

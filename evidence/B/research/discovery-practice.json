@@ -1,0 +1,270 @@
+[
+  {
+    "query": "site.nngroup.com articles user flows task flows journey mapping task analysis\nsite.w3.org WAI forms multi page notifications error prevention status messages\nsite.designsystem.digital.gov step indicator validation user task\nsite.carbondesignsystem.com patterns loading error notification retry",
+    "queries": [
+      "site.nngroup.com articles user flows task flows journey mapping task analysis",
+      "site.w3.org WAI forms multi page notifications error prevention status messages",
+      "site.designsystem.digital.gov step indicator validation user task",
+      "site.carbondesignsystem.com patterns loading error notification retry"
+    ],
+    "method": "WebSearch",
+    "engine": "system1",
+    "hits_scope": "merged response for this batch; per-query membership not exposed by API",
+    "hits": [
+      {
+        "title": "User Journeys vs. User Flows - NN/G",
+        "url": "https://www.nngroup.com/articles/user-journeys-vs-user-flows/"
+      },
+      {
+        "title": "Task Analysis: Support Users in Achieving Their Goals - NN/G",
+        "url": "https://www.nngroup.com/articles/task-analysis/"
+      },
+      {
+        "title": "Multi-page Forms | Web Accessibility Initiative (WAI) | W3C",
+        "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/"
+      },
+      {
+        "title": "User Notification | Web Accessibility Initiative (WAI) | W3C",
+        "url": "https://www.w3.org/WAI/tutorials/forms/notifications/?trk=public_post_comment-text"
+      },
+      {
+        "title": "Understanding Success Criterion 4.1.3: Status Messages | WAI | W3C",
+        "url": "https://www.w3.org/WAI/WCAG21/Understanding/status-messages"
+      },
+      {
+        "title": "Understanding Success Criterion 3.3.6: Error Prevention (All) | WAI | W3C",
+        "url": "https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-all.html"
+      },
+      {
+        "title": "Step indicator | U.S. Web Design System (USWDS)",
+        "url": "https://designsystem.digital.gov/components/step-indicator/"
+      },
+      {
+        "title": "Notifications | Carbon Design System",
+        "url": "https://www.carbondesignsystem.com/building-blocks/core/patterns/notifications"
+      },
+      {
+        "title": "Loading | Carbon Design System",
+        "url": "https://www.carbondesignsystem.com/building-blocks/core/patterns/loading"
+      }
+    ]
+  },
+  {
+    "query": "site.developer.apple.com/design/human-interface-guidelines/progress-indicators cancel progress\nsite.aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/\nsite.fluent2.microsoft.design progress bar cancel loading\nsite.nngroup.com confirmation dialogs undo user control cancel",
+    "queries": [
+      "site.developer.apple.com/design/human-interface-guidelines/progress-indicators cancel progress",
+      "site.aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+      "site.fluent2.microsoft.design progress bar cancel loading",
+      "site.nngroup.com confirmation dialogs undo user control cancel"
+    ],
+    "method": "WebSearch",
+    "engine": "system2",
+    "hits_scope": "merged response for this batch; per-query membership not exposed by API",
+    "hits": [
+      {
+        "title": "Progress indicators | Apple Developer Documentation",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators?changes=_6"
+      },
+      {
+        "title": "Progress indicators | Apple Developer Documentation",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators?changes=_4_6"
+      },
+      {
+        "title": "references-details-empty",
+        "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/"
+      },
+      {
+        "title": "進行状況インジケータ | Apple Developer Documentation",
+        "url": "https://developer.apple.com/jp/design/human-interface-guidelines/progress-indicators"
+      },
+      {
+        "title": "Confirmation Dialogs Can Prevent User Errors - NN/G",
+        "url": "https://www.nngroup.com/articles/confirmation-dialog/"
+      },
+      {
+        "title": "iOS Progressbar - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/ios/core/progressbar/usage"
+      },
+      {
+        "title": "React Progress Bar - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/web/react/core/progressbar/usage/"
+      },
+      {
+        "title": "Progress Indicators - UI Controls - iOS Human Interface Guidelines",
+        "url": "https://codershigh.github.io/guidelines/ios/human-interface-guidelines/ui-controls/progress-indicators/index.html"
+      },
+      {
+        "title": "references-details-empty",
+        "url": "https://aws.amazon.com.cdn.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/"
+      },
+      {
+        "title": "iOS Heads-up display - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/ios/core/hud/usage"
+      },
+      {
+        "title": "Feedback | Apple Developer Documentation",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/feedback"
+      },
+      {
+        "title": "Apple Human Interface Guidelines — Progress indicators — v26 vs v25",
+        "url": "https://developerguidelines.com/human-interface-guidelines/version/26/progress-indicators/"
+      },
+      {
+        "title": "Reset and Cancel Buttons - NN/G",
+        "url": "https://www.nngroup.com/articles/reset-and-cancel-buttons/"
+      },
+      {
+        "title": "Cancel vs Close: Design to Distinguish the Difference - NN/G",
+        "url": "https://www.nngroup.com/articles/cancel-vs-close/?lm=ui-modes-modals&pt=youtubevideo"
+      },
+      {
+        "title": "references-details-empty",
+        "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/?did=ba_card&trk=ba_card"
+      },
+      {
+        "title": "React Spinner - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/web/react/core/spinner/usage"
+      },
+      {
+        "title": "Making retries safe with idempotent APIs",
+        "url": "https://d1.awsstatic.com/builderslibrary/pdfs/making-retries-safe-with-idempotent-apis-malcolm-featonby.pdf?did=ba_card-body&trk=ba_card-body"
+      },
+      {
+        "title": "Feedback | Apple Developer Documentation",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/feedback?changes=latest_5_9"
+      },
+      {
+        "title": "apple-os-documentation/human-interface-guidelines/components/progress-indicators.md at main · incrediblecrab/apple-os-documentation · GitHub",
+        "url": "https://github.com/incrediblecrab/apple-os-documentation/blob/main/human-interface-guidelines/components/progress-indicators.md"
+      },
+      {
+        "title": "Giving Users Control | Usability & Digital Accessibility",
+        "url": "https://usability.yale.edu/ux/best-practices/giving-users-control"
+      },
+      {
+        "title": "Apple Human Interface Guidelines: Controls",
+        "url": "https://leopard-adc.pepas.com/documentation/UserExperience/Conceptual/AppleHIGuidelines/XHIGControls/XHIGControls.html"
+      },
+      {
+        "title": "agentic-awesome-skills/skills/hig-components-status/references/progress-indicators.md at main · sickn33/agentic-awesome-skills · GitHub",
+        "url": "https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/hig-components-status/references/progress-indicators.md?plain=1"
+      },
+      {
+        "title": "〖Appleのガイドラインをwebデザイナーが読み解く〗 #5 状態を伝える｜Vol.01 進行状況インジケータ｜yasui",
+        "url": "https://note.com/yasuiux_0511/n/nb00dd16b0ce0"
+      },
+      {
+        "title": "Apple Human Interface Guidelines",
+        "url": "https://blog-geofcrowl-static-images.s3.us-east-1.amazonaws.com/2020-02-17-collection-higs/Apple-OSXHIGuidelines-2009.pdf"
+      },
+      {
+        "title": "Sheets | Apple Developer Documentation",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/sheets?changes=_1_1"
+      },
+      {
+        "title": "React Skeleton - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/web/react/core/skeleton/usage/"
+      },
+      {
+        "title": "Your AWS Application Is Failing. Why Retrying Could Make It Worse | AWS Builder Center",
+        "url": "https://builder.aws.com/content/3KvjNCq9VBIwysI7cAROCndPDag/your-aws-application-is-failing-why-retrying-could-make-it-worse"
+      },
+      {
+        "title": "UI Copy: UX Guidelines for Command Names and Keyboard Shortcuts - NN/G",
+        "url": "https://www.nngroup.com/articles/ui-copy/?trk=article-ssr-frontend-pulse_little-text-block"
+      },
+      {
+        "title": "User Control and Freedom (Usability Heuristic #3) - NN/G",
+        "url": "https://www.nngroup.com/articles/user-control-and-freedom/?lm=aesthetic-minimalist-design&pt=article"
+      },
+      {
+        "title": "User Control and Freedom (Usability Heuristic #3) - NN/G",
+        "url": "https://www.nngroup.com/articles/user-control-and-freedom/?trk=article-ssr-frontend-pulse_little-text-block"
+      },
+      {
+        "title": "React Button - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/web/react/core/button/usage/"
+      },
+      {
+        "title": "Toast - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/web/react/core/toast/usage"
+      },
+      {
+        "title": "iOS Human Interface Guidelines (TP40006556 7.4.0)",
+        "url": "https://developer.bag-xml.com/assets/docs/MobileHIG.pdf"
+      },
+      {
+        "title": "Dialogs - GNOME Human Interface Guidelines",
+        "url": "https://developer.gnome.org/hig/patterns/feedback/dialogs.html"
+      },
+      {
+        "title": "Wait UX - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/wait-ux"
+      },
+      {
+        "title": "Android Progress indicator - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/android/core/progressindicator/usage"
+      },
+      {
+        "title": "Progress | Microsoft Learn",
+        "url": "https://learn.microsoft.com/en-us/fluent-ui/web-components/components/progress"
+      },
+      {
+        "title": "Android Progress indicator - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/android/core/progressindicator/usage/"
+      },
+      {
+        "title": "Toast - Fluent 2 Design System",
+        "url": "https://fluent2.microsoft.design/components/web/react/core/toast/usage/"
+      },
+      {
+        "title": "New Amazon Builders’ Library Article: Making retries safe with idempotent APIs - AWS",
+        "url": "https://aws.amazon.com/about-aws/whats-new/2021/01/new-abl-article-making-retries-safe-with-idempotent-APIs/"
+      },
+      {
+        "title": "@Infr Seed — Ada — infr",
+        "url": "https://www.infr.us/s/3f"
+      },
+      {
+        "title": "REL05-BP03 Control and limit retry calls - AWS Well-Architected Framework",
+        "url": "https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/rel_mitigate_interaction_failure_limit_retries.html"
+      },
+      {
+        "title": "User Control and Freedom (Usability Heuristic #3) - NN/G",
+        "url": "https://2.zoppoz.workers.dev/https/www.nngroup.com/articles/user-control-and-freedom/"
+      },
+      {
+        "title": "Making retries safe with idempotent APIs | AWS Builder Center",
+        "url": "https://builder.aws.com/content/3Ev0BENTyBr0XxzRk5FDZzgNYos/m"
+      },
+      {
+        "title": "REL04-BP04 Make all responses idempotent - AWS Well-Architected Framework",
+        "url": "https://docs.aws.amazon.com/wellarchitected/2024-06-27/framework/rel_prevent_interaction_failure_idempotent.html"
+      },
+      {
+        "title": "REL05-BP03 Control and limit retry calls - AWS Well-Architected Framework",
+        "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel05-bp03.html"
+      },
+      {
+        "title": "aws-durable-execution-docs/docs/patterns/best-practices/idempotency.md at main · aws/aws-durable-execution-docs · GitHub",
+        "url": "https://github.com/aws/aws-durable-execution-docs/blob/main/docs/patterns/best-practices/idempotency.md"
+      },
+      {
+        "title": "Cancel vs Close: Design to Distinguish the Difference - NN/G",
+        "url": "https://2.zoppoz.workers.dev/https/www.nngroup.com/articles/cancel-vs-close/"
+      },
+      {
+        "title": "Making retries safe with idempotent APIs - Runtime Signals",
+        "url": "https://runtimesignals.tech/sources/aws-idempotent-apis"
+      },
+      {
+        "title": "iPhone Human Interface Guidelines",
+        "url": "https://www.maretron.com/support/manuals/Documents/MobileHIG.pdf"
+      },
+      {
+        "title": "Dangerous UX: Consequential Options Close to Benign Options - NN/G",
+        "url": "https://www.nngroup.com/articles/proximity-consequential-options/?lm=hostile-error-messages&pt=article"
+      }
+    ]
+  }
+]

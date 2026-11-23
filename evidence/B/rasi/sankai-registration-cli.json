@@ -1,0 +1,58 @@
+{
+  "executed_at": "2026-11-23T06:22:18+00:00",
+  "results": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "verify",
+        "--sankai",
+        "rasi-input/sankai.json"
+      ],
+      "returncode": 0,
+      "stdout": "検証成功: $WORKTREE/evidence/B/.ga/receipts/verify-fe36fdf4f387bdd32827d72d149bc499fb23f6e50c17ef72421c51cef398cc5a.json\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "pipeline",
+        "--sankai",
+        "rasi-input/sankai.json",
+        "--store",
+        "rasi/cas"
+      ],
+      "returncode": 0,
+      "stdout": "pipeline成功: $WORKTREE/evidence/B/.ga/receipts/pipeline-03edde585a739a7cc3ee0befc66cddd8fdf79da592c6b470e08f812263c67634.json\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "cas-verify",
+        "--sha256",
+        "5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34",
+        "--store",
+        "rasi/cas"
+      ],
+      "returncode": 0,
+      "stdout": "CAS再検証成功: $WORKTREE/evidence/B/.ga/receipts/cas-verify-5dfdd3e031bcae5b9f41291963b3c4144450da4d5b25a2da584d35626781732e.json\n",
+      "stderr": ""
+    }
+  ],
+  "pipeline_receipt": ".ga/receipts/pipeline-03edde585a739a7cc3ee0befc66cddd8fdf79da592c6b470e08f812263c67634.json",
+  "native_cas_sha256": "5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34",
+  "interpretation": "sankai notes verified and untrusted descriptor packaged/stored; no Skill implementation execution, independent evaluation or promotion occurred in R-ASI.",
+  "formal_gate": "HOLD"
+}

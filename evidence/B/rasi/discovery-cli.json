@@ -1,0 +1,117 @@
+{
+  "captured_at": "2026-11-23T06:08:27+00:00",
+  "tool_version": "0.0.2",
+  "results": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "0.0.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout": "usage: rasi [-h] [--root ROOT] [--version]\n            {verify,candidate,cas-store,cas-verify,pipeline,lock,policy-check,cost-add,cost-report,campaign-check,resume-check,experience-add,experience-invalidate,experience-restore,query-check,execute,evaluate,promote}\n            ...\n\nsankai成果物を扱う薄い接続CLI\n\npositional arguments:\n  {verify,candidate,cas-store,cas-verify,pipeline,lock,policy-check,cost-add,cost-report,campaign-check,resume-check,experience-add,experience-invalidate,experience-restore,query-check,execute,evaluate,promote}\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT           repo root (既定cwd)\n  --version             show program's version number and exit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "lock",
+        "--manifest",
+        "rasi-input/lock.json"
+      ],
+      "returncode": 2,
+      "stdout": "",
+      "stderr": "エラー: containers.runtime.image_digest不正\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "policy-check",
+        "--policy",
+        "rasi-input/policy.json"
+      ],
+      "returncode": 2,
+      "stdout": "",
+      "stderr": "エラー: frozen_at: 非空文字列でない\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "campaign-check",
+        "--campaign",
+        "rasi-input/campaign.json"
+      ],
+      "returncode": 2,
+      "stdout": "",
+      "stderr": "エラー: cost_settingsがobjectでない\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "execute"
+      ],
+      "returncode": 3,
+      "stdout": "",
+      "stderr": "エラー: executeは未接続です\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "evaluate"
+      ],
+      "returncode": 3,
+      "stdout": "",
+      "stderr": "エラー: evaluateは未接続です\n"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "rasi",
+        "--root",
+        "evidence/B",
+        "promote"
+      ],
+      "returncode": 3,
+      "stdout": "",
+      "stderr": "エラー: promoteは未接続です\n"
+    }
+  ],
+  "interpretation": "0 only proves the specific CLI action; exit2 on incomplete drafts is expected; execute/evaluate/promote exit3 prove not connected. Failed commands do not create R-ASI receipts."
+}

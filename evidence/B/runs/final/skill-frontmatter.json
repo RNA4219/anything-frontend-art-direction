@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "/home/agent/.codex/plugins/cache/openai-curated-remote/work-skill-creator/0.1.2/skills/skill-creator/scripts/quick_validate.py",
+    "extensions/B"
+  ],
+  "validator_sha256": "59f2571277f200adbd482329bfa35179f30f073b76d68699dfae22596ee80ca0",
+  "returncode": 0,
+  "stdout": "Skill is valid!\n",
+  "stderr": "",
+  "recorded_at": "2026-11-23T06:48:22.048153+00:00",
+  "scope": "Official skill-creator frontmatter validation; independent package checks are in runs/final/run.json; no installation was performed."
+}

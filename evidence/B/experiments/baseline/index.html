@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>予約と在庫取込み</title>
+  <style>
+    :root { --ink:#172323; --paper:#f6f2e9; --accent:#245b48; --line:rgba(23,35,35,.28); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:1rem/1.7 system-ui,sans-serif; }
+    main { max-width:1140px; margin:auto; padding:40px 28px 64px; }
+    h1,h2 { font-family:"Yu Mincho","Hiragino Mincho ProN",serif; line-height:1.45; font-weight:600; }
+    h1 { font-size:clamp(1.7rem,3vw,2.4rem); margin:0 0 30px; }
+    h2 { margin:0 0 10px; font-size:1.55rem; }
+    h3 { margin:0 0 8px; font-size:1.05rem; }
+    p { margin:0 0 16px; }
+    .areas { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px; align-items:start; }
+    section { min-width:0; border-top:3px solid var(--accent); padding-top:22px; }
+    .intro { margin-bottom:26px; }
+    .field { margin-bottom:20px; }
+    label,legend { font-weight:650; }
+    label { display:block; margin-bottom:6px; }
+    input:not([type="checkbox"]) { display:block; width:100%; min-width:0; min-height:46px; border:1px solid var(--ink); border-radius:3px; background:var(--paper); color:var(--ink); padding:9px 12px; font:inherit; }
+    input[type="number"] { max-width:10rem; }
+    input[readonly] { border-style:dashed; }
+    input[aria-invalid="true"] { border-width:2px; }
+    .help,.field-error { font-size:.88rem; margin:5px 0 0; }
+    .field-error { font-weight:650; }
+    fieldset { border:0; padding:0; margin:0 0 22px; min-width:0; }
+    legend { padding:0; margin-bottom:8px; }
+    .choice { display:flex; align-items:center; gap:10px; margin:0; padding:10px 0; font-weight:400; border-bottom:1px solid var(--line); cursor:pointer; }
+    .choice input { flex:0 0 auto; width:20px; height:20px; accent-color:var(--accent); }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
+    button { min-height:44px; max-width:100%; padding:9px 16px; border:1px solid var(--ink); border-radius:3px; background:transparent; color:var(--ink); font:600 .95rem/1.5 system-ui,sans-serif; cursor:pointer; }
+    button.primary { color:var(--paper); background:var(--accent); border-color:var(--accent); }
+    button:disabled { opacity:.5; cursor:default; }
+    :focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+    .result { padding:18px 0 0; margin-top:24px; border-top:1px solid var(--line); overflow-wrap:anywhere; }
+    .status { font-weight:650; margin-bottom:12px; }
+    .error { border-left:3px solid var(--ink); padding:8px 12px; margin:12px 0; }
+    dl { display:grid; grid-template-columns:auto minmax(0,1fr); gap:8px 20px; margin:16px 0; }
+    dt { font-weight:600; }
+    dd { margin:0; overflow-wrap:anywhere; }
+    progress { display:block; width:100%; height:14px; accent-color:var(--accent); margin:12px 0 6px; }
+    table { width:100%; border-collapse:collapse; margin:16px 0; font-size:.94rem; }
+    th,td { text-align:left; padding:10px 5px; vertical-align:top; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
+    th:first-child { width:54%; }
+    td small { display:block; line-height:1.5; margin-top:4px; }
+    details { margin-top:26px; border-top:1px solid var(--line); padding-top:16px; }
+    summary { cursor:pointer; font-weight:600; }
+    details .field { margin-top:16px; }
+    .storage-note { font-size:.9rem; border-left:3px solid var(--ink); padding-left:12px; }
+    [hidden] { display:none !important; }
+    @media(max-width:760px) {
+      main { padding:28px 20px 48px; }
+      .areas { grid-template-columns:minmax(0,1fr); gap:42px; }
+      h2 { font-size:1.4rem; }
+      .actions button { flex:1 1 9rem; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>予約と在庫取込み</h1>
+    <p id="startup" role="status">準備しています…</p>
+    <p id="storage-note" class="storage-note" hidden>この端末に処理を保存できません。画面を閉じる前に結果をご確認ください。</p>
+    <div class="areas">
+      <section aria-labelledby="reservation-title" id="reservation-area">
+        <h2 id="reservation-title">ワークショップ参加予約</h2>
+        <p class="intro">参加する人の名前と人数を入力してください。</p>
+        <form id="reservation-form" novalidate>
+          <div class="field">
+            <label for="reservation-name">名前</label>
+            <input id="reservation-name" name="name" autocomplete="name" required placeholder="山田 太郎" aria-describedby="name-help name-error">
+            <p class="help" id="name-help">参加する人の名前を入力してください。</p>
+            <p class="field-error" id="name-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="reservation-people">参加人数（1〜8人）</label>
+            <input id="reservation-people" name="people" type="number" min="1" max="8" step="1" inputmode="numeric" required placeholder="2" aria-describedby="people-help people-error">
+            <p class="help" id="people-help">1〜8の整数で入力してください。</p>
+            <p class="field-error" id="people-error" hidden></p>
+          </div>
+          <div class="actions">
+            <button class="primary" id="reservation-submit" type="submit" disabled>予約を確定する</button>
+            <button id="reservation-cancel" type="button" disabled>入力を破棄する</button>
+          </div>
+          <div class="actions" id="reservation-recovery" hidden>
+            <button id="reservation-reconcile" type="button">予約結果を確認する</button>
+            <button id="reservation-retry" type="button">同じ予約を再試行する</button>
+          </div>
+        </form>
+        <div class="result">
+          <h3>予約結果</h3>
+          <p id="reservation-status" class="status" role="status" aria-live="polite" tabindex="-1">名前と人数を入力してください。</p>
+          <p id="reservation-error" class="error" role="alert" hidden></p>
+          <p id="reservation-close-note" class="help" hidden>画面を閉じても予約の取消しにはなりません。結果を確認するまで同じ予約を使ってください。</p>
+          <dl id="reservation-receipt" hidden>
+            <dt>予約番号</dt><dd id="receipt-id"></dd>
+            <dt>名前</dt><dd id="receipt-name"></dd>
+            <dt>参加人数</dt><dd id="receipt-people"></dd>
+          </dl>
+          <button id="reservation-new" type="button" hidden>別の予約を入力する</button>
+        </div>
+      </section>
+      <section aria-labelledby="import-title" id="import-area">
+        <h2 id="import-title">在庫データ取込み</h2>
+        <p class="intro">選んだ3件の在庫データを取り込みます。</p>
+        <fieldset id="import-selection" disabled>
+          <legend>取込み対象</legend>
+          <label class="choice"><input type="checkbox" value="a" checked>青いノート</label>
+          <label class="choice"><input type="checkbox" value="b" checked>赤い鉛筆</label>
+          <label class="choice"><input type="checkbox" value="c" checked>白い封筒</label>
+        </fieldset>
+        <p id="selection-help" class="help">3件を選択しています。</p>
+        <div class="actions">
+          <button class="primary" id="import-start" type="button" disabled>取込みを開始する</button>
+          <button id="import-poll" type="button" hidden>進捗を更新する</button>
+          <button id="import-retry" type="button" hidden>失敗した項目を再試行する</button>
+          <button id="import-cancel" type="button" hidden>取込みを中止する</button>
+        </div>
+        <div class="result">
+          <h3>取込み結果</h3>
+          <p id="import-status" class="status" role="status" aria-live="polite" tabindex="-1">取込み対象を確認してください。</p>
+          <p id="import-error" class="error" role="alert" hidden></p>
+          <div id="import-progress" hidden>
+            <p id="import-id" class="help"></p>
+            <progress id="import-bar" max="3" value="0" aria-label="処理済みの件数"></progress>
+            <p id="import-count"></p>
+            <table>
+              <caption class="help">項目ごとの取込み結果</caption>
+              <thead><tr><th scope="col">項目</th><th scope="col">結果</th></tr></thead>
+              <tbody id="import-results"></tbody>
+            </table>
+          </div>
+          <button id="import-new" type="button" hidden>新しい取込みを選ぶ</button>
+        </div>
+        <details>
+          <summary>前の取込みを確認する</summary>
+          <form id="resume-form">
+            <div class="field">
+              <label for="resume-id">処理番号</label>
+              <input id="resume-id" name="jobId" required autocomplete="off" aria-describedby="resume-help">
+              <p id="resume-help" class="help">取込み結果に表示された処理番号を入力してください。</p>
+            </div>
+            <button id="resume-button" type="submit" disabled>取込み結果を読み戻す</button>
+          </form>
+        </details>
+      </section>
+    </div>
+    <noscript><p>この画面の操作にはJavaScriptを有効にしてください。</p></noscript>
+  </main>
+  <script type="module">
+    import { createReservationHarness, createImportHarness, INVENTORY_ITEMS } from '../shared/api.mjs';
+    import { mount } from './ui.mjs';
+    mount({ reservationHarness: createReservationHarness(), importHarness: createImportHarness(), inventoryItems: INVENTORY_ITEMS }).catch(() => {
+      const message = document.getElementById('startup');
+      message.textContent = '画面を準備できませんでした。ページを再読み込みしてください。';
+      message.hidden = false;
+      message.setAttribute('role', 'alert');
+    });
+  </script>
+</body>
+</html>

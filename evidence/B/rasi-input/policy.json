@@ -1,0 +1,34 @@
+{
+  "schema": "evaluation-policy/v1",
+  "policy_id": "anything-frontend-B-interaction-ux-flow-20261123",
+  "frozen_at": null,
+  "noise_calibration": {
+    "kind": "ledger",
+    "ref": null,
+    "sha256": null
+  },
+  "statistics": {
+    "method": "deterministic case comparison (not a population effect estimate)",
+    "params": {}
+  },
+  "judgement_unit": "task x scenario x acceptance assertion",
+  "sufficiency": {
+    "rule": "Normal, failure and boundary cases for two different task families; independent blind efficacy evaluation still required for formal promotion."
+  },
+  "iteration": {
+    "max_retries": 0,
+    "stop_rule": "Stop formal promotion if no independently controlled holdout or complete identity."
+  },
+  "thresholds": {
+    "min_improvement": 0,
+    "max_regression": 0
+  },
+  "holdout": {
+    "identity_sha256": null,
+    "reuse_limit": 0,
+    "exposure_limit": 0,
+    "stop_condition": "No independent holdout exists in this campaign; cannot formally promote."
+  },
+  "template_status": "draft; not frozen or passed",
+  "formal_gate": "HOLD"
+}

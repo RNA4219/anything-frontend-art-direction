@@ -1,0 +1,24 @@
+{
+  "schema": "b-experiment-generation/v1",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "conditions": [
+    "baseline: existing Art Direction only",
+    "candidate: same existing Art Direction + B"
+  ],
+  "generation": "fresh agents, fork_turns none, inherited same model; exact revision/seed not exposed",
+  "temperature": "not exposed",
+  "attempts_per_arm": 1,
+  "holdout": "none; authored execution tests; shared filesystem is not an enforced isolation boundary",
+  "browser": "blocked; not attempted by generators",
+  "inputs": {
+    "shared/tasks.md": "92b7aeb64c2b8d00694e62be1135fe166096c285436cc0a289aebc216ac10772",
+    "shared/visual-lock.md": "7d542816e25b728a2a0cdb8fd8785ad9c8e1a121be29022ff2325023902b617e",
+    "shared/api.mjs": "b2dd678d050d5b51351f3daf846ccdae1cc1ef247068e7b0e682d2f6f272d1e1",
+    "baseline-prompt.md": "14d385a254a42ad65d9e92784f69d73f955739f41da45f0d5b146a71791a836e",
+    "candidate-prompt.md": "5237f80f6d1cbe21ee7a6741887192a71ec4ac68656c8daa23019375146ea7b2"
+  },
+  "candidate_skill_commit": "58bed659cc7f39d316794625ad0475084b38df7e",
+  "candidate_skill_manifest": "generation-skill-input.json",
+  "evaluator_manifest": "evaluator-freeze.json",
+  "generator_instruction_isolation": "Separate fresh agents instructed to read only assigned inputs. Shared OS filesystem is not an enforcement boundary."
+}

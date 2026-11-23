@@ -1,0 +1,22 @@
+{
+  "schema": "b-submission-snapshot/v1",
+  "arm": "baseline",
+  "submission": 1,
+  "recorded_at": "2026-11-23T06:39:35.510434+00:00",
+  "files": {
+    "common.mjs": "a94615927d38a0a608e1f502938747bf6273939b8c498c9ac1b8656065800e65",
+    "decisions.md": "204e4b43e681146bdbab9b6eeed076b8ce921362e84a3222700ffdacb11b34e1",
+    "demo-runtime.mjs": "054c010ca4ed74f98414f3528c30b6cbac18df29182d5198036d7e4588ac7d3f",
+    "import-job.mjs": "8edbe177fa46db47da502762b5564f498f87c301d0aa1d9d488acac974de97bd",
+    "index.html": "6a3faabb714d316f7cbc4e5a32be8a158aee425dab07bf3a13dd82db341c367a",
+    "reservation.mjs": "7982ec58eafe3c744aa9f27983d34a4e020b3b0514a2a21c32b809397f303f82",
+    "self-check.mjs": "c2ebc98edc3eeff18c71ef94d7ba91bf5012ad523ea50e12458c6ca2a5f2abd3",
+    "ui.mjs": "4b1c24217b05b6a2219e8dad7c011233bdbe5eb61589d3095d308a9b50537b77"
+  },
+  "tree_sha256": "88820b368e6ee063a1c469d6604db8db9b13896ff2ef41de9ddcb7b0ef83d451",
+  "notes": [
+    "First submitted artifact after generator self checks; internal pre-submission edits are not captured as separate trials.",
+    "No shared evaluator results were given to the generator.",
+    "This snapshot precedes common evaluation; no repairs to submitted code."
+  ]
+}

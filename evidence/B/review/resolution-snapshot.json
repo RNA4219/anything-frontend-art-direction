@@ -1,0 +1,39 @@
+{
+  "reviewed_at_utc": "2026-11-23T06:44:54.731110+00:00",
+  "python_version": "3.12.14",
+  "scope": "limited resolution review of B-REV-01 and B-REV-02; experiments not read",
+  "reviewed_files": [
+    {
+      "path": "extensions/B/SKILL.md",
+      "sha256": "a1bbb43cc1d13439d87d84be6a2c2102344f3c087c96a88c669fb9da0253a033"
+    },
+    {
+      "path": "extensions/B/checks/check_flow.py",
+      "sha256": "d3e18b0e94a4d8726841706a64b1fb67afc4c01feb49efa32c7827ca7662721b"
+    },
+    {
+      "path": "extensions/B/references/flow-contract.md",
+      "sha256": "0a28fa5459cbac3c08f3481275d6d3c80a51bae02528f51230a7480f1b66aae1"
+    },
+    {
+      "path": "extensions/B/references/principles.md",
+      "sha256": "b7912503fc5f545e91a9a7b39894fa4ec3bdcce52ace03392ccc18f6c43db72b"
+    },
+    {
+      "path": "extensions/B/references/integration.md",
+      "sha256": "384dafa8eb269c98e2bbd0e5fe4ef14665eb70e6dae886de71910edb8e7962d4"
+    },
+    {
+      "path": "extensions/B/tests/test_flow_check.py",
+      "sha256": "1a80e05f85eb922a22ed848f90251a2e734322143dc9884f050a4975f55c3f3c"
+    },
+    {
+      "path": "extensions/B/tests/fixtures/booking.json",
+      "sha256": "b8d1e90a00c9518cd1b9124ed2b8c8df5445ba169c006ce522c856663f2d7152"
+    },
+    {
+      "path": "extensions/B/tests/fixtures/report.json",
+      "sha256": "0abcf9d9ed2846fa4ab0314a9d1f5f3c49e175101cbb34b590f7b8d3c550a7a4"
+    }
+  ]
+}

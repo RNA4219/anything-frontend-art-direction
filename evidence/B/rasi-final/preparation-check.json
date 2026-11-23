@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-11-23T06:35:31+00:00",
+  "method": "read-only rasi.experience.validate_experience plus local hash comparisons; not experience-add",
+  "experience_template_structure": {
+    "accepted": true,
+    "normalized": {
+      "experience_id": "B-UXFLOW-20261123-final-pending",
+      "provenance": {
+        "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+        "evidence_ref": "rasi-final/evaluation-evidence.json"
+      },
+      "scope": {
+        "task_family": "transactional reservation; asynchronous import with partial failure",
+        "skill_area": "B — Interaction Design / UX Flow"
+      },
+      "dependencies": [],
+      "status": "active"
+    }
+  },
+  "no_native_receipt_created": true,
+  "no_experience_registered": true,
+  "generation_manifest_matches_commit": true,
+  "generation_file_count": 12,
+  "evaluator_current_matches_freeze": true,
+  "descriptor_cas_bytes_verified": true,
+  "final_skill_tests_executed_by_this_preparation": false,
+  "formal_gate": "HOLD",
+  "warning": "Native structure validation accepts a nonempty but nonexistent evidence_ref. This check therefore must not be used as proof of attached evidence."
+}

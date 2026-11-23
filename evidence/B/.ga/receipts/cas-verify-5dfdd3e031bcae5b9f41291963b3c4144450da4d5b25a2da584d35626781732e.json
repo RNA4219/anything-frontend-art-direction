@@ -1,0 +1,1 @@
+{"command":"cas-verify","payload":{"common_conditions":3,"path":"rasi/cas/objects/5b/5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34.json","sha256":"5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34","status":"quarantined","trust":"UNTRUSTED_CANDIDATE","units":10},"rasi_version":"0.0.2","schema":"rasi-receipt/v1"}

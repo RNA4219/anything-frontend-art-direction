@@ -1,0 +1,36 @@
+{
+  "schema": "experience/v1",
+  "experience_id": "B-UXFLOW-20261123-final-pending",
+  "content": "DRAFT, NOT REGISTERED. SESSION B implementation/evaluation evidence will be attached after final artifacts are frozen. This record does not assert test success, independent evaluation or promotion. Formal gate remains HOLD.",
+  "provenance": {
+    "campaign_id": "anything-frontend-B-interaction-ux-flow-20261123",
+    "evidence_ref": "rasi-final/evaluation-evidence.json",
+    "evidence_sha256": null,
+    "evidence_path_base": "evidence/B",
+    "hash_verified_before_registration": false
+  },
+  "scope": {
+    "task_family": "transactional reservation; asynchronous import with partial failure",
+    "skill_area": "B — Interaction Design / UX Flow"
+  },
+  "dependencies": [],
+  "status": "active",
+  "history": [
+    {
+      "action": "template_prepared",
+      "at": "2026-11-23T06:35:31+00:00",
+      "reason": "Prepare exact experience/v1 structure before final hashes and results; no experience-add has been run.",
+      "refs": [
+        "rasi-final/evaluation-evidence.template.json",
+        "rasi-final/recording-plan.md"
+      ]
+    }
+  ],
+  "recording_state": "DRAFT_NOT_REGISTERED",
+  "implementation_tree_sha256": null,
+  "rasi_descriptor_content_id": "57d1b2372555c5493ab91e5ae679e2441581795c1998c1681fdc050b1abb7552",
+  "rasi_descriptor_cas_sha256": "5b35eb5daf879cffdb54114faa4b89af64b6094c008de756c49c4c1f8ed1da34",
+  "formal_gate": "HOLD",
+  "promoted": false,
+  "status_semantics": "active is the mandatory initial experience-store status; it is not a test PASS or promotion state."
+}

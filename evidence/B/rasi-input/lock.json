@@ -1,0 +1,33 @@
+{
+  "schema": "rsi-lock/v1",
+  "snapshot_date": "2026-11-23",
+  "components": {
+    "art_direction": {
+      "repository": "https://github.com/RNA4219/anything-frontend-art-direction",
+      "revision": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+      "visibility": "public"
+    },
+    "imozuru": {
+      "repository": "https://github.com/MaryCache/imozuru",
+      "revision": "30c3b59a076ce228f05aa3036809297422f23dee",
+      "visibility": "public"
+    },
+    "sankai": {
+      "repository": "https://github.com/RNA4219/sankai",
+      "revision": "0e2521453ad758cfb680110da0fdddc994d000be",
+      "visibility": "public"
+    },
+    "rasi": {
+      "repository": "https://github.com/RNA4219/R-ASI",
+      "revision": "f5b638085dece1f997210f9b653aceb8fe9b32d4",
+      "visibility": "private"
+    }
+  },
+  "containers": {
+    "runtime": {
+      "image_digest": null
+    }
+  },
+  "template_status": "incomplete: truthful missing runtime OCI image digest; expected CLI rejection",
+  "captured_environment_ref": "rasi-input/environment.json"
+}
