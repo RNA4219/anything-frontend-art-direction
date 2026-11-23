@@ -70,7 +70,7 @@ must の目標は認可された入口から target へ辿れ、target が goal 
  "question":"実データの上位分類と件数分布を観察する"}
 ```
 
-category は `function|information_architecture|interaction|visual|implementation`。owner は `A|B|C|D|product`。blocking=true の残件があれば自動検査は HOLD。状態遷移・ARIA・描画など担当外の問題もこの形式で引き渡す。
+category は `function|information_architecture|interaction|visual|implementation`。owner は `A|B|C|D|product`。blocking=true の残件があり、構造エラーがなければ自動検査は HOLD。構造エラーもある場合は FAIL を優先し、UNRESOLVED_BLOCKERもissuesへ残す。どちらも提供・昇格を許可しない。状態遷移・ARIA・描画など担当外の問題もこの形式で引き渡す。
 
 decision_notes は判断理由の文字列配列。仮定、採用しなかった案、分類の多重所属、維持すべき視覚意図、利用者検証の未実施を記録する。
 

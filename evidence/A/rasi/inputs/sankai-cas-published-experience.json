@@ -1,0 +1,31 @@
+{
+  "schema": "experience/v1",
+  "experience_id": "A-sankai-cas-20261123-published-v2",
+  "content": "Actual verify, pipeline and cas-verify succeeded for 10 authored extraction units with published implementation revision 97b19c29c0b63acfee9ad437f93af081ac0c6ef8. Its tree equals local 8181f6bbac7013ba5a7563d6a87e740ccb3ee3ca. CAS sha256=890dad5d012d5bf7dc063d78e404014cfedd91b5522dbe1bb447578e3842426d. v1 remains immutable history. Candidate remains quarantined/unpromoted; this is integrity and format evidence only. Browser/independent evaluation are not complete. Manifest SHA-256: 0f92e61543827d48bc50ede07317126fcf4590d53914c5be603cf4efa68fd93c",
+  "provenance": {
+    "campaign_id": "anything-frontend-A-20261123",
+    "evidence_ref": "sankai-cas-published-manifest.json",
+    "evidence_sha256": "0f92e61543827d48bc50ede07317126fcf4590d53914c5be603cf4efa68fd93c"
+  },
+  "scope": {
+    "task_family": "knowledge-extraction-artifact-tracking",
+    "skill_area": "SESSION A Product Design / Information Architecture"
+  },
+  "dependencies": [
+    "A-tool-discovery-20261123",
+    "A-sankai-cas-20261123-v1"
+  ],
+  "status": "active",
+  "history": [
+    {
+      "action": "recorded-published-revision",
+      "at": "2026-11-23T06:33:10.912947+00:00",
+      "reason": "Use actual public revision while preserving v1 records and exact source bytes.",
+      "refs": [
+        "sankai-cas-published-manifest.json",
+        "publication-mapping.json",
+        "inputs/sankai-published-v2.json"
+      ]
+    }
+  ]
+}

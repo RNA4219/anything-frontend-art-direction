@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "extensions/A/checks/compare_plans.py",
+    "--briefs-dir",
+    "extensions/A/tests/briefs",
+    "--baseline-dir",
+    "evidence/A/experiment/baseline",
+    "--candidate-dir",
+    "evidence/A/experiment/candidate",
+    "--output",
+    "evidence/A/experiment/comparison.json"
+  ],
+  "exit_code": 0,
+  "stdout": "evidence/A/experiment/comparison.json\n",
+  "stderr": "",
+  "checker_sha256": "de5abbc23d003e5401830d6776bb043b21ee3912f82291389081068a98893e68"
+}

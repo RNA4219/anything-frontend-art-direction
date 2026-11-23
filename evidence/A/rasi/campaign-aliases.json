@@ -1,0 +1,9 @@
+{
+  "schema": "A-campaign-identity/v1",
+  "canonical_id": "anything-frontend-design-engineering-A-20261123",
+  "session_id": "A",
+  "rasi_discovery_alias": "anything-frontend-A-20261123",
+  "relationship": "The shorter identifier was used in initial R-ASI discovery records for this same SESSION A campaign. It is an alias, not another campaign.",
+  "immutable_history_preserved": true,
+  "note": "Historical inputs, experiences, receipts and CAS objects retain their original bytes. This mapping resolves identity without rewriting evidence."
+}

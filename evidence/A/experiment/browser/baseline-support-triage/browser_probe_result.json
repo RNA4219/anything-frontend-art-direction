@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "probe_kind": "rendering_and_structure",
+  "interpretation": "Counts report observed structural/rendering checks only. Unreachable declarations, zero primary fields, and zero records are recorded explicitly; no semantic UX success rate is calculated.",
+  "started_at": "2026-11-23T06:31:16.384785+00:00",
+  "finished_at": "2026-11-23T06:31:17.736941+00:00",
+  "html": {
+    "path": "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/projections/baseline-support-triage.html",
+    "sha256": "2e62ddf7427e1bc73ea5e3242ded5190a7778e0cbcd43254aaab1de8439a5cd7",
+    "bytes": 44577
+  },
+  "case_id": null,
+  "configuration": {
+    "timeout_seconds": 90.0,
+    "maximum_timeout_seconds": 300,
+    "termination_grace_seconds": 2,
+    "chromium_executable": "/usr/bin/chromium",
+    "chromium_sandbox": true,
+    "sandbox_downgrade_attempted": false,
+    "viewports": [
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "data_modes": [
+      "normal",
+      "empty",
+      "single",
+      "many"
+    ]
+  },
+  "execution": {
+    "status": "sandboxed_browser_launch_failed",
+    "current": {},
+    "stopped_without_security_downgrade": true,
+    "exit_code": 2
+  },
+  "network": {
+    "allowed_document": "file:///workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/projections/baseline-support-triage.html",
+    "allowed_schemes": [
+      "data",
+      "blob"
+    ],
+    "offline_context": true,
+    "blocked_requests": []
+  },
+  "checks": [
+    {
+      "check": "sandboxed_chromium_launch",
+      "status": "error",
+      "executable": "/usr/bin/chromium",
+      "chromium_sandbox": true,
+      "security_downgrade_attempted": false,
+      "error": "BrowserType.launch: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --disable-background-networking --disable-component-update --disable-sync --no-first-run --user-data-dir=/tmp/playwright_chromiumdev_profile-TFaUHL --remote-debugging-pipe --no-startup-window\n<launched> pid=19\n[pid=19][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator\n[pid=19][err] [19:19:1123/153117.672917:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)\n[pid=19][err] [1123/153117.673510:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)\nCall log:\n  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --disable-background-networking --disable-component-update --disable-sync --no-first-run --user-data-dir=/tmp/playwright_chromiumdev_profile-TFaUHL --remote-debugging-pipe --no-startup-window\n  - <launched> pid=19\n  - [pid=19][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator\n  - [pid=19][err] [19:19:1123/153117.672917:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)\n  - [pid=19][err] [1123/153117.673510:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)\n  - [pid=19] <gracefully close start>\n  - [pid=19] <kill>\n  - [pid=19] <will force kill>\n  - [pid=19] <process did exit: exitCode=null, signal=SIGABRT>\n  - [pid=19] starting temporary directories cleanup\n  - [pid=19] finished temporary directories cleanup\n  - [pid=19] <gracefully close end>\n"
+    }
+  ],
+  "coverage": [],
+  "page_errors": [],
+  "screenshots": [],
+  "summary": {
+    "checks_by_status": {
+      "error": 1
+    },
+    "page_error_count": 0,
+    "blocked_request_count": 0,
+    "screenshot_count": 0,
+    "primary_cells_compared": 0,
+    "semantic_ux_success_rate": null
+  }
+}

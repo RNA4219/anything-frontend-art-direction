@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "issues": [],
+  "counts": {
+    "goals": 5,
+    "features": 9,
+    "kept_features": 5,
+    "screens": 6,
+    "navigation_edges": 16
+  }
+}

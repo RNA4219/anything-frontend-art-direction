@@ -33,4 +33,4 @@ PYTHONPATH="$RASI_SOURCE" python3 -m rasi --root evidence/A/rasi --version
 PYTHONPATH="$RASI_SOURCE" python3 -m rasi --root evidence/A/rasi experience-add --experience inputs/tool-discovery.json
 ```
 
-記録一覧は[discovery manifest](rasi/discovery-manifest.json)および[R-ASI記録](rasi/record-index.md)を参照する。格納されたexperienceの`status=active`は記録が有効という意味で、Skillの昇格・登録・独立評価合格を意味しない。
+記録一覧は[discovery manifest](rasi/discovery-manifest.json)および[R-ASI記録](rasi/record-index.md)を参照する。sankaiの10単位を公開実装revisionへ結び付けた[CAS実記録](rasi/sankai-cas-published-manifest.json)も保存した。格納されたexperienceの`status=active`は記録が有効という意味で、Skillの昇格・登録・独立評価合格を意味しない。

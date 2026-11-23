@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/workspace/scratch/a50c340f4e5f/execution-A/evaluator-v1/validate_plan.py",
+    "--brief",
+    "/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/briefs/support-triage.json",
+    "--plan",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/candidate/support-triage.plan.json",
+    "--output",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/validator-v1/candidate/support-triage.validation.json"
+  ],
+  "exit_code": 1,
+  "stdout": "{\n  \"status\": \"HOLD\",\n  \"issues\": [\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_assignment_policy\",\n      \"symptom\": \"g_assign の必須判断材料 assignment_policy の本文が入力になく、担当の候補・割当条件を確定できない。画面の配置案は作れるが、業務ルールの確定前に提供完了とは扱えない。\",\n      \"category\": \"function\",\n      \"severity\": \"hold\"\n    },\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_audit_scope\",\n      \"symptom\": \"監査対象の記録種別・項目と期間の境界が未提供。解決済み90日保持と年4回の監査という条件だけでは、各監査で必要な期間を網羅できるか判断できない。監査の成立に必要なデータ条件が確定するまで提供判断を保留する。\",\n      \"category\": \"function\",\n      \"severity\": \"hold\"\n    }\n  ],\n  \"counts\": {\n    \"goals\": 5,\n    \"features\": 8,\n    \"kept_features\": 5,\n    \"screens\": 3,\n    \"navigation_edges\": 6\n  }\n}\n",
+  "stderr": "",
+  "checker_sha256": "1ceef2cbf2547288b0f8cac0592277cef539ba3ee7c1d3a4ebde3d8ea0f174c5"
+}

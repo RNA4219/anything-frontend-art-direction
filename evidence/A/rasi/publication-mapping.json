@@ -1,0 +1,11 @@
+{
+  "schema": "session-a-publication-mapping/v1",
+  "observed_at": "2026-11-23T06:33:10.712942+00:00",
+  "local_commit": "8181f6bbac7013ba5a7563d6a87e740ccb3ee3ca",
+  "publication_commit": "97b19c29c0b63acfee9ad437f93af081ac0c6ef8",
+  "local_tree": "9263d9eef085eb4678acab70fbd077986b7f7f20",
+  "publication_tree": "9263d9eef085eb4678acab70fbd077986b7f7f20",
+  "tree_equal": true,
+  "verification": "git show -s --format=%T for both commits; exact tree identity",
+  "note": "Commit metadata differs; tracked tree bytes are identical. v1 CAS remains immutable history; published-v2 uses the public implementation revision."
+}

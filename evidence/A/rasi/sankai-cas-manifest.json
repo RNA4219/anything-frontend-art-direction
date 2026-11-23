@@ -1,0 +1,46 @@
+{
+  "schema": "session-a-sankai-cas-record/v1",
+  "campaign_id": "anything-frontend-A-20261123",
+  "created_at": "2026-11-23T06:32:11.259036+00:00",
+  "local_implementation_commit": "8181f6bbac7013ba5a7563d6a87e740ccb3ee3ca",
+  "publication_commit": null,
+  "base_commit": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "input_kind": "agent_edited_synthesis_not_primary_source",
+  "source_snapshot": {
+    "path": "inputs/sankai-extraction.snapshot.md",
+    "sha256": "4d11340f4f7dd1efe732c896c7922338a10a5847d1e8935b305292b00761d5cc",
+    "lines": 117
+  },
+  "sankai_input": {
+    "path": "inputs/sankai.json",
+    "sha256": "5a4c332d829ab49c529b74b7afb907c04e7601564024f009ffd01b47310aa723"
+  },
+  "pipeline_receipt": {
+    "path": ".ga/receipts/pipeline-87da514224e0c746d4378bcff6fe38bdc7f4d2793a0043d2ef867ec1ca04c189.json",
+    "sha256": "87da514224e0c746d4378bcff6fe38bdc7f4d2793a0043d2ef867ec1ca04c189"
+  },
+  "cas": {
+    "bytes": 23818,
+    "path": "cas/objects/13/13490c4a8a88f17c7d3a546dc26dbd91f66ed94aa1dd7e45bf81a0dec97eddb8.json",
+    "sha256": "13490c4a8a88f17c7d3a546dc26dbd91f66ed94aa1dd7e45bf81a0dec97eddb8"
+  },
+  "candidate": {
+    "candidate_id": "cc604569b8a9e1c27007ecb09313a5e33e599513e661f6dd2121a9d7159d114c",
+    "common_conditions": 1,
+    "status": "quarantined",
+    "trust": "UNTRUSTED_CANDIDATE",
+    "units": 10
+  },
+  "semantic_validation": "not_performed_by_rasi",
+  "independent_evaluation": "pending",
+  "execute_connected": false,
+  "evaluation_connected": false,
+  "promotion_connected": false,
+  "formal_decision": "HOLD",
+  "cost": {
+    "amount": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "measured": false
+  }
+}

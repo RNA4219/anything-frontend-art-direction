@@ -1,0 +1,376 @@
+{
+  "schema": "A-paired-structural-report/v1",
+  "cases": [
+    {
+      "case_id": "course-catalog",
+      "brief_sha256": "6cca8e929b7df210ec554f6a7dbebb317b20a8c0b78d5443d2afc0f33861a83f",
+      "baseline": {
+        "input": "evidence/A/experiment/baseline/course-catalog.plan.json",
+        "sha256": "d66b816c9f5c76865adee074a8f03206bcf135bd44aef5f28888a60df92a24a8",
+        "validation": {
+          "status": "HOLD",
+          "issues": [
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_schedule_price_data",
+              "symptom": "表示例の文字列だけでは日程や予算の正確な絞込を保証できない。",
+              "category": "implementation",
+              "severity": "hold"
+            },
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_enrollment_destinations",
+              "symptom": "申込先A/B/Cは表示ラベルであり実URLがない。残席0で申込先へ進める意味も入力では未定義。",
+              "category": "function",
+              "severity": "hold"
+            },
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_saved_identity",
+              "symptom": "後で開く保存能力には利用者と講座の同一性が必要だが、永続化の範囲が未定義。",
+              "category": "function",
+              "severity": "hold"
+            },
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_publication_model",
+              "symptom": "講座管理の責務は決められるが、入力のサンプルにはpublication_statusや安定した講座識別子がなく、編集可能範囲も未定義。",
+              "category": "function",
+              "severity": "hold"
+            }
+          ],
+          "counts": {
+            "goals": 5,
+            "features": 9,
+            "kept_features": 5,
+            "screens": 5,
+            "navigation_edges": 13
+          }
+        },
+        "error_count": 0,
+        "hold_count": 4,
+        "issues_by_category": {
+          "implementation": 1,
+          "function": 3
+        },
+        "dispositions": {
+          "keep": 5,
+          "merge": 3,
+          "remove": 1
+        },
+        "feature_decisions": {
+          "f_catalog": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_topics": {
+            "disposition": "merge",
+            "target": "f_catalog"
+          },
+          "f_workshops": {
+            "disposition": "merge",
+            "target": "f_catalog"
+          },
+          "f_compare": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_details": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_favorites": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_wishlist": {
+            "disposition": "merge",
+            "target": "f_favorites"
+          },
+          "f_news": {
+            "disposition": "remove",
+            "target": null
+          },
+          "f_publish": {
+            "disposition": "keep",
+            "target": null
+          }
+        },
+        "declared_navigation_distance": {
+          "g_discover": 0,
+          "g_compare": 1,
+          "g_decide": 1,
+          "g_saved": 1,
+          "g_publish": 1
+        },
+        "limitations": [
+          "Distances count declared navigation edges, not complete user actions or measured task completion.",
+          "Fewer screens, links, holds, or features is not defined as better.",
+          "A report cannot establish semantic correctness, user benefit, independent evaluation, or promotion."
+        ]
+      },
+      "candidate": {
+        "input": "evidence/A/experiment/candidate/course-catalog.plan.json",
+        "sha256": "598201dbab56f0f61be4b5b2179b6d6988fb5be5457901dc7612eb23d8ef2c9e",
+        "validation": {
+          "status": "PASS",
+          "issues": [],
+          "counts": {
+            "goals": 5,
+            "features": 9,
+            "kept_features": 5,
+            "screens": 6,
+            "navigation_edges": 16
+          }
+        },
+        "error_count": 0,
+        "hold_count": 0,
+        "issues_by_category": {},
+        "dispositions": {
+          "keep": 5,
+          "merge": 3,
+          "defer": 1
+        },
+        "feature_decisions": {
+          "f_catalog": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_topics": {
+            "disposition": "merge",
+            "target": "f_catalog"
+          },
+          "f_workshops": {
+            "disposition": "merge",
+            "target": "f_catalog"
+          },
+          "f_compare": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_details": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_favorites": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_wishlist": {
+            "disposition": "merge",
+            "target": "f_favorites"
+          },
+          "f_news": {
+            "disposition": "defer",
+            "target": null
+          },
+          "f_publish": {
+            "disposition": "keep",
+            "target": null
+          }
+        },
+        "declared_navigation_distance": {
+          "g_discover": 0,
+          "g_compare": 1,
+          "g_decide": 1,
+          "g_saved": 1,
+          "g_publish": 1
+        },
+        "limitations": [
+          "Distances count declared navigation edges, not complete user actions or measured task completion.",
+          "Fewer screens, links, holds, or features is not defined as better.",
+          "A report cannot establish semantic correctness, user benefit, independent evaluation, or promotion."
+        ]
+      },
+      "candidate_minus_baseline_error_count": 0,
+      "feature_decisions_identical": false
+    },
+    {
+      "case_id": "support-triage",
+      "brief_sha256": "b4aa2bca2d728d5b6c42fc04b0241f9a3764bfc26c2a3f331dc96fba442648c2",
+      "baseline": {
+        "input": "evidence/A/experiment/baseline/support-triage.plan.json",
+        "sha256": "425ae08e65fb40294028c4fadfdd6c34e362d2fd5f0e799545d94f880629439f",
+        "validation": {
+          "status": "HOLD",
+          "issues": [
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_assignment_policy",
+              "symptom": "担当変更の能力と配置は確定できるが、選択可能な担当と判断ルールを具体化できない。",
+              "category": "function",
+              "severity": "hold"
+            },
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_retention_audit",
+              "symptom": "90日保持と年4回の監査だけでは、要求された監査期間を欠落なく出力できるか確定しない。",
+              "category": "function",
+              "severity": "hold"
+            },
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_support_data_access",
+              "symptom": "表示だけで役割権限や90日の保持を保証できず、10000件時の取得・検索方法も未確定。",
+              "category": "implementation",
+              "severity": "hold"
+            }
+          ],
+          "counts": {
+            "goals": 5,
+            "features": 8,
+            "kept_features": 5,
+            "screens": 4,
+            "navigation_edges": 11
+          }
+        },
+        "error_count": 0,
+        "hold_count": 3,
+        "issues_by_category": {
+          "function": 2,
+          "implementation": 1
+        },
+        "dispositions": {
+          "keep": 5,
+          "merge": 1,
+          "defer": 1,
+          "remove": 1
+        },
+        "feature_decisions": {
+          "f_inbox": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_my_queue": {
+            "disposition": "merge",
+            "target": "f_inbox"
+          },
+          "f_assign": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_search": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_history": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_export": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_trends": {
+            "disposition": "defer",
+            "target": null
+          },
+          "f_theme": {
+            "disposition": "remove",
+            "target": null
+          }
+        },
+        "declared_navigation_distance": {
+          "g_triage": 0,
+          "g_assign": 1,
+          "g_find": 1,
+          "g_audit": 0
+        },
+        "limitations": [
+          "Distances count declared navigation edges, not complete user actions or measured task completion.",
+          "Fewer screens, links, holds, or features is not defined as better.",
+          "A report cannot establish semantic correctness, user benefit, independent evaluation, or promotion."
+        ]
+      },
+      "candidate": {
+        "input": "evidence/A/experiment/candidate/support-triage.plan.json",
+        "sha256": "6672013faee5b5df6be9048a5660b5e81fc8c082aca1bb08b3489f22b36e1d90",
+        "validation": {
+          "status": "HOLD",
+          "issues": [
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_assignment_policy",
+              "symptom": "g_assign の必須判断材料 assignment_policy の本文が入力になく、担当の候補・割当条件を確定できない。画面の配置案は作れるが、業務ルールの確定前に提供完了とは扱えない。",
+              "category": "function",
+              "severity": "hold"
+            },
+            {
+              "code": "UNRESOLVED_BLOCKER",
+              "location": "u_audit_scope",
+              "symptom": "監査対象の記録種別・項目と期間の境界が未提供。解決済み90日保持と年4回の監査という条件だけでは、各監査で必要な期間を網羅できるか判断できない。監査の成立に必要なデータ条件が確定するまで提供判断を保留する。",
+              "category": "function",
+              "severity": "hold"
+            }
+          ],
+          "counts": {
+            "goals": 5,
+            "features": 8,
+            "kept_features": 5,
+            "screens": 3,
+            "navigation_edges": 6
+          }
+        },
+        "error_count": 0,
+        "hold_count": 2,
+        "issues_by_category": {
+          "function": 2
+        },
+        "dispositions": {
+          "keep": 5,
+          "merge": 1,
+          "defer": 1,
+          "remove": 1
+        },
+        "feature_decisions": {
+          "f_inbox": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_my_queue": {
+            "disposition": "merge",
+            "target": "f_inbox"
+          },
+          "f_assign": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_search": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_history": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_export": {
+            "disposition": "keep",
+            "target": null
+          },
+          "f_trends": {
+            "disposition": "defer",
+            "target": null
+          },
+          "f_theme": {
+            "disposition": "remove",
+            "target": null
+          }
+        },
+        "declared_navigation_distance": {
+          "g_triage": 0,
+          "g_assign": 1,
+          "g_find": 1,
+          "g_audit": 0
+        },
+        "limitations": [
+          "Distances count declared navigation edges, not complete user actions or measured task completion.",
+          "Fewer screens, links, holds, or features is not defined as better.",
+          "A report cannot establish semantic correctness, user benefit, independent evaluation, or promotion."
+        ]
+      },
+      "candidate_minus_baseline_error_count": 0,
+      "feature_decisions_identical": true
+    }
+  ],
+  "promotion": "NOT_ASSESSED_BY_THIS_SCRIPT"
+}

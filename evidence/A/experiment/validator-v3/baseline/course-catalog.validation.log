@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/checks/validate_plan.py",
+    "--brief",
+    "/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/briefs/course-catalog.json",
+    "--plan",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/baseline/course-catalog.plan.json",
+    "--output",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/validator-v3/baseline/course-catalog.validation.json"
+  ],
+  "exit_code": 1,
+  "checker_sha256": "de5abbc23d003e5401830d6776bb043b21ee3912f82291389081068a98893e68",
+  "stdout": "{\n  \"status\": \"HOLD\",\n  \"issues\": [\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_schedule_price_data\",\n      \"symptom\": \"表示例の文字列だけでは日程や予算の正確な絞込を保証できない。\",\n      \"category\": \"implementation\",\n      \"severity\": \"hold\"\n    },\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_enrollment_destinations\",\n      \"symptom\": \"申込先A/B/Cは表示ラベルであり実URLがない。残席0で申込先へ進める意味も入力では未定義。\",\n      \"category\": \"function\",\n      \"severity\": \"hold\"\n    },\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_saved_identity\",\n      \"symptom\": \"後で開く保存能力には利用者と講座の同一性が必要だが、永続化の範囲が未定義。\",\n      \"category\": \"function\",\n      \"severity\": \"hold\"\n    },\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_publication_model\",\n      \"symptom\": \"講座管理の責務は決められるが、入力のサンプルにはpublication_statusや安定した講座識別子がなく、編集可能範囲も未定義。\",\n      \"category\": \"function\",\n      \"severity\": \"hold\"\n    }\n  ],\n  \"counts\": {\n    \"goals\": 5,\n    \"features\": 9,\n    \"kept_features\": 5,\n    \"screens\": 5,\n    \"navigation_edges\": 13\n  }\n}\n",
+  "stderr": ""
+}

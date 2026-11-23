@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ja" data-projection-ready="false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>support-triage — 共通JSON投影</title>
+  <style>
+    :root { --background: #22252a; --foreground: #f5f5f1; --accent: #d6a345; color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; min-width: 0; }
+    body { background: var(--background); color: var(--foreground); font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .shell { max-width: 1400px; margin: 0 auto; padding: 20px; min-width: 0; }
+    h1, h2, h3, p, ul { margin-top: 0; }
+    h1 { font-size: clamp(22px, 3vw, 30px); line-height: 1.3; margin-bottom: 10px; overflow-wrap: anywhere; }
+    h2 { font-size: 18px; margin-bottom: 12px; }
+    p, li, a, label, summary, td, th { overflow-wrap: anywhere; }
+    .panel { border: 1px solid color-mix(in srgb, var(--foreground) 28%, transparent); border-radius: 4px; padding: 16px; margin-bottom: 18px; min-width: 0; }
+    #evaluation-harness { border-left: 4px solid var(--accent); font-size: 13px; }
+    #evaluation-harness h2 { font-size: 15px; margin-bottom: 6px; }
+    #evaluation-harness p { margin-bottom: 8px; }
+    .toolbar, .entry-list, .navigation-list { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; }
+    .toolbar { margin: 10px 0; }
+    .toolbar label { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; min-width: 0; }
+    button, select, a.nav-link { font: inherit; color: inherit; background: var(--background); border: 1px solid color-mix(in srgb, var(--foreground) 45%, transparent); border-radius: 4px; padding: 7px 10px; min-height: 40px; max-width: 100%; }
+    button, select, summary, a.nav-link { cursor: pointer; }
+    button:hover, a.nav-link:hover { border-color: var(--accent); }
+    button:focus-visible, select:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    a.nav-link { display: inline-flex; align-items: center; text-decoration: underline; }
+    .entry-list { margin-bottom: 8px; }
+    .entry-list button[aria-current="page"] { border-color: var(--accent); box-shadow: inset 0 -2px var(--accent); }
+    .muted { opacity: .78; }
+    .identifier { font-size: 12px; opacity: .8; }
+    #projection-status { margin: 8px 0 0; }
+    #projection-status:not([data-projection-status="ok"]) { font-weight: 600; }
+    details { margin-top: 12px; }
+    details > summary { padding: 6px 0; }
+    details > :not(summary) { margin-top: 8px; }
+    .screen-section { margin-top: 22px; min-width: 0; }
+    .screen-purpose { font-size: 16px; }
+    .table-scroll { max-width: 100%; overflow-x: auto; border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent); border-radius: 3px; }
+    table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+    th, td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid color-mix(in srgb, var(--foreground) 20%, transparent); white-space: normal; }
+    th { font-weight: 650; border-bottom-width: 2px; }
+    tbody tr:last-child td { border-bottom: 0; }
+    td[data-value-state="missing"] { opacity: .65; }
+    .feature-list { padding-left: 22px; }
+    .feature-list li { margin-bottom: 6px; }
+    .navigation-list { list-style: none; margin: 0; padding: 0; align-items: stretch; }
+    .navigation-list li { min-width: 0; max-width: 100%; }
+    .route-list { margin: 0; padding-left: 20px; }
+    .route-list li { margin-bottom: 5px; }
+    [hidden] { display: none !important; }
+    @media (max-width: 600px) {
+      .shell { padding: 12px; }
+      .panel { padding: 12px; }
+      button, select, a.nav-link { min-height: 44px; }
+      .toolbar { align-items: flex-start; }
+      .toolbar label { flex: 1 1 140px; }
+      .toolbar select { width: 100%; }
+      th, td { padding: 9px 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside id="evaluation-harness" class="panel" aria-label="評価ハーネス">
+    <h2>評価ハーネス — 共通JSON投影</h2>
+    <p>以下のrole・件数・入口コントロールは試験用です。製品の機能として追加したものではありません。</p>
+    <p class="muted">構造と描画の確認用です。保存・送信・取消・公開などの業務処理、および実サービスの認証・認可は実装していません。</p>
+    <div class="toolbar">
+      <label>試験role <select id="harness-role" data-harness="role" aria-label="試験role"></select></label>
+      <label>試験データ <select id="harness-data-mode" data-harness="data-mode" aria-label="試験データ件数">
+        <option value="normal">normal — 提供データ</option>
+        <option value="empty">empty — 0件</option>
+        <option value="single">single — 先頭1件</option>
+        <option value="many">many — 実データを40行まで反復</option>
+      </select></label>
+    </div>
+    <p id="scenario-note" data-scenario-note></p>
+    <p class="identifier">planで宣言された、このroleの入口</p>
+    <div id="entry-list" class="entry-list" data-entry-list></div>
+    <details id="projection-metadata">
+      <summary>投影条件・宣言されたgoal route</summary>
+      <p id="palette-note"></p>
+      <p id="intent-note"></p>
+      <ul id="goal-routes" class="route-list"></ul>
+    </details>
+    <p id="projection-status" data-projection-status="initializing" role="status" aria-live="polite"></p>
+  </aside>
+  <main id="screen-root" aria-label="planで宣言された画面"></main>
+</div>
+<script id="plan-data" type="application/json">{"brief":{"case_id":"support-triage","roles":[{"id":"operator","label":"対応担当"},{"id":"manager","label":"管理責任者"}],"goals":[{"id":"g_triage","role":"operator","outcome":"期限と影響を比較して次に着手する問い合わせを選ぶ","priority":"must","needed_information":["ticket_id","summary","severity","due_at","owner","status"]},{"id":"g_assign","role":"operator","outcome":"選んだ問い合わせの担当を決める","priority":"must","needed_information":["ticket_id","owner","assignment_policy"]},{"id":"g_find","role":"operator","outcome":"解決済みを含め問い合わせの対応経緯を探す","priority":"must","needed_information":["ticket_id","status","history"]},{"id":"g_audit","role":"manager","outcome":"期間を指定して監査用記録を取り出す","priority":"must","needed_information":["date_range","retention","export_scope"]},{"id":"g_trends","role":"manager","outcome":"月別傾向を把握する","priority":"should","needed_information":["monthly_counts"]}],"requirements":[{"id":"r_triage","goal_ids":["g_triage"],"mandatory":true,"statement":"期限と影響を一覧で比較できる"},{"id":"r_assign","goal_ids":["g_assign"],"mandatory":true,"statement":"担当変更機能と担当ルールを提供する"},{"id":"r_archive","goal_ids":["g_find"],"mandatory":true,"statement":"解決済み記録を90日保持し、検索して経緯を読める"},{"id":"r_audit","goal_ids":["g_audit"],"mandatory":true,"statement":"責任者は低頻度でも期間指定の監査エクスポートを実行できる。担当者には権限がない"},{"id":"r_trends","goal_ids":["g_trends"],"mandatory":false,"statement":"月別集計はあるとよいが初回リリースに必須ではない"}],"feature_requests":[{"id":"f_inbox","label":"受信箱","object":"ticket","outcome":"select-ticket","roles":["operator"],"goal_ids":["g_triage"],"requirement_ids":["r_triage"],"dependencies":[],"mandatory":true},{"id":"f_my_queue","label":"自分の対応一覧","object":"ticket","outcome":"select-ticket","roles":["operator"],"goal_ids":["g_triage"],"requirement_ids":["r_triage"],"dependencies":[],"mandatory":false},{"id":"f_assign","label":"担当変更","object":"ticket","outcome":"assign-owner","roles":["operator"],"goal_ids":["g_assign"],"requirement_ids":["r_assign"],"dependencies":["f_history"],"mandatory":true},{"id":"f_search","label":"解決済みも検索","object":"ticket","outcome":"find-ticket","roles":["operator"],"goal_ids":["g_find"],"requirement_ids":["r_archive"],"dependencies":[],"mandatory":true},{"id":"f_history","label":"対応履歴","object":"ticket","outcome":"read-history","roles":["operator","manager"],"goal_ids":["g_find","g_audit"],"requirement_ids":["r_archive","r_audit"],"dependencies":[],"mandatory":true},{"id":"f_export","label":"監査エクスポート","object":"audit-record","outcome":"export-records","roles":["manager"],"goal_ids":["g_audit"],"requirement_ids":["r_audit"],"dependencies":["f_history"],"mandatory":true},{"id":"f_trends","label":"月別ダッシュボード","object":"metrics","outcome":"read-trends","roles":["manager"],"goal_ids":["g_trends"],"requirement_ids":["r_trends"],"dependencies":[],"mandatory":false},{"id":"f_theme","label":"テーマギャラリー","object":"theme","outcome":"browse-themes","roles":["operator","manager"],"goal_ids":[],"requirement_ids":[],"dependencies":[],"mandatory":false}],"visual_intent":{"id":"ops-charcoal-01","constraints":["既存の黒鉛色背景、白文字、琥珀色アクセントを維持","システム書体、角丸は小さく、テキストと罫線中心","Aの判断では新しい色・書体・装飾に置き換えない"]},"contexts":{"normal":"担当者は1日に多数の問い合わせを処理する。自分の担当と全件は同じチケット集合の絞込ビュー。","abnormal":"責任者のexport権限を担当者に提示しない。検索0件のとき検索条件と保持期間を確認できる。","boundary":"0件/1件/10000件。責任者の監査作業は年4回。低頻度を削除理由にしない。"},"content":[{"ticket_id":"T-104","summary":"共有端末で同期が止まる","severity":"高","due_at":"本日16:00","owner":"未割当","status":"未対応","history":"受付済み"},{"ticket_id":"T-105","summary":"請求書の表示名を変更したい","severity":"低","due_at":"明日12:00","owner":"担当A","status":"対応中","history":"担当へ確認中"},{"ticket_id":"T-099","summary":"復旧した接続の確認","severity":"中","due_at":"完了","owner":"担当B","status":"解決済み","history":"11/20復旧確認"}],"constraints":["既存機能の統合/延期/削除は設計提案として理由を残す。実データを消さない。","状態遷移、再試行、通知の挙動はBへ、部品とARIAはCへ渡す。"]},"plan":{"schema_version":"1.0","case_id":"support-triage","visual_intent_id":"ops-charcoal-01","features":[{"id":"f_inbox","label":"受信箱","object":"ticket","outcome":"select-ticket","roles":["operator"],"goal_ids":["g_triage"],"requirement_ids":["r_triage"],"dependencies":[],"disposition":"keep","target":null,"reason":"期限と影響から着手対象を選ぶ必須機能の正本とする。自分の担当と全件は同じ ticket 集合であり、owner によるビューの違いとしてこの機能へ集約する。問い合わせのデータや担当別の正本を複製しない。","priority":"required","priority_basis":"r_triage と g_triage を満たす必須機能。1日に多数の問い合わせを処理するという入力条件と、期限の見落としが着手判断に及ぼす影響を根拠にする。"},{"id":"f_my_queue","label":"自分の対応一覧","object":"ticket","outcome":"select-ticket","roles":["operator"],"goal_ids":["g_triage"],"requirement_ids":["r_triage"],"dependencies":[],"disposition":"merge","target":"f_inbox","reason":"f_inbox と object=ticket、outcome=select-ticket、roles={operator}、必要情報、権限、依存条件が一致し、入力も同じ集合の絞込ビューと明記する。独立一覧を統合し、「自分の担当」の入口を f_inbox の owner 絞込として残す。","priority":"high","priority_basis":"担当者の反復作業を支える入口として優先するが、独立した機能やデータの保持は不要。日常利用という入力条件からの順位であり、利用率を測定した結果ではない。"},{"id":"f_assign","label":"担当変更","object":"ticket","outcome":"assign-owner","roles":["operator"],"goal_ids":["g_assign"],"requirement_ids":["r_assign"],"dependencies":["f_history"],"disposition":"keep","target":null,"reason":"担当を決める成果はチケット選択や履歴閲覧と異なるため統合しない。同じ選択済みチケットの現在担当・担当ルール・対応履歴を参照する画面で提供し、f_history への依存を維持する。","priority":"required","priority_basis":"r_assign と g_assign の必須機能。担当ルールを参照せずに変更する誤りを避ける必要があり、履歴の維持も成立条件となる。"},{"id":"f_search","label":"解決済みも検索","object":"ticket","outcome":"find-ticket","roles":["operator"],"goal_ids":["g_find"],"requirement_ids":["r_archive"],"dependencies":[],"disposition":"keep","target":null,"reason":"解決済みを含む対応経緯の探索を支える。選択と検索は同じ ticket を扱っても outcome が異なるため f_inbox と機能統合せず、共通の一覧画面に同居させる。解決済み記録を90日保持する要件を検索範囲の契約に含める。","priority":"required","priority_basis":"r_archive と g_find を満たす必須機能。解決済み記録を日常の対応対象から除くビューがあっても、保持対象の記録を検索できる入口は失わせない。"},{"id":"f_history","label":"対応履歴","object":"ticket","outcome":"read-history","roles":["operator","manager"],"goal_ids":["g_find","g_audit"],"requirement_ids":["r_archive","r_audit"],"dependencies":[],"disposition":"keep","target":null,"reason":"解決済みを含む対応経緯の閲覧を維持し、f_assign と f_export が依存する記録の正本とする。operator と manager の権限を保持し、担当者の詳細画面と責任者の監査画面から同じ記録を参照する。r_archive の90日保持を検索と履歴の共通データ条件として引き継ぐ。","priority":"required","priority_basis":"r_archive・r_audit に対応し、必須の担当変更と監査エクスポートの依存先でもあるため required。画面上の頻度から削除しない。"},{"id":"f_export","label":"監査エクスポート","object":"audit-record","outcome":"export-records","roles":["manager"],"goal_ids":["g_audit"],"requirement_ids":["r_audit"],"dependencies":["f_history"],"disposition":"keep","target":null,"reason":"manager だけが期間を指定して監査用記録を取り出す独立機能として維持する。対象が audit-record、成果が export-records、権限が manager に限定されるため、担当者の検索や一覧と統合しない。f_history への依存を保持する。","priority":"required","priority_basis":"r_audit と g_audit により必須。年4回という低頻度は入力された利用条件であり、監査時に記録を取り出せなくなる影響を優先して維持する。"},{"id":"f_trends","label":"月別ダッシュボード","object":"metrics","outcome":"read-trends","roles":["manager"],"goal_ids":["g_trends"],"requirement_ids":["r_trends"],"dependencies":[],"disposition":"defer","target":null,"reason":"r_trends は初回リリースに必須でないと明記されているため、月別傾向の提供は初回案から延期する。問い合わせ選択や監査の代わりに月別画面を入口としない。月別傾向の目標自体は残し、集計定義と初回後の提供優先度を確認して再検討する。","priority":"medium","priority_basis":"任意の管理判断を支えるが、必須の着手判断・担当変更・履歴探索・監査経路の成立を先に確保する。必要工数や利用率の数値は入力にないため推定スコアを付けない。"},{"id":"f_theme","label":"テーマギャラリー","object":"theme","outcome":"browse-themes","roles":["operator","manager"],"goal_ids":[],"requirement_ids":[],"dependencies":[],"disposition":"remove","target":null,"reason":"入力で目標・要件の対応がなく、任意で、他機能の依存先でもない。今回の問い合わせ対応・監査の提供範囲からテーマ閲覧を除外する設計提案とする。固定された既存意匠を維持し、実データや既存設定を消す処理は行わない。","priority":"low","priority_basis":"今回の達成目標を支える根拠がなく、独立したテーマ閲覧を優先する理由が入力にない。既存契約や業務上の別目的が判明した場合は、この提供廃止提案を再審議する。"}],"screens":[{"id":"s_queue","title":"問い合わせ一覧・検索","purpose":"同じチケット集合を検索・絞込し、期限と影響を比較して着手対象、または経緯を調べる対象を特定する。","goal_ids":["g_triage","g_find"],"feature_ids":["f_inbox","f_search"],"roles":["operator"],"entry_for":["operator"],"information":[{"id":"ticket_id","visibility":"primary","reason":"問い合わせを取り違えずに選び、検索結果から同じ記録の経緯へ進む識別子。"},{"id":"summary","visibility":"primary","reason":"問い合わせの内容を行ごとに特定して影響と期限を比較する。長い要約も情報が読める形を維持する。"},{"id":"severity","visibility":"primary","reason":"期限と同時に比較する影響の判断材料。詳細画面やホバーへ隠さない。"},{"id":"due_at","visibility":"primary","reason":"着手の優先度を severity と同じ対象単位で比較する必須情報。「完了」と期限を誤認させない。"},{"id":"owner","visibility":"primary","reason":"現在担当と未割当を確認し、全件と自分の担当という同一集合のビューを理解する。"},{"id":"status","visibility":"primary","reason":"未対応・対応中・解決済みを区別し、検索対象に解決済みを含むことと現在の状態条件を確認する。"},{"id":"retention","visibility":"primary","reason":"解決済み記録の90日保持を検索条件と同じ場面で確認する。0件でも保持期間と現在の条件を見失わせない。"}]},{"id":"s_ticket","title":"問い合わせの経緯・担当","purpose":"選択した問い合わせの経緯と現在の担当を読み、担当ルールに照らして対応担当を判断する。経緯を読むだけの利用も同じ対象の文脈で完了できる。","goal_ids":["g_assign","g_find"],"feature_ids":["f_assign","f_history"],"roles":["operator"],"entry_for":[],"information":[{"id":"ticket_id","visibility":"primary","reason":"検索・一覧で選んだ問い合わせと変更対象の一致を確認する。"},{"id":"summary","visibility":"primary","reason":"履歴と担当判断がどの問い合わせについてのものかを識別する。"},{"id":"severity","visibility":"primary","reason":"担当判断に際して選んだ問い合わせの影響を前画面の記憶に頼らず確認する。"},{"id":"due_at","visibility":"primary","reason":"担当を決める際も対応期限の文脈を維持する。"},{"id":"owner","visibility":"primary","reason":"現在の担当・未割当を確認して変更の必要性を判断する。"},{"id":"status","visibility":"primary","reason":"解決済みも含む問い合わせの現在状態と経緯を対応づける。"},{"id":"assignment_policy","visibility":"primary","reason":"担当を決める必須ルールを変更機能と同じ場面で読めるようにする。本文は未提供であり推定ルールを生成しない。"},{"id":"history","visibility":"primary","reason":"g_find の完了に必要な対応経緯を展開操作なしで読める。長い履歴はスクロールを許容し、担当判断の前提としても参照する。"},{"id":"retention","visibility":"secondary","reason":"この画面での担当判断・履歴読取に対する保持方針の補足。「記録の保持期間」という内容の分かる入口で参照する。検索0件の判断場所では s_queue に primary として置く。"}]},{"id":"s_audit","title":"監査記録のエクスポート","purpose":"責任者が指定期間の対象記録と保持範囲を確認し、監査に必要な記録を取り出す。","goal_ids":["g_audit"],"feature_ids":["f_export","f_history"],"roles":["manager"],"entry_for":["manager"],"information":[{"id":"date_range","visibility":"primary","reason":"出力する期間の開始・終了を、対象範囲を確認する場所で常に参照する。期間の境界規則は未確定事項として残す。"},{"id":"retention","visibility":"primary","reason":"記録の保持期間と出力可能な期間の関係を出力判断の前に読めるようにする。解決済み90日保持は確定条件、監査固有の保持条件は未確定として区別する。"},{"id":"export_scope","visibility":"primary","reason":"指定期間に対応する記録の範囲・出力項目を出力前に確認する。対象項目や保持範囲を未確認の値で埋めない。"},{"id":"ticket_id","visibility":"primary","reason":"出力対象の履歴がどの問い合わせに属するかを確認する。担当者向けの検索権限を責任者へ追加する意図ではない。"},{"id":"status","visibility":"primary","reason":"対象履歴と問い合わせの現在状態を区別して監査対象を確認する。"},{"id":"history","visibility":"primary","reason":"f_export の依存先である対応記録を、指定期間の出力対象という文脈で参照する。担当変更など operator 専用操作を併設しない。"}]}],"navigation":[{"from":"s_queue","to":"s_queue","label":"全件","roles":["operator"],"kind":"local","rationale":"f_inbox の正本上で担当条件を全件へ変える入口。自分の担当と別のデータを作らず、現在の検索・状態条件を明示する。「全件」は担当の範囲であり、解決済みを含むかどうかは状態条件として別に読めるようにする。"},{"from":"s_queue","to":"s_queue","label":"自分の担当","roles":["operator"],"kind":"local","rationale":"旧 f_my_queue の利用意図を残し、同じ問い合わせ一覧の owner 条件として到達させる。独立画面へ分離しない。"},{"from":"s_queue","to":"s_queue","label":"解決済みも含めて検索","roles":["operator"],"kind":"local","rationale":"同じ ticket 集合の検索範囲を明示する。90日保持の解決済み記録へ辿れる入口を、担当者の検索領域に置く。"},{"from":"s_queue","to":"s_ticket","label":"経緯・担当を確認","roles":["operator"],"kind":"contextual","rationale":"選択した ticket_id の問い合わせへ進み、同じ対象の履歴・現在担当・担当ルールを参照する。T-099 のような解決済みも履歴参照対象に含む。"},{"from":"s_ticket","to":"s_queue","label":"一覧・検索結果へ戻る","roles":["operator"],"kind":"contextual","rationale":"現在の対象へ至った検索・担当・状態条件へ戻り、別の問い合わせを選べる情報経路。条件保持や復帰位置の具体的挙動は B へ渡す。"},{"from":"s_ticket","to":"s_queue","label":"問い合わせ一覧","roles":["operator"],"kind":"global","rationale":"詳細や直接リンクから入っても担当者の主要な作業領域を特定できる共通入口。役割を跨いで監査画面へ進むリンクにはしない。"}],"goal_routes":[{"goal_id":"g_triage","start_screen":"s_queue","target_screen":"s_queue","notes":"operator の入口で ticket_id・summary・severity・due_at・owner・status を同じ候補一覧で比較し、次に着手する問い合わせを選ぶ。全件と自分の担当は同じ正本のビュー。"},{"goal_id":"g_assign","start_screen":"s_queue","target_screen":"s_ticket","notes":"operator が対象を選び「経緯・担当を確認」へ進む。target で ticket_id・owner・assignment_policy と依存する history を展開不要で読み、担当を決める。担当ルール本文の確定は u_assignment_policy に残す。"},{"goal_id":"g_find","start_screen":"s_queue","target_screen":"s_ticket","notes":"同じ入口の f_search で解決済みを含む保持対象を検索し、選んだ対象の経緯へ進む。target に ticket_id・status・history を primary として揃える。履歴を読むために担当変更を要求しない。"},{"goal_id":"g_audit","start_screen":"s_audit","target_screen":"s_audit","notes":"manager 専用入口で date_range・retention・export_scope を primary として参照し、f_history に基づく出力を行う。operator には入口・リンク・機能を提示しない。監査範囲と保持条件の具体化は u_audit_scope に残す。"}],"unresolved":[{"id":"u_assignment_policy","category":"function","owner":"product","impact":"g_assign の必須判断材料 assignment_policy の本文が入力になく、担当の候補・割当条件を確定できない。画面の配置案は作れるが、業務ルールの確定前に提供完了とは扱えない。","blocking":true,"question":"正式な担当ルール、割当可能な担当の範囲、ルールの管理元は何か。確定した内容を s_ticket の assignment_policy として提供できるか。"},{"id":"u_audit_scope","category":"function","owner":"product","impact":"監査対象の記録種別・項目と期間の境界が未提供。解決済み90日保持と年4回の監査という条件だけでは、各監査で必要な期間を網羅できるか判断できない。監査の成立に必要なデータ条件が確定するまで提供判断を保留する。","blocking":true,"question":"export_scope に含む正式な記録・項目、date_range の基準となる時刻と期間の境界、90日保持の起算点は何か。監査用記録も同じ保持範囲か、必要な監査期間を支える別の保持条件があるか。"},{"id":"u_trends_deferred","category":"function","owner":"product","impact":"f_trends を延期する初回案では g_trends の月別傾向を把握する目標に提供経路がなく、monthly_counts も表示しない。必須目標の経路には影響しない。","blocking":false,"question":"初回後の提供時期、月別集計の対象と基準日、責任者が集計から行う判断を確認できるか。必須機能が成立した後、その必要性と開発量で延期を再検討する。"},{"id":"u_theme_removal","category":"function","owner":"product","impact":"今回の入力では業務目標を持たない f_theme を提供範囲から除外する提案だが、外部の既存契約や別の業務目的までは調査していない。実データや既存設定の削除は許可しない。","blocking":false,"question":"既存利用でテーマギャラリーに別の必須目的がある場合は、その要件と役割を提示して提供廃止案を再検討できるか。"},{"id":"u_list_scale","category":"information_architecture","owner":"A","impact":"0件・1件・10000件は与えられた検討条件であり、件数分布や日常の絞込パターンを観測していない。全件・自分の担当・解決済み検索というラベルと分類の見つけやすさは未確認。","blocking":false,"question":"実際の担当範囲、状態の種類、件数分布、長い要約を使って、同一一覧と属性絞込で対象を特定できるか確認できるか。"},{"id":"u_interaction_handoff","category":"interaction","owner":"B","impact":"担当変更・検索・出力の状態遷移、再試行、通知、一覧へ戻る条件保持は本計画では未設計。情報上の経路だけでこれらの挙動が実装されたとは扱えない。","blocking":false,"question":"s_queue の条件と戻り先、0件・失敗・権限不足時の応答、担当変更と監査出力の状態遷移を、ここで定めた役割と判断材料を保って設計できるか。"},{"id":"u_implementation_handoff","category":"implementation","owner":"C","impact":"primary 情報の実描画、長い履歴・10000件時の表示、読み上げ・キーボード操作、認可の実装は未確認。ナビゲーション非表示だけでは監査の認可を保証しない。","blocking":false,"question":"既存意匠のまま幅の異なる画面で候補と各属性の対応を保ち、必要情報を展開不要にできるか。operator が監査機能・出力へ直接到達しても実行できない認可を実装できるか。"},{"id":"u_task_evaluation","category":"information_architecture","owner":"D","impact":"ラベル理解、経路の発見、着手判断・担当判断・履歴探索・監査出力の実利用者による達成は未確認。机上の設計提案を利用者の効果検証とは扱わない。","blocking":false,"question":"担当者が T-104 と T-105 を比較し、T-099 の履歴を探す課題と、責任者が必要期間の監査記録を取り出す課題で、必須情報と入口を見つけられるか確認できるか。"}],"decision_notes":["入力基準: 提供された support-triage.json の本文を固定した設計案。ファイルに revision・取得日時・現行画面はなく、外部の現行システムや実利用ログは参照していない。入力の case・role・goal・requirement・feature ID、object/outcome/roles、依存を保持する。","判断順序: まず operator/manager の成果と要件を対応づけ、全機能に keep/merge/defer/remove と優先度を付けた。その結果から対象・属性・正本を定め、画面責務、役割別経路、必要情報の開示へ進んだ。機能一覧をそのまま画面一覧には変換していない。","A01/A02: operator → g_triage → r_triage → f_inbox（f_my_queue を統合）。operator → g_assign → r_assign → f_assign + 依存先 f_history。operator → g_find → r_archive → f_search + f_history。manager → g_audit → r_audit → f_export + 依存先 f_history。manager → g_trends → r_trends → f_trends は初回後へ延期し、未達の目標として残す。","A03: f_my_queue と f_inbox は対象・成果・役割・必要情報・権限・依存条件が一致する。正本は f_inbox、旧「自分の対応一覧」の入口は「自分の担当」ビューとして残す。旧 URL やブックマークの実体は提供されていないため、その具体的な移行挙動は未確定。","A03/A07: f_inbox と f_search は同画面に置くが、選択と探索の成果が異なるので独立 keep。f_assign と f_history も同じ選択済み問い合わせの情報を参照するが、変更と閲覧を一機能へ統合しない。監査の対象と権限は別なので s_audit を分ける。","A04: required を先に保護し、低頻度の f_export と依存先 f_history を維持する。年4回は削除理由にしない。f_trends は初回必須でないという明示条件に基づく延期であり、折りたたみや裏画面で提供するという意味ではない。","A05: 正本対象は ticket、属性は ticket_id・summary・severity・due_at・owner・status、対応経緯は history。自分の担当・全件・解決済みは同じ対象集合を見つける条件であり、別の対象やデータ保管先ではない。監査の audit-record は履歴を出力する対象として別成果・別権限を維持する。","A05: 日常の着手一覧は未対応・対応中を開始条件とする仮案。解決済みを含む検索へ同じ画面から明示的に進める。担当条件、状態条件、現在の検索条件を併記し、0件でも条件を確認・見直す先と90日保持を読める責務を s_queue に持たせる。初期条件の具体的な挙動は B と実利用確認へ渡す。","A06: operator の作業入口は s_queue、manager の作業入口は s_audit。監査領域を担当者の global/local/contextual ナビゲーションに含めない。責任者向けの一画面で監査が成立するため、空の管理ホームや延期中のダッシュボードを中継させない。","A07: 「一覧」「検索」を別画面に分ける案は、同じ集合・属性の往復を増やすため採らない。「担当変更」「履歴」を必ず別画面にする案も、同じ対象の判断材料を記憶させるため採らない。一方で監査を担当者画面へ混在させる案は権限と判断の違いから採らない。","A08/A09: s_queue の比較材料と s_ticket の担当ルール・履歴、s_audit の期間・保持・出力範囲は primary。primary は展開操作不要という意味で、スクロールを許容する。s_ticket だけでは保持方針を補足扱いにできるが、検索0件と監査の判断場所では primary に残す。","代表内容: T-104「共有端末で同期が止まる」高・本日16:00・未割当・未対応と、T-105「請求書の表示名を変更したい」低・明日12:00・担当A・対応中を同じ属性で比べられる責務を置く。自動の優先順位スコアは作らない。T-099「復旧した接続の確認」解決済み・「11/20復旧確認」は解決済み検索から同じ ticket の履歴へ対応づける。例示内容を変更しない。","境界条件: 0件では検索条件・保持期間と見直す場所、1件では同じ必須属性、10000件では同じ比較軸と絞込経路を維持する。全件を一画面内へ同時描画できるとは仮定しない。分割読込・ページング・部品選定は C、操作応答は B へ渡す。","保持: r_archive の解決済み記録90日保持を維持する。統合・延期・削除は提供範囲の設計提案であり、実データの削除や保存期間の短縮を実施しない。監査に必要な期間と保持条件の具体的な整合は u_audit_scope が解消するまで確定しない。","Art Direction: visual_intent_id=ops-charcoal-01 を維持する。既存の黒鉛色背景、白文字、琥珀色アクセント、システム書体、小さな角丸、テキストと罫線中心の意匠を変えない。比較する属性の同時参照と対象ごとの対応を引き継ぎ、色・書体・装飾の新案は作らない。","仮定と保留: この計画は入力に示された operator と manager を別の権限として扱い、兼務者の権限切替は追加しない。担当ルール本文、監査の出力項目・期間境界・保持範囲は未提供。必須判断材料の確定が必要な u_assignment_policy と u_audit_scope は blocking=true とし、提供判断は HOLD のまま引き渡す。","実施範囲: 指定入力とローカルの Skill/参照だけを用いて設計した。JSONの構文確認のみを行い、チェッカ、テスト、評価器、自分のプランの採点、外部検索、画面実装、状態遷移実装、利用者評価は実施していない。設計の効果・実装の認可・実画面での意匠維持は未確認。"]},"projection":{"many_count":40,"palette_note":"黒鉛色・白・琥珀色の固定近似色。色値の指定は未提供。"}}</script>
+<script>
+(function () {
+  'use strict';
+  const data = JSON.parse(document.getElementById('plan-data').textContent);
+  const brief = data.brief;
+  const plan = data.plan;
+  const config = data.projection;
+  const array = function (value) { return Array.isArray(value) ? value : []; };
+  const record = function (value) { return value !== null && typeof value === 'object' && !Array.isArray(value); };
+  const roles = array(brief.roles).filter(record);
+  const screens = array(plan.screens).filter(record);
+  const features = array(plan.features).filter(record);
+  const goals = array(brief.goals).filter(record);
+  // Keep original navigation indexes: a malformed record must not renumber later edges.
+  const nav = array(plan.navigation);
+  const content = array(brief.content);
+  const state = {role: null, screen: null, mode: 'normal'};
+  const root = document.getElementById('screen-root');
+  const roleSelect = document.getElementById('harness-role');
+  const modeSelect = document.getElementById('harness-data-mode');
+  const entryList = document.getElementById('entry-list');
+  const status = document.getElementById('projection-status');
+
+  function element(tag, attributes, text) {
+    const node = document.createElement(tag);
+    Object.entries(attributes || {}).forEach(function (entry) {
+      node.setAttribute(entry[0], String(entry[1]));
+    });
+    if (text !== undefined) node.textContent = String(text);
+    return node;
+  }
+
+  function textOrMissing(value) {
+    if (value === undefined || value === null || value === '') return '未提供';
+    return typeof value === 'string' ? value : JSON.stringify(value);
+  }
+
+  function showStatus(code, message) {
+    status.dataset.projectionStatus = code;
+    status.textContent = message;
+  }
+
+  function rows() {
+    if (state.mode === 'empty') return [];
+    if (state.mode === 'single') return content.slice(0, 1);
+    if (state.mode === 'many') {
+      return content.length ? Array.from({length: config.many_count}, function (_, i) {
+        return content[i % content.length];
+      }) : [];
+    }
+    return content;
+  }
+
+  function scenarioNote() {
+    const count = rows().length;
+    const notes = {
+      normal: '提供されたbrief.contentをそのまま表示します。',
+      empty: '評価ハーネスが0件表示を試験しています。元データは変更しません。',
+      single: '評価ハーネスが提供データの先頭1件を表示しています。',
+      many: '評価ハーネスが提供データを最大40行まで反復しています。新しい実データは生成していません。'
+    };
+    document.getElementById('scenario-note').textContent = notes[state.mode] + ' 表示行数: ' + count;
+    root.dataset.dataMode = state.mode;
+    root.dataset.rowCount = String(count);
+  }
+
+  function currentEntries() {
+    return screens.filter(function (s) { return array(s.entry_for).includes(state.role); });
+  }
+
+  function renderEntries() {
+    entryList.replaceChildren();
+    const entries = currentEntries();
+    if (!entries.length) {
+      entryList.append(element('span', {'data-no-entry': ''}, 'このroleの入口はplanに未提供です。'));
+    }
+    entries.forEach(function (s) {
+      const button = element('button', {
+        type: 'button', id: 'entry-' + screens.indexOf(s),
+        'data-entry-screen': s.id, 'data-entry-role': state.role,
+        'aria-current': state.screen && state.screen.id === s.id ? 'page' : 'false'
+      }, textOrMissing(s.title) + ' (' + textOrMissing(s.id) + ')');
+      button.addEventListener('click', function () { navigate(s.id); });
+      entryList.append(button);
+    });
+  }
+
+  function renderRoutes() {
+    const list = document.getElementById('goal-routes');
+    list.replaceChildren();
+    array(plan.goal_routes).forEach(function (r, index) {
+      if (!record(r)) return;
+      const goal = goals.find(function (g) { return g.id === r.goal_id; });
+      if (goal && goal.role !== state.role) return;
+      list.append(element('li', {
+        'data-goal-route-index': index, 'data-goal-id': r.goal_id,
+        'data-start-screen': r.start_screen, 'data-target-screen': r.target_screen
+      }, textOrMissing(r.goal_id) + ': ' + textOrMissing(r.start_screen) + ' → ' +
+          textOrMissing(r.target_screen) + ' / ' + textOrMissing(r.notes)));
+    });
+    if (!list.children.length) list.append(element('li', {}, 'このroleのgoal routeはplanに未提供です。'));
+  }
+
+  function renderInformation(screen, visibility) {
+    const fields = array(screen.information).filter(function (item) {
+      return record(item) && item.visibility === visibility;
+    });
+    const section = element('section', {'class': 'screen-section', 'data-information-group': visibility});
+    if (!fields.length) {
+      section.append(element('p', {'data-no-information': visibility, 'class': 'muted'},
+        visibility + 'として宣言された情報はありません。'));
+      return section;
+    }
+    const available = rows();
+    const scroll = element('div', {'class': 'table-scroll', 'data-table-scroll': visibility});
+    const table = element('table', {id: 'information-' + screens.indexOf(screen) + '-' + visibility});
+    table.style.minWidth = String(fields.length * 144) + 'px';
+    const head = element('thead');
+    const headings = element('tr');
+    fields.forEach(function (field) {
+      headings.append(element('th', {scope: 'col', 'data-information-id': field.id}, textOrMissing(field.id)));
+    });
+    head.append(headings);
+    table.append(head);
+    const body = element('tbody');
+    available.forEach(function (value, rowIndex) {
+      const row = element('tr', {
+        'data-content-row': rowIndex, 'data-row-index': rowIndex, 'data-visibility': visibility,
+        'data-source-row-index': content.length ? rowIndex % content.length : ''
+      });
+      fields.forEach(function (field, fieldIndex) {
+        const supplied = record(value) && Object.prototype.hasOwnProperty.call(value, field.id);
+        const cellValue = supplied ? value[field.id] : undefined;
+        const missing = !supplied || cellValue === null || cellValue === undefined || cellValue === '';
+        row.append(element('td', {
+          id: 'cell-' + screens.indexOf(screen) + '-' + visibility + '-' + rowIndex + '-' + fieldIndex,
+          'data-information-id': field.id, 'data-row-index': rowIndex,
+          'data-value-state': missing ? 'missing' : 'provided',
+          'data-visibility': visibility
+        }, missing ? '未提供' : textOrMissing(cellValue)));
+      });
+      body.append(row);
+    });
+    table.append(body);
+    scroll.append(table);
+    section.append(scroll);
+    if (!available.length) section.append(element('p', {'data-empty-state': visibility}, '表示するデータは0件です。'));
+    return section;
+  }
+
+  function renderFeatureList(screen) {
+    const section = element('section', {'class': 'screen-section'});
+    section.append(element('h2', {}, '宣言された機能'));
+    section.append(element('p', {'class': 'muted'}, '機能名の一覧です。業務操作の実装や実行を表すものではありません。'));
+    const list = element('ul', {'class': 'feature-list', 'data-feature-list': ''});
+    array(screen.feature_ids).forEach(function (featureId) {
+      const feature = features.find(function (f) { return f.id === featureId; });
+      list.append(element('li', {
+        'data-feature-id': featureId,
+        'data-disposition': feature ? feature.disposition : 'missing'
+      }, feature ? textOrMissing(feature.label) : '未提供 (' + textOrMissing(featureId) + ')'));
+    });
+    if (!list.children.length) list.append(element('li', {'data-no-features': ''}, 'この画面に宣言された機能はありません。'));
+    section.append(list);
+    return section;
+  }
+
+  function renderNavigation(screen) {
+    const section = element('nav', {'class': 'screen-section', 'aria-label': 'planで宣言された画面間ナビゲーション'});
+    section.append(element('h2', {}, 'このroleに宣言されたナビゲーション'));
+    const list = element('ul', {'class': 'navigation-list'});
+    nav.forEach(function (edge, index) {
+      if (!record(edge) || edge.from !== screen.id || !array(edge.roles).includes(state.role)) return;
+      const target = screens.find(function (s) { return s.id === edge.to; });
+      const permission = !target ? 'missing' : array(target.roles).includes(state.role) ? 'allowed' : 'denied';
+      const link = element('a', {
+        id: 'nav-' + index, 'class': 'nav-link', href: '#' + encodeURIComponent(String(edge.to)),
+        'data-nav-index': index, 'data-from': edge.from, 'data-to': edge.to,
+        'data-roles': JSON.stringify(array(edge.roles)), 'data-kind': edge.kind,
+        'data-target-permission': permission
+      }, textOrMissing(edge.label));
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (!state.screen || edge.from !== state.screen.id || !array(edge.roles).includes(state.role)) {
+          showStatus('access-denied', 'このrole・画面からの移動はplanに宣言されていません。');
+          return;
+        }
+        navigate(edge.to);
+      });
+      const item = element('li');
+      item.append(link);
+      list.append(item);
+    });
+    if (!list.children.length) list.append(element('li', {'data-no-navigation': '', 'class': 'muted'}, 'この画面からのナビゲーションは宣言されていません。'));
+    section.append(list);
+    return section;
+  }
+
+  function renderScreen() {
+    root.replaceChildren();
+    scenarioNote();
+    if (!state.screen) return;
+    const screen = state.screen;
+    const section = element('section', {
+      id: 'screen-' + screens.indexOf(screen), 'class': 'panel',
+      'data-screen-id': screen.id, 'data-screen-role': state.role
+    });
+    section.append(element('p', {'class': 'identifier'}, '画面ID: ' + textOrMissing(screen.id)));
+    section.append(element('h1', {'data-screen-title': ''}, textOrMissing(screen.title)));
+    section.append(element('p', {'class': 'screen-purpose', 'data-screen-purpose': ''}, textOrMissing(screen.purpose)));
+    section.append(element('h2', {}, '判断情報 (primary)'));
+    section.append(renderInformation(screen, 'primary'));
+    const secondary = array(screen.information).some(function (i) { return record(i) && i.visibility === 'secondary'; });
+    if (secondary) {
+      const details = element('details', {'data-secondary': ''});
+      details.append(element('summary', {}, '補足情報 (secondary)'));
+      details.append(renderInformation(screen, 'secondary'));
+      section.append(details);
+    }
+    section.append(renderFeatureList(screen));
+    section.append(renderNavigation(screen));
+    root.append(section);
+  }
+
+  function navigate(screenId) {
+    const screen = screens.find(function (s) { return s.id === screenId; });
+    if (!screen) {
+      showStatus('missing-target', '遷移先の画面はplanに未提供です: ' + textOrMissing(screenId));
+      return false;
+    }
+    if (!array(screen.roles).includes(state.role)) {
+      showStatus('access-denied', 'このroleは遷移先の画面を許可されていません: ' + textOrMissing(screenId));
+      return false;
+    }
+    state.screen = screen;
+    renderScreen();
+    renderEntries();
+    showStatus('ok', '表示中: ' + textOrMissing(screen.title) + ' / role: ' + textOrMissing(state.role));
+    return true;
+  }
+
+  function changeRole() {
+    state.role = roleSelect.value || null;
+    state.screen = null;
+    root.replaceChildren();
+    root.dataset.role = state.role === null ? '' : state.role;
+    scenarioNote();
+    renderEntries();
+    renderRoutes();
+    const entries = currentEntries();
+    if (entries.length) navigate(entries[0].id);
+    else showStatus('no-entry', 'このroleの入口はplanに未提供です。別の画面への導線は補完しません。');
+  }
+
+  roles.forEach(function (role) {
+    if (typeof role.id !== 'string') return;
+    roleSelect.append(element('option', {value: role.id}, textOrMissing(role.label) + ' (' + role.id + ')'));
+  });
+  roleSelect.addEventListener('change', changeRole);
+  modeSelect.addEventListener('change', function () {
+    state.mode = modeSelect.value;
+    renderScreen();
+  });
+  document.getElementById('palette-note').textContent = config.palette_note + ' システム書体を使用。';
+  document.getElementById('intent-note').textContent = 'brief.visual_intent.id: ' + textOrMissing(brief.visual_intent && brief.visual_intent.id) +
+    ' / plan.visual_intent_id: ' + textOrMissing(plan.visual_intent_id) +
+    (brief.visual_intent && brief.visual_intent.id === plan.visual_intent_id ? '' : ' (不一致または未提供)');
+  changeRole();
+  document.documentElement.dataset.caseId = textOrMissing(brief.case_id);
+  document.documentElement.dataset.projectionReady = 'true';
+  window.__planProjection = Object.freeze({
+    getState: function () {
+      return {role: state.role, screen: state.screen ? state.screen.id : null, mode: state.mode, rowCount: rows().length};
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -122,6 +122,9 @@ def validate(brief, plan):
             if req not in qq: add("UNKNOWN_REQUIREMENT",loc,req,"function")
         target = resolve(f["id"])
         if f["disposition"] == "merge":
+            direct_target = ff.get(f.get("target")) if isinstance(f.get("target"), str) else None
+            if direct_target is None or direct_target["disposition"] != "keep":
+                add("MERGE_NOT_DIRECT_TO_CANONICAL",loc,"Merge target must directly name a kept canonical feature","function")
             if target is None:
                 add("MERGE_CYCLE_OR_DEAD_TARGET",loc,"Merge must resolve to a kept canonical feature","function")
             elif any(f[k] != ff[target][k] for k in ("object","outcome")) or set(f["roles"]) != set(ff[target]["roles"]):
@@ -149,10 +152,6 @@ def validate(brief, plan):
     for r in requirements:
         if r["mandatory"] and not any(r["id"] in f["requirement_ids"] for f in kept):
             add("MISSING_REQUIREMENT",r["id"],"Mandatory requirement has no kept capability","function")
-    for g in goals:
-        if g["priority"] == "must" and not any(g["id"] in f["goal_ids"] and g["role"] in f["roles"] for f in kept):
-            add("MISSING_GOAL",g["id"],"Must goal has no usable capability","function")
-
     for s in screens:
         loc = f"screens.{s['id']}"
         if not s["title"].strip() or not s["purpose"].strip(): add("SCREEN_PURPOSE",loc,"Screen needs a title and decision purpose")
@@ -199,7 +198,36 @@ def validate(brief, plan):
             pending.extend(n["to"] for n in edges if n["from"] == cur and role in n["roles"])
         return visited
 
+    # A goal target's information does not establish access to its capability.
+    # Required input capabilities may live elsewhere, but each input role needs
+    # a reachable canonical placement from at least one authorized entry.
+    entry_reach = {}
+    for role in rr:
+        entry_reach[role] = set()
+        for s in screens:
+            if role in s["entry_for"] and role in s["roles"]:
+                entry_reach[role].update(reachable(s["id"], role))
+    for source in requests:
+        if not source["mandatory"]:
+            continue
+        target = resolve(source["id"])
+        if target is None:
+            continue  # Missing/deferred/removed mandatory capabilities are reported above.
+        for role in dict.fromkeys(source["roles"]):
+            available = entry_reach.get(role, set())
+            if role not in ff[target]["roles"] or not any(target in ss[sid]["feature_ids"] for sid in available):
+                add("MANDATORY_FEATURE_UNREACHABLE",f"feature_requests.{source['id']}",
+                    f"Canonical feature {target} has no placement reachable from an authorized entry for role {role}")
+
     for g in goals:
+        if g["priority"] == "must":
+            available = entry_reach.get(g["role"], set())
+            # A must goal needs at least one usable capability, without making
+            # every optional feature associated with that goal mandatory.
+            if not any(g["id"] in f["goal_ids"] and g["role"] in f["roles"]
+                       and any(f["id"] in ss[sid]["feature_ids"] for sid in available)
+                       for f in kept):
+                add("MISSING_GOAL",g["id"],"Must goal has no kept capability reachable from an authorized entry for its role","function")
         matching = [r for r in routes if r["goal_id"] == g["id"]]
         if g["priority"] == "must" and not matching:
             add("MISSING_GOAL_ROUTE",g["id"],"Must goal has no entry and decision destination")

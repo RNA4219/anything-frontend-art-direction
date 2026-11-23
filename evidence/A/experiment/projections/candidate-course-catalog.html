@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ja" data-projection-ready="false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>course-catalog — 共通JSON投影</title>
+  <style>
+    :root { --background: #f7f1e6; --foreground: #1f314c; --accent: #b74632; color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; min-width: 0; }
+    body { background: var(--background); color: var(--foreground); font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .shell { max-width: 1400px; margin: 0 auto; padding: 20px; min-width: 0; }
+    h1, h2, h3, p, ul { margin-top: 0; }
+    h1 { font-size: clamp(22px, 3vw, 30px); line-height: 1.3; margin-bottom: 10px; overflow-wrap: anywhere; }
+    h2 { font-size: 18px; margin-bottom: 12px; }
+    p, li, a, label, summary, td, th { overflow-wrap: anywhere; }
+    .panel { border: 1px solid color-mix(in srgb, var(--foreground) 28%, transparent); border-radius: 4px; padding: 16px; margin-bottom: 18px; min-width: 0; }
+    #evaluation-harness { border-left: 4px solid var(--accent); font-size: 13px; }
+    #evaluation-harness h2 { font-size: 15px; margin-bottom: 6px; }
+    #evaluation-harness p { margin-bottom: 8px; }
+    .toolbar, .entry-list, .navigation-list { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; }
+    .toolbar { margin: 10px 0; }
+    .toolbar label { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; min-width: 0; }
+    button, select, a.nav-link { font: inherit; color: inherit; background: var(--background); border: 1px solid color-mix(in srgb, var(--foreground) 45%, transparent); border-radius: 4px; padding: 7px 10px; min-height: 40px; max-width: 100%; }
+    button, select, summary, a.nav-link { cursor: pointer; }
+    button:hover, a.nav-link:hover { border-color: var(--accent); }
+    button:focus-visible, select:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    a.nav-link { display: inline-flex; align-items: center; text-decoration: underline; }
+    .entry-list { margin-bottom: 8px; }
+    .entry-list button[aria-current="page"] { border-color: var(--accent); box-shadow: inset 0 -2px var(--accent); }
+    .muted { opacity: .78; }
+    .identifier { font-size: 12px; opacity: .8; }
+    #projection-status { margin: 8px 0 0; }
+    #projection-status:not([data-projection-status="ok"]) { font-weight: 600; }
+    details { margin-top: 12px; }
+    details > summary { padding: 6px 0; }
+    details > :not(summary) { margin-top: 8px; }
+    .screen-section { margin-top: 22px; min-width: 0; }
+    .screen-purpose { font-size: 16px; }
+    .table-scroll { max-width: 100%; overflow-x: auto; border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent); border-radius: 3px; }
+    table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+    th, td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid color-mix(in srgb, var(--foreground) 20%, transparent); white-space: normal; }
+    th { font-weight: 650; border-bottom-width: 2px; }
+    tbody tr:last-child td { border-bottom: 0; }
+    td[data-value-state="missing"] { opacity: .65; }
+    .feature-list { padding-left: 22px; }
+    .feature-list li { margin-bottom: 6px; }
+    .navigation-list { list-style: none; margin: 0; padding: 0; align-items: stretch; }
+    .navigation-list li { min-width: 0; max-width: 100%; }
+    .route-list { margin: 0; padding-left: 20px; }
+    .route-list li { margin-bottom: 5px; }
+    [hidden] { display: none !important; }
+    @media (max-width: 600px) {
+      .shell { padding: 12px; }
+      .panel { padding: 12px; }
+      button, select, a.nav-link { min-height: 44px; }
+      .toolbar { align-items: flex-start; }
+      .toolbar label { flex: 1 1 140px; }
+      .toolbar select { width: 100%; }
+      th, td { padding: 9px 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside id="evaluation-harness" class="panel" aria-label="評価ハーネス">
+    <h2>評価ハーネス — 共通JSON投影</h2>
+    <p>以下のrole・件数・入口コントロールは試験用です。製品の機能として追加したものではありません。</p>
+    <p class="muted">構造と描画の確認用です。保存・送信・取消・公開などの業務処理、および実サービスの認証・認可は実装していません。</p>
+    <div class="toolbar">
+      <label>試験role <select id="harness-role" data-harness="role" aria-label="試験role"></select></label>
+      <label>試験データ <select id="harness-data-mode" data-harness="data-mode" aria-label="試験データ件数">
+        <option value="normal">normal — 提供データ</option>
+        <option value="empty">empty — 0件</option>
+        <option value="single">single — 先頭1件</option>
+        <option value="many">many — 実データを40行まで反復</option>
+      </select></label>
+    </div>
+    <p id="scenario-note" data-scenario-note></p>
+    <p class="identifier">planで宣言された、このroleの入口</p>
+    <div id="entry-list" class="entry-list" data-entry-list></div>
+    <details id="projection-metadata">
+      <summary>投影条件・宣言されたgoal route</summary>
+      <p id="palette-note"></p>
+      <p id="intent-note"></p>
+      <ul id="goal-routes" class="route-list"></ul>
+    </details>
+    <p id="projection-status" data-projection-status="initializing" role="status" aria-live="polite"></p>
+  </aside>
+  <main id="screen-root" aria-label="planで宣言された画面"></main>
+</div>
+<script id="plan-data" type="application/json">{"brief":{"case_id":"course-catalog","roles":[{"id":"learner","label":"受講者"},{"id":"editor","label":"講座担当"}],"goals":[{"id":"g_discover","role":"learner","outcome":"週末に参加できる初学者向け講座を予算内で見つける","priority":"must","needed_information":["title","level","schedule","price","topic"]},{"id":"g_compare","role":"learner","outcome":"候補講座を同じ条件で比較する","priority":"must","needed_information":["title","level","schedule","price","prerequisites","venue"]},{"id":"g_decide","role":"learner","outcome":"参加条件と空席を確認して申込先へ進む","priority":"must","needed_information":["title","prerequisites","seats","price","schedule","enroll_link"]},{"id":"g_saved","role":"learner","outcome":"保存した候補を後で開く","priority":"should","needed_information":["title","schedule","price"]},{"id":"g_publish","role":"editor","outcome":"講座情報を更新し公開する","priority":"must","needed_information":["title","publication_status"]}],"requirements":[{"id":"r_find","goal_ids":["g_discover"],"mandatory":true,"statement":"トピック/レベル/日程/予算を使って同じ講座集合を探せる"},{"id":"r_compare","goal_ids":["g_compare"],"mandatory":true,"statement":"2講座を同じ属性で比較し、前の画面の条件を記憶しなくてよい"},{"id":"r_prereq","goal_ids":["g_decide","g_compare"],"mandatory":true,"statement":"参加前提・価格（無料は0円）・空席は判断する場所で読める"},{"id":"r_enroll","goal_ids":["g_decide"],"mandatory":true,"statement":"対象講座と対応する申込先がある"},{"id":"r_save","goal_ids":["g_saved"],"mandatory":false,"statement":"候補保存は同じ利用者の同じ講座集合への操作"},{"id":"r_publish","goal_ids":["g_publish"],"mandatory":true,"statement":"編集者用の公開機能を受講者ナビゲーションから分離する"}],"feature_requests":[{"id":"f_catalog","label":"講座一覧","object":"course","outcome":"discover-course","roles":["learner"],"goal_ids":["g_discover"],"requirement_ids":["r_find"],"dependencies":[],"mandatory":true},{"id":"f_topics","label":"トピック別講座","object":"course","outcome":"discover-course","roles":["learner"],"goal_ids":["g_discover"],"requirement_ids":["r_find"],"dependencies":[],"mandatory":false},{"id":"f_workshops","label":"ワークショップ検索","object":"course","outcome":"discover-course","roles":["learner"],"goal_ids":["g_discover"],"requirement_ids":["r_find"],"dependencies":[],"mandatory":false},{"id":"f_compare","label":"候補を比較","object":"course-set","outcome":"compare-courses","roles":["learner"],"goal_ids":["g_compare"],"requirement_ids":["r_compare","r_prereq"],"dependencies":[],"mandatory":true},{"id":"f_details","label":"講座詳細","object":"course","outcome":"decide-enrollment","roles":["learner"],"goal_ids":["g_decide"],"requirement_ids":["r_prereq","r_enroll"],"dependencies":[],"mandatory":true},{"id":"f_favorites","label":"お気に入り","object":"course-set","outcome":"save-courses","roles":["learner"],"goal_ids":["g_saved"],"requirement_ids":["r_save"],"dependencies":[],"mandatory":false},{"id":"f_wishlist","label":"受講したいリスト","object":"course-set","outcome":"save-courses","roles":["learner"],"goal_ids":["g_saved"],"requirement_ids":["r_save"],"dependencies":[],"mandatory":false},{"id":"f_news","label":"運営のお知らせ","object":"news","outcome":"read-news","roles":["learner"],"goal_ids":[],"requirement_ids":[],"dependencies":[],"mandatory":false},{"id":"f_publish","label":"講座管理","object":"course","outcome":"publish-course","roles":["editor"],"goal_ids":["g_publish"],"requirement_ids":["r_publish"],"dependencies":[],"mandatory":true}],"visual_intent":{"id":"catalog-paper-01","constraints":["既存の紙色背景、紺文字、朱色アクセントを維持","システム書体と細い区切り線、情報中心の既存意匠","新たな装飾やブランド案は作らない"]},"contexts":{"normal":"講座一覧/トピック別/ワークショップは同じデータを呼ぶ提案名。講座は複数トピックに属せる。","abnormal":"条件に合う講座0件でも、現在の条件と条件を見直す先が分かる。編集機能は受講者に許可しない。","boundary":"0円・残席0・前提条件の長い講座。候補1件なら比較対象追加の行き先を示す。5000講座まで増える想定だが観測済みではない。"},"content":[{"title":"はじめての木工","level":"初学者","schedule":"土曜 10:00","price":"0円","topic":"ものづくり","prerequisites":"道具の持参不要","venue":"工房A","seats":"4","enroll_link":"申込先A"},{"title":"写真から始める長い題名の地域アーカイブ制作講座","level":"初学者","schedule":"日曜 13:00","price":"2000円","topic":"写真・記録","prerequisites":"スマートフォンを持参。撮影許諾について事前説明を読む","venue":"会場B","seats":"0","enroll_link":"申込先B"},{"title":"中級木工の接合技法","level":"中級","schedule":"平日 19:00","price":"6000円","topic":"ものづくり","prerequisites":"初級修了","venue":"工房A","seats":"2","enroll_link":"申込先C"}],"constraints":["好みの題材・コピーの魅力は採点しない。ラベルが同じ対象を指すかは対象。","前提条件や無料価格を補足へ隠さない。","申込/保存/公開の状態遷移はB、部品はC。Aでは画面責務と情報を指定する。"]},"plan":{"schema_version":"1.0","case_id":"course-catalog","visual_intent_id":"catalog-paper-01","features":[{"id":"f_catalog","label":"講座一覧","disposition":"keep","target":null,"object":"course","outcome":"discover-course","roles":["learner"],"goal_ids":["g_discover"],"requirement_ids":["r_find"],"dependencies":[],"reason":"同じ講座集合をトピック・レベル・日程・予算で探す正本として維持する。トピック別講座とワークショップ検索は、この正本への入口として受け入れる。","priority":"required","priority_basis":"入力で必須とされた r_find と g_discover の達成を担う。利用頻度の実測がなくても探索の成立に必要。"},{"id":"f_topics","label":"トピック別講座","disposition":"merge","target":"f_catalog","object":"course","outcome":"discover-course","roles":["learner"],"goal_ids":["g_discover"],"requirement_ids":["r_find"],"dependencies":[],"reason":"対象・成果・役割が f_catalog と一致し、入力が同じデータを呼ぶ提案名と明示している。トピックは複数所属できる探索属性として正本に残す。別の講座データや排他的な分類階層は作らない。","priority":"high","priority_basis":"トピックで探す能力は required の f_catalog で保護する。別名ごとの画面を新設する必須性は示されていないため、既知の入口を正本へ結び付ける判断を優先する。"},{"id":"f_workshops","label":"ワークショップ検索","disposition":"merge","target":"f_catalog","object":"course","outcome":"discover-course","roles":["learner"],"goal_ids":["g_discover"],"requirement_ids":["r_find"],"dependencies":[],"reason":"入力では講座一覧・トピック別と同じデータを呼ぶ提案名で、対象・成果・役割・要件・依存も同じ。f_catalog に正本化し、存在が示されていないワークショップ専用データや追加の講座種別は作らない。","priority":"high","priority_basis":"必須の探索能力は f_catalog で維持する。同じ集合の検索を別々に整備して条件や結果が分かれることを避ける。別名の利用頻度は未確認。"},{"id":"f_compare","label":"候補を比較","disposition":"keep","target":null,"object":"course-set","outcome":"compare-courses","roles":["learner"],"goal_ids":["g_compare"],"requirement_ids":["r_compare","r_prereq"],"dependencies":[],"reason":"2講座を同じ属性で対照する成果は、一件の詳細閲覧や候補保存とは異なる。対象講座ごとの価格・前提条件・空席を同じ判断場所に置き、前の画面の記憶に依存しない比較を担う。","priority":"required","priority_basis":"r_compare と r_prereq および must の g_compare を満たすために必須。画面数や要素数を減らすための削除・詳細閲覧への吸収は行わない。"},{"id":"f_details","label":"講座詳細","disposition":"keep","target":null,"object":"course","outcome":"decide-enrollment","roles":["learner"],"goal_ids":["g_decide"],"requirement_ids":["r_prereq","r_enroll"],"dependencies":[],"reason":"一つの講座について参加前提・日程・価格・空席を確認し、その講座に対応する申込先を選ぶ責務を維持する。探索や複数候補の比較とは成果が異なるため統合しない。","priority":"required","priority_basis":"入力で必須の r_prereq・r_enroll と g_decide を担い、対象の取り違えや参加条件の見落としを防ぐために必要。"},{"id":"f_favorites","label":"お気に入り","disposition":"keep","target":null,"object":"course-set","outcome":"save-courses","roles":["learner"],"goal_ids":["g_saved"],"requirement_ids":["r_save"],"dependencies":[],"reason":"同じ受講者が同じ講座集合から選んだ候補を再訪する機能の正本として維持する。画面上の入口は「保存した講座」に揃え、独立した講座データを複製しない。","priority":"high","priority_basis":"should の g_saved を支え、後日に候補を探し直す負担を避ける。必須探索・比較・申込判断に続く優先度であり、利用率や頻度は未観測。"},{"id":"f_wishlist","label":"受講したいリスト","disposition":"merge","target":"f_favorites","object":"course-set","outcome":"save-courses","roles":["learner"],"goal_ids":["g_saved"],"requirement_ids":["r_save"],"dependencies":[],"reason":"対象・成果・役割・要件が f_favorites と同じで、r_save が同じ利用者の同じ講座集合への操作と明示している。保存の正本を f_favorites に一本化し、別名からも同じ保存候補へ進める。","priority":"high","priority_basis":"g_saved の再訪能力を維持したまま、候補が二つのリストへ分かれる不一致を防ぐ。既存保存データがある場合の引継ぎは B/C の未解決事項とする。"},{"id":"f_news","label":"運営のお知らせ","disposition":"defer","target":null,"object":"news","outcome":"read-news","roles":["learner"],"goal_ids":[],"requirement_ids":[],"dependencies":[],"reason":"非必須の機能要求で、今回の達成目標・支援要件・依存先が入力に示されていないため、新規提供の設計を延期する。必要な運営連絡や既存提供の存在は未確認であり、既存情報の削除や公開停止を許可する判断ではない。","priority":"low","priority_basis":"必須の探索・比較・申込判断・公開管理を先に成立させる。対象者の目標、提供期限、既存運用上の義務が確認された時点で再検討する。"},{"id":"f_publish","label":"講座管理","disposition":"keep","target":null,"object":"course","outcome":"publish-course","roles":["editor"],"goal_ids":["g_publish"],"requirement_ids":["r_publish"],"dependencies":[],"reason":"講座情報の更新・公開は編集者に固有の成果と権限を持つ。同じ course を扱っても受講者向け閲覧機能とは統合せず、編集者専用入口と管理画面を用意する。","priority":"required","priority_basis":"入力で必須の g_publish と r_publish を満たし、受講者への編集機能の露出・許可を防ぐために必要。"}],"screens":[{"id":"s_catalog","title":"講座を探す","purpose":"トピック・レベル・日程・予算を同じ講座集合へ適用し、参加前提と空席も参照して、週末に参加できる初学者向けの候補を選ぶ。適用中の条件と条件を見直す入口は結果0件でも示す。","goal_ids":["g_discover"],"feature_ids":["f_catalog","f_compare","f_favorites"],"roles":["learner"],"entry_for":["learner"],"information":[{"id":"title","visibility":"primary","reason":"結果と候補選択を同じ講座に結び付ける。長い題名も別講座との識別に必要な内容を欠落させない。"},{"id":"topic","visibility":"primary","reason":"興味のある分野と適用中のトピック条件を照合する。複数トピックへの所属を許容する。"},{"id":"level","visibility":"primary","reason":"初学者向けかを候補選択時に判断し、現在のレベル条件を読み取れるようにする。"},{"id":"schedule","visibility":"primary","reason":"土曜・日曜と時間を読み、週末という探索条件に適合するかを判断する。適用中の日程条件も隠さない。"},{"id":"price","visibility":"primary","reason":"予算と比較する金額を直接読む。入力の0円をそのまま表示し、欠損や価格未定と混同しない。"},{"id":"prerequisites","visibility":"primary","reason":"候補として選べるかを左右する参加前提を詳細展開へ隠さない。長い前提条件も本文として読める。"},{"id":"seats","visibility":"primary","reason":"候補を選ぶ時点で空席を把握する。残席0を非表示や空欄にしない。"}]},{"id":"s_compare","title":"候補を比較","purpose":"2講座の同じ属性を同一画面で対照し、参加前提・価格・日程・会場・空席から次に詳しく検討する講座を選ぶ。候補1件でもその情報と比較対象を追加する行先を示す。","goal_ids":["g_compare"],"feature_ids":["f_compare","f_favorites"],"roles":["learner"],"entry_for":[],"information":[{"id":"title","visibility":"primary","reason":"どの講座の値を比較しているかを全属性と対応させる。入力の長い題名も識別できるように保つ。"},{"id":"level","visibility":"primary","reason":"2講座の対象レベルを同じ属性として比べ、初学者向けと中級を取り違えない。"},{"id":"schedule","visibility":"primary","reason":"候補間の曜日と時刻を前の画面へ戻らず比較する。"},{"id":"price","visibility":"primary","reason":"0円を含む金額を同じ属性として対照し、予算判断に記憶や転記を要させない。"},{"id":"prerequisites","visibility":"primary","reason":"参加できる条件の差を全文で読み比べる。展開や別画面への移動は要求しない。"},{"id":"venue","visibility":"primary","reason":"参加場所の差を同一の比較対象に対応させ、どちらに参加できるかを判断する。"},{"id":"seats","visibility":"primary","reason":"r_prereq に従い、比較による候補判断の場所で空席を読む。残席0も保持する。"},{"id":"topic","visibility":"primary","reason":"異なるトピックから選んだ候補も同じ講座集合のまま比較し、内容の分野を確認できるようにする。"}]},{"id":"s_details","title":"講座詳細・申込先","purpose":"選択した一つの講座について参加前提・価格・日程・空席を確認し、その講座に対応する申込先へ進む判断をする。","goal_ids":["g_decide"],"feature_ids":["f_details","f_compare","f_favorites"],"roles":["learner"],"entry_for":[],"information":[{"id":"title","visibility":"primary","reason":"確認対象と申込先の対象講座を特定する。途中から直接開いた場合も対象を判別できるようにする。"},{"id":"prerequisites","visibility":"primary","reason":"参加判断に必要な前提を全文で読む。長さを理由に補足や展開内へ移さない。"},{"id":"seats","visibility":"primary","reason":"申込先へ進む前に空席を確認する。入力の0は0のまま示し、空席ありと推定しない。"},{"id":"price","visibility":"primary","reason":"負担額を申込先の対象と結び付けて確認する。無料の入力値0円も省略しない。"},{"id":"schedule","visibility":"primary","reason":"対象講座に参加できる日時かを、その申込先へ進む場所で確認する。"},{"id":"enroll_link","visibility":"primary","reason":"この講座に対応する申込先を明示する。入力の対応関係を維持し、別講座の申込先へ差し替えない。"},{"id":"level","visibility":"primary","reason":"参加前提と対象レベルを併せて確認し、本人に適合する講座かを判断する。"},{"id":"venue","visibility":"primary","reason":"参加先を最終判断できるよう、日時と同じ対象の会場を示す。"},{"id":"topic","visibility":"primary","reason":"直接到着時にも対象講座の分野を把握し、意図した候補かを確かめる。"}]},{"id":"s_saved","title":"保存した講座","purpose":"同じ受講者が保存した候補を再発見し、現在の講座情報を読みながら、比較または参加条件の確認を続ける講座を選ぶ。","goal_ids":["g_saved"],"feature_ids":["f_favorites","f_compare"],"roles":["learner"],"entry_for":[],"information":[{"id":"title","visibility":"primary","reason":"後日、以前保存した講座を識別して開く。保存リスト用に題名の別正本を作らない。"},{"id":"schedule","visibility":"primary","reason":"再訪時にも日時を直接読んで候補を選ぶ。詳細を一件ずつ往復する必要をなくす。"},{"id":"price","visibility":"primary","reason":"保存した候補の金額を再確認する。0円も元の講座情報に従って表示する。"},{"id":"level","visibility":"primary","reason":"保存した理由を記憶していなくても、対象レベルを見て候補を選び直せるようにする。"},{"id":"prerequisites","visibility":"primary","reason":"保存後の候補判断でも参加前提を隠さない。値は講座の正本を参照する。"},{"id":"seats","visibility":"primary","reason":"保存済みという事実から空席があると誤認しないよう、講座の空席情報を明示する。"}]},{"id":"s_editor_catalog","title":"講座管理一覧","purpose":"講座名・日程・公開状態から更新対象の講座を特定し、その講座の編集へ進む。","goal_ids":["g_publish"],"feature_ids":["f_publish"],"roles":["editor"],"entry_for":["editor"],"information":[{"id":"title","visibility":"primary","reason":"編集する対象講座を選ぶ。受講者側と同じ講座の正本に結び付ける。"},{"id":"publication_status","visibility":"primary","reason":"更新対象を選ぶ際に公開状況を把握する。入力に値はないため公開済み・未公開を推定しない。"},{"id":"schedule","visibility":"primary","reason":"同名や類似名の講座を日程で区別して編集対象を選ぶ。"},{"id":"topic","visibility":"primary","reason":"対象講座の分野を照合して編集対象を探す。受講者向け分類の別正本は作らない。"}]},{"id":"s_editor_edit","title":"講座情報の更新・公開","purpose":"選択講座の全公開情報と公開状態を照合し、内容を更新して公開するための判断を行う。保存・公開処理の状態遷移は B に引き渡す。","goal_ids":["g_publish"],"feature_ids":["f_publish"],"roles":["editor"],"entry_for":[],"information":[{"id":"title","visibility":"primary","reason":"更新・公開する講座を特定し、入力された題名を確認する。"},{"id":"publication_status","visibility":"primary","reason":"対象講座の公開状態を判断場所で読む。具体的な状態値・許される操作は未提供のため生成しない。"},{"id":"level","visibility":"primary","reason":"受講者の適合判断に用いる対象レベルを更新内容として確認する。"},{"id":"schedule","visibility":"primary","reason":"探索・比較・申込判断に使う日時情報を編集者が確認する。"},{"id":"price","visibility":"primary","reason":"0円を含む公開金額を確認する。入力にない追加料金・価格条件を推定しない。"},{"id":"topic","visibility":"primary","reason":"同じ講座への複数トピック所属を確認する。分類ごとに講座情報を重複編集しない。"},{"id":"prerequisites","visibility":"primary","reason":"参加に必要な前提条件を全文で確認し、受講者の判断場所へ渡す内容を保つ。"},{"id":"venue","visibility":"primary","reason":"公開する会場と対象講座の対応を確認する。"},{"id":"seats","visibility":"primary","reason":"公開する空席情報を確認する。0を欠損値に変換しない。"},{"id":"enroll_link","visibility":"primary","reason":"対象講座と申込先の対応を確認する。実際のURLと提供方式は未確認として残す。"}]}],"navigation":[{"from":"s_catalog","to":"s_catalog","label":"条件を見直す","roles":["learner"],"kind":"local","rationale":"結果0件でも適用中のトピック・レベル・日程・予算を読み、同一画面の条件領域へ戻れるようにする。絞込を別の全体ナビゲーション項目にしない。"},{"from":"s_catalog","to":"s_details","label":"講座詳細・申込先","roles":["learner"],"kind":"contextual","rationale":"選んだ講座と同一の対象について、参加条件と申込先を確認する。"},{"from":"s_catalog","to":"s_compare","label":"選んだ講座を比較","roles":["learner"],"kind":"contextual","rationale":"一覧で選んだ候補を共通属性で対照する場所へ進む。入口の存在を候補行のホバーだけに依存させない。"},{"from":"s_catalog","to":"s_saved","label":"保存した講座","roles":["learner"],"kind":"global","rationale":"同じ受講者が保存した候補の再訪先を主要な行先として提供する。「お気に入り」「受講したいリスト」の行先を分けない。"},{"from":"s_saved","to":"s_catalog","label":"講座を探す","roles":["learner"],"kind":"global","rationale":"保存候補の有無にかかわらず全講座の探索へ進めるようにする。"},{"from":"s_saved","to":"s_details","label":"講座詳細・申込先","roles":["learner"],"kind":"contextual","rationale":"保存した講座を特定したまま、現在の参加条件と対応する申込先を確認する。"},{"from":"s_saved","to":"s_compare","label":"選んだ講座を比較","roles":["learner"],"kind":"contextual","rationale":"保存候補も全体カタログと同じ比較機能で対照する。保存専用の比較データは作らない。"},{"from":"s_compare","to":"s_catalog","label":"講座を探す","roles":["learner"],"kind":"global","rationale":"比較画面から全体の探索へ移れるようにし、途中から開いても探索先を識別できるようにする。"},{"from":"s_compare","to":"s_catalog","label":"比較する講座を追加","roles":["learner"],"kind":"contextual","rationale":"候補が1件または0件の場合にも追加候補を探す行先を示す。既存の候補と探索条件をどう保持するかは B が設計する。"},{"from":"s_compare","to":"s_details","label":"この講座の参加条件・申込先","roles":["learner"],"kind":"contextual","rationale":"比較から選んだ一つの講座について申込判断へ進む。比較対象間でタイトルとリンク先を取り違えない対応を保つ。"},{"from":"s_compare","to":"s_saved","label":"保存した講座","roles":["learner"],"kind":"global","rationale":"比較中でも同じ保存候補集合の再訪先へ進めるようにする。"},{"from":"s_details","to":"s_catalog","label":"講座を探す","roles":["learner"],"kind":"global","rationale":"検索結果などから詳細へ直接到着した場合も、同じ全体カタログで候補を探す先を示す。"},{"from":"s_details","to":"s_compare","label":"比較候補を見る","roles":["learner"],"kind":"contextual","rationale":"現在の候補集合を比較する場所へ進める。詳細を閲覧しただけで自動的に候補追加する挙動はこの計画で決めない。"},{"from":"s_details","to":"s_saved","label":"保存した講座","roles":["learner"],"kind":"global","rationale":"詳細からも同じ利用者の保存候補へ戻れるようにする。"},{"from":"s_editor_catalog","to":"s_editor_edit","label":"講座を編集","roles":["editor"],"kind":"contextual","rationale":"管理一覧で特定した講座だけを編集する。受講者のナビゲーションにはこの行先を設けない。"},{"from":"s_editor_edit","to":"s_editor_catalog","label":"講座管理一覧","roles":["editor"],"kind":"local","rationale":"編集者用の管理領域内で次の更新対象を選ぶ場所へ戻る。未保存・公開中などの移動条件は B の担当とする。"}],"goal_routes":[{"goal_id":"g_discover","start_screen":"s_catalog","target_screen":"s_catalog","notes":"受講者の入口でトピック・レベル・日程・予算を併用して同じ集合を探す。title・level・schedule・price・topic を primary で提供し、参加前提と空席も確認できる。0件でも現在の条件と「条件を見直す」が残る計画とする。"},{"goal_id":"g_compare","start_screen":"s_catalog","target_screen":"s_compare","notes":"s_catalog →「選んだ講座を比較」→ s_compare。title・level・schedule・price・prerequisites・venue の同一属性を2講座分そろえ、seats も primary とする。保存候補からも同じ s_compare へ進む。候補1件なら「比較する講座を追加」で s_catalog へ進める。"},{"goal_id":"g_decide","start_screen":"s_catalog","target_screen":"s_details","notes":"s_catalog →「講座詳細・申込先」→ s_details。title・prerequisites・seats・price・schedule・enroll_link を同じ対象の primary 情報として提供する。比較画面・保存画面からも対象ごとに到達できる。実際の外部申込先への移動は enroll_link を使用し、申込処理の状態設計は含めない。"},{"goal_id":"g_saved","start_screen":"s_catalog","target_screen":"s_saved","notes":"s_catalog → 全体の行先「保存した講座」→ s_saved。同一利用者の保存候補について title・schedule・price を primary で再確認して開く。お気に入りと受講したいリストの双方がこの正本を指す。"},{"goal_id":"g_publish","start_screen":"s_editor_catalog","target_screen":"s_editor_edit","notes":"編集者専用入口 s_editor_catalog → 対象の「講座を編集」→ s_editor_edit。title・publication_status と更新対象の講座情報を primary で参照する。両端の画面と経路を editor のみに限定し、learner から管理機能への導線は作らない。"}],"unresolved":[{"id":"u_news_scope","category":"function","owner":"product","impact":"お知らせが既存の必須運営連絡を担っていた場合、新規提供の延期という前提が成立しない。既存提供を停止する根拠はない。","blocking":false,"question":"f_news が支える利用者の成果、既存公開の有無、休講・日程変更など必須連絡の役割、保持義務、提供期限は何か。必要性が確認されたら保持経路と優先度を再検討する。"},{"id":"u_topic_taxonomy","category":"information_architecture","owner":"A","impact":"3件の代表データだけでは、実際のトピック分類・複数所属の分布・用語の理解を確定できない。","blocking":false,"question":"実際の全トピックと複数所属の例、分類ごとの件数はどうなっているか。5000講座は想定値として扱い、実データで絞込語彙と探索のまとまりを確認する。"},{"id":"u_schedule_data","category":"information_architecture","owner":"product","impact":"提供された schedule は曜日と時刻で、開催日・反復開催・地域の時刻条件までは含まれない。今回の週末判断を実日付へ無条件に一般化できない。","blocking":false,"question":"日程の正本は単発開催日・曜日・複数回開催のどれを持ち、土曜・日曜の探索条件をどう定義するか。予算の比較に使用する価格データ形式も実データ提供時に確認する。"},{"id":"u_course_identity","category":"implementation","owner":"C","impact":"入力contentに安定した講座IDがないため、同名講座・複数トピック・保存候補・編集・申込先を同じ対象へ結び付ける実装方式は未確認。","blocking":false,"question":"実データの講座識別子と提供元を確認し、タイトルではなく同一識別子で各画面・保存関係・申込先を参照できるようにする。既存の複数入口や保存リストがある場合の識別子対応は何か。"},{"id":"u_publication_data","category":"function","owner":"product","impact":"publication_status は必須情報として与えられているが、3件のcontentには状態値がない。更新・公開の実動作をこのデータだけで確認することはできない。","blocking":false,"question":"各講座の公開状態、編集者が更新できる項目、公開の業務ルールは何か。値を提供してから B が保存・公開・失敗時の状態遷移を設計する。"},{"id":"u_enroll_destination","category":"function","owner":"product","impact":"申込先A・B・Cは対応関係を示す入力値で、実URLや受付方針はない。残席0から受付可能・待機登録可能とは判断できない。","blocking":false,"question":"講座ごとの実際の申込先と残席0時の案内方針を確認する。キャンセル待ち等は存在が確認されるまで追加せず、Bへ申込導線の状態条件を渡す。"},{"id":"u_saved_interaction","category":"interaction","owner":"B","impact":"正本を一本化しても、保存先の利用者識別・保存期間・失敗時・重複した既存候補の扱いを決めなければ再訪の実装は完成しない。","blocking":false,"question":"同じ利用者の保存をどう識別・維持し、保存・解除・失敗をどう示すか。既存のお気に入りと受講したいリストが存在するなら、候補を失わず同じ集合へ引き継ぐ条件を C と決める。"},{"id":"u_navigation_interaction","category":"interaction","owner":"B","impact":"0件時の条件見直し、候補1件時の追加、画面間の候補・探索条件の保持は、到達先の指定だけでは動作が確定しない。","blocking":false,"question":"選択・解除・追加・検索条件変更・戻る操作で何を保持するかを設計する。0件でも適用中の条件を読めること、候補1件でも追加先が分かることを引継ぎ条件とする。"},{"id":"u_authorization","category":"implementation","owner":"C","impact":"管理リンクを受講者へ出さないだけでは、直接URLやデータ操作に対する認可は保証できない。","blocking":false,"question":"editor の画面アクセスと更新・公開操作を実データ提供側でも制限する方法を確認する。learner に編集を許可しない要件を、ナビゲーション分離とは別に実装する。"},{"id":"u_comparison_rendering","category":"implementation","owner":"C","impact":"同一画面に情報を指定しても、狭幅で2講座の対応が崩れたり、長い題名・前提条件が切れたりすれば比較要件を満たせない。","blocking":false,"question":"実際の広幅・狭幅で、2講座の同じ属性を比較でき、題名と各値の対応が分かり、前提条件全文・0円・残席0を展開不要で読めるか。部品、読み上げ、キーボード操作、件数増加時の描画方式は C が扱う。"},{"id":"u_existing_visual","category":"visual","owner":"C","impact":"visual_intentの指定は維持したが、既存実画面・CSS・実描画を参照していないため、表示の一致を確認したとはいえない。","blocking":false,"question":"既存の紙色背景・紺文字・朱色アクセント、システム書体、細い区切り線を保って実装し、情報の追加で既存意匠を置換していないかを実画面で確認する。新しい装飾案は不要。"},{"id":"u_user_evaluation","category":"information_architecture","owner":"D","impact":"今回の出力は入力に基づく設計案であり、利用者によるラベル理解・入口の発見・比較の成功・作業時間は未確認。","blocking":false,"question":"初学者向けの週末講座を予算内で探す、2講座を比較する、保存候補を再訪する、編集者が公開情報を更新する代表タスクを、実利用者と実画面が用意された段階で確認する。"}],"decision_notes":["入力基準: この依頼で受領した input/course-catalog.json を判断の基準とした。ファイル独自のrevision・更新日時は提示されていない。外部情報、他ケース、評価器、チェッカ、テストを設計根拠にしていない。","設計順序: 役割と成果・要件を整理し、全feature_requestsの keep/merge/defer/remove を先に決め、その後に情報分類・画面責務、最後にナビゲーションと目標経路を具体化した。画面数を目標に機能を削減していない。","目標対応: learner の g_discover → r_find → f_catalog、g_compare → r_compare/r_prereq → f_compare、g_decide → r_prereq/r_enroll → f_details、g_saved → r_save → f_favorites。editor の g_publish → r_publish → f_publish。元の役割、object、outcome、goal_ids、requirement_ids、空のdependenciesを維持した。","探索の正本: f_topics と f_workshops は f_catalog へ直接統合する。三者は同じ対象・成果・役割で、入力に同じ講座集合と明記されている。既存入口がある場合、「トピック別講座」は対応するトピック条件を伴う s_catalog、「ワークショップ検索」は同じ s_catalog へ対応させる。実際の旧URLは未提供なので作らない。","分類: 対象は course、比較対象と保存候補は course-set。topic・level・schedule・price は同じ講座集合を探す属性で、保存・比較・申込判断・公開は行為または成果として区別した。topic は複数所属を許し、講座が一つの分類にしか属せない階層にはしない。ワークショップという独自の属性値は入力にないため追加しない。","保存の正本: f_wishlist は f_favorites へ直接統合し、受講者向け表示名は「保存した講座」とする。保存画面は同じ講座集合に対する利用者の保存関係を使うビューで、講座情報のコピーではない。既存の保存データがある場合に候補を破棄する判断は含まない。","延期判断: f_news は目標・要件・依存が未提示の非必須要求として、初期提供の設計を延期する。既存提供がないという点は仮定であり、既存のお知らせの公開停止や削除を指示するものではない。運営上の必須連絡、対象成果、提供期限が確認された場合に再検討する。removeを確定するための業務上不要という根拠はない。","優先順位: 入力で必須の探索・比較・詳細・公開を required とした。保存は should の達成として維持する。独立した別名画面やお知らせの優先度に、観測していない利用率・効果量・工数の数値は用いていない。","画面責務: 探索、2候補の比較、一件の参加判断、保存候補の再訪は判断対象が違うため分けた。一方、候補保存や比較への入口は探索・詳細の判断に併設する。1機能1画面という規則は使わず、画面共有を理由に異なる成果の機能をmergeしていない。","比較: s_compare は2講座の同じ属性を対照する情報関係を持つ。候補ごとに別画面へ移動させる案や、片方の価格・条件を記憶して比べる案は採用しない。見た目の表部品・列幅・狭幅への組み替えは C に渡す。","情報開示: 各goalのneeded_informationをそのtarget画面のprimaryに置いた。比較・詳細のprerequisites/price/seats、探索・保存の参加前提と0円も補足へ隠さない。primaryは展開操作不要を意味し、スクロールは許容する。今回は任意の補足コンテンツが提供されていないため、secondaryを埋めるための情報は追加していない。","0件と候補1件: s_catalog は結果がなくてもトピック・レベル・日程・予算の現在条件と「条件を見直す」を保持する情報責務を持つ。s_compare は候補1件でもその候補の情報を示し、「比較する講座を追加」から s_catalog へ進める責務を持つ。条件の自動解除、追加・選択・復帰の状態遷移は決めていない。","申込先: enroll_link は対象講座ごとに s_details でprimaryとして示す。外部申込先を架空の内部screenとして追加せず、入力の講座と申込先の対応を保つ。申込受付の完了や残席0時の待機登録まで、この計画が成立させたとは扱わない。","入力内容の維持: 「はじめての木工」は初学者、土曜 10:00、0円、ものづくり、道具の持参不要、工房A、残席4、申込先Aとして参照する。無料価格を空欄に置換しない。","入力内容の維持: 「写真から始める長い題名の地域アーカイブ制作講座」は初学者、日曜 13:00、2000円、写真・記録、「スマートフォンを持参。撮影許諾について事前説明を読む」、会場B、残席0、申込先Bとして参照する。長い題名と前提条件を短い別コピーへ書き換えない。","入力内容の維持: 「中級木工の接合技法」は中級、平日 19:00、6000円、ものづくり、初級修了、工房A、残席2、申込先Cとして参照する。初学者向け・週末という条件に合わせるためのデータ改変はしない。","編集者分離: s_editor_catalog と s_editor_edit は editor 専用で、learner の画面・ナビゲーションと接続しない。講座情報の正本は共通でも、閲覧と更新・公開は同じ機能にしない。publication_statusの値は入力にないため、公開済み等を仮定して埋めていない。","意匠維持: visual_intent_id は catalog-paper-01。既存の紙色背景、紺文字、朱色アクセント、システム書体、細い区切り線、情報中心の意匠をそのまま引き継ぐ。新しい装飾・ブランド・書体・構図の案は作らず、Art Directionには同時参照が必要な情報と順序だけを渡す。","引継ぎ範囲: B は申込・保存・公開・比較選択・絞込・戻る際の操作と状態、C は部品・レスポンシブ・アクセシビリティ・実認可・データ参照、D は利用者による探索と比較の評価を担う。Aの出力は責務・情報・到達関係の設計に限る。","仮定と未確認: 3件は提供された代表データであり、全件分布や実利用を観測したものではない。5000講座は将来想定で、性能測定済みの件数ではない。未解決事項のblocking:falseは、このAの責務指定を進められるという意味であり、実装・公開可能性を承認する意味ではない。","実施範囲: 指定入力と必要参照を読んでJSON設計案を作成し、保存直前のシリアライズ文字列にJSON構文確認だけを行った。チェッカ・テスト・評価器は実行していない。実装、状態遷移、実画面、外部資料の調査、利用者検証は未実施であり、自己採点や品質PASSは付けない。"]},"projection":{"many_count":40,"palette_note":"紙色・紺・朱色の固定近似色。色値の指定は未提供。"}}</script>
+<script>
+(function () {
+  'use strict';
+  const data = JSON.parse(document.getElementById('plan-data').textContent);
+  const brief = data.brief;
+  const plan = data.plan;
+  const config = data.projection;
+  const array = function (value) { return Array.isArray(value) ? value : []; };
+  const record = function (value) { return value !== null && typeof value === 'object' && !Array.isArray(value); };
+  const roles = array(brief.roles).filter(record);
+  const screens = array(plan.screens).filter(record);
+  const features = array(plan.features).filter(record);
+  const goals = array(brief.goals).filter(record);
+  // Keep original navigation indexes: a malformed record must not renumber later edges.
+  const nav = array(plan.navigation);
+  const content = array(brief.content);
+  const state = {role: null, screen: null, mode: 'normal'};
+  const root = document.getElementById('screen-root');
+  const roleSelect = document.getElementById('harness-role');
+  const modeSelect = document.getElementById('harness-data-mode');
+  const entryList = document.getElementById('entry-list');
+  const status = document.getElementById('projection-status');
+
+  function element(tag, attributes, text) {
+    const node = document.createElement(tag);
+    Object.entries(attributes || {}).forEach(function (entry) {
+      node.setAttribute(entry[0], String(entry[1]));
+    });
+    if (text !== undefined) node.textContent = String(text);
+    return node;
+  }
+
+  function textOrMissing(value) {
+    if (value === undefined || value === null || value === '') return '未提供';
+    return typeof value === 'string' ? value : JSON.stringify(value);
+  }
+
+  function showStatus(code, message) {
+    status.dataset.projectionStatus = code;
+    status.textContent = message;
+  }
+
+  function rows() {
+    if (state.mode === 'empty') return [];
+    if (state.mode === 'single') return content.slice(0, 1);
+    if (state.mode === 'many') {
+      return content.length ? Array.from({length: config.many_count}, function (_, i) {
+        return content[i % content.length];
+      }) : [];
+    }
+    return content;
+  }
+
+  function scenarioNote() {
+    const count = rows().length;
+    const notes = {
+      normal: '提供されたbrief.contentをそのまま表示します。',
+      empty: '評価ハーネスが0件表示を試験しています。元データは変更しません。',
+      single: '評価ハーネスが提供データの先頭1件を表示しています。',
+      many: '評価ハーネスが提供データを最大40行まで反復しています。新しい実データは生成していません。'
+    };
+    document.getElementById('scenario-note').textContent = notes[state.mode] + ' 表示行数: ' + count;
+    root.dataset.dataMode = state.mode;
+    root.dataset.rowCount = String(count);
+  }
+
+  function currentEntries() {
+    return screens.filter(function (s) { return array(s.entry_for).includes(state.role); });
+  }
+
+  function renderEntries() {
+    entryList.replaceChildren();
+    const entries = currentEntries();
+    if (!entries.length) {
+      entryList.append(element('span', {'data-no-entry': ''}, 'このroleの入口はplanに未提供です。'));
+    }
+    entries.forEach(function (s) {
+      const button = element('button', {
+        type: 'button', id: 'entry-' + screens.indexOf(s),
+        'data-entry-screen': s.id, 'data-entry-role': state.role,
+        'aria-current': state.screen && state.screen.id === s.id ? 'page' : 'false'
+      }, textOrMissing(s.title) + ' (' + textOrMissing(s.id) + ')');
+      button.addEventListener('click', function () { navigate(s.id); });
+      entryList.append(button);
+    });
+  }
+
+  function renderRoutes() {
+    const list = document.getElementById('goal-routes');
+    list.replaceChildren();
+    array(plan.goal_routes).forEach(function (r, index) {
+      if (!record(r)) return;
+      const goal = goals.find(function (g) { return g.id === r.goal_id; });
+      if (goal && goal.role !== state.role) return;
+      list.append(element('li', {
+        'data-goal-route-index': index, 'data-goal-id': r.goal_id,
+        'data-start-screen': r.start_screen, 'data-target-screen': r.target_screen
+      }, textOrMissing(r.goal_id) + ': ' + textOrMissing(r.start_screen) + ' → ' +
+          textOrMissing(r.target_screen) + ' / ' + textOrMissing(r.notes)));
+    });
+    if (!list.children.length) list.append(element('li', {}, 'このroleのgoal routeはplanに未提供です。'));
+  }
+
+  function renderInformation(screen, visibility) {
+    const fields = array(screen.information).filter(function (item) {
+      return record(item) && item.visibility === visibility;
+    });
+    const section = element('section', {'class': 'screen-section', 'data-information-group': visibility});
+    if (!fields.length) {
+      section.append(element('p', {'data-no-information': visibility, 'class': 'muted'},
+        visibility + 'として宣言された情報はありません。'));
+      return section;
+    }
+    const available = rows();
+    const scroll = element('div', {'class': 'table-scroll', 'data-table-scroll': visibility});
+    const table = element('table', {id: 'information-' + screens.indexOf(screen) + '-' + visibility});
+    table.style.minWidth = String(fields.length * 144) + 'px';
+    const head = element('thead');
+    const headings = element('tr');
+    fields.forEach(function (field) {
+      headings.append(element('th', {scope: 'col', 'data-information-id': field.id}, textOrMissing(field.id)));
+    });
+    head.append(headings);
+    table.append(head);
+    const body = element('tbody');
+    available.forEach(function (value, rowIndex) {
+      const row = element('tr', {
+        'data-content-row': rowIndex, 'data-row-index': rowIndex, 'data-visibility': visibility,
+        'data-source-row-index': content.length ? rowIndex % content.length : ''
+      });
+      fields.forEach(function (field, fieldIndex) {
+        const supplied = record(value) && Object.prototype.hasOwnProperty.call(value, field.id);
+        const cellValue = supplied ? value[field.id] : undefined;
+        const missing = !supplied || cellValue === null || cellValue === undefined || cellValue === '';
+        row.append(element('td', {
+          id: 'cell-' + screens.indexOf(screen) + '-' + visibility + '-' + rowIndex + '-' + fieldIndex,
+          'data-information-id': field.id, 'data-row-index': rowIndex,
+          'data-value-state': missing ? 'missing' : 'provided',
+          'data-visibility': visibility
+        }, missing ? '未提供' : textOrMissing(cellValue)));
+      });
+      body.append(row);
+    });
+    table.append(body);
+    scroll.append(table);
+    section.append(scroll);
+    if (!available.length) section.append(element('p', {'data-empty-state': visibility}, '表示するデータは0件です。'));
+    return section;
+  }
+
+  function renderFeatureList(screen) {
+    const section = element('section', {'class': 'screen-section'});
+    section.append(element('h2', {}, '宣言された機能'));
+    section.append(element('p', {'class': 'muted'}, '機能名の一覧です。業務操作の実装や実行を表すものではありません。'));
+    const list = element('ul', {'class': 'feature-list', 'data-feature-list': ''});
+    array(screen.feature_ids).forEach(function (featureId) {
+      const feature = features.find(function (f) { return f.id === featureId; });
+      list.append(element('li', {
+        'data-feature-id': featureId,
+        'data-disposition': feature ? feature.disposition : 'missing'
+      }, feature ? textOrMissing(feature.label) : '未提供 (' + textOrMissing(featureId) + ')'));
+    });
+    if (!list.children.length) list.append(element('li', {'data-no-features': ''}, 'この画面に宣言された機能はありません。'));
+    section.append(list);
+    return section;
+  }
+
+  function renderNavigation(screen) {
+    const section = element('nav', {'class': 'screen-section', 'aria-label': 'planで宣言された画面間ナビゲーション'});
+    section.append(element('h2', {}, 'このroleに宣言されたナビゲーション'));
+    const list = element('ul', {'class': 'navigation-list'});
+    nav.forEach(function (edge, index) {
+      if (!record(edge) || edge.from !== screen.id || !array(edge.roles).includes(state.role)) return;
+      const target = screens.find(function (s) { return s.id === edge.to; });
+      const permission = !target ? 'missing' : array(target.roles).includes(state.role) ? 'allowed' : 'denied';
+      const link = element('a', {
+        id: 'nav-' + index, 'class': 'nav-link', href: '#' + encodeURIComponent(String(edge.to)),
+        'data-nav-index': index, 'data-from': edge.from, 'data-to': edge.to,
+        'data-roles': JSON.stringify(array(edge.roles)), 'data-kind': edge.kind,
+        'data-target-permission': permission
+      }, textOrMissing(edge.label));
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (!state.screen || edge.from !== state.screen.id || !array(edge.roles).includes(state.role)) {
+          showStatus('access-denied', 'このrole・画面からの移動はplanに宣言されていません。');
+          return;
+        }
+        navigate(edge.to);
+      });
+      const item = element('li');
+      item.append(link);
+      list.append(item);
+    });
+    if (!list.children.length) list.append(element('li', {'data-no-navigation': '', 'class': 'muted'}, 'この画面からのナビゲーションは宣言されていません。'));
+    section.append(list);
+    return section;
+  }
+
+  function renderScreen() {
+    root.replaceChildren();
+    scenarioNote();
+    if (!state.screen) return;
+    const screen = state.screen;
+    const section = element('section', {
+      id: 'screen-' + screens.indexOf(screen), 'class': 'panel',
+      'data-screen-id': screen.id, 'data-screen-role': state.role
+    });
+    section.append(element('p', {'class': 'identifier'}, '画面ID: ' + textOrMissing(screen.id)));
+    section.append(element('h1', {'data-screen-title': ''}, textOrMissing(screen.title)));
+    section.append(element('p', {'class': 'screen-purpose', 'data-screen-purpose': ''}, textOrMissing(screen.purpose)));
+    section.append(element('h2', {}, '判断情報 (primary)'));
+    section.append(renderInformation(screen, 'primary'));
+    const secondary = array(screen.information).some(function (i) { return record(i) && i.visibility === 'secondary'; });
+    if (secondary) {
+      const details = element('details', {'data-secondary': ''});
+      details.append(element('summary', {}, '補足情報 (secondary)'));
+      details.append(renderInformation(screen, 'secondary'));
+      section.append(details);
+    }
+    section.append(renderFeatureList(screen));
+    section.append(renderNavigation(screen));
+    root.append(section);
+  }
+
+  function navigate(screenId) {
+    const screen = screens.find(function (s) { return s.id === screenId; });
+    if (!screen) {
+      showStatus('missing-target', '遷移先の画面はplanに未提供です: ' + textOrMissing(screenId));
+      return false;
+    }
+    if (!array(screen.roles).includes(state.role)) {
+      showStatus('access-denied', 'このroleは遷移先の画面を許可されていません: ' + textOrMissing(screenId));
+      return false;
+    }
+    state.screen = screen;
+    renderScreen();
+    renderEntries();
+    showStatus('ok', '表示中: ' + textOrMissing(screen.title) + ' / role: ' + textOrMissing(state.role));
+    return true;
+  }
+
+  function changeRole() {
+    state.role = roleSelect.value || null;
+    state.screen = null;
+    root.replaceChildren();
+    root.dataset.role = state.role === null ? '' : state.role;
+    scenarioNote();
+    renderEntries();
+    renderRoutes();
+    const entries = currentEntries();
+    if (entries.length) navigate(entries[0].id);
+    else showStatus('no-entry', 'このroleの入口はplanに未提供です。別の画面への導線は補完しません。');
+  }
+
+  roles.forEach(function (role) {
+    if (typeof role.id !== 'string') return;
+    roleSelect.append(element('option', {value: role.id}, textOrMissing(role.label) + ' (' + role.id + ')'));
+  });
+  roleSelect.addEventListener('change', changeRole);
+  modeSelect.addEventListener('change', function () {
+    state.mode = modeSelect.value;
+    renderScreen();
+  });
+  document.getElementById('palette-note').textContent = config.palette_note + ' システム書体を使用。';
+  document.getElementById('intent-note').textContent = 'brief.visual_intent.id: ' + textOrMissing(brief.visual_intent && brief.visual_intent.id) +
+    ' / plan.visual_intent_id: ' + textOrMissing(plan.visual_intent_id) +
+    (brief.visual_intent && brief.visual_intent.id === plan.visual_intent_id ? '' : ' (不一致または未提供)');
+  changeRole();
+  document.documentElement.dataset.caseId = textOrMissing(brief.case_id);
+  document.documentElement.dataset.projectionReady = 'true';
+  window.__planProjection = Object.freeze({
+    getState: function () {
+      return {role: state.role, screen: state.screen ? state.screen.id : null, mode: state.mode, rowCount: rows().length};
+    }
+  });
+})();
+</script>
+</body>
+</html>

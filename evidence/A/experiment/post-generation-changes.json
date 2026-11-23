@@ -1,0 +1,47 @@
+{
+  "schema": "A-post-generation-delta/v1",
+  "frozen_generation_revision": "97b19c29c0b63acfee9ad437f93af081ac0c6ef8",
+  "changes": [
+    {
+      "path": "extensions/A/checks/validate_plan.py",
+      "before_sha256": "1ceef2cbf2547288b0f8cac0592277cef539ba3ee7c1d3a4ebde3d8ea0f174c5",
+      "after_sha256": "de5abbc23d003e5401830d6776bb043b21ee3912f82291389081068a98893e68",
+      "reason": "PR1 mandatory/goal capability reachability; PR2 direct canonical merge",
+      "validation": "40 unit tests, v1 and v3 checks on all four frozen plans",
+      "generator_input_changed_in_place": false
+    },
+    {
+      "path": "extensions/A/tests/test_validate.py",
+      "before_sha256": "ec3798fb9c4cab2e0c86c4dc1e7a1c82f467f9b17b7250ef298c5faa574c3b0e",
+      "after_sha256": "05cab1a93222755763c64f3ed9916371529ac795e2d77163de65e35c7c8f024b",
+      "reason": "Regression tests and correction of the old multi-hop merge expectation",
+      "validation": "red/green history in validator-v2/v3 records",
+      "generator_input_changed_in_place": false
+    },
+    {
+      "path": "extensions/A/references/plan-contract.md",
+      "before_sha256": "5c8ab67f0e9e920bea44969113f685700d00a21557fb7406357c139f73cdcf20",
+      "after_sha256": "768142fe03c8953cfa2215b30ce4ed678abc372b18a70f30443e250c5986c9d8",
+      "reason": "PR3: clarify FAIL takes precedence over HOLD while retaining unresolved blockers",
+      "validation": "documentation inspection; model generation not rerun",
+      "generator_input_changed_in_place": false
+    },
+    {
+      "path": "extensions/A/references/disclosure-and-verification.md",
+      "before_sha256": "a275f76285b9c476140a15793e6188c26ca8f4ebb2d6cc31f9b653411a793872",
+      "after_sha256": "480be0a23c666e8416e4c134df9969aaea5a9afc84d48c6f972858adae681f0c",
+      "reason": "PR3: clarify checker status versus the promotion/provision hold",
+      "validation": "documentation inspection; model generation not rerun",
+      "generator_input_changed_in_place": false
+    }
+  ],
+  "plan_outputs_changed": false,
+  "candidate_generation_repeated": false,
+  "new_harness_files": [
+    "extensions/A/checks/browser_probe.py",
+    "extensions/A/checks/compare_plans.py",
+    "extensions/A/checks/README.md"
+  ],
+  "new_harness_note": "Evaluation-only tooling was withheld from both generators. Renderer rules are common; its initial version was part of the initial commit.",
+  "gate": "HOLD"
+}

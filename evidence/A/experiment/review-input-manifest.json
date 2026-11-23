@@ -1,0 +1,65 @@
+{
+  "schema": "A-label-concealed-review-input/v1",
+  "reviewer_thread": "/root/label_concealed_review",
+  "fork_turns": "none",
+  "model_override": null,
+  "same_inherited_model": true,
+  "only_read_directory": "/workspace/scratch/a50c340f4e5f/execution-A/label-review/input",
+  "explicitly_forbidden": [
+    "other agent histories/status/listing",
+    "mapping",
+    "repo/evidence",
+    "checker",
+    "tests",
+    "other output",
+    "external search"
+  ],
+  "files": [
+    {
+      "path": "R/course-catalog.plan.json",
+      "sha256": "e4212a1ed4e81e06d87e4dc7c82150fb59285af03ef833334349cefd6f63fbef"
+    },
+    {
+      "path": "R/support-triage.plan.json",
+      "sha256": "9341fe808738305518b656caade7a9c01c0c1f2db40c92469fda62af8ee8db29"
+    },
+    {
+      "path": "S/course-catalog.plan.json",
+      "sha256": "327416a3479089209f832a0c976fcbcfd4f5479000ae19580277d06150f00b71"
+    },
+    {
+      "path": "S/support-triage.plan.json",
+      "sha256": "04780270a81d95fe5560943f95f7246a14b4ed0ce913def4fd17cd3d15aa697c"
+    },
+    {
+      "path": "course-catalog.json",
+      "sha256": "6cca8e929b7df210ec554f6a7dbebb317b20a8c0b78d5443d2afc0f33861a83f"
+    },
+    {
+      "path": "output-format.md",
+      "sha256": "4fe8389ff304a38bcf6c2f1382d070e6f3b25f261870e02a2c910efcde0e8a46"
+    },
+    {
+      "path": "support-triage.json",
+      "sha256": "b4aa2bca2d728d5b6c42fc04b0241f9a3764bfc26c2a3f331dc96fba442648c2"
+    }
+  ],
+  "independence": "label-concealed fresh model thread; not private holdout, independently hosted oracle, or real user study",
+  "plan_content_normalized": "JSON object key order and indentation only; no content strings removed",
+  "review_output_frozen": true,
+  "frozen_at": "2026-11-23T06:43:39.619348+00:00",
+  "output_files": [
+    {
+      "path": "evidence/A/experiment/label-review/read-files.txt",
+      "sha256": "b1b6d381522c7f54ba889f3e5044c06459d8abe68484ff70e2dbf6797da23163"
+    },
+    {
+      "path": "evidence/A/experiment/label-review/review.json",
+      "sha256": "1fc87c8d91524f54514ebf30df344f0eff7a3e34fea911110c83744ac988eee5"
+    },
+    {
+      "path": "evidence/A/experiment/label-review/review.md",
+      "sha256": "01dbee1cafa459dedc5459dde3b8a945a8a22810c2825c6e54d6fb8ac84788b7"
+    }
+  ]
+}

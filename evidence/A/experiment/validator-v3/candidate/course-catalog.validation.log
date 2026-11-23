@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/checks/validate_plan.py",
+    "--brief",
+    "/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/briefs/course-catalog.json",
+    "--plan",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/candidate/course-catalog.plan.json",
+    "--output",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/validator-v3/candidate/course-catalog.validation.json"
+  ],
+  "exit_code": 0,
+  "checker_sha256": "de5abbc23d003e5401830d6776bb043b21ee3912f82291389081068a98893e68",
+  "stdout": "{\n  \"status\": \"PASS\",\n  \"issues\": [],\n  \"counts\": {\n    \"goals\": 5,\n    \"features\": 9,\n    \"kept_features\": 5,\n    \"screens\": 6,\n    \"navigation_edges\": 16\n  }\n}\n",
+  "stderr": ""
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "A-projection-checks/v1",
+  "checks": [
+    {
+      "file": "evidence/A/experiment/projections/baseline-course-catalog.html",
+      "sha256": "30b57c871d5b18815cde799b66285227db238c4fd8768cfe6085eae2e7189a6d",
+      "embedded_json_count": 1,
+      "executable_script_count": 1,
+      "syntax": [
+        {
+          "exit_code": 0,
+          "stderr": ""
+        }
+      ],
+      "browser_execution": false,
+      "brief_roundtrip_equal": true,
+      "plan_roundtrip_equal": true
+    },
+    {
+      "file": "evidence/A/experiment/projections/baseline-support-triage.html",
+      "sha256": "2e62ddf7427e1bc73ea5e3242ded5190a7778e0cbcd43254aaab1de8439a5cd7",
+      "embedded_json_count": 1,
+      "executable_script_count": 1,
+      "syntax": [
+        {
+          "exit_code": 0,
+          "stderr": ""
+        }
+      ],
+      "browser_execution": false,
+      "brief_roundtrip_equal": true,
+      "plan_roundtrip_equal": true
+    },
+    {
+      "file": "evidence/A/experiment/projections/candidate-course-catalog.html",
+      "sha256": "9f27c58facba99d5a7caf3497bc488a44d267249cd30bf0335ff12e0675e6257",
+      "embedded_json_count": 1,
+      "executable_script_count": 1,
+      "syntax": [
+        {
+          "exit_code": 0,
+          "stderr": ""
+        }
+      ],
+      "browser_execution": false,
+      "brief_roundtrip_equal": true,
+      "plan_roundtrip_equal": true
+    },
+    {
+      "file": "evidence/A/experiment/projections/candidate-support-triage.html",
+      "sha256": "53596b9ccb4f99b5ed8d0445cb8827cc03b0c219ca5486f34b2ed963bdf4f5b1",
+      "embedded_json_count": 1,
+      "executable_script_count": 1,
+      "syntax": [
+        {
+          "exit_code": 0,
+          "stderr": ""
+        }
+      ],
+      "browser_execution": false,
+      "brief_roundtrip_equal": true,
+      "plan_roundtrip_equal": true
+    }
+  ],
+  "meaning": "JavaScript syntax and embedded JSON were checked. No browser, DOM, clicks, pixels, screenshots or responsive behavior were observed."
+}

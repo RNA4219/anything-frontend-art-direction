@@ -1,0 +1,15 @@
+{
+  "mapping": {
+    "R": "baseline",
+    "S": "candidate"
+  },
+  "assignment": "system random shuffle, recorded after both arm outputs frozen",
+  "transform": "JSON key order sorted and indentation normalized; content strings unchanged",
+  "reviewer_access": "only review/input; mapping and sources withheld; no OS enforcement",
+  "limitations": [
+    "Treatment may be inferred from writing style or principle IDs inside plan notes.",
+    "Same inherited model, shared filesystem, public development tasks; not an independent private holdout.",
+    "Common renderer author saw a high-level baseline completion summary via agent listing before implementation; not raw plans.",
+    "Probe author was a fresh no-history child with no plan access."
+  ]
+}

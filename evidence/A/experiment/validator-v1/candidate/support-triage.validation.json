@@ -1,0 +1,26 @@
+{
+  "status": "HOLD",
+  "issues": [
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_assignment_policy",
+      "symptom": "g_assign の必須判断材料 assignment_policy の本文が入力になく、担当の候補・割当条件を確定できない。画面の配置案は作れるが、業務ルールの確定前に提供完了とは扱えない。",
+      "category": "function",
+      "severity": "hold"
+    },
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_audit_scope",
+      "symptom": "監査対象の記録種別・項目と期間の境界が未提供。解決済み90日保持と年4回の監査という条件だけでは、各監査で必要な期間を網羅できるか判断できない。監査の成立に必要なデータ条件が確定するまで提供判断を保留する。",
+      "category": "function",
+      "severity": "hold"
+    }
+  ],
+  "counts": {
+    "goals": 5,
+    "features": 8,
+    "kept_features": 5,
+    "screens": 3,
+    "navigation_edges": 6
+  }
+}

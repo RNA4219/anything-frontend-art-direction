@@ -1,0 +1,33 @@
+{
+  "status": "HOLD",
+  "issues": [
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_assignment_policy",
+      "symptom": "担当変更の能力と配置は確定できるが、選択可能な担当と判断ルールを具体化できない。",
+      "category": "function",
+      "severity": "hold"
+    },
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_retention_audit",
+      "symptom": "90日保持と年4回の監査だけでは、要求された監査期間を欠落なく出力できるか確定しない。",
+      "category": "function",
+      "severity": "hold"
+    },
+    {
+      "code": "UNRESOLVED_BLOCKER",
+      "location": "u_support_data_access",
+      "symptom": "表示だけで役割権限や90日の保持を保証できず、10000件時の取得・検索方法も未確定。",
+      "category": "implementation",
+      "severity": "hold"
+    }
+  ],
+  "counts": {
+    "goals": 5,
+    "features": 8,
+    "kept_features": 5,
+    "screens": 4,
+    "navigation_edges": 11
+  }
+}

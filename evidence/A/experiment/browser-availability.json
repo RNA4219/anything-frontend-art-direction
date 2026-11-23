@@ -1,0 +1,22 @@
+{
+  "schema": "A-browser-attempts/v1",
+  "local_chromium": {
+    "result": "launch_failed",
+    "reason": "socket() failed: Operation not permitted",
+    "chromium_sandbox": true,
+    "receipt": "browser/baseline-support-triage/browser_probe_result.json",
+    "screenshots": 0,
+    "dom_interactions": 0
+  },
+  "browser_plugin": {
+    "result": "unavailable",
+    "message": "Browser access requires the originating browser context. Open ChatGPT in the browser with the connected extension and try again."
+  },
+  "cloud_browser": {
+    "result": "policy_denied",
+    "message": "The requested URL protocol is not allowed. Allowed protocols: http:, https:. The agent must not attempt the same outcome through a workaround.",
+    "requested_url": "file:///workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/projections/baseline-support-triage.html",
+    "alternate_routes_attempted_after_policy_denial": false
+  },
+  "conclusion": "No real screen, interaction, screenshot, responsive or accessibility verification completed. Deterministic HTML files and rerunnable browser probe are supplied; gate HOLD."
+}

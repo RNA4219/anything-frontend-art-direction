@@ -1,0 +1,99 @@
+{
+  "schema": "A-package-integrity/v1",
+  "base_sha": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "base_files_checked": 50,
+  "base_files_modified": [],
+  "rules": [
+    {
+      "id": "A01",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A02",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A03",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A04",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A05",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A06",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A07",
+      "required_sections": true,
+      "direct_primary_urls": 5,
+      "entry_hops": 2
+    },
+    {
+      "id": "A08",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A09",
+      "required_sections": true,
+      "direct_primary_urls": 3,
+      "entry_hops": 2
+    },
+    {
+      "id": "A10",
+      "required_sections": true,
+      "direct_primary_urls": 4,
+      "entry_hops": 2
+    }
+  ],
+  "local_skill_links_checked": 24,
+  "broken_local_skill_links": [],
+  "valid_primary_source_ids": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20"
+  ],
+  "frontmatter_validation": {
+    "command": "quick_validate.py extensions/A",
+    "exit_code": 0,
+    "output": "Skill is valid!"
+  },
+  "scope": "No benchmark plan changes or new quality thresholds; artifact structure only",
+  "known_format_note": "Several frozen reference files contain an extra trailing blank line; retained to preserve evaluated input bytes."
+}

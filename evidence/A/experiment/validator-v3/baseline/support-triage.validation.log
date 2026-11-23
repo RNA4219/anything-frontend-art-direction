@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/checks/validate_plan.py",
+    "--brief",
+    "/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/briefs/support-triage.json",
+    "--plan",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/baseline/support-triage.plan.json",
+    "--output",
+    "/workspace/scratch/a50c340f4e5f/repo-A/evidence/A/experiment/validator-v3/baseline/support-triage.validation.json"
+  ],
+  "exit_code": 1,
+  "checker_sha256": "de5abbc23d003e5401830d6776bb043b21ee3912f82291389081068a98893e68",
+  "stdout": "{\n  \"status\": \"HOLD\",\n  \"issues\": [\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_assignment_policy\",\n      \"symptom\": \"担当変更の能力と配置は確定できるが、選択可能な担当と判断ルールを具体化できない。\",\n      \"category\": \"function\",\n      \"severity\": \"hold\"\n    },\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_retention_audit\",\n      \"symptom\": \"90日保持と年4回の監査だけでは、要求された監査期間を欠落なく出力できるか確定しない。\",\n      \"category\": \"function\",\n      \"severity\": \"hold\"\n    },\n    {\n      \"code\": \"UNRESOLVED_BLOCKER\",\n      \"location\": \"u_support_data_access\",\n      \"symptom\": \"表示だけで役割権限や90日の保持を保証できず、10000件時の取得・検索方法も未確定。\",\n      \"category\": \"implementation\",\n      \"severity\": \"hold\"\n    }\n  ],\n  \"counts\": {\n    \"goals\": 5,\n    \"features\": 8,\n    \"kept_features\": 5,\n    \"screens\": 4,\n    \"navigation_edges\": 11\n  }\n}\n",
+  "stderr": ""
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "session-a-external-evidence-ingestion/v1",
+  "campaign_id": "anything-frontend-design-engineering-A-20261123",
+  "session_id": "A",
+  "observed_at": "2026-11-23T06:48:39.653500+00:00",
+  "source_manifest": {
+    "repository_path": "evidence/A/external-experiment-manifest.json",
+    "snapshot_path": "inputs/external-experiment.snapshot.json",
+    "sha256": "3e5e62557578b74966c5492e1ead06c639f5262ef576570b210bdad36f135fcc",
+    "bytes": 20368
+  },
+  "verification": {
+    "artifact_files_checked": 97,
+    "artifact_hashes_matched": 97,
+    "artifact_sizes_matched": 97,
+    "mismatches": [],
+    "frozen_raw_plans_checked": 4,
+    "frozen_raw_plans_unchanged": true,
+    "validator_sha256": "de5abbc23d003e5401830d6776bb043b21ee3912f82291389081068a98893e68",
+    "test_log_methods_ok": 40,
+    "test_log_summary": "Ran 40 tests; OK",
+    "test_execution_by_ingestion_agent": false,
+    "validation_results": [
+      {
+        "case_id": "course-catalog",
+        "arm": "baseline",
+        "status": "HOLD",
+        "error_count": 0,
+        "hold_count": 4,
+        "path": "evidence/A/experiment/validator-v3/baseline/course-catalog.validation.json"
+      },
+      {
+        "case_id": "course-catalog",
+        "arm": "candidate",
+        "status": "PASS",
+        "error_count": 0,
+        "hold_count": 0,
+        "path": "evidence/A/experiment/validator-v3/candidate/course-catalog.validation.json"
+      },
+      {
+        "case_id": "support-triage",
+        "arm": "baseline",
+        "status": "HOLD",
+        "error_count": 0,
+        "hold_count": 3,
+        "path": "evidence/A/experiment/validator-v3/baseline/support-triage.validation.json"
+      },
+      {
+        "case_id": "support-triage",
+        "arm": "candidate",
+        "status": "HOLD",
+        "error_count": 0,
+        "hold_count": 2,
+        "path": "evidence/A/experiment/validator-v3/candidate/support-triage.validation.json"
+      }
+    ],
+    "label_concealed_model_review_cases": 2,
+    "label_concealed_model_review_verdicts": [
+      "equivalent",
+      "equivalent"
+    ]
+  },
+  "generation": {
+    "frozen_revision": "97b19c29c0b63acfee9ad437f93af081ac0c6ef8",
+    "attempts_per_arm": 1,
+    "cases_per_generation": 2,
+    "raw_plan_outputs_modified": false,
+    "post_generation_changes_record": "evidence/A/experiment/post-generation-changes.json",
+    "source_of_attempt_count": "external run manifest; no new generation performed during ingestion"
+  },
+  "interpretation": {
+    "test_pass_scope": "checker regression tests and plan structure only",
+    "candidate_catalog_pass_scope": "zero structural errors and zero declared blocking flags; not delivery or promotion PASS",
+    "hold_count_is_quality_metric": false,
+    "measured_quality_improvement": false,
+    "independent_oracle": false,
+    "private_holdout": false,
+    "user_study": false,
+    "browser_observed": false,
+    "browser_screenshots": 0,
+    "browser_blocker": "Local Chromium socket EPERM; extension lacks originating context; Cloud file URL denied by policy, no bypass",
+    "formal_gate": "HOLD",
+    "promotion": false
+  },
+  "unknowns": {
+    "cost": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "runtime_image_digest": null,
+    "exact_model_identifier": null,
+    "sampling_settings": null
+  },
+  "rasi_scope": "Record actual external results via experience-add; CAS contains skill-candidate format only. No R-ASI execute/evaluate/promote or formal campaign gate PASS.",
+  "campaign_alias_mapping": "campaign-aliases.json"
+}

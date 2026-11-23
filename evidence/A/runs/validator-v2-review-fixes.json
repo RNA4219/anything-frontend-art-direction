@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "review_kind": "bounded_validator_v2_review_fixes",
+  "author": "source_methods",
+  "scope": {
+    "modified_implementation_and_tests": [
+      "extensions/A/checks/validate_plan.py",
+      "extensions/A/tests/test_validate.py"
+    ],
+    "new_evidence": [
+      "evidence/A/runs/validator-v2-review-fixes.json",
+      "evidence/A/runs/validator-v2-tests.txt"
+    ],
+    "benchmark_or_arm_outputs_read": false,
+    "generated_plans_modified": false,
+    "frozen_skill_references_examples_modified": false,
+    "previous_v1_evidence_overwritten": false,
+    "comparisons_of_arms_run": false,
+    "test_fixture_role": "Existing hand-authored contract fixtures; not benchmark-arm or independently generated model outputs."
+  },
+  "input_hashes": {
+    "extensions/A/checks/validate_plan.py": "1ceef2cbf2547288b0f8cac0592277cef539ba3ee7c1d3a4ebde3d8ea0f174c5",
+    "extensions/A/tests/test_validate.py": "ec3798fb9c4cab2e0c86c4dc1e7a1c82f467f9b17b7250ef298c5faa574c3b0e"
+  },
+  "changes": [
+    {
+      "finding": "mandatory input capability can be placed only on an unreachable screen while a reachable goal target still contains the needed information",
+      "fix": "For each mandatory input feature, resolve its canonical feature and require an accessible placement for each original input role. Compute the union of reachability from every entry that permits that role.",
+      "error_code": "MANDATORY_FEATURE_UNREACHABLE",
+      "scope_limit": "The canonical capability need not live on the goal route's selected target. An alternate authorized entry and separate role-specific placements remain valid."
+    },
+    {
+      "finding": "The old checker and one test accepted multi-hop merges despite A02 requiring a direct reference to a kept canonical feature",
+      "fix": "Validate that each merge.target directly names a keep feature; retain the existing resolver for dependency and cycle diagnostics.",
+      "error_code": "MERGE_NOT_DIRECT_TO_CANONICAL",
+      "scope_limit": "A dependency may refer to an alias whose own target is directly kept; multi-hop merge declarations are rejected."
+    }
+  ],
+  "test_history": {
+    "old_test_count": 32,
+    "old_test_file_sha256": "ec3798fb9c4cab2e0c86c4dc1e7a1c82f467f9b17b7250ef298c5faa574c3b0e",
+    "replaced_test": "test_merge_chain_and_dependency_on_an_alias_are_valid",
+    "replacement_test": "test_dependency_on_a_direct_alias_is_valid",
+    "correction_reason": "The prior multi-hop PASS expectation contradicted the frozen A02 contract. This revision changes the test to match that contract; the historical v1 evidence is not rewritten.",
+    "added_test_methods": [
+      "test_multi_hop_merge_is_rejected_even_when_final_target_is_kept",
+      "test_mandatory_capability_cannot_live_only_on_an_unreachable_screen",
+      "test_mandatory_shared_feature_needs_reachable_placement_for_each_input_role",
+      "test_mandatory_feature_can_be_reached_from_an_alternate_authorized_entry",
+      "test_mandatory_feature_may_have_separate_role_specific_placements"
+    ],
+    "new_test_count": 37,
+    "count_convention": "tests_run counts unittest test methods. The v1 reproduction has 4 failure events across 3 methods because the inaccessible-capability test has keep and merge subtests.",
+    "same_v2_tests_used_before_and_after": true
+  },
+  "reproduction_on_v1_checker": {
+    "stage": "v1_checker_with_v2_contract_tests",
+    "timestamp_utc": "2026-11-23T06:39:50.866530+00:00",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "extensions/A/tests",
+      "-p",
+      "test_validate.py",
+      "-v"
+    ],
+    "checker_sha256_before": "1ceef2cbf2547288b0f8cac0592277cef539ba3ee7c1d3a4ebde3d8ea0f174c5",
+    "checker_sha256_after": "1ceef2cbf2547288b0f8cac0592277cef539ba3ee7c1d3a4ebde3d8ea0f174c5",
+    "tests_sha256": "1cab6c71a0449533f802371c9634edcd86df75e18050dc39a37a16ba69bab01d",
+    "exit_code": 1,
+    "tests_run": 37,
+    "failure_events": 4,
+    "error_events": 0,
+    "failed_test_methods": [
+      "test_mandatory_capability_cannot_live_only_on_an_unreachable_screen",
+      "test_mandatory_shared_feature_needs_reachable_placement_for_each_input_role",
+      "test_multi_hop_merge_is_rejected_even_when_final_target_is_kept"
+    ],
+    "output": "test_invalid_json_missing_file_and_bad_encoding_return_exit_two (test_validate.CommandLineContractTests.test_invalid_json_missing_file_and_bad_encoding_return_exit_two) ... ok\ntest_pass_fail_and_hold_exit_codes (test_validate.CommandLineContractTests.test_pass_fail_and_hold_exit_codes) ... ok\ntest_ambiguous_labels_require_overlapping_roles_and_distinct_destinations (test_validate.PlanContractTests.test_ambiguous_labels_require_overlapping_roles_and_distinct_destinations) ... ok\ntest_brief_feature_fields_are_required_even_if_plan_supplies_them (test_validate.PlanContractTests.test_brief_feature_fields_are_required_even_if_plan_supplies_them) ... ok\ntest_case_version_and_visual_intent_identity_are_preserved (test_validate.PlanContractTests.test_case_version_and_visual_intent_identity_are_preserved) ... ok\ntest_dependency_on_a_direct_alias_is_valid (test_validate.PlanContractTests.test_dependency_on_a_direct_alias_is_valid) ... ok\ntest_duplicate_and_malformed_information_do_not_silently_pass (test_validate.PlanContractTests.test_duplicate_and_malformed_information_do_not_silently_pass) ... ok\ntest_duplicate_ids_and_wrong_array_shapes_fail (test_validate.PlanContractTests.test_duplicate_ids_and_wrong_array_shapes_fail) ... ok\ntest_erasing_alias_and_target_cannot_erase_original_input_obligations (test_validate.PlanContractTests.test_erasing_alias_and_target_cannot_erase_original_input_obligations) ... ok\ntest_even_an_optional_request_needs_an_explicit_decision (test_validate.PlanContractTests.test_even_an_optional_request_needs_an_explicit_decision) ... ok\ntest_information_on_other_screens_or_behind_disclosure_is_not_primary (test_validate.PlanContractTests.test_information_on_other_screens_or_behind_disclosure_is_not_primary) ... ok\ntest_input_references_must_resolve_to_declared_entities (test_validate.PlanContractTests.test_input_references_must_resolve_to_declared_entities) ... ok\ntest_invalid_input_goal_priority_cannot_disable_must_checks (test_validate.PlanContractTests.test_invalid_input_goal_priority_cannot_disable_must_checks) ... ok\ntest_low_frequency_mandatory_export_cannot_be_removed_or_deferred (test_validate.PlanContractTests.test_low_frequency_mandatory_export_cannot_be_removed_or_deferred) ... ok\ntest_mandatory_capability_cannot_live_only_on_an_unreachable_screen (test_validate.PlanContractTests.test_mandatory_capability_cannot_live_only_on_an_unreachable_screen) ... \n  test_mandatory_capability_cannot_live_only_on_an_unreachable_screen (test_validate.PlanContractTests.test_mandatory_capability_cannot_live_only_on_an_unreachable_screen) (disposition='keep') ... FAIL\n  test_mandatory_capability_cannot_live_only_on_an_unreachable_screen (test_validate.PlanContractTests.test_mandatory_capability_cannot_live_only_on_an_unreachable_screen) (disposition='merge') ... FAIL\ntest_mandatory_feature_can_be_reached_from_an_alternate_authorized_entry (test_validate.PlanContractTests.test_mandatory_feature_can_be_reached_from_an_alternate_authorized_entry) ... ok\ntest_mandatory_feature_may_have_separate_role_specific_placements (test_validate.PlanContractTests.test_mandatory_feature_may_have_separate_role_specific_placements) ... ok\ntest_mandatory_requirement_needs_a_kept_capability (test_validate.PlanContractTests.test_mandatory_requirement_needs_a_kept_capability) ... ok\ntest_mandatory_shared_feature_needs_reachable_placement_for_each_input_role (test_validate.PlanContractTests.test_mandatory_shared_feature_needs_reachable_placement_for_each_input_role) ... FAIL\ntest_merge_cannot_change_object_outcome_or_roles (test_validate.PlanContractTests.test_merge_cannot_change_object_outcome_or_roles) ... ok\ntest_merge_cannot_end_at_missing_deferred_or_cyclic_target (test_validate.PlanContractTests.test_merge_cannot_end_at_missing_deferred_or_cyclic_target) ... ok\ntest_merge_target_must_preserve_alias_goals_and_requirements (test_validate.PlanContractTests.test_merge_target_must_preserve_alias_goals_and_requirements) ... ok\ntest_missing_route_disconnected_target_and_invalid_entry_are_distinct (test_validate.PlanContractTests.test_missing_route_disconnected_target_and_invalid_entry_are_distinct) ... ok\ntest_multi_hop_merge_is_rejected_even_when_final_target_is_kept (test_validate.PlanContractTests.test_multi_hop_merge_is_rejected_even_when_final_target_is_kept) ... FAIL\ntest_must_goal_needs_a_capability_for_its_role (test_validate.PlanContractTests.test_must_goal_needs_a_capability_for_its_role) ... ok\ntest_navigation_cannot_offer_an_unauthorized_destination (test_validate.PlanContractTests.test_navigation_cannot_offer_an_unauthorized_destination) ... ok\ntest_non_object_documents_and_malformed_ids_fail_without_crashing (test_validate.PlanContractTests.test_non_object_documents_and_malformed_ids_fail_without_crashing) ... ok\ntest_only_kept_canonical_features_can_own_screen_space (test_validate.PlanContractTests.test_only_kept_canonical_features_can_own_screen_space) ... ok\ntest_output_cannot_grant_operator_the_manager_only_export (test_validate.PlanContractTests.test_output_cannot_grant_operator_the_manager_only_export) ... ok\ntest_reachability_is_computed_for_the_goals_role (test_validate.PlanContractTests.test_reachability_is_computed_for_the_goals_role) ... ok\ntest_required_dependency_is_not_hidden_by_erasing_output_dependencies (test_validate.PlanContractTests.test_required_dependency_is_not_hidden_by_erasing_output_dependencies) ... ok\ntest_requirement_only_added_enabler_is_allowed (test_validate.PlanContractTests.test_requirement_only_added_enabler_is_allowed) ... ok\ntest_same_screen_decision_and_legitimate_return_cycles_are_valid (test_validate.PlanContractTests.test_same_screen_decision_and_legitimate_return_cycles_are_valid) ... ok\ntest_two_independently_authored_normal_plans (test_validate.PlanContractTests.test_two_independently_authored_normal_plans) ... ok\ntest_unknown_dependency_is_rejected (test_validate.PlanContractTests.test_unknown_dependency_is_rejected) ... ok\ntest_unresolved_blocker_holds_and_errors_take_precedence (test_validate.PlanContractTests.test_unresolved_blocker_holds_and_errors_take_precedence) ... ok\ntest_untraced_addition_and_unplaced_kept_feature_are_rejected (test_validate.PlanContractTests.test_untraced_addition_and_unplaced_kept_feature_are_rejected) ... ok\n\n======================================================================\nFAIL: test_mandatory_capability_cannot_live_only_on_an_unreachable_screen (test_validate.PlanContractTests.test_mandatory_capability_cannot_live_only_on_an_unreachable_screen) (disposition='keep')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 276, in test_mandatory_capability_cannot_live_only_on_an_unreachable_screen\n    result = self.assert_rejected(brief, plan, \"MANDATORY_FEATURE_UNREACHABLE\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 187, in assert_rejected\n    self.assertEqual(\"FAIL\", result[\"status\"], json.dumps(result, ensure_ascii=False))\nAssertionError: 'FAIL' != 'PASS'\n- FAIL\n+ PASS\n : {\"status\": \"PASS\", \"issues\": [], \"counts\": {\"goals\": 5, \"features\": 8, \"kept_features\": 5, \"screens\": 5, \"navigation_edges\": 3}}\n\n======================================================================\nFAIL: test_mandatory_capability_cannot_live_only_on_an_unreachable_screen (test_validate.PlanContractTests.test_mandatory_capability_cannot_live_only_on_an_unreachable_screen) (disposition='merge')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 276, in test_mandatory_capability_cannot_live_only_on_an_unreachable_screen\n    result = self.assert_rejected(brief, plan, \"MANDATORY_FEATURE_UNREACHABLE\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 187, in assert_rejected\n    self.assertEqual(\"FAIL\", result[\"status\"], json.dumps(result, ensure_ascii=False))\nAssertionError: 'FAIL' != 'PASS'\n- FAIL\n+ PASS\n : {\"status\": \"PASS\", \"issues\": [], \"counts\": {\"goals\": 5, \"features\": 8, \"kept_features\": 5, \"screens\": 5, \"navigation_edges\": 3}}\n\n======================================================================\nFAIL: test_mandatory_shared_feature_needs_reachable_placement_for_each_input_role (test_validate.PlanContractTests.test_mandatory_shared_feature_needs_reachable_placement_for_each_input_role)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 290, in test_mandatory_shared_feature_needs_reachable_placement_for_each_input_role\n    result = self.assert_rejected(brief, plan, \"MANDATORY_FEATURE_UNREACHABLE\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 187, in assert_rejected\n    self.assertEqual(\"FAIL\", result[\"status\"], json.dumps(result, ensure_ascii=False))\nAssertionError: 'FAIL' != 'PASS'\n- FAIL\n+ PASS\n : {\"status\": \"PASS\", \"issues\": [], \"counts\": {\"goals\": 5, \"features\": 8, \"kept_features\": 5, \"screens\": 4, \"navigation_edges\": 2}}\n\n======================================================================\nFAIL: test_multi_hop_merge_is_rejected_even_when_final_target_is_kept (test_validate.PlanContractTests.test_multi_hop_merge_is_rejected_even_when_final_target_is_kept)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 221, in test_multi_hop_merge_is_rejected_even_when_final_target_is_kept\n    result = self.assert_rejected(brief, plan, \"MERGE_NOT_DIRECT_TO_CANONICAL\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a50c340f4e5f/repo-A/extensions/A/tests/test_validate.py\", line 187, in assert_rejected\n    self.assertEqual(\"FAIL\", result[\"status\"], json.dumps(result, ensure_ascii=False))\nAssertionError: 'FAIL' != 'PASS'\n- FAIL\n+ PASS\n : {\"status\": \"PASS\", \"issues\": [], \"counts\": {\"goals\": 5, \"features\": 9, \"kept_features\": 5, \"screens\": 5, \"navigation_edges\": 4}}\n\n----------------------------------------------------------------------\nRan 37 tests in 0.046s\n\nFAILED (failures=4)\n"
+  },
+  "verification_on_v2_checker": {
+    "stage": "v2_checker_with_v2_contract_tests",
+    "timestamp_utc": "2026-11-23T06:40:25.888057+00:00",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "extensions/A/tests",
+      "-p",
+      "test_validate.py",
+      "-v"
+    ],
+    "checker_sha256_before": "a5b25950d7e1d604d123ee7a443334a1e359b7cfe07f14219effec805e83bbef",
+    "checker_sha256_after": "a5b25950d7e1d604d123ee7a443334a1e359b7cfe07f14219effec805e83bbef",
+    "tests_sha256": "1cab6c71a0449533f802371c9634edcd86df75e18050dc39a37a16ba69bab01d",
+    "exit_code": 0,
+    "tests_run": 37,
+    "failure_events": 0,
+    "error_events": 0,
+    "failed_test_methods": [],
+    "output_file": "evidence/A/runs/validator-v2-tests.txt"
+  },
+  "final_hashes": {
+    "extensions/A/checks/validate_plan.py": "a5b25950d7e1d604d123ee7a443334a1e359b7cfe07f14219effec805e83bbef",
+    "extensions/A/tests/test_validate.py": "1cab6c71a0449533f802371c9634edcd86df75e18050dc39a37a16ba69bab01d"
+  },
+  "final_result": {
+    "tests_run": 37,
+    "passed": 37,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "runner": "standard-library unittest",
+    "pytest_required": false
+  },
+  "verification_limit": "Structural contract checks only; no semantic UX success claim or benchmark-arm comparison."
+}

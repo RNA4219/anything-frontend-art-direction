@@ -1,0 +1,57 @@
+{
+  "schema": "session-a-sankai-cas-record/v1",
+  "campaign_id": "anything-frontend-A-20261123",
+  "created_at": "2026-11-23T06:33:10.912947+00:00",
+  "version": "published-v2",
+  "local_implementation_commit": "8181f6bbac7013ba5a7563d6a87e740ccb3ee3ca",
+  "publication_commit": "97b19c29c0b63acfee9ad437f93af081ac0c6ef8",
+  "publication_mapping": {
+    "path": "publication-mapping.json",
+    "sha256": "c877dbab0f696b1815aa025d39bdb1d7b920e7ad59c4bf6cc8480dc8ea0d016f"
+  },
+  "base_commit": "f5df625dbc577d6a3ca28e13ef09e39b135b4a6f",
+  "input_kind": "agent_edited_synthesis_not_primary_source",
+  "source_snapshot": {
+    "path": "inputs/sankai-extraction.snapshot.md",
+    "sha256": "4d11340f4f7dd1efe732c896c7922338a10a5847d1e8935b305292b00761d5cc",
+    "lines": 117
+  },
+  "sankai_input": {
+    "path": "inputs/sankai-published-v2.json",
+    "sha256": "80b1dd1689671a0fc39d83a745b9492e0f32c88945c36f5065aa1f4e0fb54212"
+  },
+  "pipeline_receipt": {
+    "path": ".ga/receipts/pipeline-0a54499dc90fe713ddd7b057e3dc91f50a945ad2056f22115b5d1e92b5af1eb8.json",
+    "sha256": "0a54499dc90fe713ddd7b057e3dc91f50a945ad2056f22115b5d1e92b5af1eb8"
+  },
+  "cas": {
+    "bytes": 23899,
+    "path": "cas/objects/89/890dad5d012d5bf7dc063d78e404014cfedd91b5522dbe1bb447578e3842426d.json",
+    "sha256": "890dad5d012d5bf7dc063d78e404014cfedd91b5522dbe1bb447578e3842426d"
+  },
+  "candidate": {
+    "candidate_id": "aed351a007f8087754c25fd6706ff39ff8faece29c62416a0083a8cb0235c715",
+    "common_conditions": 1,
+    "status": "quarantined",
+    "trust": "UNTRUSTED_CANDIDATE",
+    "units": 10
+  },
+  "supersedes_revision_identity_only": "sankai-cas-manifest.json",
+  "semantic_validation": "not_performed_by_rasi",
+  "independent_evaluation": "pending",
+  "browser_validation": {
+    "status": "not_executed",
+    "reason": "Local Chromium socket() EPERM; Browser plugin lacks origincontext; CUA file URL prohibited. No bypass attempted.",
+    "basis": "Parent reported observed tool blockers; raw logs are maintained in experiment evidence."
+  },
+  "execute_connected": false,
+  "evaluation_connected": false,
+  "promotion_connected": false,
+  "formal_decision": "HOLD",
+  "cost": {
+    "amount": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "measured": false
+  }
+}

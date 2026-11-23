@@ -175,6 +175,18 @@ def catalog_case():
     return brief, plan
 
 
+def optional_isolated_triage_case():
+    """A must goal keeps its data and route, but its sole capability is isolated."""
+    brief, plan = support_case()
+    by_id(brief["feature_requests"], "f_inbox")["mandatory"] = False
+    by_id(plan["screens"], "s_queue")["feature_ids"] = []
+    plan["screens"].append(screen(
+        "s_optional_queue", ["g_triage"], ["f_inbox"], ["operator"], [],
+        ["ticket_id", "summary", "severity", "due_at", "owner", "status"],
+    ))
+    return brief, plan
+
+
 class PlanContractTests(unittest.TestCase):
     def assert_pass(self, brief, plan):
         result = validator.validate(brief, plan)
@@ -207,12 +219,22 @@ class PlanContractTests(unittest.TestCase):
         self.assertEqual("s_publish", plan["goal_routes"][-1]["start_screen"])
         self.assertEqual("s_publish", plan["goal_routes"][-1]["target_screen"])
 
-    def test_merge_chain_and_dependency_on_an_alias_are_valid(self):
+    def test_dependency_on_a_direct_alias_is_valid(self):
+        # A02 requires an alias to point directly to a kept canonical feature.
+        # The v1 test incorrectly treated a multi-hop merge as a valid case.
         brief, plan = catalog_case()
-        by_id(plan["features"], "f_topics")["target"] = "f_workshops"
         by_id(brief["feature_requests"], "f_compare")["dependencies"] = ["f_topics"]
         by_id(plan["features"], "f_compare")["dependencies"] = ["f_topics"]
         self.assert_pass(brief, plan)
+
+    def test_multi_hop_merge_is_rejected_even_when_final_target_is_kept(self):
+        brief, plan = catalog_case()
+        by_id(plan["features"], "f_topics")["target"] = "f_workshops"
+        result = self.assert_rejected(brief, plan, "MERGE_NOT_DIRECT_TO_CANONICAL")
+        self.assertTrue(any(
+            issue["code"] == "MERGE_NOT_DIRECT_TO_CANONICAL" and issue["location"] == "features.f_topics"
+            for issue in result["issues"]
+        ))
 
     def test_requirement_only_added_enabler_is_allowed(self):
         brief, plan = support_case()
@@ -246,6 +268,93 @@ class PlanContractTests(unittest.TestCase):
         brief, plan = catalog_case()
         by_id(plan["features"], "f_compare")["goal_ids"] = []
         self.assert_rejected(brief, plan, "MISSING_GOAL")
+
+    def test_must_goal_cannot_rely_only_on_an_unreachable_optional_capability(self):
+        brief, plan = optional_isolated_triage_case()
+        result = self.assert_rejected(brief, plan, "MISSING_GOAL")
+        self.assertNotIn("MANDATORY_FEATURE_UNREACHABLE", {issue["code"] for issue in result["issues"]})
+        self.assertTrue(any(
+            issue["code"] == "MISSING_GOAL" and issue["location"] == "g_triage"
+            for issue in result["issues"]
+        ))
+
+    def test_must_goal_accepts_a_reachable_alternative_to_an_isolated_optional_capability(self):
+        brief, plan = optional_isolated_triage_case()
+        by_id(plan["features"], "f_my_queue").update(disposition="keep", target=None)
+        by_id(plan["screens"], "s_queue")["feature_ids"] = ["f_my_queue"]
+        # The same goal has two optional capabilities; only one must be reachable.
+        self.assert_pass(brief, plan)
+
+    def test_should_goal_does_not_force_reachability_of_an_optional_capability(self):
+        brief, plan = optional_isolated_triage_case()
+        by_id(brief["goals"], "g_triage")["priority"] = "should"
+        plan["decision_notes"].append("g_triageはshouldとして、操作導線を後続検討する。")
+        plan["unresolved"].append({
+            "id": "u_optional_queue_route", "category": "information_architecture", "owner": "A",
+            "impact": "g_triageの任意機能への操作導線が未確定", "blocking": False,
+            "question": "後続検討時に任意機能への入口を定める",
+        })
+        self.assert_pass(brief, plan)
+
+    def test_mandatory_capability_cannot_live_only_on_an_unreachable_screen(self):
+        for disposition in ("keep", "merge"):
+            with self.subTest(disposition=disposition):
+                brief, plan = support_case()
+                canonical_id = "f_inbox"
+                if disposition == "merge":
+                    by_id(plan["features"], "f_inbox").update(disposition="merge", target="f_my_queue")
+                    by_id(plan["features"], "f_my_queue").update(disposition="keep", target=None)
+                    canonical_id = "f_my_queue"
+                by_id(plan["screens"], "s_queue")["feature_ids"] = []
+                plan["screens"].append(screen(
+                    "s_isolated_queue", ["g_triage"], [canonical_id], ["operator"], [],
+                    ["ticket_id", "summary", "severity", "due_at", "owner", "status"],
+                ))
+                # The declared goal target is still reachable and contains all
+                # needed primary information; only the actual capability is stranded.
+                result = self.assert_rejected(brief, plan, "MANDATORY_FEATURE_UNREACHABLE")
+                self.assertNotIn("UNREACHABLE_GOAL", {issue["code"] for issue in result["issues"]})
+                self.assertTrue(any(
+                    issue["code"] == "MANDATORY_FEATURE_UNREACHABLE"
+                    and issue["location"] == "feature_requests.f_inbox"
+                    and canonical_id in issue["symptom"]
+                    and "operator" in issue["symptom"]
+                    for issue in result["issues"]
+                ))
+
+    def test_mandatory_shared_feature_needs_reachable_placement_for_each_input_role(self):
+        brief, plan = support_case()
+        by_id(plan["screens"], "s_records")["roles"] = ["operator"]
+        plan["navigation"] = [edge for edge in plan["navigation"] if edge["from"] != "s_audit"]
+        result = self.assert_rejected(brief, plan, "MANDATORY_FEATURE_UNREACHABLE")
+        inaccessible = [issue for issue in result["issues"] if issue["code"] == "MANDATORY_FEATURE_UNREACHABLE"]
+        self.assertEqual(1, len(inaccessible), inaccessible)
+        self.assertEqual("feature_requests.f_history", inaccessible[0]["location"])
+        self.assertIn("manager", inaccessible[0]["symptom"])
+
+    def test_mandatory_feature_can_be_reached_from_an_alternate_authorized_entry(self):
+        brief, plan = support_case()
+        by_id(plan["screens"], "s_audit")["feature_ids"] = []
+        plan["screens"].extend([
+            screen("s_alternate_audit_entry", [], [], ["manager"], ["manager"], []),
+            screen("s_export", ["g_audit"], ["f_export"], ["manager"], [],
+                   ["date_range", "retention", "export_scope"]),
+        ])
+        plan["navigation"].append(navigation("s_alternate_audit_entry", "s_export", ["manager"]))
+        # Reachability may start at any declared, authorized entry for the role.
+        # A feature need not be placed on that goal route's chosen target screen.
+        self.assert_pass(brief, plan)
+
+    def test_mandatory_feature_may_have_separate_role_specific_placements(self):
+        brief, plan = support_case()
+        by_id(plan["screens"], "s_records")["roles"] = ["operator"]
+        plan["navigation"] = [edge for edge in plan["navigation"] if edge["from"] != "s_audit"]
+        plan["screens"].append(screen(
+            "s_manager_records", ["g_audit"], ["f_history"], ["manager"], [],
+            ["ticket_id", "status", "history"],
+        ))
+        plan["navigation"].append(navigation("s_audit", "s_manager_records", ["manager"], "監査用の履歴"))
+        self.assert_pass(brief, plan)
 
     def test_merge_cannot_end_at_missing_deferred_or_cyclic_target(self):
         for mutation in ("missing", "deferred", "self_cycle", "two_node_cycle"):

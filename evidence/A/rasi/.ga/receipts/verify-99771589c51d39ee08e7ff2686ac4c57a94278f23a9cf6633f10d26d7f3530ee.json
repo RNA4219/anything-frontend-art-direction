@@ -1,0 +1,1 @@
+{"command":"verify","payload":{"common_conditions":1,"line_count":117,"quotes":12,"sankai_output_hash":"5a4c332d829ab49c529b74b7afb907c04e7601564024f009ffd01b47310aa723","schema":"rasi-sankai/v1","source_sha256":"4d11340f4f7dd1efe732c896c7922338a10a5847d1e8935b305292b00761d5cc","units":10,"unresolved":1},"rasi_version":"0.0.2","schema":"rasi-receipt/v1"}
