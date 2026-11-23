@@ -24,6 +24,14 @@ DEAD AIR FM は、東京の深夜を舞台にした架空の海賊ラジオ局�
 
 [作例のHTMLをダウンロード](https://github.com/RNA4219/anything-frontend-art-direction/raw/refs/heads/main/examples/shiomachi-film/index.html)して、ブラウザーで開いてください。PC用とスマホ用の画像、書体、CSS、JavaScriptをすべて1枚のHTMLに収めました。オフラインでも上映日を切り替えたり、各作品のあらすじを開いたり閉じたりできます。[HTMLのソース](examples/shiomachi-film/index.html)
 
+## Product Design との併用作例『夜光埠頭』
+
+**[写真祭『夜光埠頭』のサイトを開く](https://rna4219.github.io/anything-frontend-product-design/yako-futo/)**
+
+冬の港を舞台にした架空の夜間写真祭です。表紙には青い海と赤い灯台の生成画像を使い、暗い空に白い文字で祭名を組みました。祭名の書体は「しっぽり明朝」、開催日と時刻の数字は Barlow Condensed です。各展示の「展示について」を開くと、作品の紹介と会場への道順を読めます。
+
+[![左に白い祭名、右に赤い灯台。表紙の下に、色も被写体も異なる三つの展示写真が並ぶ。](https://rna4219.github.io/anything-frontend-product-design/yako-futo/preview.webp)](https://rna4219.github.io/anything-frontend-product-design/yako-futo/)
+
 ## スキルを使う
 
 1. [ZIPをダウンロード](https://github.com/RNA4219/anything-frontend-art-direction/archive/refs/heads/main.zip)して展開するか、`git clone https://github.com/RNA4219/anything-frontend-art-direction.git` を実行します。
